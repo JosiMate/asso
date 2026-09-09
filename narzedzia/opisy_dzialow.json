@@ -1,0 +1,49 @@
+{
+  "I": {
+    "ikona": "material-flag-checkered",
+    "efekt": "Wiesz, według jakich wymagań będziesz oceniany, pracujesz zgodnie z bhp i umiesz postawić sobie maszynę wirtualną do dalszej pracy."
+  },
+  "II": {
+    "ikona": "material-linux",
+    "efekt": "Masz wdrożony serwer Linux: zainstalowany, zaktualizowany, z kontami, profilami, uprawnieniami i przygotowanymi dyskami."
+  },
+  "III": {
+    "ikona": "material-ip-network",
+    "efekt": "Serwer pracuje w sieci lokalnej — adresację ustawiasz dwiema metodami i umiesz sprawdzić, na którym etapie komunikacja się urywa.",
+    "sprawdzian": "Dział kończy praktyczny sprawdzian z wdrożenia serwera, kont, uprawnień i adresacji."
+  },
+  "IV": {
+    "ikona": "material-lan-connect",
+    "efekt": "Dobierasz role i usługi do zapotrzebowania, a stacja kliencka sama pobiera adres z Twojego serwera DHCP i rozwiązuje nazwy na Twoim serwerze DNS."
+  },
+  "V": {
+    "ikona": "material-folder-network",
+    "efekt": "Udostępniasz katalogi i drukarkę — przez NFS dla Linuksa, przez SAMBĘ dla Windowsa — z uprawnieniami i zabezpieczeniami ustawionymi świadomie.",
+    "sprawdzian": "Dział kończy praktyczny sprawdzian z usług sieciowych i udostępniania zasobów."
+  },
+  "VI": {
+    "ikona": "material-web",
+    "efekt": "Witryna działa na Apache’u pod własną nazwą, obok niej serwer FTP i serwer pocztowy."
+  },
+  "VII": {
+    "ikona": "material-monitor-eye",
+    "efekt": "Administrujesz serwerem zdalnie przez SSH, zarządzasz stacjami centralnie i wiesz z dzienników oraz z pomiarów wydajności, co się na serwerze dzieje."
+  },
+  "VIII": {
+    "ikona": "material-shield-lock",
+    "efekt": "Znasz metody ataków, zapora przepuszcza tylko to, co ma przepuszczać, a serwer jest chroniony przed szkodliwym oprogramowaniem — także fizycznie, zasilaczem awaryjnym i macierzą."
+  },
+  "IX": {
+    "ikona": "material-backup-restore",
+    "efekt": "Dobierasz typ kopii bezpieczeństwa do sytuacji, odtwarzasz dane, lokalizujesz i usuwasz awarię, a potem dokumentujesz, co się stało i co zrobiłeś.",
+    "sprawdzian": "Dział kończy praktyczny sprawdzian z zabezpieczeń, kopii bezpieczeństwa i diagnostyki."
+  },
+  "X": {
+    "ikona": "material-swap-horizontal",
+    "efekt": "Serwer obsługuje stacje Windows, a Ty umiesz wskazać, która usługa czemu odpowiada w drugiej rodzinie systemów — tego wymaga wprost efekt INF.07.5.1."
+  },
+  "XI": {
+    "ikona": "material-clipboard-check",
+    "efekt": "Rozwiązujesz zadania w formacie części praktycznej egzaminu zawodowego, w czasie egzaminacyjnym."
+  }
+}

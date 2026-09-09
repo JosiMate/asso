@@ -5,12 +5,12 @@ hide:
 
 # Administracja sieciowymi systemami operacyjnymi
 
-**Klasa 3TT · technik informatyk · kwalifikacja INF.02 · 2 godziny tygodniowo · 60 godzin w roku**
+**Klasa 3TT · technik teleinformatyk · kwalifikacja INF.07 · 2 godziny tygodniowo · 60 godzin w roku**
 
 Przedmiot jest praktyczny od pierwszej lekcji: pracujesz na maszynach wirtualnych
-i konfigurujesz prawdziwe usługi — DHCP, DNS, serwer plików, serwer wydruku — raz
-w Windows Server, raz w Linuksie. Ta sama usługa po dwóch stronach to nie
-powtórka, tylko sedno przedmiotu: na egzaminie trzeba rozpoznać odpowiedniki.
+i konfigurujesz prawdziwe usługi na serwerze Linux — DHCP, DNS, serwer plików,
+serwer wydruku, serwer WWW, FTP i pocztę. Nie chodzi o zapamiętanie ścieżki
+klikania, tylko o działającą usługę, którą potrafisz sprawdzić od strony klienta.
 
 !!! info "Co gdzie jest"
 
@@ -20,132 +20,130 @@ powtórka, tylko sedno przedmiotu: na egzaminie trzeba rozpoznać odpowiedniki.
 
 ## Plan pracy
 
-Rozkład materiału pogrupowałem w **12 modułów**. Każdy moduł to jedno
-skończone zadanie administratora — od instalacji, przez konfigurację, po
-sprawdzenie, że usługa działa. Zaczynasz i kończysz w obrębie modułu, więc
-przerwa między modułami jest dobrym momentem, żeby zrobić zrzuty ekranu
-i uzupełnić dokumentację.
+Windows Server mieliście w drugiej klasie, więc **ten rok jest rokiem Linuksa** —
+55 z 60 godzin to administrowanie serwerem Linux. Materiał dzieli się na
+**11 działów** i idzie w kolejności czynności administratora: wdrożenie
+systemu i konta → sieć → role i usługi → udostępnianie zasobów → usługi
+internetowe → zdalna administracja i monitorowanie → zabezpieczenia → kopie
+bezpieczeństwa i awarie → współpraca ze stacjami Windows.
+
+Windows wraca w dziale X, ale nie po to, żeby przerabiać go od nowa: chodzi
+o zestawienie odpowiedników usług i o serwer obsługujący stacje Windows.
+Efekt INF.07.5.1 wymaga rozróżniania systemów obu rodzin, więc to część podstawy.
+
+Koniec działu to dobry moment na zrzuty ekranu i uzupełnienie dokumentacji —
+trzy działy kończą się praktycznym sprawdzianem.
 
 <div class="grid cards wybor-modulu" markdown>
 
 
--   :material-flag-checkered:{ .lg .middle } **Moduł 1. Start — organizacja i bezpieczeństwo**
+-   :material-flag-checkered:{ .lg .middle } **Dział I. Organizacja pracy, sieciowe systemy operacyjne i wirtualizacja**
 
     ---
 
-    Wiesz, według jakich wymagań będziesz oceniany, i pracujesz w pracowni zgodnie z bhp.
+    Wiesz, według jakich wymagań będziesz oceniany, pracujesz zgodnie z bhp i umiesz postawić sobie maszynę wirtualną do dalszej pracy.
 
-    *1 godzina · dział I*
+    *3 godziny · 3 tematów*
 
-    [Otwórz moduł](modul-1/wymagania-i-bhp.md){ .md-button }
+    [Otwórz dział](dzial-1/wymagania-i-bhp.md){ .md-button }
 
--   :material-microsoft-windows:{ .lg .middle } **Moduł 2. Serwer Windows od zera**
+-   :material-linux:{ .lg .middle } **Dział II. Wdrożenie serwera Linux i podstawy administracji**
 
     ---
 
-    Masz własną maszynę wirtualną z Windows Server, ustaloną adresację i kontakt z siecią pracowni.
+    Masz wdrożony serwer Linux: zainstalowany, zaktualizowany, z kontami, profilami, uprawnieniami i przygotowanymi dyskami.
 
-    *5 godzin · dział II*
+    *7 godzin · 6 tematów*
 
     *materiały w przygotowaniu*
 
--   :material-lan-connect:{ .lg .middle } **Moduł 3. Domena i automatyczna adresacja**
+-   :material-ip-network:{ .lg .middle } **Dział III. Konfiguracja sieciowa serwera**
 
     ---
 
-    Stacja kliencka loguje się do Twojej domeny i sama pobiera adres z serwera DHCP.
+    Serwer pracuje w sieci lokalnej — adresację ustawiasz dwiema metodami i umiesz sprawdzić, na którym etapie komunikacja się urywa.
 
-    *6 godzin · dział II*
+    *6 godzin · 6 tematów*
 
     *materiały w przygotowaniu*
 
--   :material-folder-network:{ .lg .middle } **Moduł 4. Nazwy, pliki i wydruk**
+-   :material-lan-connect:{ .lg .middle } **Dział IV. Wdrażanie ról i usług sieciowych: DHCP i DNS**
 
     ---
 
-    Serwer rozwiązuje nazwy w swojej strefie, udostępnia katalogi i obsługuje drukarkę sieciową.
+    Dobierasz role i usługi do zapotrzebowania, a stacja kliencka sama pobiera adres z Twojego serwera DHCP i rozwiązuje nazwy na Twoim serwerze DNS.
 
-    *6 godzin · dział III*
+    *7 godzin · 6 tematów*
 
     *materiały w przygotowaniu*
 
--   :material-web:{ .lg .middle } **Moduł 5. Aplikacje, poczta i IIS**
+-   :material-folder-network:{ .lg .middle } **Dział V. Udostępnianie zasobów w sieci komputerowej**
 
     ---
 
-    Witryna działa na IIS pod własną nazwą, z dokumentem domyślnym i przekierowaniami; serwer pocztowy przyjmuje pocztę.
+    Udostępniasz katalogi i drukarkę — przez NFS dla Linuksa, przez SAMBĘ dla Windowsa — z uprawnieniami i zabezpieczeniami ustawionymi świadomie.
 
-    *6 godzin · dział III*
+    *7 godzin · 6 tematów*
 
     *materiały w przygotowaniu*
 
--   :material-share-variant:{ .lg .middle } **Moduł 6. Udostępnianie zasobów: WWW i FTP**
+-   :material-web:{ .lg .middle } **Dział VI. Usługi internetowe i pocztowe**
 
     ---
 
-    Zasoby, strona i witryna FTP są dostępne dla użytkowników z odpowiednimi uprawnieniami.
+    Witryna działa na Apache’u pod własną nazwą, obok niej serwer FTP i serwer pocztowy.
 
-    *5 godzin · dział IV*
+    *6 godzin · 6 tematów*
 
     *materiały w przygotowaniu*
 
--   :material-remote-desktop:{ .lg .middle } **Moduł 7. Dostęp zdalny, dyski i bezpieczeństwo Windows**
+-   :material-monitor-eye:{ .lg .middle } **Dział VII. Zdalna administracja i monitorowanie**
 
     ---
 
-    Serwerem administrujesz zdalnie, dyski masz uporządkowane, a zdarzenia zapisują się w dzienniku.
+    Administrujesz serwerem zdalnie przez SSH, zarządzasz stacjami centralnie i wiesz z dzienników oraz z pomiarów wydajności, co się na serwerze dzieje.
 
-    *4 godziny · dział IV*
+    *5 godzin · 5 tematów*
 
     *materiały w przygotowaniu*
 
--   :material-linux:{ .lg .middle } **Moduł 8. Linux: wdrożenie, konta i sieć**
+-   :material-shield-lock:{ .lg .middle } **Dział VIII. Zabezpieczanie sieciowego systemu operacyjnego**
 
     ---
 
-    Serwer Linux pracuje w sieci, ma założone konta i grupy, a adresację potrafisz ustawić dwiema metodami.
+    Znasz metody ataków, zapora przepuszcza tylko to, co ma przepuszczać, a serwer jest chroniony przed szkodliwym oprogramowaniem — także fizycznie, zasilaczem awaryjnym i macierzą.
 
-    *7 godzin · dział V*
+    *6 godzin · 5 tematów*
 
     *materiały w przygotowaniu*
 
--   :material-server-network:{ .lg .middle } **Moduł 9. Usługi sieciowe w Linuksie**
+-   :material-backup-restore:{ .lg .middle } **Dział IX. Kopie bezpieczeństwa, diagnostyka i usuwanie awarii**
 
     ---
 
-    Te same usługi co po stronie Windows — DHCP, DNS, pliki, wydruk — tylko na Linuksie. Warto zestawić jedne z drugimi.
+    Dobierasz typ kopii bezpieczeństwa do sytuacji, odtwarzasz dane, lokalizujesz i usuwasz awarię, a potem dokumentujesz, co się stało i co zrobiłeś.
 
-    *6 godzin · dział V*
+    *6 godzin · 6 tematów*
 
     *materiały w przygotowaniu*
 
--   :material-shield-lock:{ .lg .middle } **Moduł 10. SAMBA, konta i ochrona Linuksa**
+-   :material-swap-horizontal:{ .lg .middle } **Dział X. Współpraca systemów Linux i Windows w jednej sieci**
 
     ---
 
-    Udział sieciowy z Linuksa widać z Windows, konta są uporządkowane, a zapora przepuszcza tylko to, co ma przepuszczać.
+    Serwer obsługuje stacje Windows, a Ty umiesz wskazać, która usługa czemu odpowiada w drugiej rodzinie systemów — tego wymaga wprost efekt INF.07.5.1.
 
-    *4 godziny · dział V*
-
-    *materiały w przygotowaniu*
-
--   :material-stethoscope:{ .lg .middle } **Moduł 11. Utrzymanie, diagnostyka i ochrona danych**
-
-    ---
-
-    Potrafisz zlokalizować i usunąć awarię serwera oraz zabezpieczyć dane przed utratą i szkodliwym oprogramowaniem.
-
-    *7 godzin · dział VI*
+    *4 godziny · 3 tematów*
 
     *materiały w przygotowaniu*
 
--   :material-clipboard-check:{ .lg .middle } **Moduł 12. Przed egzaminem INF.02**
+-   :material-clipboard-check:{ .lg .middle } **Dział XI. Przygotowanie do egzaminu zawodowego INF.07**
 
     ---
 
     Rozwiązujesz zadania w formacie części praktycznej egzaminu zawodowego, w czasie egzaminacyjnym.
 
-    *3 godziny · dział VII*
+    *3 godziny · 1 tematów*
 
     *materiały w przygotowaniu*
 
@@ -153,170 +151,159 @@ i uzupełnić dokumentację.
 
 ## Spis tematów
 
-Kolejność tematów jest dokładnie taka jak w rozkładzie materiału — moduły tylko
-je grupują.
-
 <div class="spis-tematow" markdown>
 
-### Moduł 1. Start — organizacja i bezpieczeństwo
+### Dział I. Organizacja pracy, sieciowe systemy operacyjne i wirtualizacja
 
-*1 godzina · dział I. Organizacja pracy i bezpieczeństwo*
+*3 godziny*
 
-Wiesz, według jakich wymagań będziesz oceniany, i pracujesz w pracowni zgodnie z bhp.
-
-| Temat | Godz. | Materiały |
-| --- | :---: | --- |
-| **[Lekcja organizacyjna. Wymagania edukacyjne, zapoznanie z PSO. BHP pracowni komputerowej](modul-1/wymagania-i-bhp.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
-
-### Moduł 2. Serwer Windows od zera
-
-*5 godzin · dział II. Serwer Windows — instalacja i podstawowa konfiguracja*
-
-Masz własną maszynę wirtualną z Windows Server, ustaloną adresację i kontakt z siecią pracowni.
+Wiesz, według jakich wymagań będziesz oceniany, pracujesz zgodnie z bhp i umiesz postawić sobie maszynę wirtualną do dalszej pracy.
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Przypomnienie podstawowych wiadomości związanych z sieciowymi systemami operacyjnymi | 2 | *w przygotowaniu* |
-| Instalacja serwera na maszynie wirtualnej | 1 | *w przygotowaniu* |
-| Konfigurowanie połączeń sieciowych | 1 | *w przygotowaniu* |
-| Połączenia sieciowe — ćwiczenia | 1 | *w przygotowaniu* |
+| **[Lekcja organizacyjna. Wymagania edukacyjne, zapoznanie z PSO. BHP pracowni komputerowej](dzial-1/wymagania-i-bhp.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| Sieciowe systemy operacyjne: zadania, usługi, rodziny systemów i licencjonowanie | 1 | *w przygotowaniu* |
+| Wirtualizacja: maszyny wirtualne, migawki, sieć wirtualna pracowni | 1 | *w przygotowaniu* |
 
-### Moduł 3. Domena i automatyczna adresacja
+### Dział II. Wdrożenie serwera Linux i podstawy administracji
 
-*6 godzin · dział II. Serwer Windows — instalacja i podstawowa konfiguracja*
+*7 godzin*
 
-Stacja kliencka loguje się do Twojej domeny i sama pobiera adres z serwera DHCP.
-
-| Temat | Godz. | Materiały |
-| --- | :---: | --- |
-| Kontroler domeny | 1 | *w przygotowaniu* |
-| Konfiguracja serwera DHCP — opcje podstawowe | 1 | *w przygotowaniu* |
-| Konfiguracja serwera DHCP — opcje serwera | 1 | *w przygotowaniu* |
-| Ćwiczenia w konfiguracji serwera DHCP | 2 | *w przygotowaniu* |
-| Praktyczny sprawdzian wiadomości | 1 | *w przygotowaniu* |
-
-!!! tip "Praktyczny sprawdzian wiadomości kończy ten moduł."
-
-### Moduł 4. Nazwy, pliki i wydruk
-
-*6 godzin · dział III. Usługi sieciowe w systemie Windows Server*
-
-Serwer rozwiązuje nazwy w swojej strefie, udostępnia katalogi i obsługuje drukarkę sieciową.
+Masz wdrożony serwer Linux: zainstalowany, zaktualizowany, z kontami, profilami, uprawnieniami i przygotowanymi dyskami.
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Instalacja serwera DNS | 1 | *w przygotowaniu* |
-| Konfiguracja serwera DNS — dodawanie wpisów i stref wyszukiwania | 1 | *w przygotowaniu* |
-| Instalacja serwera plików | 1 | *w przygotowaniu* |
-| Konfiguracja serwera plików | 1 | *w przygotowaniu* |
-| Instalacja i konfiguracja serwera wydruku | 1 | *w przygotowaniu* |
-| Instalacja drukarki sieciowej | 1 | *w przygotowaniu* |
+| Instalacja serwera Linux na maszynie wirtualnej; zgodność sprzętowa | 1 | *w przygotowaniu* |
+| Konfiguracja poinstalacyjna, aktualizacje i sterowniki urządzeń | 1 | *w przygotowaniu* |
+| Praca w powłoce: struktura katalogów i podstawowe polecenia | 2 | *w przygotowaniu* |
+| Konta i grupy użytkowników | 1 | *w przygotowaniu* |
+| Profile użytkowników i uprawnienia do plików | 1 | *w przygotowaniu* |
+| Zarządzanie dyskami i punktami montowania | 1 | *w przygotowaniu* |
 
-### Moduł 5. Aplikacje, poczta i IIS
+### Dział III. Konfiguracja sieciowa serwera
 
-*6 godzin · dział III. Usługi sieciowe w systemie Windows Server*
+*6 godzin*
 
-Witryna działa na IIS pod własną nazwą, z dokumentem domyślnym i przekierowaniami; serwer pocztowy przyjmuje pocztę.
-
-| Temat | Godz. | Materiały |
-| --- | :---: | --- |
-| Serwer aplikacji | 1 | *w przygotowaniu* |
-| Instalacja serwera pocztowego | 1 | *w przygotowaniu* |
-| Konfiguracja serwera pocztowego | 1 | *w przygotowaniu* |
-| Instalacja usługi IIS | 1 | *w przygotowaniu* |
-| Serwer sieci IIS a usługa DNS | 1 | *w przygotowaniu* |
-| Konfiguracja serwera IIS — dokument domyślny, przekierowania, nazwa hosta | 1 | *w przygotowaniu* |
-
-### Moduł 6. Udostępnianie zasobów: WWW i FTP
-
-*5 godzin · dział IV. Udostępnianie zasobów, dostęp zdalny i bezpieczeństwo w systemie Windows*
-
-Zasoby, strona i witryna FTP są dostępne dla użytkowników z odpowiednimi uprawnieniami.
+Serwer pracuje w sieci lokalnej — adresację ustawiasz dwiema metodami i umiesz sprawdzić, na którym etapie komunikacja się urywa.
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Udostępnianie zasobów w sieci | 1 | *w przygotowaniu* |
-| Udostępnianie strony WWW w sieci lokalnej | 1 | *w przygotowaniu* |
+| Interfejsy sieciowe i adresacja IP — przegląd metod konfiguracji | 1 | *w przygotowaniu* |
+| Adresacja IP w plikach konfiguracyjnych (/etc/network/interfaces) | 1 | *w przygotowaniu* |
+| Adresacja IP w Netplanie (/etc/netplan) | 1 | *w przygotowaniu* |
+| Rozwiązywanie nazw po stronie klienta; narzędzia diagnostyczne sieci | 1 | *w przygotowaniu* |
+| Ćwiczenia: konfiguracja sieciowa serwera i jej weryfikacja | 1 | *w przygotowaniu* |
+| Praktyczny sprawdzian: wdrożenie serwera, konta, uprawnienia i adresacja | 1 | *w przygotowaniu* |
+
+!!! tip "Dział kończy praktyczny sprawdzian z wdrożenia serwera, kont, uprawnień i adresacji."
+
+### Dział IV. Wdrażanie ról i usług sieciowych: DHCP i DNS
+
+*7 godzin*
+
+Dobierasz role i usługi do zapotrzebowania, a stacja kliencka sama pobiera adres z Twojego serwera DHCP i rozwiązuje nazwy na Twoim serwerze DNS.
+
+| Temat | Godz. | Materiały |
+| --- | :---: | --- |
+| Dobór ról i usług sieciowych do zapotrzebowania | 1 | *w przygotowaniu* |
+| Serwer DHCP — instalacja i zakres adresów | 1 | *w przygotowaniu* |
+| Serwer DHCP — opcje, rezerwacje i dzierżawy | 1 | *w przygotowaniu* |
+| Serwer DNS — instalacja i strefa wyszukiwania do przodu | 1 | *w przygotowaniu* |
+| Serwer DNS — rekordy, strefa wsteczna i przekazywanie zapytań | 1 | *w przygotowaniu* |
+| Ćwiczenia: DHCP i DNS w jednej sieci | 2 | *w przygotowaniu* |
+
+### Dział V. Udostępnianie zasobów w sieci komputerowej
+
+*7 godzin*
+
+Udostępniasz katalogi i drukarkę — przez NFS dla Linuksa, przez SAMBĘ dla Windowsa — z uprawnieniami i zabezpieczeniami ustawionymi świadomie.
+
+| Temat | Godz. | Materiały |
+| --- | :---: | --- |
+| Podział sieci ze względu na udostępnianie zasobów: klient–serwer i peer to peer | 1 | *w przygotowaniu* |
+| Serwer plików NFS — udostępnianie katalogów | 1 | *w przygotowaniu* |
+| SAMBA — udostępnianie zasobów stacjom Windows | 2 | *w przygotowaniu* |
+| Uprawnienia i zabezpieczenia udostępnionych zasobów | 1 | *w przygotowaniu* |
+| Serwer wydruku CUPS — udostępnienie drukarki w sieci | 1 | *w przygotowaniu* |
+| Praktyczny sprawdzian: usługi sieciowe i udostępnianie zasobów | 1 | *w przygotowaniu* |
+
+!!! tip "Dział kończy praktyczny sprawdzian z usług sieciowych i udostępniania zasobów."
+
+### Dział VI. Usługi internetowe i pocztowe
+
+*6 godzin*
+
+Witryna działa na Apache’u pod własną nazwą, obok niej serwer FTP i serwer pocztowy.
+
+| Temat | Godz. | Materiały |
+| --- | :---: | --- |
+| Serwer WWW Apache — instalacja i publikacja strony | 1 | *w przygotowaniu* |
+| Apache — hosty wirtualne i dokument domyślny | 1 | *w przygotowaniu* |
+| Publikacja witryny pod własną nazwą — Apache a usługa DNS | 1 | *w przygotowaniu* |
 | Ćwiczenia w konfiguracji serwera WWW | 1 | *w przygotowaniu* |
-| Instalacja serwera FTP | 1 | *w przygotowaniu* |
-| Konfiguracja serwera FTP — tworzenie witryny, udostępnianie zasobów, użytkownicy anonimowi | 1 | *w przygotowaniu* |
+| Serwer FTP — instalacja, konta i użytkownicy anonimowi | 1 | *w przygotowaniu* |
+| Serwer pocztowy — instalacja i podstawowa konfiguracja | 1 | *w przygotowaniu* |
 
-### Moduł 7. Dostęp zdalny, dyski i bezpieczeństwo Windows
+### Dział VII. Zdalna administracja i monitorowanie
 
-*4 godziny · dział IV. Udostępnianie zasobów, dostęp zdalny i bezpieczeństwo w systemie Windows*
+*5 godzin*
 
-Serwerem administrujesz zdalnie, dyski masz uporządkowane, a zdarzenia zapisują się w dzienniku.
-
-| Temat | Godz. | Materiały |
-| --- | :---: | --- |
-| Usługi terminalowe, dostęp zdalny | 1 | *w przygotowaniu* |
-| Zadania związane z zarządzaniem dyskami | 1 | *w przygotowaniu* |
-| Polityka bezpieczeństwa i monitorowanie pracy systemu | 1 | *w przygotowaniu* |
-| Sprawdzian wiadomości | 1 | *w przygotowaniu* |
-
-!!! tip "Sprawdzian wiadomości zamyka część windowsową."
-
-### Moduł 8. Linux: wdrożenie, konta i sieć
-
-*7 godzin · dział V. Sieciowe systemy operacyjne z rodziny Linux*
-
-Serwer Linux pracuje w sieci, ma założone konta i grupy, a adresację potrafisz ustawić dwiema metodami.
+Administrujesz serwerem zdalnie przez SSH, zarządzasz stacjami centralnie i wiesz z dzienników oraz z pomiarów wydajności, co się na serwerze dzieje.
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Charakterystyka sieciowych systemów operacyjnych z rodziny Linux | 1 | *w przygotowaniu* |
-| Wdrażanie sieciowych systemów operacyjnych z rodziny Linux | 1 | *w przygotowaniu* |
-| Zarządzanie kontami i grupami użytkowników w sieciowych systemach z rodziny Linux | 1 | *w przygotowaniu* |
-| Konfiguracja systemu Linux typu serwer do pracy w sieci | 2 | *w przygotowaniu* |
-| Adresacja IP za pomocą pliku /etc/network/interfaces | 1 | *w przygotowaniu* |
-| Adresacja IP za pomocą Netplana | 1 | *w przygotowaniu* |
+| Zdalny dostęp do serwera — konfiguracja usługi SSH | 1 | *w przygotowaniu* |
+| SSH — logowanie kluczem i przesyłanie plików | 1 | *w przygotowaniu* |
+| Centralne zarządzanie stacjami roboczymi; zdalna instalacja oprogramowania | 1 | *w przygotowaniu* |
+| Monitorowanie pracy i wydajności serwera | 1 | *w przygotowaniu* |
+| Dzienniki systemowe; monitorowanie działań użytkowników sieci | 1 | *w przygotowaniu* |
 
-### Moduł 9. Usługi sieciowe w Linuksie
+### Dział VIII. Zabezpieczanie sieciowego systemu operacyjnego
 
-*6 godzin · dział V. Sieciowe systemy operacyjne z rodziny Linux*
+*6 godzin*
 
-Te same usługi co po stronie Windows — DHCP, DNS, pliki, wydruk — tylko na Linuksie. Warto zestawić jedne z drugimi.
-
-| Temat | Godz. | Materiały |
-| --- | :---: | --- |
-| DHCP w systemie Linux | 2 | *w przygotowaniu* |
-| DNS w systemie Linux | 1 | *w przygotowaniu* |
-| Serwer plików w systemie Linux | 1 | *w przygotowaniu* |
-| Serwer wydruku w systemie Linux | 1 | *w przygotowaniu* |
-| Udostępnianie plików w systemie Linux | 1 | *w przygotowaniu* |
-
-### Moduł 10. SAMBA, konta i ochrona Linuksa
-
-*4 godziny · dział V. Sieciowe systemy operacyjne z rodziny Linux*
-
-Udział sieciowy z Linuksa widać z Windows, konta są uporządkowane, a zapora przepuszcza tylko to, co ma przepuszczać.
+Znasz metody ataków, zapora przepuszcza tylko to, co ma przepuszczać, a serwer jest chroniony przed szkodliwym oprogramowaniem — także fizycznie, zasilaczem awaryjnym i macierzą.
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Konfiguracja programu SAMBA | 1 | *w przygotowaniu* |
-| Konta w systemie Linux | 1 | *w przygotowaniu* |
-| Konfiguracja zapory sieciowej w systemie Linux | 1 | *w przygotowaniu* |
-| Bezpieczeństwo systemów Linux | 1 | *w przygotowaniu* |
+| Metody ataków sieciowych | 1 | *w przygotowaniu* |
+| Zapora sieciowa — reguły dla usług serwera | 2 | *w przygotowaniu* |
+| Ochrona przed szkodliwym oprogramowaniem — metody i dobór zabezpieczeń | 1 | *w przygotowaniu* |
+| Instalacja i konfiguracja oprogramowania zabezpieczającego serwer | 1 | *w przygotowaniu* |
+| Polityka haseł oraz fizyczne środki zabezpieczenia serwera (zasilacze awaryjne, macierze RAID) | 1 | *w przygotowaniu* |
 
-### Moduł 11. Utrzymanie, diagnostyka i ochrona danych
+### Dział IX. Kopie bezpieczeństwa, diagnostyka i usuwanie awarii
 
-*7 godzin · dział VI. Utrzymanie, diagnostyka i ochrona systemów sieciowych*
+*6 godzin*
 
-Potrafisz zlokalizować i usunąć awarię serwera oraz zabezpieczyć dane przed utratą i szkodliwym oprogramowaniem.
+Dobierasz typ kopii bezpieczeństwa do sytuacji, odtwarzasz dane, lokalizujesz i usuwasz awarię, a potem dokumentujesz, co się stało i co zrobiłeś.
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Zadania związane z zarządzaniem dyskami | 1 | *w przygotowaniu* |
-| Polityka bezpieczeństwa | 1 | *w przygotowaniu* |
-| Monitorowanie pracy systemu | 1 | *w przygotowaniu* |
-| Lokalizowanie awarii sieciowych systemów operacyjnych | 1 | *w przygotowaniu* |
-| Usuwanie awarii sieciowych systemów operacyjnych | 1 | *w przygotowaniu* |
-| Zabezpieczanie sieciowych systemów operacyjnych przed szkodliwym oprogramowaniem | 1 | *w przygotowaniu* |
-| Zabezpieczanie sieciowych systemów operacyjnych przed niekontrolowanym przepływem informacji oraz utratą danych | 1 | *w przygotowaniu* |
+| Typy kopii bezpieczeństwa i strategie ich tworzenia | 1 | *w przygotowaniu* |
+| Wykonywanie i odtwarzanie kopii danych | 1 | *w przygotowaniu* |
+| Dobór narzędzi diagnostycznych; lokalizowanie awarii | 1 | *w przygotowaniu* |
+| Usuwanie awarii i weryfikacja poprawności działania systemu | 1 | *w przygotowaniu* |
+| Dokumentowanie spostrzeżeń, działań i wyników | 1 | *w przygotowaniu* |
+| Praktyczny sprawdzian: zabezpieczenia, kopie bezpieczeństwa i diagnostyka | 1 | *w przygotowaniu* |
 
-### Moduł 12. Przed egzaminem INF.02
+!!! tip "Dział kończy praktyczny sprawdzian z zabezpieczeń, kopii bezpieczeństwa i diagnostyki."
 
-*3 godziny · dział VII. Przygotowanie do egzaminu zawodowego*
+### Dział X. Współpraca systemów Linux i Windows w jednej sieci
+
+*4 godziny*
+
+Serwer obsługuje stacje Windows, a Ty umiesz wskazać, która usługa czemu odpowiada w drugiej rodzinie systemów — tego wymaga wprost efekt INF.07.5.1.
+
+| Temat | Godz. | Materiały |
+| --- | :---: | --- |
+| Odpowiedniki usług w obu rodzinach systemów — zestawienie i porównanie | 1 | *w przygotowaniu* |
+| Serwer w sieci ze stacjami Windows; przyłączanie stacji roboczej do domeny | 2 | *w przygotowaniu* |
+| Publikowanie udostępnionych zasobów z użyciem usług katalogowych | 1 | *w przygotowaniu* |
+
+### Dział XI. Przygotowanie do egzaminu zawodowego INF.07
+
+*3 godziny*
 
 Rozwiązujesz zadania w formacie części praktycznej egzaminu zawodowego, w czasie egzaminacyjnym.
 
@@ -329,11 +316,13 @@ Rozwiązujesz zadania w formacie części praktycznej egzaminu zawodowego, w cza
 
 ## Egzamin zawodowy
 
-Przedmiot realizuje część efektów kształcenia jednostki **INF.02.8 — Administrowanie
-sieciowymi systemami operacyjnymi**. Symbole przy wymaganiach edukacyjnych odsyłają
-do numeracji efektów i kryteriów weryfikacji z podstawy programowej kształcenia
-w zawodzie technik informatyk.
+Przedmiot realizuje jednostkę **INF.07.5 — Administrowanie sieciowymi systemami
+operacyjnymi** z kwalifikacji INF.07 „Montaż i konfiguracja lokalnych sieci
+komputerowych oraz administrowanie systemami operacyjnymi” (zawód technik
+teleinformatyk, 351103). Symbole przy wymaganiach edukacyjnych odsyłają do
+numeracji efektów i kryteriów weryfikacji z podstawy programowej.
 
-Do pełnego przygotowania do części praktycznej egzaminu INF.02 potrzebne są także
-treści z pozostałych przedmiotów kwalifikacji — w szczególności z lokalnych sieci
-komputerowych i urządzeń techniki komputerowej.
+Kwalifikacja INF.07 obejmuje też jednostki o podstawach teleinformatyki, wykonaniu
+lokalnej sieci komputerowej oraz instalacji i konfiguracji urządzeń sieciowych —
+realizowane na innych przedmiotach. Pełne przygotowanie do części praktycznej
+egzaminu wymaga wszystkich tych treści razem.

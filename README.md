@@ -1,7 +1,7 @@
 # ASSO 3TT — materiały do przedmiotu
 
 Serwis z materiałami do przedmiotu **administracja sieciowymi systemami
-operacyjnymi**, klasa 3TT, technik informatyk, kwalifikacja INF.02.
+operacyjnymi**, klasa 3TT, technik teleinformatyk, kwalifikacja INF.07 (jednostka INF.07.5).
 PCEiKZ Szczucin.
 
 Strona: <https://josimate.github.io/asso/>
@@ -33,29 +33,56 @@ odnośnik) w błąd, więc nic nie przechodzi niezauważone.
 
 ```
 docs/
-  index.md                     strona startowa: plan pracy w modułach + spis tematów
-  modul-1/                     materiały modułu 1
+  index.md                     strona startowa: plan pracy + spis tematów
+  dzial-1/                     materiały działu I
     wymagania-i-bhp.md         bhp, zasady oceniania, wymagania na oceny
   assets/
-    extra.css                  style własne (kafelki modułów, tabele spisu)
+    extra.css                  style własne (kafelki działów, tabele spisu)
     favicon.png
     js/quiz.js                 quizy „Sprawdź się" w materiałach
     js/postep.js               odhaczanie zrobionych tematów (localStorage)
   pliki/                       dokumenty do pobrania (.docx)
+narzedzia/
+  daneasso2.py                 rozkład materiału: działy, tematy, godziny,
+                               efekty INF.07 i wymagania na oceny — jedyne źródło
+  daneasso2.json               to samo po uruchomieniu daneasso2.py
+  opisy_dzialow.json           opisy działów na kafelkach i odsyłacze do materiałów
+  genstrony_asso.py            generuje docs/index.md i stronę wymagań
+  genrozklad.js                generuje dokument rozkładu materiału (.docx)
+  wzo_md.py                    wspólny blok zasad oceniania zgodny ze statutem
 qr/                            kod QR, plakat A4 i slajd z adresem strony
 ```
 
-## Moduły a rozkład materiału
+## Jak dodać materiał do tematu
 
-Strona startowa grupuje tematy w **12 modułów** — każdy to jedno skończone
-zadanie administratora, od instalacji przez konfigurację po sprawdzenie, że
-usługa działa. Grupowanie **nie zmienia kolejności tematów** z rozkładu
-materiału; skrypt generujący strony (`genstrony_asso.py`) porównuje jedno
-z drugim i przerywa pracę, jeżeli się rozjadą.
+Wszystko wychodzi z jednego pliku: `narzedzia/daneasso2.py` zawiera rozkład
+materiału — 11 działów, 53 tematy, 60 godzin, efekty kształcenia INF.07 i wymagania
+na poszczególne oceny. Z niego powstaje i dokument rozkładu, i dokument wymagań,
+i obie strony serwisu.
 
-Dodając materiał do tematu, wpisz nazwę pliku w trzeciej pozycji tematu
-w `moduly.json` i uruchom generator — temat przestanie być oznaczony jako
-„w przygotowaniu", a kafelek modułu dostanie przycisk.
+Żeby podpiąć nowy materiał, dopisz temat i ścieżkę do pliku w słowniku `GOTOWE`
+w `genstrony_asso.py` i uruchom generator:
+
+```bash
+python narzedzia/daneasso2.py       # tylko po zmianie rozkładu
+python narzedzia/genstrony_asso.py
+node narzedzia/genrozklad.js        # tylko po zmianie rozkładu
+```
+
+Temat przestanie być oznaczony jako „w przygotowaniu", a kafelek działu dostanie
+przycisk. Generator sprawdza przy okazji, czy suma godzin nadal wynosi 60 i czy
+każdy dział ma opis — przy rozjeździe przerywa pracę zamiast wygenerować
+niespójną stronę.
+
+## Rozkład materiału
+
+Rozkład ma jedenaście działów i pokrywa wszystkie osiem efektów jednostki
+INF.07.5. Windows Server uczniowie realizowali w klasie drugiej, więc 55 z 60
+godzin to administrowanie serwerem Linux; materiał windowsowy to godzina
+powtórzeniowa i dział X (odpowiedniki usług, przyłączanie stacji do domeny,
+usługi katalogowe) — wymagany przez efekt INF.07.5.1. Trzy działy kończy
+praktyczny sprawdzian. Rozdział 1 dokumentu `rozklad-materialu-asso-3tt.docx`
+wymienia zmiany wobec poprzedniej wersji rozkładu.
 
 ## Zasady oceniania
 

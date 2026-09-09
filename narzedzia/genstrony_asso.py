@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Generuje serwis ASSO 3TT:
-   • stronę startową ze spisem modułów (jednostek tematycznych),
+   • stronę startową z kafelkami działów i spisem tematów,
    • stronę wymagań edukacyjnych z bhp i zasadami oceniania.
 
-Moduły grupują tematy z rozkładu materiału bez zmiany ich kolejności —
-skrypt to sprawdza i przerywa pracę, jeżeli grupowanie się rozjedzie.
+Źródłem jest rozkład materiału (daneasso2.json) — działy, tematy, godziny,
+efekty kształcenia i wymagania na oceny. Opisy działów na kafelkach oraz
+odsyłacze do gotowych materiałów trzyma opisy_dzialow.json.
 """
 import json, pathlib, sys
 
@@ -13,21 +14,29 @@ sys.path.insert(0, str(HERE))
 import wzo_md
 
 ROOT = HERE.parent / "docs"
-DZIALY = json.load(open(HERE / "daneasso.json", encoding="utf-8"))
-MODULY = json.load(open(HERE / "moduly.json", encoding="utf-8"))
+DZIALY = json.load(open(HERE / "daneasso2.json", encoding="utf-8"))
+OPISY = json.load(open(HERE / "opisy_dzialow.json", encoding="utf-8"))
 
-NAZWY_DZIALOW = {d["nr"]: d["tytul"] for d in DZIALY}
+# Materiały gotowe: "nr działu" -> {"tytuł tematu": "sciezka/plik.md"}
+GOTOWE = {
+    "I": {"Lekcja organizacyjna. Wymagania edukacyjne, zapoznanie z PSO. BHP pracowni komputerowej":
+          "dzial-1/wymagania-i-bhp.md"},
+}
 
 # ─────────────────────────────────────────────── kontrola spójności
-roz = [(t[0], int(t[1])) for d in DZIALY for t in d["tematy"]]
-mod = [(t[0], t[1]) for m in MODULY for t in m["tematy"]]
-if roz != mod:
-    print("BŁĄD: moduły nie odpowiadają rozkładowi materiału.")
-    for a, b in zip(roz, mod):
-        if a != b:
-            print("  rozkład:", a, "\n  moduły :", b)
-            break
-    sys.exit(1)
+brakuje = [d["nr"] for d in DZIALY if d["nr"] not in OPISY]
+if brakuje:
+    sys.exit(f"BŁĄD: brak opisu dla działów: {', '.join(brakuje)}")
+for nr, mapa in GOTOWE.items():
+    tytuly = {t[0] for d in DZIALY if d["nr"] == nr for t in d["tematy"]}
+    obce = set(mapa) - tytuly
+    if obce:
+        sys.exit(f"BŁĄD: w dziale {nr} nie ma tematów: {obce}")
+SUMA = sum(d["godziny"] for d in DZIALY)
+if SUMA != 60:
+    sys.exit(f"BŁĄD: suma godzin = {SUMA}, powinno być 60")
+
+RZYMSKIE = {d["nr"]: i + 1 for i, d in enumerate(DZIALY)}
 
 
 def godz(n):
@@ -42,37 +51,32 @@ def godz(n):
 
 # ─────────────────────────────────────────────── strona startowa
 def strona_startowa():
-    suma = sum(t[1] for m in MODULY for t in m["tematy"])
-    kafelki = []
-    for m in MODULY:
-        h = sum(t[1] for t in m["tematy"])
-        gotowe = [t for t in m["tematy"] if t[2]]
-        if gotowe:
-            stan = f"[Otwórz moduł](modul-{m['nr']}/{gotowe[0][2]}){{ .md-button }}"
-        else:
-            stan = "*materiały w przygotowaniu*"
+    kafelki, tabele = [], []
+    for d in DZIALY:
+        o = OPISY[d["nr"]]
+        gotowe = GOTOWE.get(d["nr"], {})
+        pierwszy = next((gotowe[t[0]] for t in d["tematy"] if t[0] in gotowe), None)
+        stan = f"[Otwórz dział]({pierwszy})" + "{ .md-button }" if pierwszy \
+            else "*materiały w przygotowaniu*"
         kafelki.append(
-            f"-   :{m['ikona']}:{{ .lg .middle }} **Moduł {m['nr']}. {m['tytul']}**\n\n"
+            f"-   :{o['ikona']}:{{ .lg .middle }} **Dział {d['nr']}. {d['tytul']}**\n\n"
             f"    ---\n\n"
-            f"    {m['efekt']}\n\n"
-            f"    *{godz(h)} · dział {m['dzial']}*\n\n"
+            f"    {o['efekt']}\n\n"
+            f"    *{godz(d['godziny'])} · {len(d['tematy'])} tematów*\n\n"
             f"    {stan}"
         )
 
-    tabele = []
-    for m in MODULY:
-        h = sum(t[1] for t in m["tematy"])
         wiersze = []
-        for tytul, ile, plik in m["tematy"]:
-            nazwa = f"**[{tytul}](modul-{m['nr']}/{plik})**" if plik else tytul
+        for tytul, ile, _pp in d["tematy"]:
+            plik = gotowe.get(tytul)
+            nazwa = f"**[{tytul}]({plik})**" if plik else tytul
             mat = (':material-check-circle:{ title="Materiał gotowy" } gotowe'
                    if plik else "*w przygotowaniu*")
             wiersze.append(f"| {nazwa} | {ile} | {mat} |")
-        dopisek = f"\n!!! tip \"{m['sprawdzian']}\"\n" if m.get("sprawdzian") else ""
+        dopisek = f"\n!!! tip \"{o['sprawdzian']}\"\n" if o.get("sprawdzian") else ""
         tabele.append(
-            f"### Moduł {m['nr']}. {m['tytul']}\n\n"
-            f"*{godz(h)} · dział {m['dzial']}. {NAZWY_DZIALOW[m['dzial']]}*\n\n"
-            f"{m['efekt']}\n\n"
+            f"### Dział {d['nr']}. {d['tytul']}\n\n"
+            f"*{godz(d['godziny'])}*\n\n{o['efekt']}\n\n"
             "| Temat | Godz. | Materiały |\n| --- | :---: | --- |\n"
             + "\n".join(wiersze) + "\n" + dopisek
         )
@@ -84,12 +88,12 @@ hide:
 
 # Administracja sieciowymi systemami operacyjnymi
 
-**Klasa 3TT · technik informatyk · kwalifikacja INF.02 · 2 godziny tygodniowo · {godz(suma)} w roku**
+**Klasa 3TT · technik teleinformatyk · kwalifikacja INF.07 · 2 godziny tygodniowo · {godz(SUMA)} w roku**
 
 Przedmiot jest praktyczny od pierwszej lekcji: pracujesz na maszynach wirtualnych
-i konfigurujesz prawdziwe usługi — DHCP, DNS, serwer plików, serwer wydruku — raz
-w Windows Server, raz w Linuksie. Ta sama usługa po dwóch stronach to nie
-powtórka, tylko sedno przedmiotu: na egzaminie trzeba rozpoznać odpowiedniki.
+i konfigurujesz prawdziwe usługi na serwerze Linux — DHCP, DNS, serwer plików,
+serwer wydruku, serwer WWW, FTP i pocztę. Nie chodzi o zapamiętanie ścieżki
+klikania, tylko o działającą usługę, którą potrafisz sprawdzić od strony klienta.
 
 !!! info "Co gdzie jest"
 
@@ -99,11 +103,19 @@ powtórka, tylko sedno przedmiotu: na egzaminie trzeba rozpoznać odpowiedniki.
 
 ## Plan pracy
 
-Rozkład materiału pogrupowałem w **{len(MODULY)} modułów**. Każdy moduł to jedno
-skończone zadanie administratora — od instalacji, przez konfigurację, po
-sprawdzenie, że usługa działa. Zaczynasz i kończysz w obrębie modułu, więc
-przerwa między modułami jest dobrym momentem, żeby zrobić zrzuty ekranu
-i uzupełnić dokumentację.
+Windows Server mieliście w drugiej klasie, więc **ten rok jest rokiem Linuksa** —
+55 z 60 godzin to administrowanie serwerem Linux. Materiał dzieli się na
+**{len(DZIALY)} działów** i idzie w kolejności czynności administratora: wdrożenie
+systemu i konta → sieć → role i usługi → udostępnianie zasobów → usługi
+internetowe → zdalna administracja i monitorowanie → zabezpieczenia → kopie
+bezpieczeństwa i awarie → współpraca ze stacjami Windows.
+
+Windows wraca w dziale X, ale nie po to, żeby przerabiać go od nowa: chodzi
+o zestawienie odpowiedników usług i o serwer obsługujący stacje Windows.
+Efekt INF.07.5.1 wymaga rozróżniania systemów obu rodzin, więc to część podstawy.
+
+Koniec działu to dobry moment na zrzuty ekranu i uzupełnienie dokumentacji —
+trzy działy kończą się praktycznym sprawdzianem.
 
 <div class="grid cards wybor-modulu" markdown>
 
@@ -113,9 +125,6 @@ i uzupełnić dokumentację.
 
 ## Spis tematów
 
-Kolejność tematów jest dokładnie taka jak w rozkładzie materiału — moduły tylko
-je grupują.
-
 <div class="spis-tematow" markdown>
 
 {chr(10).join(tabele)}
@@ -124,14 +133,16 @@ je grupują.
 
 ## Egzamin zawodowy
 
-Przedmiot realizuje część efektów kształcenia jednostki **INF.02.8 — Administrowanie
-sieciowymi systemami operacyjnymi**. Symbole przy wymaganiach edukacyjnych odsyłają
-do numeracji efektów i kryteriów weryfikacji z podstawy programowej kształcenia
-w zawodzie technik informatyk.
+Przedmiot realizuje jednostkę **INF.07.5 — Administrowanie sieciowymi systemami
+operacyjnymi** z kwalifikacji INF.07 „Montaż i konfiguracja lokalnych sieci
+komputerowych oraz administrowanie systemami operacyjnymi” (zawód technik
+teleinformatyk, 351103). Symbole przy wymaganiach edukacyjnych odsyłają do
+numeracji efektów i kryteriów weryfikacji z podstawy programowej.
 
-Do pełnego przygotowania do części praktycznej egzaminu INF.02 potrzebne są także
-treści z pozostałych przedmiotów kwalifikacji — w szczególności z lokalnych sieci
-komputerowych i urządzeń techniki komputerowej.
+Kwalifikacja INF.07 obejmuje też jednostki o podstawach teleinformatyki, wykonaniu
+lokalnej sieci komputerowej oraz instalacji i konfiguracji urządzeń sieciowych —
+realizowane na innych przedmiotach. Pełne przygotowanie do części praktycznej
+egzaminu wymaga wszystkich tych treści razem.
 """
 
 
@@ -144,7 +155,17 @@ POZIOMY = [
     ("cel", "Ocena celująca (6)", "wymagania wykraczające"),
 ]
 
-BHP = """## Bezpieczeństwo i higiena pracy w pracowni
+BHP = """!!! success "Cele lekcji"
+
+    Po tej lekcji potrafisz:
+
+    1. stosować zasady bhp obowiązujące w pracowni i wiedzieć, jak zachować się przy awarii lub ewakuacji
+    2. wskazać, co na tym przedmiocie podlega ocenie i według jakich wymagań
+    3. zaliczyć zaległość po nieobecności i skorzystać z prawa do poprawy oceny w obowiązującym terminie
+    4. opisać tryb ubiegania się o roczną ocenę klasyfikacyjną wyższą niż przewidywana
+    5. wskazać, które treści przedmiotu wchodzą do egzaminu zawodowego INF.07
+
+## Bezpieczeństwo i higiena pracy w pracowni
 
 Na tym przedmiocie pracujesz z uprawnieniami administratora — na maszynach
 wirtualnych, ale w sieci, z której korzystają inni. Część zasad poniżej chroni
@@ -202,9 +223,9 @@ zrobiło się coś trudniejszego.
 | --- | --- | --- |
 | dopuszczająca (2) | konieczne | Rozpoznajesz usługi i odtwarzasz proste czynności konfiguracyjne według instrukcji. |
 | dostateczna (3) | podstawowe | Samodzielnie instalujesz i konfigurujesz usługi omawiane na lekcji. |
-| dobra (4) | rozszerzające | Konfigurujesz usługę w nowym wariancie i sprawdzasz, czy naprawdę działa. |
-| bardzo dobra (5) | dopełniające | Rozpoznajesz odpowiedniki usług w obu rodzinach systemów, diagnozujesz i usuwasz błędy konfiguracji. |
-| celująca (6) | wykraczające | Wychodzisz poza program: zadania egzaminacyjne, własne wdrożenia, konkursy zawodowe. |
+| dobra (4) | rozszerzające | Konfigurujesz usługę w nowym wariancie i sprawdzasz od strony klienta, czy naprawdę działa. |
+| bardzo dobra (5) | dopełniające | Diagnozujesz i usuwasz błędy konfiguracji, rozpoznajesz odpowiedniki usług w obu rodzinach systemów. |
+| celująca (6) | wykraczające | Wychodzisz poza program: zadania egzaminacyjne INF.07, własne wdrożenia, konkursy zawodowe. |
 
 !!! warning "Ocena niedostateczna"
 
@@ -223,11 +244,12 @@ zrobiło się coś trudniejszego.
 
 - **ćwiczenia praktyczne przy komputerze** — podstawowa forma oceniania; liczy się
   działająca usługa, poprawność konfiguracji i samodzielność wykonania
-- **praktyczne sprawdziany wiadomości**, zapowiadane z co najmniej tygodniowym wyprzedzeniem
+- **praktyczne sprawdziany wiadomości** kończące działy III, V i IX,
+  zapowiadane z co najmniej tygodniowym wyprzedzeniem
 - **kartkówki** z bieżącego materiału — pojęcia i przeznaczenie usług
 - **dokumentacja wykonanej konfiguracji** — oceniana za kompletność i za to, czy da się
   na jej podstawie odtworzyć pracę
-- **próbne zadania egzaminacyjne INF.02**
+- **próbne zadania egzaminacyjne INF.07**
 - **aktywność na lekcji i systematyczność pracy**
 - **osiągnięcia w konkursach zawodowych**
 
@@ -237,7 +259,6 @@ zrobiło się coś trudniejszego.
 def strona_wymagan():
     bloki = []
     for d in DZIALY:
-        h = d["godziny"]
         czesci = []
         for klucz, naglowek, opis in POZIOMY:
             punkty = d["oceny"].get(klucz, [])
@@ -246,7 +267,7 @@ def strona_wymagan():
             lista = "\n".join(f"    - {x}" for x in punkty)
             czesci.append(f"    **{naglowek}** — *{opis}*\n\n{lista}\n")
         bloki.append(
-            f'??? abstract "Dział {d["nr"]}. {d["tytul"]} — {godz(h)}"\n\n'
+            f'??? abstract "Dział {d["nr"]}. {d["tytul"]} — {godz(d["godziny"])}"\n\n'
             + "\n".join(czesci)
         )
 
@@ -264,7 +285,7 @@ def strona_wymagan():
 
     return f"""# Wymagania edukacyjne i bhp
 
-**Administracja sieciowymi systemami operacyjnymi · klasa 3TT · kwalifikacja INF.02**
+**Administracja sieciowymi systemami operacyjnymi · klasa 3TT · technik teleinformatyk · kwalifikacja INF.07**
 
 Ta strona odpowiada na dwa pytania: **jak bezpiecznie pracować w pracowni**
 i **za co dostaje się poszczególne oceny**. Warto tu wracać przed każdym
@@ -281,9 +302,11 @@ kumulatywne — na ocenę wyższą trzeba spełniać także wszystkie niższe.
 ## Do pobrania
 
 [:material-file-word: Wymagania edukacyjne (.docx)](../pliki/wymagania-edukacyjne-asso-3tt.docx){{ .md-button download="wymagania-edukacyjne-asso-3tt.docx" }}
+[:material-file-word: Rozkład materiału (.docx)](../pliki/rozklad-materialu-asso-3tt.docx){{ .md-button download="rozklad-materialu-asso-3tt.docx" }}
 
-Dokument zawiera to samo co ta strona, plus rozkład godzin na działy i przypisanie
-tematów do efektów kształcenia INF.02 — w formie do wydrukowania i do dokumentacji.
+Dokument z wymaganiami zawiera to samo co ta strona, plus rozkład godzin na działy
+i przypisanie tematów do efektów kształcenia INF.07 — w formie do wydrukowania
+i do dokumentacji.
 """
 
 
@@ -296,6 +319,6 @@ def zapisz(sciezka, tresc):
 
 
 zapisz("index.md", strona_startowa())
-zapisz("modul-1/wymagania-i-bhp.md", strona_wymagan())
-print("\nGotowe:", sum(t[1] for m in MODULY for t in m["tematy"]), "godzin,",
-      len(MODULY), "modułów,", len(mod), "tematów.")
+zapisz("dzial-1/wymagania-i-bhp.md", strona_wymagan())
+print(f"\nGotowe: {SUMA} godzin, {len(DZIALY)} działów, "
+      f"{sum(len(d['tematy']) for d in DZIALY)} tematów.")

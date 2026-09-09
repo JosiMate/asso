@@ -1,5 +1,5 @@
 site_name: ASSO 3TT
-site_description: Materiały do przedmiotu administracja sieciowymi systemami operacyjnymi — klasa 3TT, technik informatyk, kwalifikacja INF.02
+site_description: Materiały do przedmiotu administracja sieciowymi systemami operacyjnymi — klasa 3TT, technik teleinformatyk, kwalifikacja INF.07
 site_author: PCEiKZ Szczucin
 
 # Adres docelowy strony. Przy GitHub Pages dla repozytorium projektowego
@@ -101,8 +101,8 @@ plugins:
 
 nav:
   - Start: index.md
-  - Moduł 1. Start — organizacja i bezpieczeństwo:
-      - Wymagania edukacyjne i bhp: modul-1/wymagania-i-bhp.md
+  - Dział I. Organizacja pracy, systemy sieciowe i wirtualizacja:
+      - Wymagania edukacyjne i bhp: dzial-1/wymagania-i-bhp.md
 
 extra:
   social:
