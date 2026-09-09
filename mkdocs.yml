@@ -21,9 +21,12 @@ theme:
     repo: fontawesome/brands/github
   favicon: assets/favicon.png
   palette:
-    # Pierwszy wpis bez „media” jest motywem domyślnym — serwis otwiera się
-    # w ciemnym schemacie slate niezależnie od ustawień systemu. Przełącznik
-    # w nagłówku przechodzi kolejno: ciemny → jasny → zgodny z systemem.
+    # Dwa stany: ciemny (domyślny) i jasny. Wpisu „zgodny z systemem" tu nie ma
+    # celowo — Material rozpoznaje ustawienie systemu tylko wtedy, gdy pozostałe
+    # wpisy mają media „(prefers-color-scheme: light)" i „(prefers-color-scheme:
+    # dark)". Wtedy jednak to system decyduje o motywie startowym i nie da się
+    # jednocześnie wymusić ciemnego jako domyślnego. Wybrany został ciemny
+    # domyślny, więc przełącznik ma dwa położenia i nie może się zablokować.
     - scheme: slate
       primary: teal
       accent: teal
@@ -35,10 +38,6 @@ theme:
       accent: teal
       toggle:
         icon: material/weather-sunny
-        name: Przełącz na tryb automatyczny
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
         name: Przełącz na tryb ciemny
   features:
     - navigation.instant

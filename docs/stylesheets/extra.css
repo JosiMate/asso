@@ -455,6 +455,23 @@
   color: var(--md-typeset-a-color);
 }
 
+/* ═════════════════════ 7. Szerokość kolumny treści ═════════════════════
+   Sprawdzone pomiarem, nie na oko. Przy domyślnej siatce 61rem kolumna treści
+   ma 688 px, a średnia szerokość znaku w tym kroju i stopniu to 7,15 px —
+   czyli wiersz mieści już około 96 znaków. Zalecany zakres dla tekstu ciągłego
+   to 50–75 znaków; 96 jest powyżej niego, choć mieści się w tym, co stosuje
+   sama dokumentacja Material.
+
+   Poszerzanie pogarsza więc sprawę zamiast ją poprawiać:
+       64rem → 748 px → ok. 105 znaków
+       68rem → 828 px → ok. 116 znaków
+       72rem → 908 px → ok. 127 znaków
+
+   Dlatego siatka zostaje domyślna, a długi wiersz rekompensuje interlinia
+   podniesiona do 1,72 w sekcji 5. Gdyby kiedyś wracać do tematu, właściwym
+   ruchem jest ograniczenie szerokości samego tekstu (przy pozostawieniu
+   pełnej szerokości tabelom i blokom kodu), a nie rozsuwanie kolumny. */
+
 /* ═════════════════════ 6. Drobiazgi ═════════════════════ */
 
 /* Pasek przewijania w ciemnym schemacie — domyślny bywa jaskrawy. */
