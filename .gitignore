@@ -1,0 +1,7 @@
+*.pyc
+.DS_Store
+.venv/
+.vercel
+__pycache__/
+site/
+venv/

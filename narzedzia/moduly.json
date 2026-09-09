@@ -1,0 +1,164 @@
+[
+  {
+    "nr": 1, "id": "start",
+    "tytul": "Start — organizacja i bezpieczeństwo",
+    "dzial": "I",
+    "ikona": "material-flag-checkered",
+    "efekt": "Wiesz, według jakich wymagań będziesz oceniany, i pracujesz w pracowni zgodnie z bhp.",
+    "tematy": [["Lekcja organizacyjna. Wymagania edukacyjne, zapoznanie z PSO. BHP pracowni komputerowej", 1, "wymagania-i-bhp.md"]]
+  },
+  {
+    "nr": 2, "id": "windows-start",
+    "tytul": "Serwer Windows od zera",
+    "dzial": "II",
+    "ikona": "material-microsoft-windows",
+    "efekt": "Masz własną maszynę wirtualną z Windows Server, ustaloną adresację i kontakt z siecią pracowni.",
+    "tematy": [
+      ["Przypomnienie podstawowych wiadomości związanych z sieciowymi systemami operacyjnymi", 2, null],
+      ["Instalacja serwera na maszynie wirtualnej", 1, null],
+      ["Konfigurowanie połączeń sieciowych", 1, null],
+      ["Połączenia sieciowe — ćwiczenia", 1, null]
+    ]
+  },
+  {
+    "nr": 3, "id": "domena-dhcp",
+    "tytul": "Domena i automatyczna adresacja",
+    "dzial": "II",
+    "ikona": "material-lan-connect",
+    "efekt": "Stacja kliencka loguje się do Twojej domeny i sama pobiera adres z serwera DHCP.",
+    "sprawdzian": "Praktyczny sprawdzian wiadomości kończy ten moduł.",
+    "tematy": [
+      ["Kontroler domeny", 1, null],
+      ["Konfiguracja serwera DHCP — opcje podstawowe", 1, null],
+      ["Konfiguracja serwera DHCP — opcje serwera", 1, null],
+      ["Ćwiczenia w konfiguracji serwera DHCP", 2, null],
+      ["Praktyczny sprawdzian wiadomości", 1, null]
+    ]
+  },
+  {
+    "nr": 4, "id": "dns-pliki-wydruk",
+    "tytul": "Nazwy, pliki i wydruk",
+    "dzial": "III",
+    "ikona": "material-folder-network",
+    "efekt": "Serwer rozwiązuje nazwy w swojej strefie, udostępnia katalogi i obsługuje drukarkę sieciową.",
+    "tematy": [
+      ["Instalacja serwera DNS", 1, null],
+      ["Konfiguracja serwera DNS — dodawanie wpisów i stref wyszukiwania", 1, null],
+      ["Instalacja serwera plików", 1, null],
+      ["Konfiguracja serwera plików", 1, null],
+      ["Instalacja i konfiguracja serwera wydruku", 1, null],
+      ["Instalacja drukarki sieciowej", 1, null]
+    ]
+  },
+  {
+    "nr": 5, "id": "aplikacje-poczta-iis",
+    "tytul": "Aplikacje, poczta i IIS",
+    "dzial": "III",
+    "ikona": "material-web",
+    "efekt": "Witryna działa na IIS pod własną nazwą, z dokumentem domyślnym i przekierowaniami; serwer pocztowy przyjmuje pocztę.",
+    "tematy": [
+      ["Serwer aplikacji", 1, null],
+      ["Instalacja serwera pocztowego", 1, null],
+      ["Konfiguracja serwera pocztowego", 1, null],
+      ["Instalacja usługi IIS", 1, null],
+      ["Serwer sieci IIS a usługa DNS", 1, null],
+      ["Konfiguracja serwera IIS — dokument domyślny, przekierowania, nazwa hosta", 1, null]
+    ]
+  },
+  {
+    "nr": 6, "id": "udostepnianie-www-ftp",
+    "tytul": "Udostępnianie zasobów: WWW i FTP",
+    "dzial": "IV",
+    "ikona": "material-share-variant",
+    "efekt": "Zasoby, strona i witryna FTP są dostępne dla użytkowników z odpowiednimi uprawnieniami.",
+    "tematy": [
+      ["Udostępnianie zasobów w sieci", 1, null],
+      ["Udostępnianie strony WWW w sieci lokalnej", 1, null],
+      ["Ćwiczenia w konfiguracji serwera WWW", 1, null],
+      ["Instalacja serwera FTP", 1, null],
+      ["Konfiguracja serwera FTP — tworzenie witryny, udostępnianie zasobów, użytkownicy anonimowi", 1, null]
+    ]
+  },
+  {
+    "nr": 7, "id": "zdalny-dyski-bezpieczenstwo",
+    "tytul": "Dostęp zdalny, dyski i bezpieczeństwo Windows",
+    "dzial": "IV",
+    "ikona": "material-remote-desktop",
+    "efekt": "Serwerem administrujesz zdalnie, dyski masz uporządkowane, a zdarzenia zapisują się w dzienniku.",
+    "sprawdzian": "Sprawdzian wiadomości zamyka część windowsową.",
+    "tematy": [
+      ["Usługi terminalowe, dostęp zdalny", 1, null],
+      ["Zadania związane z zarządzaniem dyskami", 1, null],
+      ["Polityka bezpieczeństwa i monitorowanie pracy systemu", 1, null],
+      ["Sprawdzian wiadomości", 1, null]
+    ]
+  },
+  {
+    "nr": 8, "id": "linux-start",
+    "tytul": "Linux: wdrożenie, konta i sieć",
+    "dzial": "V",
+    "ikona": "material-linux",
+    "efekt": "Serwer Linux pracuje w sieci, ma założone konta i grupy, a adresację potrafisz ustawić dwiema metodami.",
+    "tematy": [
+      ["Charakterystyka sieciowych systemów operacyjnych z rodziny Linux", 1, null],
+      ["Wdrażanie sieciowych systemów operacyjnych z rodziny Linux", 1, null],
+      ["Zarządzanie kontami i grupami użytkowników w sieciowych systemach z rodziny Linux", 1, null],
+      ["Konfiguracja systemu Linux typu serwer do pracy w sieci", 2, null],
+      ["Adresacja IP za pomocą pliku /etc/network/interfaces", 1, null],
+      ["Adresacja IP za pomocą Netplana", 1, null]
+    ]
+  },
+  {
+    "nr": 9, "id": "linux-uslugi",
+    "tytul": "Usługi sieciowe w Linuksie",
+    "dzial": "V",
+    "ikona": "material-server-network",
+    "efekt": "Te same usługi co po stronie Windows — DHCP, DNS, pliki, wydruk — tylko na Linuksie. Warto zestawić jedne z drugimi.",
+    "tematy": [
+      ["DHCP w systemie Linux", 2, null],
+      ["DNS w systemie Linux", 1, null],
+      ["Serwer plików w systemie Linux", 1, null],
+      ["Serwer wydruku w systemie Linux", 1, null],
+      ["Udostępnianie plików w systemie Linux", 1, null]
+    ]
+  },
+  {
+    "nr": 10, "id": "samba-ochrona",
+    "tytul": "SAMBA, konta i ochrona Linuksa",
+    "dzial": "V",
+    "ikona": "material-shield-lock",
+    "efekt": "Udział sieciowy z Linuksa widać z Windows, konta są uporządkowane, a zapora przepuszcza tylko to, co ma przepuszczać.",
+    "tematy": [
+      ["Konfiguracja programu SAMBA", 1, null],
+      ["Konta w systemie Linux", 1, null],
+      ["Konfiguracja zapory sieciowej w systemie Linux", 1, null],
+      ["Bezpieczeństwo systemów Linux", 1, null]
+    ]
+  },
+  {
+    "nr": 11, "id": "utrzymanie",
+    "tytul": "Utrzymanie, diagnostyka i ochrona danych",
+    "dzial": "VI",
+    "ikona": "material-stethoscope",
+    "efekt": "Potrafisz zlokalizować i usunąć awarię serwera oraz zabezpieczyć dane przed utratą i szkodliwym oprogramowaniem.",
+    "tematy": [
+      ["Zadania związane z zarządzaniem dyskami", 1, null],
+      ["Polityka bezpieczeństwa", 1, null],
+      ["Monitorowanie pracy systemu", 1, null],
+      ["Lokalizowanie awarii sieciowych systemów operacyjnych", 1, null],
+      ["Usuwanie awarii sieciowych systemów operacyjnych", 1, null],
+      ["Zabezpieczanie sieciowych systemów operacyjnych przed szkodliwym oprogramowaniem", 1, null],
+      ["Zabezpieczanie sieciowych systemów operacyjnych przed niekontrolowanym przepływem informacji oraz utratą danych", 1, null]
+    ]
+  },
+  {
+    "nr": 12, "id": "egzamin",
+    "tytul": "Przed egzaminem INF.02",
+    "dzial": "VII",
+    "ikona": "material-clipboard-check",
+    "efekt": "Rozwiązujesz zadania w formacie części praktycznej egzaminu zawodowego, w czasie egzaminacyjnym.",
+    "tematy": [
+      ["Rozwiązywanie zadań egzaminacyjnych", 3, null]
+    ]
+  }
+]

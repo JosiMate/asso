@@ -1,0 +1,510 @@
+[
+ {
+  "nr": "I",
+  "tytul": "Organizacja pracy i bezpieczeństwo",
+  "tematy": [
+   [
+    "Lekcja organizacyjna. Wymagania edukacyjne, zapoznanie z PSO. BHP pracowni komputerowej",
+    "1",
+    "INF.02.1"
+   ]
+  ],
+  "oceny": {
+   "dop": [
+    "wymienia przepisy bhp obowiązujące na stanowisku komputerowym i stosuje je podczas zajęć",
+    "wie, według jakich wymagań będzie oceniany z przedmiotu"
+   ],
+   "dst": [
+    "identyfikuje regulacje wewnątrzzakładowe dotyczące bezpieczeństwa i higieny pracy oraz zasady ochrony przeciwpożarowej w pracowni",
+    "określa wymagania ergonomiczne stanowiska pracy administratora"
+   ],
+   "db": [
+    "stosuje zasady postępowania z odpadami niebezpiecznymi i zużytym sprzętem elektronicznym",
+    "wskazuje, które wymagania odpowiadają poszczególnym ocenom, i planuje pracę tak, aby zaliczać zadania w terminie"
+   ],
+   "bdb": [
+    "opisuje obowiązki pracodawcy i pracownika w zakresie bezpieczeństwa i higieny pracy oraz zadania służb działających w zakresie ochrony pracy"
+   ],
+   "cel": [
+    "podejmuje zadania dodatkowe, w tym przygotowanie do części praktycznej egzaminu zawodowego INF.02"
+   ]
+  },
+  "godziny": 1
+ },
+ {
+  "nr": "II",
+  "tytul": "Serwer Windows — instalacja i podstawowa konfiguracja",
+  "tematy": [
+   [
+    "Przypomnienie podstawowych wiadomości związanych z sieciowymi systemami operacyjnymi",
+    "2",
+    "INF.02.8.1"
+   ],
+   [
+    "Instalacja serwera na maszynie wirtualnej",
+    "1",
+    "INF.02.8.1, INF.02.8.2"
+   ],
+   [
+    "Konfigurowanie połączeń sieciowych",
+    "1",
+    "INF.02.8.4, INF.02.6.6"
+   ],
+   [
+    "Połączenia sieciowe — ćwiczenia",
+    "1",
+    "INF.02.8.4, INF.02.6.6"
+   ],
+   [
+    "Kontroler domeny",
+    "1",
+    "INF.02.8.3"
+   ],
+   [
+    "Konfiguracja serwera DHCP — opcje podstawowe",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Konfiguracja serwera DHCP — opcje serwera",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Ćwiczenia w konfiguracji serwera DHCP",
+    "2",
+    "INF.02.8.2"
+   ],
+   [
+    "Praktyczny sprawdzian wiadomości",
+    "1",
+    "INF.02.8.1–INF.02.8.4"
+   ]
+  ],
+  "oceny": {
+   "dop": [
+    "wymienia sieciowe systemy operacyjne komercyjne i otwarte z rodziny Windows i Linux",
+    "z pomocą nauczyciela instaluje serwerowy system operacyjny na maszynie wirtualnej",
+    "odczytuje konfigurację interfejsu sieciowego serwera",
+    "wyjaśnia, do czego służy usługa DHCP"
+   ],
+   "dst": [
+    "wymienia sposoby licencjonowania systemów komercyjnych i otwartego oprogramowania",
+    "samodzielnie instaluje serwerowy system operacyjny na maszynie wirtualnej i wykonuje konfigurację poinstalacyjną",
+    "konfiguruje statyczną adresację IP na kartach sieciowych serwera i nadaje nazwę komputerowi",
+    "instaluje rolę serwera DHCP i tworzy zakres adresów",
+    "omawia usługę katalogową Active Directory i wyjaśnia pojęcia domeny, lasu i jednostki organizacyjnej"
+   ],
+   "db": [
+    "sprawdza zgodność elementów systemu komputerowego z sieciowym systemem operacyjnym na podstawie listy zgodności sprzętowej",
+    "wykorzystuje narzędzia do wirtualizacji i wyjaśnia zasady działania systemów wirtualizacyjnych",
+    "konfiguruje opcje zakresu i opcje serwera DHCP, w tym bramę, serwery DNS i czas dzierżawy",
+    "promuje serwer do roli kontrolera domeny i podłącza do domeny stację roboczą",
+    "sprawdza działanie usługi z poziomu klienta i odczytuje przydzieloną dzierżawę"
+   ],
+   "bdb": [
+    "planuje adresację i pulę adresów DHCP dla zadanej sieci, uzasadniając dobór zakresu i wykluczeń",
+    "konfiguruje zastrzeżenia adresów dla wybranych urządzeń",
+    "modernizuje i rekonfiguruje zainstalowany system oraz zarządza licencjami na serwerze",
+    "diagnozuje brak adresu u klienta i wskazuje przyczynę w konfiguracji serwera"
+   ],
+   "cel": [
+    "przygotowuje środowisko wielu maszyn wirtualnych połączonych siecią wewnętrzną i dokumentuje jego konfigurację",
+    "rozwiązuje zadania egzaminacyjne INF.02 dotyczące instalacji i konfiguracji serwera"
+   ]
+  },
+  "godziny": 11
+ },
+ {
+  "nr": "III",
+  "tytul": "Usługi sieciowe w systemie Windows Server",
+  "tematy": [
+   [
+    "Instalacja serwera DNS",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Konfiguracja serwera DNS — dodawanie wpisów i stref wyszukiwania",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Instalacja serwera plików",
+    "1",
+    "INF.02.8.2, INF.02.8.5"
+   ],
+   [
+    "Konfiguracja serwera plików",
+    "1",
+    "INF.02.8.5"
+   ],
+   [
+    "Instalacja i konfiguracja serwera wydruku",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Instalacja drukarki sieciowej",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Serwer aplikacji",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Instalacja serwera pocztowego",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Konfiguracja serwera pocztowego",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Instalacja usługi IIS",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Serwer sieci IIS a usługa DNS",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Konfiguracja serwera IIS — dokument domyślny, przekierowania, nazwa hosta",
+    "1",
+    "INF.02.8.2"
+   ]
+  ],
+  "oceny": {
+   "dop": [
+    "określa usługi i funkcje sieciowych systemów operacyjnych i wymienia najważniejsze z nich",
+    "z pomocą nauczyciela instaluje rolę serwera DNS, plików, wydruku i IIS",
+    "wyjaśnia, do czego służy serwer DNS i serwer WWW"
+   ],
+   "dst": [
+    "samodzielnie instaluje i uruchamia role serwera: DNS, plików, wydruku, aplikacji, poczty i IIS",
+    "tworzy strefę wyszukiwania do przodu i dodaje rekordy A oraz CNAME",
+    "udostępnia folder w sieci i podłącza go jako dysk sieciowy na stacji roboczej",
+    "instaluje drukarkę sieciową i udostępnia ją użytkownikom",
+    "publikuje stronę w usłudze IIS i otwiera ją z innego komputera"
+   ],
+   "db": [
+    "opisuje usługi dostępne w serwerowym systemie operacyjnym i rozróżnia usługi różnych systemów sieciowych",
+    "konfiguruje strefę wyszukiwania wstecznego i sprawdza działanie rozwiązywania nazw poleceniami nslookup oraz ping",
+    "wiąże witrynę IIS z nazwą hosta zapisaną w DNS i ustawia dokument domyślny oraz przekierowanie",
+    "konfiguruje serwer pocztowy i sprawdza wysyłanie oraz odbiór wiadomości w sieci lokalnej",
+    "dokonuje rekonfiguracji wskazanej usługi bez jej ponownej instalacji"
+   ],
+   "bdb": [
+    "dobiera i konfiguruje zestaw usług do opisanego zastosowania, uzasadniając wybór ról serwera",
+    "konfiguruje kilka witryn na jednym serwerze IIS, rozróżniając je nazwą hosta lub portem",
+    "diagnozuje niedziałającą usługę: sprawdza stan usługi, port, zaporę i wpisy DNS, i wskazuje przyczynę",
+    "dokumentuje wykonaną konfigurację w sposób umożliwiający jej odtworzenie"
+   ],
+   "cel": [
+    "uruchamia i konfiguruje usługę spoza programu nauczania, na przykład serwer WSUS, RRAS albo usługi pulpitu zdalnego",
+    "rozwiązuje zadania egzaminacyjne INF.02 obejmujące konfigurację kilku usług naraz"
+   ]
+  },
+  "godziny": 12
+ },
+ {
+  "nr": "IV",
+  "tytul": "Udostępnianie zasobów, dostęp zdalny i bezpieczeństwo w systemie Windows",
+  "tematy": [
+   [
+    "Udostępnianie zasobów w sieci",
+    "1",
+    "INF.02.8.5"
+   ],
+   [
+    "Udostępnianie strony WWW w sieci lokalnej",
+    "1",
+    "INF.02.8.2, INF.02.8.5"
+   ],
+   [
+    "Ćwiczenia w konfiguracji serwera WWW",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Instalacja serwera FTP",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Konfiguracja serwera FTP — tworzenie witryny, udostępnianie zasobów, użytkownicy anonimowi",
+    "1",
+    "INF.02.8.2, INF.02.8.5"
+   ],
+   [
+    "Usługi terminalowe, dostęp zdalny",
+    "1",
+    "INF.02.8.2, INF.02.8.6"
+   ],
+   [
+    "Zadania związane z zarządzaniem dyskami",
+    "1",
+    "INF.02.8.5"
+   ],
+   [
+    "Polityka bezpieczeństwa i monitorowanie pracy systemu",
+    "1",
+    "INF.02.8.5, INF.02.8.6"
+   ],
+   [
+    "Sprawdzian wiadomości",
+    "1",
+    "INF.02.8.2, INF.02.8.5, INF.02.8.6"
+   ]
+  ],
+  "oceny": {
+   "dop": [
+    "wymienia rodzaje zasobów sieciowych oraz rodzaje zasobów sprzętowych i dyskowych",
+    "z pomocą nauczyciela udostępnia folder i nadaje uprawnienia użytkownikowi",
+    "wie, czym różni się dostęp anonimowy od dostępu z uwierzytelnianiem"
+   ],
+   "dst": [
+    "konfiguruje zasoby sieciowe i określa uprawnienia do zasobów lokalnych i sieciowych",
+    "instaluje serwer FTP, tworzy witrynę i udostępnia zasoby wybranym użytkownikom",
+    "uruchamia dostęp zdalny do serwera i łączy się z nim z innego komputera",
+    "wykonuje podstawowe zadania zarządzania dyskami: tworzy i formatuje wolumin, przydziela literę"
+   ],
+   "db": [
+    "zarządza zabezpieczeniami plików i katalogów, rozróżniając uprawnienia udziału i uprawnienia systemu plików",
+    "konfiguruje dostęp anonimowy do serwera FTP i ocenia, kiedy jest on dopuszczalny",
+    "monitoruje pracę systemu, korzystając z dzienników zdarzeń i monitora wydajności",
+    "stosuje zasady ochrony udostępnianych zasobów i przestrzega ich przy nadawaniu uprawnień"
+   ],
+   "bdb": [
+    "projektuje strukturę uprawnień dla zadanej organizacji i uzasadnia przydział praw poszczególnym grupom",
+    "definiuje zasady polityki bezpieczeństwa w aspekcie współdzielenia zasobów",
+    "publikuje udostępnione zasoby, korzystając z usług katalogowych",
+    "planuje przydział przestrzeni dyskowej i stosuje przydziały dyskowe"
+   ],
+   "cel": [
+    "konfiguruje macierz dyskową lub przydziały dyskowe wykraczające poza program i opisuje ich zastosowanie",
+    "przygotowuje i przeprowadza dla klasy test poprawności zabezpieczeń udostępnionych zasobów"
+   ]
+  },
+  "godziny": 9
+ },
+ {
+  "nr": "V",
+  "tytul": "Sieciowe systemy operacyjne z rodziny Linux",
+  "tematy": [
+   [
+    "Charakterystyka sieciowych systemów operacyjnych z rodziny Linux",
+    "1",
+    "INF.02.8.1"
+   ],
+   [
+    "Wdrażanie sieciowych systemów operacyjnych z rodziny Linux",
+    "1",
+    "INF.02.8.1"
+   ],
+   [
+    "Zarządzanie kontami i grupami użytkowników w sieciowych systemach z rodziny Linux",
+    "1",
+    "INF.02.8.3, INF.02.8.5"
+   ],
+   [
+    "Konfiguracja systemu Linux typu serwer do pracy w sieci",
+    "2",
+    "INF.02.8.4"
+   ],
+   [
+    "Adresacja IP za pomocą pliku /etc/network/interfaces",
+    "1",
+    "INF.02.8.4, INF.02.6.6"
+   ],
+   [
+    "Adresacja IP za pomocą Netplana",
+    "1",
+    "INF.02.8.4, INF.02.6.6"
+   ],
+   [
+    "DHCP w systemie Linux",
+    "2",
+    "INF.02.8.2"
+   ],
+   [
+    "DNS w systemie Linux",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Serwer plików w systemie Linux",
+    "1",
+    "INF.02.8.2, INF.02.8.5"
+   ],
+   [
+    "Serwer wydruku w systemie Linux",
+    "1",
+    "INF.02.8.2"
+   ],
+   [
+    "Udostępnianie plików w systemie Linux",
+    "1",
+    "INF.02.8.5"
+   ],
+   [
+    "Konfiguracja programu SAMBA",
+    "1",
+    "INF.02.8.2, INF.02.8.5"
+   ],
+   [
+    "Konta w systemie Linux",
+    "1",
+    "INF.02.8.5"
+   ],
+   [
+    "Konfiguracja zapory sieciowej w systemie Linux",
+    "1",
+    "INF.02.8.5"
+   ],
+   [
+    "Bezpieczeństwo systemów Linux",
+    "1",
+    "INF.02.8.5, INF.02.8.6"
+   ]
+  ],
+  "oceny": {
+   "dop": [
+    "wymienia dystrybucje serwerowe z rodziny Linux i wyjaśnia, czym jest otwarte oprogramowanie",
+    "z pomocą nauczyciela instaluje serwerową dystrybucję systemu Linux",
+    "porusza się po systemie plików i odczytuje konfigurację sieci poleceniem ip albo ifconfig",
+    "wie, do czego służy plik konfiguracyjny interfejsów sieciowych"
+   ],
+   "dst": [
+    "instaluje i wdraża serwerową dystrybucję systemu Linux oraz aktualizuje pakiety",
+    "tworzy konta i grupy użytkowników, nadaje hasła i ustala prawa dostępu do katalogów",
+    "ustawia statyczny adres IP, edytując plik konfiguracyjny interfejsów lub konfigurację Netplana",
+    "instaluje i uruchamia usługi DHCP, DNS oraz serwer plików w systemie Linux",
+    "udostępnia katalog przez SAMBA i podłącza go z komputera z systemem Windows"
+   ],
+   "db": [
+    "rozróżnia usługi i funkcje systemów Windows i Linux oraz wskazuje odpowiedniki tych samych usług w obu rodzinach",
+    "konfiguruje zakres i opcje serwera DHCP oraz strefy serwera DNS w systemie Linux",
+    "konfiguruje zaporę sieciową, otwierając wyłącznie porty potrzebne uruchomionym usługom",
+    "uruchamia serwer wydruku i udostępnia drukarkę w sieci",
+    "sprawdza stan usługi i odczytuje jej dziennik, korzystając z narzędzi systemowych"
+   ],
+   "bdb": [
+    "porównuje sposoby konfiguracji sieci przez plik interfaces i przez Netplana, wskazując, kiedy stosuje się każdy z nich",
+    "planuje i wdraża zestaw usług na serwerze z systemem Linux dla opisanego zastosowania",
+    "stosuje zasady bezpieczeństwa systemu: ogranicza uprawnienia, wyłącza zbędne usługi, wymusza aktualizacje",
+    "diagnozuje niedziałającą usługę na podstawie komunikatów w dziennikach systemowych"
+   ],
+   "cel": [
+    "konfiguruje usługę spoza programu nauczania, na przykład serwer WWW z certyfikatem TLS albo serwer VPN",
+    "automatyzuje wdrożenie konfiguracji skryptem powłoki i opisuje, co skrypt wykonuje"
+   ]
+  },
+  "godziny": 17
+ },
+ {
+  "nr": "VI",
+  "tytul": "Utrzymanie, diagnostyka i ochrona systemów sieciowych",
+  "tematy": [
+   [
+    "Zadania związane z zarządzaniem dyskami",
+    "1",
+    "INF.02.8.5"
+   ],
+   [
+    "Polityka bezpieczeństwa",
+    "1",
+    "INF.02.8.5"
+   ],
+   [
+    "Monitorowanie pracy systemu",
+    "1",
+    "INF.02.8.6"
+   ],
+   [
+    "Lokalizowanie awarii sieciowych systemów operacyjnych",
+    "1",
+    "INF.02.8.6, INF.02.6.8"
+   ],
+   [
+    "Usuwanie awarii sieciowych systemów operacyjnych",
+    "1",
+    "INF.02.8.6"
+   ],
+   [
+    "Zabezpieczanie sieciowych systemów operacyjnych przed szkodliwym oprogramowaniem",
+    "1",
+    "INF.02.8.5, INF.02.8.6"
+   ],
+   [
+    "Zabezpieczanie sieciowych systemów operacyjnych przed niekontrolowanym przepływem informacji oraz utratą danych",
+    "1",
+    "INF.02.8.5"
+   ]
+  ],
+  "oceny": {
+   "dop": [
+    "określa narzędzia służące do zarządzania stacjami roboczymi",
+    "wymienia rodzaje szkodliwego oprogramowania i podstawowe sposoby ochrony przed nim",
+    "z pomocą nauczyciela sprawdza stan dysków i wolne miejsce na serwerze"
+   ],
+   "dst": [
+    "monitoruje działania użytkowników stacji roboczych z poziomu systemu operacyjnego",
+    "wykonuje kopię zapasową wskazanych danych i odtwarza je",
+    "uruchamia i aktualizuje oprogramowanie zabezpieczające na serwerze",
+    "rozpoznaje typowe objawy awarii systemu sieciowego i lokalizuje jej miejsce"
+   ],
+   "db": [
+    "rozróżnia sposoby zarządzania stacjami roboczymi i zarządza nimi zdalnie",
+    "usuwa typowe awarie systemu sieciowego i zdalnie usuwa usterki stacji roboczej",
+    "stosuje program do analizy pakietów sieciowych przy diagnozowaniu problemu z usługą",
+    "dobiera zabezpieczenia chroniące przed niekontrolowanym przepływem informacji i utratą danych"
+   ],
+   "bdb": [
+    "opracowuje procedurę postępowania przy awarii wskazanej usługi i uzasadnia kolejność czynności",
+    "planuje politykę kopii zapasowych: zakres, częstotliwość, miejsce przechowywania i sposób weryfikacji",
+    "ocenia skuteczność zastosowanych zabezpieczeń i proponuje ich uzupełnienie"
+   ],
+   "cel": [
+    "przeprowadza kontrolowany test odtworzenia serwera z kopii zapasowej i dokumentuje przebieg",
+    "analizuje rzeczywisty przypadek naruszenia bezpieczeństwa i wskazuje, które zabezpieczenia zawiodły"
+   ]
+  },
+  "godziny": 7
+ },
+ {
+  "nr": "VII",
+  "tytul": "Przygotowanie do egzaminu zawodowego",
+  "tematy": [
+   [
+    "Rozwiązywanie zadań egzaminacyjnych",
+    "3",
+    "INF.02.8"
+   ]
+  ],
+  "oceny": {
+   "dop": [
+    "z pomocą nauczyciela wykonuje pojedyncze polecenia z zadania egzaminacyjnego"
+   ],
+   "dst": [
+    "samodzielnie wykonuje typowe czynności wymagane w zadaniu egzaminacyjnym i mieści się w wyznaczonym czasie"
+   ],
+   "db": [
+    "wykonuje całe zadanie egzaminacyjne, poprawnie dokumentując rezultaty zgodnie z poleceniem"
+   ],
+   "bdb": [
+    "wykonuje zadanie egzaminacyjne bezbłędnie i sprawdza poprawność rezultatów przed zakończeniem pracy"
+   ],
+   "cel": [
+    "rozwiązuje zadania z arkuszy z lat ubiegłych o podwyższonym stopniu trudności i pomaga innym uczniom w przygotowaniu"
+   ]
+  },
+  "godziny": 3
+ }
+]

@@ -1,0 +1,115 @@
+site_name: ASSO 3TT
+site_description: Materiały do przedmiotu administracja sieciowymi systemami operacyjnymi — klasa 3TT, technik informatyk, kwalifikacja INF.02
+site_author: PCEiKZ Szczucin
+
+# Adres docelowy strony. Przy GitHub Pages dla repozytorium projektowego
+# ma postać https://<użytkownik>.github.io/<nazwa-repo>/ — zmień, jeśli
+# nazwiesz repozytorium inaczej albo podepniesz własną domenę.
+site_url: https://josimate.github.io/asso/
+
+# Włącza w nagłówku odnośnik do repozytorium i przycisk "Edytuj tę stronę".
+repo_url: https://github.com/JosiMate/asso
+repo_name: JosiMate/asso
+edit_uri: edit/main/docs/
+copyright: PCEiKZ Szczucin — materiały do użytku edukacyjnego
+
+theme:
+  name: material
+  language: pl
+  icon:
+    logo: material/server-network
+    repo: fontawesome/brands/github
+  favicon: assets/favicon.png
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Przełącz na tryb jasny
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Przełącz na tryb ciemny
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Przełącz na tryb automatyczny
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - content.action.edit
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.tooltips
+
+extra_css:
+  - assets/extra.css
+
+extra_javascript:
+  - assets/js/quiz.js
+  - assets/js/postep.js
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: "#"
+      permalink_title: Odnośnik do tej sekcji
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  # Ikony Material/Octicons zapisywane jako :material-nazwa: — bez tego
+  # rozszerzenia shortcode'y zostają w tekście jako goły napis.
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+
+plugins:
+  # Wyszukiwarka lunr nie ma polskiego stemmera (biblioteka lunr-languages
+  # nie wspiera polskiego), więc świadomie zostawiamy tokenizer domyślny.
+  - search
+
+nav:
+  - Start: index.md
+  - Moduł 1. Start — organizacja i bezpieczeństwo:
+      - Wymagania edukacyjne i bhp: modul-1/wymagania-i-bhp.md
+
+extra:
+  social:
+    - icon: material/school
+      link: https://www.pceikz.pl
+      name: PCEiKZ Szczucin
+  generator: false
+
+not_in_nav: |
+  /assets/

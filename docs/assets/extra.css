@@ -1,0 +1,310 @@
+/* ---------------------------------------------------------------
+   Informatyka 1TT — drobne korekty wobec domyślnego Material
+   --------------------------------------------------------------- */
+
+/* Tabele wymagań bywają szerokie — pozwól im oddychać i przewijać się
+   we własnym kontenerze zamiast rozpychać stronę. */
+.md-typeset table:not([class]) {
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.md-typeset table:not([class]) th {
+  white-space: nowrap;
+}
+
+/* Listy wymagań są długie — nieco ciaśniejszy rytm czyta się lepiej. */
+.md-typeset ul li {
+  margin-bottom: 0.25em;
+}
+
+/* Kafelki działów na stronie głównej: równa wysokość, wyraźna ramka. */
+.md-typeset .grid.cards > ul > li {
+  border-radius: 0.4rem;
+  transition: border-color 125ms, box-shadow 125ms;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+}
+
+/* Poziomy ocen jako nagłówki H2 — subtelna linia oddzielająca,
+   żeby przy przewijaniu długiej strony było widać, gdzie zaczyna się
+   kolejna ocena. */
+.md-typeset h2 {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  padding-top: 0.8em;
+  margin-top: 1.6em;
+}
+
+.md-typeset h1 + h2,
+.md-typeset h2:first-of-type {
+  border-top: none;
+}
+
+/* --------------------------------- wydruk ---------------------------------
+   Uczniowie i rodzice drukują wymagania. Domyślnie Material drukuje też
+   nawigację i stopkę — usuń je i zmniejsz marginesy. */
+@media print {
+  .md-header,
+  .md-sidebar,
+  .md-footer,
+  .md-top,
+  .md-content__button {
+    display: none !important;
+  }
+
+  .md-main__inner,
+  .md-content {
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .md-typeset {
+    font-size: 10pt;
+  }
+
+  .md-typeset h1,
+  .md-typeset h2 {
+    break-after: avoid;
+  }
+
+  .md-typeset table,
+  .md-typeset .admonition {
+    break-inside: avoid;
+  }
+
+  /* Nie drukuj adresów URL po linkach — strona i tak jest drukowana
+     jako dokument, a przypisy z adresami tylko zaśmiecają. */
+  .md-typeset a::after {
+    content: none !important;
+  }
+}
+
+/* --------------------- spis tematów na stronie głównej ---------------------
+   Sześć tabel działowych domyślnie dobiera szerokość kolumn osobno, zależnie
+   od najdłuższego tematu w danym dziale. Efekt: kolumny „Godz." i „Materiały"
+   skaczą w bok przy przewijaniu. Ustalamy stały podział, wspólny dla
+   wszystkich tabel. */
+.spis-tematow .md-typeset__table {
+  display: block;            /* domyślnie inline-block, czyli szerokość
+                                dopasowana do treści — dlatego każda tabela
+                                wychodziła inna */
+  width: 100%;
+}
+
+.spis-tematow table:not([class]) {
+  display: table;            /* j.w. — Material daje tabelom inline-block */
+  table-layout: fixed;
+  width: 100%;
+  min-width: 32rem;          /* na wąskich ekranach tabela przewija się
+                                w swoim kontenerze zamiast zgniatać kolumny */
+}
+
+/* Cztery kolumny: temat, godziny, materiały i dokładana skryptem kolumna
+   „Zrobione”. Sumują się do 100%, żeby tabela nie wystawała poza treść. */
+.spis-tematow table:not([class]) th:nth-child(1),
+.spis-tematow table:not([class]) td:nth-child(1) { width: 55%; }
+
+.spis-tematow table:not([class]) th:nth-child(2),
+.spis-tematow table:not([class]) td:nth-child(2) { width: 10%; }
+
+.spis-tematow table:not([class]) th:nth-child(3),
+.spis-tematow table:not([class]) td:nth-child(3) { width: 24%; }
+
+.spis-tematow table:not([class]) th:nth-child(4),
+.spis-tematow table:not([class]) td:nth-child(4) { width: 11%; }
+
+/* Spis tematów ASSO ma trzy kolumny (temat, godziny, materiały), więc
+   szerokości powyżej wymagają korekty — inaczej tabela nie wypełnia szerokości. */
+.spis-tematow table:not([class]) th:nth-child(2):last-child,
+.spis-tematow table:not([class]) td:nth-child(2):last-child { width: 45%; }
+
+.spis-tematow table:not([class]) th:nth-child(3):last-child,
+.spis-tematow table:not([class]) td:nth-child(3):last-child { width: 28%; }
+
+.spis-tematow table:not([class]) tr > th:nth-child(3):last-child ~ *,
+.spis-tematow table:not([class]) tr > td:nth-child(3):last-child ~ * { width: auto; }
+
+/* Przy stałym układzie długie tytuły muszą się łamać, a nie wychodzić poza
+   komórkę. */
+.spis-tematow table:not([class]) td { overflow-wrap: anywhere; }
+
+/* ═══════════════════════ elementy interaktywne ═══════════════════════
+   Karta pracy, quizy, pasek postępu i narzędzia. Wszystko działa po
+   stronie przeglądarki — strona pozostaje statyczna. */
+
+/* --------------------------------------------------------- karta pracy */
+.kp { margin: 1.2em 0; }
+
+.kp-zadanie {
+  margin: 1.8em 0;
+  padding: 1.1em 1.3em;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .35rem;
+  background: var(--md-code-bg-color);
+}
+.kp-zadanie h3 { margin: 0 0 .2em; font-size: 1.05rem; }
+.kp-poziom { margin: 0 0 .9em; font-size: .68rem; font-style: italic;
+             color: var(--md-default-fg-color--light); }
+.kp-polecenie { margin: 0 0 1em; }
+
+.kp-pole { display: block; margin: 1.1em 0 .4em; }
+.kp-pytanie { display: block; font-weight: 700; margin-bottom: .45em; }
+
+.kp textarea, .kp input[type="text"], .kp input[type="date"] {
+  width: 100%; padding: .5em .65em; font: inherit; font-size: .78rem;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: .25rem;
+}
+.kp textarea { resize: vertical; min-height: 3.4em; line-height: 1.6; }
+.kp textarea:focus, .kp input:focus {
+  outline: 2px solid var(--md-accent-fg-color); outline-offset: -1px; border-color: transparent;
+}
+
+.kp-tabela { width: 100%; border-collapse: collapse; margin: .6em 0 1em; font-size: .78rem; }
+.kp-tabela th { width: 38%; text-align: left; padding: .35em .6em .35em 0;
+                font-weight: 700; vertical-align: middle; }
+.kp-tabela td { padding: .25em 0; }
+
+.kp-radiogrupa { display: flex; flex-wrap: wrap; gap: .5em 1.4em; }
+.kp-radio { display: inline-flex; align-items: center; gap: .4em; font-size: .8rem; }
+
+/* strefa na zrzut ekranu */
+.kp-zrzut {
+  margin: .9em 0 1.2em; border: 2px dashed var(--md-default-fg-color--lighter);
+  border-radius: .35rem; background: var(--md-default-bg-color); cursor: pointer;
+}
+.kp-zrzut:focus-visible, .kp-zrzut.kp-nad {
+  outline: none; border-color: var(--md-accent-fg-color);
+  background: var(--md-accent-fg-color--transparent);
+}
+.kp-zrzut-pusty { display: flex; flex-direction: column; gap: .35em;
+                  align-items: center; text-align: center; padding: 1.6em 1em; }
+.kp-zrzut-pusty strong { font-size: .82rem; }
+.kp-zrzut-pusty span { font-size: .7rem; color: var(--md-default-fg-color--light); }
+.kp-zrzut-jak .kp-wybierz {
+  background: none; border: none; padding: 0; font: inherit; font-size: inherit;
+  color: var(--md-accent-fg-color); text-decoration: underline; cursor: pointer;
+}
+.kp-zrzut-podglad { margin: 0; padding: .7em; text-align: center; }
+.kp-zrzut-podglad img { max-width: 100%; max-height: 22rem; border-radius: .25rem;
+                        border: 1px solid var(--md-default-fg-color--lightest); }
+.kp-usun-zrzut { display: block; margin: .6em auto 0; padding: .25em .8em;
+                 font-size: .68rem; cursor: pointer; border-radius: .2rem;
+                 border: 1px solid var(--md-default-fg-color--lighter);
+                 background: var(--md-default-bg-color); color: var(--md-default-fg-color); }
+
+.kp-stopka { display: flex; flex-wrap: wrap; align-items: center; gap: .7em; margin-top: 1.6em; }
+.kp-stopka .md-button { margin: 0; }
+.kp-status { flex: 1 1 100%; margin: .3em 0 0; font-size: .74rem;
+             color: var(--md-default-fg-color--light); }
+.kp-status.kp-ok { color: #2e7d32; font-weight: 700; }
+.kp-status.kp-blad, .kp-blad { color: #c62828; font-weight: 700; }
+
+/* --------------------------------------------------------------- quiz */
+.qz { margin: 1.2em 0; }
+.qz-lista { padding-left: 1.3em; }
+.qz-pytanie { margin: 0 0 1.4em; padding-left: .3em; }
+.qz-tresc { font-weight: 700; margin: 0 0 .6em; }
+.qz-opcje { display: flex; flex-direction: column; gap: .3em; margin-bottom: .7em; }
+.qz-opcja { display: flex; align-items: flex-start; gap: .5em; padding: .35em .55em;
+            border-radius: .25rem; border: 1px solid transparent; cursor: pointer; }
+.qz-opcja:hover { background: var(--md-code-bg-color); }
+.qz-opcja.qz-dobra { border-color: #2e7d32; background: rgba(46, 125, 50, .1); }
+.qz-opcja.qz-zla   { border-color: #c62828; background: rgba(198, 40, 40, .1); }
+.qz-tekst { width: min(100%, 22rem); padding: .45em .6em; font: inherit; font-size: .8rem;
+            margin-bottom: .7em; border-radius: .25rem;
+            color: var(--md-default-fg-color); background: var(--md-default-bg-color);
+            border: 1px solid var(--md-default-fg-color--lighter); }
+.qz-tekst.qz-dobra { border-color: #2e7d32; }
+.qz-tekst.qz-zla   { border-color: #c62828; }
+.qz-sprawdz { padding: .3em .9em; font-size: .72rem; cursor: pointer; border-radius: .2rem;
+              border: 1px solid var(--md-default-fg-color--lighter);
+              background: var(--md-default-bg-color); color: var(--md-default-fg-color); }
+.qz-odzew { margin-top: .7em; padding: .6em .8em; border-radius: .25rem; font-size: .78rem;
+            border-left: 3px solid var(--md-default-fg-color--lighter);
+            background: var(--md-code-bg-color); }
+.qz-odzew.qz-ok  { border-left-color: #2e7d32; }
+.qz-odzew.qz-nie { border-left-color: #c62828; }
+.qz-podsumowanie { margin: 1em 0; padding: .7em .9em; border-radius: .25rem; font-weight: 700;
+                   background: var(--md-code-bg-color); }
+.qz-podsumowanie.qz-ok { color: #2e7d32; }
+
+/* ------------------------------------------------------- pasek postępu */
+.pg-pasek { display: flex; align-items: center; gap: .7em; margin: .3em 0 .6em; }
+.pg-tor { flex: 1; height: .32rem; border-radius: .32rem; overflow: hidden;
+          background: var(--md-default-fg-color--lightest); }
+.pg-wypelnienie { height: 100%; width: 0; border-radius: .32rem;
+                  background: var(--md-accent-fg-color); transition: width .25s ease; }
+.pg-opis { font-size: .66rem; color: var(--md-default-fg-color--light); white-space: nowrap; }
+.pg-pasek.pg-komplet .pg-wypelnienie { background: #2e7d32; }
+.pg-pasek.pg-komplet .pg-opis { color: #2e7d32; font-weight: 700; }
+.spis-tematow th.pg-kol, .spis-tematow td.pg-kol { text-align: center; }
+.spis-tematow tr.pg-zrobiony td:first-child { opacity: .55; }
+
+/* ---------------------------------------------------------- narzędzia */
+.nz { margin: 1.2em 0; padding: 1.1em 1.3em; border-radius: .35rem;
+      border: 1px solid var(--md-default-fg-color--lightest);
+      background: var(--md-code-bg-color); }
+.nz input[type="text"] { width: 100%; padding: .5em .65em; font: inherit; font-size: .82rem;
+      font-family: var(--md-code-font-family); border-radius: .25rem;
+      color: var(--md-default-fg-color); background: var(--md-default-bg-color);
+      border: 1px solid var(--md-default-fg-color--lighter); }
+.nz-etykieta { display: block; font-weight: 700; margin-bottom: .45em; }
+.nz-uwaga-prywatnosc { margin: .6em 0 0; font-size: .68rem;
+                       color: var(--md-default-fg-color--light); }
+.nz-wynik { margin-top: 1em; }
+.nz-tor { height: .32rem; border-radius: .32rem; overflow: hidden;
+          background: var(--md-default-fg-color--lightest); }
+.nz-wypelnienie { height: 100%; width: 0; transition: width .2s ease; background: #c62828; }
+.nz-p1 .nz-wypelnienie { background: #ef6c00; }
+.nz-p2 .nz-wypelnienie { background: #2e7d32; }
+.nz-p3 .nz-wypelnienie { background: #1565c0; }
+.nz-podsumowanie { margin: .6em 0 .3em; font-size: .8rem; }
+.nz-uwagi { margin: 0; padding-left: 1.2em; font-size: .74rem;
+            color: var(--md-default-fg-color--light); }
+.nz-wiersz { display: flex; align-items: center; gap: .8em; margin-bottom: .5em; }
+.nz-nazwa { flex: 0 0 11rem; font-size: .78rem; }
+.nz-blad { margin: .5em 0 0; font-size: .74rem; color: #c62828; }
+.nz-bity { margin: .7em 0 0; font-size: .74rem; color: var(--md-default-fg-color--light); }
+
+@media screen and (max-width: 45em) {
+  .nz-wiersz { flex-direction: column; align-items: stretch; gap: .25em; }
+  .nz-nazwa { flex: none; }
+}
+
+/* Elementy interaktywne nie mają sensu na wydruku. */
+@media print {
+  .kp-stopka, .kp-zrzut-pusty, .qz-sprawdz, .qz-reset, .pg-pasek, .nz { display: none !important; }
+}
+
+
+/* ═══════════════════════ kafelki wyboru modułu ═══════════════════════
+   Moduł to jednostka tematyczna grupująca kilka lekcji. Karty mają
+   równą wysokość, przycisk dosunięty do dołu, a moduły bez gotowych
+   materiałów są wygaszone — rozpoznajemy je po braku przycisku.       */
+.md-typeset .grid.wybor-modulu {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+}
+.wybor-modulu.grid.cards > ul > li {
+  display: flex;
+  flex-direction: column;
+}
+.wybor-modulu.grid.cards > ul > li > hr ~ p:first-of-type { flex: 1 0 auto; }
+.wybor-modulu.grid.cards > ul > li > p:last-child { margin-bottom: 0; }
+.wybor-modulu .md-button {
+  margin: .4rem .4rem 0 0;
+  padding: .35em .9em;
+  font-size: .72rem;
+}
+.wybor-modulu.grid.cards > ul > li:not(:has(.md-button)) {
+  opacity: .62;
+  border-style: dashed;
+}
+.wybor-modulu.grid.cards > ul > li:not(:has(.md-button)) .twemoji {
+  filter: grayscale(1);
+}
