@@ -21,24 +21,25 @@ theme:
     repo: fontawesome/brands/github
   favicon: assets/favicon.png
   palette:
+    # Pierwszy wpis bez „media” jest motywem domyślnym — serwis otwiera się
+    # w ciemnym schemacie slate niezależnie od ustawień systemu. Przełącznik
+    # w nagłówku przechodzi kolejno: ciemny → jasny → zgodny z systemem.
+    - scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Przełącz na tryb jasny
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Przełącz na tryb automatyczny
     - media: "(prefers-color-scheme)"
       toggle:
         icon: material/brightness-auto
-        name: Przełącz na tryb jasny
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: teal
-      accent: teal
-      toggle:
-        icon: material/brightness-7
         name: Przełącz na tryb ciemny
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: teal
-      accent: teal
-      toggle:
-        icon: material/brightness-4
-        name: Przełącz na tryb automatyczny
   features:
     - navigation.instant
     - navigation.instant.progress
@@ -55,7 +56,10 @@ theme:
     - content.tooltips
 
 extra_css:
+  # Kolejność ma znaczenie: najpierw style elementów interaktywnych,
+  # potem warstwa wyglądu powłoki dokumentacji.
   - assets/extra.css
+  - stylesheets/extra.css
 
 extra_javascript:
   - assets/js/quiz.js
