@@ -87,7 +87,11 @@ def strona_startowa():
         # Kafelek prowadzi do STRONY DZIAŁU, nie do pierwszego tematu — inaczej
         # kliknięcie „Otwórz dział" wrzucało od razu w treść jednej lekcji,
         # bez szansy na wybór tematu.
-        stan = f"[Otwórz dział](dzial-{RZYMSKIE[d['nr']]}/)" + "{ .md-button }"
+        # Cel podajemy jako plik (…/index.md), a nie jako katalog (…/):
+        # MkDocs rozpoznaje wtedy odsyłacz, sprawdza jego poprawność i sam
+        # zamienia go na adres katalogowy. Zapis „dzial-1/" przechodził bez
+        # sprawdzenia, z komunikatem „unrecognized relative link".
+        stan = f"[Otwórz dział](dzial-{RZYMSKIE[d['nr']]}/index.md)" + "{ .md-button }"
         kafelki.append(
             f"-   :{o['ikona']}:{{ .lg .middle }} **Dział {d['nr']}. {d['tytul']}**\n\n"
             f"    ---\n\n"
@@ -156,7 +160,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
 ## Spis tematów
 
-<div class="spis-tematow" markdown>
+<div class="spis-tematow" data-postep="asso-3tt" markdown>
 
 {chr(10).join(tabele)}
 
@@ -263,6 +267,21 @@ przez **Zadania domowe w dzienniku VULCAN**.
     Kryterium jest proste: czy **ktoś inny** odtworzy Twoją pracę na podstawie
     tego, co zapisałeś.
 
+!!! warning "Chcesz dokończyć w domu — zapisz postęp do pliku"
+
+    Odpowiedzi zostają w **tej przeglądarce, na tym komputerze**. Komputer
+    w pracowni o nich nie powie komputerowi w domu, a konto szkolne bywa
+    czyszczone przy wylogowaniu.
+
+    Zanim wyjdziesz z pracowni, kliknij pod kartą **Zapisz postęp do pliku**.
+    Dostaniesz jeden plik `postep_dzial-N.json` — przenieś go pendrive'em,
+    OneDrive'em albo mailem do siebie, a w domu otwórz tę samą stronę
+    i kliknij **Wczytaj postęp z pliku**. Ten sam plik działa w obie strony,
+    więc wracając do pracowni robisz to samo.
+
+    Plik zawiera także wklejone zrzuty ekranu, więc bywa spory. Nigdzie się
+    nie wysyła — zostaje u Ciebie.
+
 <div class="karta-pracy" data-karta="dzial-{numer}"></div>
 """
 
@@ -349,7 +368,13 @@ def karta_dzialu(d):
     })
 
     return {
-        "id": f"dzial-{numer}",
+        # Uwaga: „id" to nie nazwa pliku. Nazwa pliku (dzial-N.json) służy do
+        # pobrania definicji, a „id" jest kluczem w localStorage przeglądarki:
+        # karta.js zapisuje odpowiedzi pod „karta:<id>". Wszystkie pięć serwisów
+        # stoi pod josimate.github.io, więc localStorage jest WSPÓLNY — samo
+        # „dzial-1" zderzyłoby się z pierwszym serwisem, który też doda strony
+        # działów. Stąd przedrostek z nazwą serwisu.
+        "id": f"asso-dzial-{numer}",
         "tytul": f"Dział {d['nr']}. {d['tytul']}",
         "przedmiot": "PCEiKZ Szczucin · administracja sieciowymi systemami operacyjnymi · klasa 3TT",
         "klasa": "3TT",

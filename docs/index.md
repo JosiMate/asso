@@ -45,7 +45,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     *3 godziny · 3 tematy*
 
-    [Otwórz dział](dzial-1/){ .md-button }
+    [Otwórz dział](dzial-1/index.md){ .md-button }
 
 -   :material-linux:{ .lg .middle } **Dział II. Wdrożenie serwera Linux i podstawy administracji**
 
@@ -55,7 +55,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     *7 godzin · 6 tematów · materiały w przygotowaniu*
 
-    [Otwórz dział](dzial-2/){ .md-button }
+    [Otwórz dział](dzial-2/index.md){ .md-button }
 
 -   :material-ip-network:{ .lg .middle } **Dział III. Konfiguracja sieciowa serwera**
 
@@ -65,7 +65,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     *6 godzin · 6 tematów · materiały w przygotowaniu*
 
-    [Otwórz dział](dzial-3/){ .md-button }
+    [Otwórz dział](dzial-3/index.md){ .md-button }
 
 -   :material-lan-connect:{ .lg .middle } **Dział IV. Wdrażanie ról i usług sieciowych: DHCP i DNS**
 
@@ -75,7 +75,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     *7 godzin · 6 tematów · materiały w przygotowaniu*
 
-    [Otwórz dział](dzial-4/){ .md-button }
+    [Otwórz dział](dzial-4/index.md){ .md-button }
 
 -   :material-folder-network:{ .lg .middle } **Dział V. Udostępnianie zasobów w sieci komputerowej**
 
@@ -85,7 +85,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     *7 godzin · 6 tematów · materiały w przygotowaniu*
 
-    [Otwórz dział](dzial-5/){ .md-button }
+    [Otwórz dział](dzial-5/index.md){ .md-button }
 
 -   :material-web:{ .lg .middle } **Dział VI. Usługi internetowe i pocztowe**
 
@@ -95,7 +95,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     *6 godzin · 6 tematów · materiały w przygotowaniu*
 
-    [Otwórz dział](dzial-6/){ .md-button }
+    [Otwórz dział](dzial-6/index.md){ .md-button }
 
 -   :material-monitor-eye:{ .lg .middle } **Dział VII. Zdalna administracja i monitorowanie**
 
@@ -105,7 +105,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     *5 godzin · 5 tematów · materiały w przygotowaniu*
 
-    [Otwórz dział](dzial-7/){ .md-button }
+    [Otwórz dział](dzial-7/index.md){ .md-button }
 
 -   :material-shield-lock:{ .lg .middle } **Dział VIII. Zabezpieczanie sieciowego systemu operacyjnego**
 
@@ -115,7 +115,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     *6 godzin · 5 tematów · materiały w przygotowaniu*
 
-    [Otwórz dział](dzial-8/){ .md-button }
+    [Otwórz dział](dzial-8/index.md){ .md-button }
 
 -   :material-backup-restore:{ .lg .middle } **Dział IX. Kopie bezpieczeństwa, diagnostyka i usuwanie awarii**
 
@@ -125,7 +125,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     *6 godzin · 6 tematów · materiały w przygotowaniu*
 
-    [Otwórz dział](dzial-9/){ .md-button }
+    [Otwórz dział](dzial-9/index.md){ .md-button }
 
 -   :material-swap-horizontal:{ .lg .middle } **Dział X. Współpraca systemów Linux i Windows w jednej sieci**
 
@@ -135,7 +135,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     *4 godziny · 3 tematy · materiały w przygotowaniu*
 
-    [Otwórz dział](dzial-10/){ .md-button }
+    [Otwórz dział](dzial-10/index.md){ .md-button }
 
 -   :material-clipboard-check:{ .lg .middle } **Dział XI. Przygotowanie do egzaminu zawodowego INF.07**
 
@@ -145,13 +145,13 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     *3 godziny · 1 temat · materiały w przygotowaniu*
 
-    [Otwórz dział](dzial-11/){ .md-button }
+    [Otwórz dział](dzial-11/index.md){ .md-button }
 
 </div>
 
 ## Spis tematów
 
-<div class="spis-tematow" markdown>
+<div class="spis-tematow" data-postep="asso-3tt" markdown>
 
 ### Dział I. Organizacja pracy, sieciowe systemy operacyjne i wirtualizacja
 

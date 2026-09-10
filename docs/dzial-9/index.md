@@ -78,4 +78,19 @@ przez **Zadania domowe w dzienniku VULCAN**.
     Kryterium jest proste: czy **ktoś inny** odtworzy Twoją pracę na podstawie
     tego, co zapisałeś.
 
+!!! warning "Chcesz dokończyć w domu — zapisz postęp do pliku"
+
+    Odpowiedzi zostają w **tej przeglądarce, na tym komputerze**. Komputer
+    w pracowni o nich nie powie komputerowi w domu, a konto szkolne bywa
+    czyszczone przy wylogowaniu.
+
+    Zanim wyjdziesz z pracowni, kliknij pod kartą **Zapisz postęp do pliku**.
+    Dostaniesz jeden plik `postep_dzial-N.json` — przenieś go pendrive'em,
+    OneDrive'em albo mailem do siebie, a w domu otwórz tę samą stronę
+    i kliknij **Wczytaj postęp z pliku**. Ten sam plik działa w obie strony,
+    więc wracając do pracowni robisz to samo.
+
+    Plik zawiera także wklejone zrzuty ekranu, więc bywa spory. Nigdzie się
+    nie wysyła — zostaje u Ciebie.
+
 <div class="karta-pracy" data-karta="dzial-9"></div>

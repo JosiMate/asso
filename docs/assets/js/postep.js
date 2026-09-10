@@ -8,7 +8,10 @@
 (function () {
   "use strict";
 
-  const KLUCZ = "postep:1tt";
+  /* Klucz zależy od strony: każdy rocznik ma własny postęp, więc temat
+   * o tej samej nazwie w dwóch klasach nie odhacza się w obu naraz.
+   * Nazwę można nadać atrybutem data-postep na kontenerze .spis-tematow. */
+  let KLUCZ = "postep";
 
   const wczytaj = () => {
     try { return JSON.parse(localStorage.getItem(KLUCZ)) || {}; }
@@ -28,6 +31,7 @@
     const spis = document.querySelector(".spis-tematow");
     if (!spis || spis.dataset.gotowe) return;
     spis.dataset.gotowe = "1";
+    KLUCZ = "postep:" + (spis.dataset.postep || location.pathname);
     const stan = wczytaj();
 
     spis.querySelectorAll("table").forEach((tab) => {
