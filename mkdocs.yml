@@ -56,9 +56,10 @@ theme:
 
 extra_css:
   # Kolejność ma znaczenie: najpierw style elementów interaktywnych,
-  # potem warstwa wyglądu powłoki dokumentacji.
+  # potem warstwa wyglądu powłoki dokumentacji, na końcu kolory serwisu.
   - assets/extra.css
   - stylesheets/extra.css
+  - stylesheets/motyw.css
 
 extra_javascript:
   - assets/js/quiz.js

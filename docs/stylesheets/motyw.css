@@ -1,0 +1,78 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Motyw kolorystyczny serwisu asso — wyprowadzony z ikony serwisu.
+
+   Ikona (docs/assets/favicon.png) to szafa serwerowa na tle #00695c: ciemny
+   turkus. Paleta Material `primary: teal` była z grubsza w tej rodzinie, ale
+   nie w tym odcieniu, a w motywie ciemnym zostawiała odnośniki w odcieniu
+   za ciemnym, żeby dało się je wygodnie czytać.
+
+   Ten plik dopasowuje kolory akcentu i przechylenie neutralnych szarości do
+   ikony; jest wczytywany jako trzeci, po stylesheets/extra.css, i dotyczy
+   wyłącznie tego serwisu.
+
+   Kontrast policzony na wartościach, które CSS naprawdę wylicza w przeglądarce
+   (a nie na tle „mniej więcej takim jak slate"). Próg AA dla tekstu to 4,5:1;
+   tło motywu ciemnego wychodzi tu #1e2829:
+       #00695c na białym        → 6,61:1  ✔ motyw jasny
+       #00695c na tle slate     → 2,28:1  ✘ za mało, stąd jaśniejszy wariant
+       #4db6ac na tle slate     → 6,19:1  ✔ motyw ciemny
+       tekst #12201f na #4db6ac → 6,87:1  ✔ napis na przycisku podstawowym
+       biel na #4db6ac          → 2,44:1  ✘ dlatego napis jest ciemny
+
+   Motyw ciemny nie potrzebował wymyślonego odcienia: #4db6ac to dokładnie
+   kolor kropek na ikonie, a na tle slate wyrabia z zapasem.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────── motyw ciemny (slate) ─────────────────────────── */
+/* Selektory celowo dwuczłonowe. Material ustawia --md-typeset-a-color regułą
+   [data-md-color-scheme=slate][data-md-color-primary=teal], która ma wyższą
+   swoistość niż sam [data-md-color-scheme=slate] — bez dopisania drugiego
+   atrybutu nasze wartości w ogóle by nie weszły. */
+[data-md-color-scheme="slate"][data-md-color-primary] {
+  /* Material buduje wszystkie szarości slate z jednego odcienia. Domyślne 232
+     to chłodny błękitny grafit; 185 przesuwa je w stronę turkusowej stali,
+     przez co akcent przestaje wyglądać jak wtręt z innego zestawu. Wartość
+     dobrana nisko — przy większej całe tło robi się butelkowe. */
+  --md-hue: 185;
+
+  /* Odnośniki i akcenty: kolor kropek z ikony (teal 300). */
+  --md-typeset-a-color: #4db6ac;
+  --md-primary-fg-color: #4db6ac;
+  --md-primary-fg-color--light: #80cbc4;
+  --md-primary-fg-color--dark: #00695c;
+  --md-accent-fg-color: #80cbc4;
+
+  /* Napis na przycisku podstawowym musi być ciemny — biel na tym turkusie
+     daje 2,44:1, czyli poniżej każdego progu. */
+  --md-primary-bg-color: #12201f;
+  --md-primary-bg-color--light: #12201f;
+}
+
+/* ─────────────────────────── motyw jasny (default) ─────────────────────────── */
+[data-md-color-scheme="default"][data-md-color-primary] {
+  /* Tu wchodzi dokładnie kolor ikony — na bieli ma 6,61:1. */
+  --md-typeset-a-color: #00695c;
+  --md-primary-fg-color: #00695c;
+  --md-primary-fg-color--light: #00897b;
+  --md-primary-fg-color--dark: #004d40;
+  --md-accent-fg-color: #004d40;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffff;
+}
+
+/* Pasek wyboru tekstu — drobiazg, ale widać go przy każdym zaznaczeniu. */
+::selection {
+  background-color: color-mix(in srgb, var(--md-typeset-a-color) 28%, transparent);
+}
+
+/* Kafelki wyboru działu: cienka turkusowa obwódka zamiast neutralnej, żeby
+   strona startowa od razu niosła kolor serwisu. Działy bez materiałów zostają
+   szare — za ich wygaszenie odpowiada reguła w assets/extra.css. */
+.wybor-modulu.grid.cards > ul > li:has(.md-button) {
+  border-color: color-mix(in srgb, var(--md-typeset-a-color) 35%, var(--ui-linia));
+}
+
+/* Ikona działu na kafelku — w kolorze serwisu. */
+.wybor-modulu.grid.cards > ul > li:has(.md-button) .twemoji {
+  color: var(--md-typeset-a-color);
+}
