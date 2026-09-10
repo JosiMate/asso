@@ -7,8 +7,11 @@ const {
   LevelFormat, PageBreak, Footer, PageNumber
 } = require("docx");
 const fs = require("fs");
+const path = require("path");
 
-const dzialy = JSON.parse(fs.readFileSync("daneasso2.json", "utf8"));
+const scriptDir = __dirname;
+const jsonPath = path.join(scriptDir, "daneasso2.json");
+const dzialy = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
 
 const W = 9638, GRAY = "F2F2F2", HEAD = "D9E2F3", DZIAL = "BDD7EE", ACCENT = "1F4E79";
 
@@ -150,6 +153,7 @@ const doc = new Document({
 });
 
 Packer.toBuffer(doc).then(b => {
-  fs.writeFileSync("/home/claude/Rozklad_materialu_ASSO_3TT.docx", b);
-  console.log("OK Rozklad_materialu_ASSO_3TT.docx", b.length, "bajtów");
+  const outPath = path.join(scriptDir, "..", "docs", "pliki", "rozklad-materialu-asso-3tt.docx");
+  fs.writeFileSync(outPath, b);
+  console.log("OK rozklad-materialu-asso-3tt.docx", b.length, "bajtów");
 });
