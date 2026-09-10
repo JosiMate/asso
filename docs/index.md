@@ -162,8 +162,8 @@ Wiesz, według jakich wymagań będziesz oceniany, pracujesz zgodnie z bhp i umi
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
 | **[Lekcja organizacyjna. Wymagania edukacyjne, zapoznanie z PSO. BHP pracowni komputerowej](dzial-1/wymagania-i-bhp.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
-| Sieciowe systemy operacyjne: zadania, usługi, rodziny systemów i licencjonowanie | 1 | *w przygotowaniu* |
-| Wirtualizacja: maszyny wirtualne, migawki, sieć wirtualna pracowni | 1 | *w przygotowaniu* |
+| **[Sieciowe systemy operacyjne: zadania, usługi, rodziny systemów i licencjonowanie](dzial-1/systemy-sieciowe.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Wirtualizacja: maszyny wirtualne, migawki, sieć wirtualna pracowni](dzial-1/wirtualizacja.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ### Dział II. Wdrożenie serwera Linux i podstawy administracji
 

@@ -107,6 +107,8 @@ nav:
   - Start: index.md
   - Dział I. Organizacja pracy, systemy sieciowe i wirtualizacja:
       - Wymagania edukacyjne i bhp: dzial-1/wymagania-i-bhp.md
+      - Sieciowe systemy operacyjne: dzial-1/systemy-sieciowe.md
+      - Wirtualizacja: dzial-1/wirtualizacja.md
 
 extra:
   social:

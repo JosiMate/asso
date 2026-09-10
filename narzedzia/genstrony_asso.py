@@ -19,8 +19,14 @@ OPISY = json.load(open(HERE / "opisy_dzialow.json", encoding="utf-8"))
 
 # Materiały gotowe: "nr działu" -> {"tytuł tematu": "sciezka/plik.md"}
 GOTOWE = {
-    "I": {"Lekcja organizacyjna. Wymagania edukacyjne, zapoznanie z PSO. BHP pracowni komputerowej":
-          "dzial-1/wymagania-i-bhp.md"},
+    "I": {
+        "Lekcja organizacyjna. Wymagania edukacyjne, zapoznanie z PSO. BHP pracowni komputerowej":
+            "dzial-1/wymagania-i-bhp.md",
+        "Sieciowe systemy operacyjne: zadania, usługi, rodziny systemów i licencjonowanie":
+            "dzial-1/systemy-sieciowe.md",
+        "Wirtualizacja: maszyny wirtualne, migawki, sieć wirtualna pracowni":
+            "dzial-1/wirtualizacja.md",
+    },
 }
 
 # ─────────────────────────────────────────────── kontrola spójności
