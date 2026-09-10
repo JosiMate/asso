@@ -116,6 +116,10 @@
 .spis-tematow table:not([class]) th:nth-child(4),
 .spis-tematow table:not([class]) td:nth-child(4) { width: 11%; }
 
+/* Symbole efektów kształcenia w tabeli tematów działu (INF.07.5.1) łamały się
+   w wąskiej kolumnie na „INF.07.5." i osobne „1". */
+.md-typeset table:not([class]) td code { white-space: nowrap; }
+
 /* Spis tematów ASSO ma trzy kolumny (temat, godziny, materiały), więc
    szerokości powyżej wymagają korekty — inaczej tabela nie wypełnia szerokości. */
 .spis-tematow table:not([class]) th:nth-child(2):last-child,
@@ -197,6 +201,14 @@
                  font-size: .68rem; cursor: pointer; border-radius: .2rem;
                  border: 1px solid var(--md-default-fg-color--lighter);
                  background: var(--md-default-bg-color); color: var(--md-default-fg-color); }
+
+/* Material nadaje figure regułą klasową display: flow-root, a klasa wygrywa
+   z wbudowanym [hidden] { display: none }. Skutek: pusta strefa na zrzut
+   ekranu pokazywała naraz zachętę „Kliknij i wklej" ORAZ podgląd z pustym
+   obrazkiem i przyciskiem „Usuń zrzut". Stąd !important — to jedyny sposób,
+   żeby atrybut hidden znaczył to, co znaczy. */
+.kp-zrzut-podglad[hidden],
+.kp-zrzut-pusty[hidden] { display: none !important; }
 
 .kp-stopka { display: flex; flex-wrap: wrap; align-items: center; gap: .7em; margin-top: 1.6em; }
 .kp-stopka .md-button { margin: 0; }

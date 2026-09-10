@@ -1,0 +1,197 @@
+{
+ "id": "dzial-1",
+ "tytul": "Dział I. Organizacja pracy, sieciowe systemy operacyjne i wirtualizacja",
+ "przedmiot": "PCEiKZ Szczucin · administracja sieciowymi systemami operacyjnymi · klasa 3TT",
+ "klasa": "3TT",
+ "sufiks": "ASSO-DZIAL-1",
+ "zadania": [
+  {
+   "nr": 1,
+   "tytul": "Środowisko pracy",
+   "poziom": "wymagania konieczne · ocena 2",
+   "polecenie": "Wypisz maszyny wirtualne, na których pracowałeś w tym dziale. Jeżeli dział nie wymagał nowych maszyn, wpisz te, których używałeś dalej.",
+   "pola": [
+    {
+     "typ": "tabela",
+     "wiersze": [
+      [
+       "m1_nazwa",
+       "maszyna 1 — nazwa i system",
+       ""
+      ],
+      [
+       "m1_zasoby",
+       "maszyna 1 — RAM / rdzenie / dysk",
+       ""
+      ],
+      [
+       "m1_siec",
+       "maszyna 1 — tryb sieci i adres IP",
+       ""
+      ],
+      [
+       "m2_nazwa",
+       "maszyna 2 — nazwa i system",
+       "jeśli była"
+      ],
+      [
+       "m2_zasoby",
+       "maszyna 2 — RAM / rdzenie / dysk",
+       ""
+      ],
+      [
+       "m2_siec",
+       "maszyna 2 — tryb sieci i adres IP",
+       ""
+      ]
+     ]
+    },
+    {
+     "typ": "tekst",
+     "id": "srodowisko_uzasadnienie",
+     "wiersze": 3,
+     "pytanie": "Dlaczego takie tryby sieci? Co by się stało przy innym doborze?"
+    }
+   ]
+  },
+  {
+   "nr": 2,
+   "tytul": "Lekcja organizacyjna. Wymagania edukacyjne, zapoznanie z PSO. BHP p…",
+   "poziom": "1 godzina · efekt INF.07.1",
+   "polecenie": "Zapisz, co wykonałeś na tej lekcji — tak, żeby dało się to odtworzyć bez pytania Cię o szczegóły.",
+   "pola": [
+    {
+     "typ": "tekst",
+     "id": "t2_co",
+     "wiersze": 5,
+     "pytanie": "Co zrobiłeś: kolejne czynności, polecenia, zmienione pliki"
+    },
+    {
+     "typ": "tekst",
+     "id": "t2_sprawdzenie",
+     "wiersze": 3,
+     "pytanie": "Skąd wiesz, że działa? Podaj sprawdzenie wykonane od strony klienta"
+    },
+    {
+     "typ": "zrzut",
+     "id": "t2_zrzut",
+     "opis": "dowód działającej konfiguracji — okno, wynik polecenia albo widok klienta"
+    }
+   ]
+  },
+  {
+   "nr": 3,
+   "tytul": "Sieciowe systemy operacyjne: zadania, usługi, rodziny systemów i li…",
+   "poziom": "1 godzina · efekt INF.07.5.1",
+   "polecenie": "Zapisz, co wykonałeś na tej lekcji — tak, żeby dało się to odtworzyć bez pytania Cię o szczegóły.",
+   "pola": [
+    {
+     "typ": "tekst",
+     "id": "t3_co",
+     "wiersze": 5,
+     "pytanie": "Co zrobiłeś: kolejne czynności, polecenia, zmienione pliki"
+    },
+    {
+     "typ": "tekst",
+     "id": "t3_sprawdzenie",
+     "wiersze": 3,
+     "pytanie": "Skąd wiesz, że działa? Podaj sprawdzenie wykonane od strony klienta"
+    },
+    {
+     "typ": "zrzut",
+     "id": "t3_zrzut",
+     "opis": "dowód działającej konfiguracji — okno, wynik polecenia albo widok klienta"
+    }
+   ]
+  },
+  {
+   "nr": 4,
+   "tytul": "Wirtualizacja: maszyny wirtualne, migawki, sieć wirtualna pracowni",
+   "poziom": "1 godzina · efekt INF.07.5.6",
+   "polecenie": "Zapisz, co wykonałeś na tej lekcji — tak, żeby dało się to odtworzyć bez pytania Cię o szczegóły.",
+   "pola": [
+    {
+     "typ": "tekst",
+     "id": "t4_co",
+     "wiersze": 5,
+     "pytanie": "Co zrobiłeś: kolejne czynności, polecenia, zmienione pliki"
+    },
+    {
+     "typ": "tekst",
+     "id": "t4_sprawdzenie",
+     "wiersze": 3,
+     "pytanie": "Skąd wiesz, że działa? Podaj sprawdzenie wykonane od strony klienta"
+    },
+    {
+     "typ": "zrzut",
+     "id": "t4_zrzut",
+     "opis": "dowód działającej konfiguracji — okno, wynik polecenia albo widok klienta"
+    }
+   ]
+  },
+  {
+   "nr": 5,
+   "tytul": "Błędy i ich usunięcie",
+   "poziom": "wymagania dopełniające · ocena 5",
+   "polecenie": "Najcenniejsza część dziennika. Opisz to, co nie zadziałało za pierwszym razem — w pracy administratora właśnie takie zapiski oszczędzają najwięcej czasu.",
+   "pola": [
+    {
+     "typ": "tekst",
+     "id": "blad_objaw",
+     "wiersze": 3,
+     "pytanie": "Objaw: co dokładnie się działo, jaki był komunikat"
+    },
+    {
+     "typ": "tekst",
+     "id": "blad_przyczyna",
+     "wiersze": 3,
+     "pytanie": "Przyczyna: co się okazało po sprawdzeniu"
+    },
+    {
+     "typ": "tekst",
+     "id": "blad_rozwiazanie",
+     "wiersze": 3,
+     "pytanie": "Rozwiązanie: co zrobiłeś i jak sprawdziłeś, że pomogło"
+    },
+    {
+     "typ": "tekst",
+     "id": "blad_zapobieganie",
+     "wiersze": 2,
+     "pytanie": "Jak uniknąć tego następnym razem"
+    }
+   ]
+  },
+  {
+   "nr": 6,
+   "tytul": "Samoocena",
+   "poziom": "podsumowanie działu",
+   "polecenie": "Zajrzyj do wymagań na oceny na stronie tego działu i oceń się uczciwie. Ta rubryka nie jest oceną — jest podstawą do rozmowy.",
+   "pola": [
+    {
+     "typ": "wybor",
+     "id": "samoocena_poziom",
+     "pytanie": "Wymagania, które według mnie spełniam w tym dziale",
+     "opcje": [
+      "konieczne (2)",
+      "podstawowe (3)",
+      "rozszerzające (4)",
+      "dopełniające (5)",
+      "wykraczające (6)"
+     ]
+    },
+    {
+     "typ": "tekst",
+     "id": "samoocena_uzasadnienie",
+     "wiersze": 4,
+     "pytanie": "Uzasadnij: co konkretnie potrafisz zrobić samodzielnie"
+    },
+    {
+     "typ": "tekst",
+     "id": "samoocena_braki",
+     "wiersze": 3,
+     "pytanie": "Czego jeszcze nie umiesz i co zrobisz, żeby to nadrobić"
+    }
+   ]
+  }
+ ]
+}

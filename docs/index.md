@@ -43,9 +43,9 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Wiesz, według jakich wymagań będziesz oceniany, pracujesz zgodnie z bhp i umiesz postawić sobie maszynę wirtualną do dalszej pracy.
 
-    *3 godziny · 3 tematów*
+    *3 godziny · 3 tematy*
 
-    [Otwórz dział](dzial-1/wymagania-i-bhp.md){ .md-button }
+    [Otwórz dział](dzial-1/){ .md-button }
 
 -   :material-linux:{ .lg .middle } **Dział II. Wdrożenie serwera Linux i podstawy administracji**
 
@@ -53,9 +53,9 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Masz wdrożony serwer Linux: zainstalowany, zaktualizowany, z kontami, profilami, uprawnieniami i przygotowanymi dyskami.
 
-    *7 godzin · 6 tematów*
+    *7 godzin · 6 tematów · materiały w przygotowaniu*
 
-    *materiały w przygotowaniu*
+    [Otwórz dział](dzial-2/){ .md-button }
 
 -   :material-ip-network:{ .lg .middle } **Dział III. Konfiguracja sieciowa serwera**
 
@@ -63,9 +63,9 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Serwer pracuje w sieci lokalnej — adresację ustawiasz dwiema metodami i umiesz sprawdzić, na którym etapie komunikacja się urywa.
 
-    *6 godzin · 6 tematów*
+    *6 godzin · 6 tematów · materiały w przygotowaniu*
 
-    *materiały w przygotowaniu*
+    [Otwórz dział](dzial-3/){ .md-button }
 
 -   :material-lan-connect:{ .lg .middle } **Dział IV. Wdrażanie ról i usług sieciowych: DHCP i DNS**
 
@@ -73,9 +73,9 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Dobierasz role i usługi do zapotrzebowania, a stacja kliencka sama pobiera adres z Twojego serwera DHCP i rozwiązuje nazwy na Twoim serwerze DNS.
 
-    *7 godzin · 6 tematów*
+    *7 godzin · 6 tematów · materiały w przygotowaniu*
 
-    *materiały w przygotowaniu*
+    [Otwórz dział](dzial-4/){ .md-button }
 
 -   :material-folder-network:{ .lg .middle } **Dział V. Udostępnianie zasobów w sieci komputerowej**
 
@@ -83,9 +83,9 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Udostępniasz katalogi i drukarkę — przez NFS dla Linuksa, przez SAMBĘ dla Windowsa — z uprawnieniami i zabezpieczeniami ustawionymi świadomie.
 
-    *7 godzin · 6 tematów*
+    *7 godzin · 6 tematów · materiały w przygotowaniu*
 
-    *materiały w przygotowaniu*
+    [Otwórz dział](dzial-5/){ .md-button }
 
 -   :material-web:{ .lg .middle } **Dział VI. Usługi internetowe i pocztowe**
 
@@ -93,9 +93,9 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Witryna działa na Apache’u pod własną nazwą, obok niej serwer FTP i serwer pocztowy.
 
-    *6 godzin · 6 tematów*
+    *6 godzin · 6 tematów · materiały w przygotowaniu*
 
-    *materiały w przygotowaniu*
+    [Otwórz dział](dzial-6/){ .md-button }
 
 -   :material-monitor-eye:{ .lg .middle } **Dział VII. Zdalna administracja i monitorowanie**
 
@@ -103,9 +103,9 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Administrujesz serwerem zdalnie przez SSH, zarządzasz stacjami centralnie i wiesz z dzienników oraz z pomiarów wydajności, co się na serwerze dzieje.
 
-    *5 godzin · 5 tematów*
+    *5 godzin · 5 tematów · materiały w przygotowaniu*
 
-    *materiały w przygotowaniu*
+    [Otwórz dział](dzial-7/){ .md-button }
 
 -   :material-shield-lock:{ .lg .middle } **Dział VIII. Zabezpieczanie sieciowego systemu operacyjnego**
 
@@ -113,9 +113,9 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Znasz metody ataków, zapora przepuszcza tylko to, co ma przepuszczać, a serwer jest chroniony przed szkodliwym oprogramowaniem — także fizycznie, zasilaczem awaryjnym i macierzą.
 
-    *6 godzin · 5 tematów*
+    *6 godzin · 5 tematów · materiały w przygotowaniu*
 
-    *materiały w przygotowaniu*
+    [Otwórz dział](dzial-8/){ .md-button }
 
 -   :material-backup-restore:{ .lg .middle } **Dział IX. Kopie bezpieczeństwa, diagnostyka i usuwanie awarii**
 
@@ -123,9 +123,9 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Dobierasz typ kopii bezpieczeństwa do sytuacji, odtwarzasz dane, lokalizujesz i usuwasz awarię, a potem dokumentujesz, co się stało i co zrobiłeś.
 
-    *6 godzin · 6 tematów*
+    *6 godzin · 6 tematów · materiały w przygotowaniu*
 
-    *materiały w przygotowaniu*
+    [Otwórz dział](dzial-9/){ .md-button }
 
 -   :material-swap-horizontal:{ .lg .middle } **Dział X. Współpraca systemów Linux i Windows w jednej sieci**
 
@@ -133,9 +133,9 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Serwer obsługuje stacje Windows, a Ty umiesz wskazać, która usługa czemu odpowiada w drugiej rodzinie systemów — tego wymaga wprost efekt INF.07.5.1.
 
-    *4 godziny · 3 tematów*
+    *4 godziny · 3 tematy · materiały w przygotowaniu*
 
-    *materiały w przygotowaniu*
+    [Otwórz dział](dzial-10/){ .md-button }
 
 -   :material-clipboard-check:{ .lg .middle } **Dział XI. Przygotowanie do egzaminu zawodowego INF.07**
 
@@ -143,9 +143,9 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Rozwiązujesz zadania w formacie części praktycznej egzaminu zawodowego, w czasie egzaminacyjnym.
 
-    *3 godziny · 1 tematów*
+    *3 godziny · 1 temat · materiały w przygotowaniu*
 
-    *materiały w przygotowaniu*
+    [Otwórz dział](dzial-11/){ .md-button }
 
 </div>
 
