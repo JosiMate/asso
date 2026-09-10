@@ -31,6 +31,9 @@ w nowej sytuacji i z uzasadnieniem (4), projektując i weryfikując (5),
 poza program — zadania egzaminacyjne i rozwiązania własne (6).
 """
 import json
+import pathlib
+
+HERE = pathlib.Path(__file__).parent
 
 DZIALY = [
 {
@@ -328,7 +331,7 @@ if __name__ == "__main__":
     suma = sum(d["godziny"] for d in DZIALY)
     tematow = sum(len(d["tematy"]) for d in DZIALY)
     assert suma == 60, f"suma godzin = {suma}, powinno być 60"
-    with open("daneasso2.json", "w", encoding="utf-8") as f:
+    with open(HERE / "daneasso2.json", "w", encoding="utf-8") as f:
         json.dump(DZIALY, f, ensure_ascii=False, indent=1)
     print(f"daneasso2.json: {len(DZIALY)} działów, {tematow} tematów, {suma} godzin")
     for d in DZIALY:
