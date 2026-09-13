@@ -58,6 +58,24 @@ niższe. Pełna lista dla całego przedmiotu jest na stronie
     - podejmuje zadania dodatkowe, w tym przygotowanie do części praktycznej egzaminu zawodowego INF.07
 
 
+## Zadania na ocenę celującą
+
+Wybierasz **jedno** zadanie i odsyłasz je w Dzienniku VULCAN, w zadaniu
+**„Zadanie na ocenę celującą: Dział I”**, w ciągu **dwóch tygodni
+od zakończenia działu**. Lista jest widoczna od początku działu — zadanie
+da się wykonać po przerobieniu tematu, przy którym stoi.
+
+??? example "Zadania do wyboru — dział I"
+
+    | Zadanie | Z tematu |
+    | --- | --- |
+    | **A.** Kalkulator licencji | [Sieciowe systemy operacyjne](systemy-sieciowe.md) |
+    | **B.** Porównanie gałęzi | [Sieciowe systemy operacyjne](systemy-sieciowe.md) |
+    | **C.** Audyt licencyjny | [Sieciowe systemy operacyjne](systemy-sieciowe.md) |
+    | **A.** Szablon zamiast instalacji | [Wirtualizacja](wirtualizacja.md) |
+    | **B.** Wirtualizacja bez okna | [Wirtualizacja](wirtualizacja.md) |
+    | **C.** Przenoszenie między hiperwizorami | [Wirtualizacja](wirtualizacja.md) |
+
 ## Karta pracy działu
 
 Dziennik wdrożenia prowadzisz **przez cały dział**, uzupełniając go po każdej

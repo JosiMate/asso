@@ -236,7 +236,7 @@
       [
        "cel_plik",
        "Nazwa pliku oddanego w VULCAN-ie",
-       "dokładnie tak, jak go wysłałeś"
+       "nr<numer w dzienniku>-<skrót tematu>"
       ],
       [
        "cel_data",
