@@ -209,7 +209,7 @@ Dwa tryby najłatwiej pomylić:
 
     Utwórz maszynę wirtualną dla serwera Linux:
 
-    - nazwa `serwer-<twoje nazwisko>`, typ Linux, wersja 64-bitowa
+    - nazwa `serwer-<numer w dzienniku>` (np. `serwer-12`), typ Linux, wersja 64-bitowa
     - **2 GB** RAM, **2** rdzenie, dysk **VDI dynamiczny 25 GB**
     - karta 1: **sieć NAT**
 
