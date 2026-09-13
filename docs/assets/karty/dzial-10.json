@@ -163,6 +163,42 @@
   },
   {
    "nr": 6,
+   "tytul": "Zgłoszenie zadania na ocenę celującą",
+   "poziom": "wymagania wykraczające · ocena 6",
+   "polecenie": "Wypełnij, jeśli wykonujesz zadanie dodatkowe. <strong>Samą pracę oddajesz osobno</strong> — w Dzienniku VULCAN, w zadaniu „Zadanie na ocenę celującą”, w ciągu dwóch tygodni od omówienia tematu. W karcie zostaje zgłoszenie i wnioski.",
+   "pola": [
+    {
+     "typ": "tekst",
+     "id": "cel_temat",
+     "wiersze": 2,
+     "pytanie": "Którego tematu dotyczy zadanie i które zadanie wybrałeś"
+    },
+    {
+     "typ": "tekst",
+     "id": "cel_opis",
+     "wiersze": 6,
+     "pytanie": "Co zrobiłeś i co z tego wyszło? Kilka zdań: na czym polegało zadanie, jak je wykonałeś i jaki jest wynik albo wniosek.",
+     "podpowiedz": "Zadanie polegało na … . Zrobiłem … . Wyszło mi, że …"
+    },
+    {
+     "typ": "tabela",
+     "wiersze": [
+      [
+       "cel_plik",
+       "Nazwa pliku oddanego w VULCAN-ie",
+       "dokładnie tak, jak go wysłałeś"
+      ],
+      [
+       "cel_data",
+       "Data wysłania",
+       ""
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "nr": 7,
    "tytul": "Samoocena",
    "poziom": "podsumowanie działu",
    "polecenie": "Zajrzyj do wymagań na oceny na stronie tego działu i oceń się uczciwie. Ta rubryka nie jest oceną — jest podstawą do rozmowy.",

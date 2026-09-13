@@ -353,6 +353,14 @@ Dwa tryby najłatwiej pomylić:
 
 ## Na ocenę celującą
 
+
+!!! info "Jak oddajesz zadanie na ocenę celującą"
+
+    W karcie pracy tego działu zaznaczasz tylko, **które zadanie wybrałeś**, i opisujesz
+    w kilku zdaniach, co z niego wyszło. Samą pracę — plik, kod, witrynę albo
+    zrzuty z pomiarami — oddajesz **osobno**, w Dzienniku VULCAN w zadaniu
+    *Zadanie na ocenę celującą: Wirtualizacja*, w ciągu **dwóch tygodni** od
+    omówienia tematu.
 **A. Szablon zamiast instalacji.** Przygotuj jedną maszynę bazową (system,
 aktualizacje, SSH, Twoje konto), a potem zrób z niej **szablon**: sklonuj ją
 w trybie połączonym (*linked clone*) i porównaj z klonem pełnym. Zmierz czas
