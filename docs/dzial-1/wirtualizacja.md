@@ -361,6 +361,11 @@ Dwa tryby najłatwiej pomylić:
     zrzuty z pomiarami — oddajesz **osobno**, w Dzienniku VULCAN w zadaniu
     *Zadanie na ocenę celującą: Wirtualizacja*, w ciągu **dwóch tygodni** od
     omówienia tematu.
+
+    Wykonane i oddane w terminie zadanie liczy się jako „inne, porównywalne
+    osiągnięcie” w rozumieniu § 29 ust. 1 pkt 1 lit. c statutu — do oceny
+    celującej nie trzeba startować w konkursie.
+
 **A. Szablon zamiast instalacji.** Przygotuj jedną maszynę bazową (system,
 aktualizacje, SSH, Twoje konto), a potem zrób z niej **szablon**: sklonuj ją
 w trybie połączonym (*linked clone*) i porównaj z klonem pełnym. Zmierz czas

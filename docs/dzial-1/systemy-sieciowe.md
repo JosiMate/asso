@@ -357,6 +357,11 @@ Wybór systemu to nie kwestia gustu, tylko trzech pytań:
     zrzuty z pomiarami — oddajesz **osobno**, w Dzienniku VULCAN w zadaniu
     *Zadanie na ocenę celującą: Sieciowe systemy operacyjne*, w ciągu **dwóch tygodni** od
     omówienia tematu.
+
+    Wykonane i oddane w terminie zadanie liczy się jako „inne, porównywalne
+    osiągnięcie” w rozumieniu § 29 ust. 1 pkt 1 lit. c statutu — do oceny
+    celującej nie trzeba startować w konkursie.
+
 **A. Kalkulator licencji.** Zbuduj arkusz, który po podaniu liczby procesorów,
 rdzeni, maszyn wirtualnych, użytkowników i urządzeń wylicza liczbę licencji
 rdzeniowych, potrzebnych kompletów Standard oraz tańszy wariant CAL-i, a na końcu
