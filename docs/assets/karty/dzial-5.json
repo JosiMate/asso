@@ -240,7 +240,7 @@
    "nr": 9,
    "tytul": "Zgłoszenie zadania na ocenę celującą",
    "poziom": "wymagania wykraczające · ocena 6",
-   "polecenie": "Wypełnij, jeśli wykonujesz zadanie dodatkowe. <strong>Samą pracę oddajesz osobno</strong> — w Dzienniku VULCAN, w zadaniu „Zadanie na ocenę celującą”, w ciągu dwóch tygodni od omówienia tematu. W karcie zostaje zgłoszenie i wnioski.",
+   "polecenie": "Wypełnij, jeśli wykonujesz zadanie dodatkowe. <strong>Samą pracę oddajesz osobno</strong> — w Dzienniku VULCAN, w zadaniu „Zadanie na ocenę celującą” założonym do tego działu, w ciągu dwóch tygodni od zakończenia działu. W karcie zostaje zgłoszenie i wnioski.",
    "pola": [
     {
      "typ": "tekst",

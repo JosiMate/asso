@@ -355,8 +355,9 @@ def karta_dzialu(d):
         "poziom": "wymagania wykraczające · ocena 6",
         "polecenie": "Wypełnij, jeśli wykonujesz zadanie dodatkowe. <strong>Samą "
                      "pracę oddajesz osobno</strong> — w Dzienniku VULCAN, w zadaniu "
-                     "„Zadanie na ocenę celującą”, w ciągu dwóch tygodni od omówienia "
-                     "tematu. W karcie zostaje zgłoszenie i wnioski.",
+                     "„Zadanie na ocenę celującą” założonym do tego działu, w ciągu "
+                     "dwóch tygodni od zakończenia działu. W karcie zostaje "
+                     "zgłoszenie i wnioski.",
         "pola": [
             {"typ": "tekst", "id": "cel_temat", "wiersze": 2,
              "pytanie": "Którego tematu dotyczy zadanie i które zadanie wybrałeś"},
@@ -365,7 +366,7 @@ def karta_dzialu(d):
                         "zadanie, jak je wykonałeś i jaki jest wynik albo wniosek.",
              "podpowiedz": "Zadanie polegało na … . Zrobiłem … . Wyszło mi, że …"},
             {"typ": "tabela", "wiersze": [
-                ["cel_plik", "Nazwa pliku oddanego w VULCAN-ie", "dokładnie tak, jak go wysłałeś"],
+                ["cel_plik", "Nazwa pliku oddanego w VULCAN-ie", "nr<numer w dzienniku>-<skrót tematu>"],
                 ["cel_data", "Data wysłania", ""],
             ]},
         ],
