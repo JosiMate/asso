@@ -121,7 +121,7 @@
      "typ": "tekst",
      "id": "cel_temat",
      "wiersze": 2,
-     "pytanie": "Którego tematu dotyczy zadanie i które zadanie wybrałeś"
+     "pytanie": "Które zadanie z działu wybrałeś? Podaj literę i tytuł"
     },
     {
      "typ": "tekst",
@@ -136,7 +136,7 @@
       [
        "cel_plik",
        "Nazwa pliku oddanego w VULCAN-ie",
-       "nr<numer w dzienniku>-<skrót tematu>"
+       "nr<numer w dzienniku>-<litera zadania>"
       ],
       [
        "cel_data",

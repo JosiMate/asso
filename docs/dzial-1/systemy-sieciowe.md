@@ -347,41 +347,6 @@ Wybór systemu to nie kwestia gustu, tylko trzech pytań:
 </script>
 </div>
 
-## Na ocenę celującą
-
-
-!!! info "Jak oddajesz zadanie na ocenę celującą"
-
-    W karcie pracy tego działu zaznaczasz tylko, **które zadanie wybrałeś**, i opisujesz
-    w kilku zdaniach, co z niego wyszło. Samą pracę — plik, kod, witrynę albo
-    zrzuty z pomiarami — oddajesz **osobno**, w Dzienniku VULCAN, w zadaniu
-    *Zadanie na ocenę celującą* założonym do tego działu. Termin: **dwa tygodnie
-    od zakończenia działu**.
-
-    Plik nazwij `nr<numer w dzienniku>-<skrót tematu>`, a w treści zadania dopisz
-    3–5 zdań: którego tematu i zadania dotyczy, co zrobiłeś i jaki jest wynik.
-
-    Wykonane i oddane w terminie zadanie liczy się jako „inne, porównywalne
-    osiągnięcie” w rozumieniu § 29 ust. 1 pkt 1 lit. c statutu — do oceny
-    celującej nie trzeba startować w konkursie. Pełne zasady opisuje strona
-    *Wymagania edukacyjne i bhp*.
-
-**A. Kalkulator licencji.** Zbuduj arkusz, który po podaniu liczby procesorów,
-rdzeni, maszyn wirtualnych, użytkowników i urządzeń wylicza liczbę licencji
-rdzeniowych, potrzebnych kompletów Standard oraz tańszy wariant CAL-i, a na końcu
-podpowiada próg opłacalności Datacenter. Ceny weź z aktualnego cennika partnera
-i podaj datę, z której pochodzą.
-
-**B. Porównanie gałęzi.** Postaw dwie maszyny wirtualne: jedną z gałęzi Debiana,
-drugą z gałęzi Red Hata (Rocky albo AlmaLinux). Zainstaluj na obu serwer WWW
-i opisz **różnice w drodze do celu**: nazwy pakietów, menedżer pakietów, położenie
-plików konfiguracyjnych, nazwa usługi, domyślne ustawienia zapory i SELinuksa.
-
-**C. Audyt licencyjny.** Napisz procedurę, według której administrator sprawdza
-w firmie zgodność licencyjną: co trzeba policzyć, jakie dokumenty zebrać, jak
-udokumentować wynik. Uwzględnij CAL-e, licencje OEM przypisane do sprzętu oraz
-oprogramowanie zainstalowane przez użytkowników.
-
 ---
 
 *Wersje podane w tekście są aktualne we wrześniu 2026: Windows Server 2025,

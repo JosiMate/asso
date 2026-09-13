@@ -351,42 +351,6 @@ Dwa tryby najłatwiej pomylić:
 </script>
 </div>
 
-## Na ocenę celującą
-
-
-!!! info "Jak oddajesz zadanie na ocenę celującą"
-
-    W karcie pracy tego działu zaznaczasz tylko, **które zadanie wybrałeś**, i opisujesz
-    w kilku zdaniach, co z niego wyszło. Samą pracę — plik, kod, witrynę albo
-    zrzuty z pomiarami — oddajesz **osobno**, w Dzienniku VULCAN, w zadaniu
-    *Zadanie na ocenę celującą* założonym do tego działu. Termin: **dwa tygodnie
-    od zakończenia działu**.
-
-    Plik nazwij `nr<numer w dzienniku>-<skrót tematu>`, a w treści zadania dopisz
-    3–5 zdań: którego tematu i zadania dotyczy, co zrobiłeś i jaki jest wynik.
-
-    Wykonane i oddane w terminie zadanie liczy się jako „inne, porównywalne
-    osiągnięcie” w rozumieniu § 29 ust. 1 pkt 1 lit. c statutu — do oceny
-    celującej nie trzeba startować w konkursie. Pełne zasady opisuje strona
-    *Wymagania edukacyjne i bhp*.
-
-**A. Szablon zamiast instalacji.** Przygotuj jedną maszynę bazową (system,
-aktualizacje, SSH, Twoje konto), a potem zrób z niej **szablon**: sklonuj ją
-w trybie połączonym (*linked clone*) i porównaj z klonem pełnym. Zmierz czas
-utworzenia i zajęte miejsce dla obu wariantów, opisz, kiedy który się opłaca,
-i wyjaśnij, co się stanie z klonem połączonym po skasowaniu maszyny bazowej.
-
-**B. Wirtualizacja bez okna.** Naucz się sterować VirtualBoksem z wiersza poleceń
-przez `VBoxManage`: utwórz maszynę, przydziel jej zasoby, ustaw tryb sieci, zrób
-migawkę i uruchom maszynę bezgłowo (`--type headless`). Zapisz to jako skrypt,
-który stawia komplet „serwer + klient" jednym poleceniem, i wyjaśnij, dlaczego
-w serwerowni robi się to właśnie tak.
-
-**C. Przenoszenie między hiperwizorami.** Wyeksportuj maszynę do **OVA** i opisz,
-co zawiera ten plik. Sprawdź, co trzeba zmienić po imporcie na innym hiperwizorze:
-sterowniki, nazwy interfejsów sieciowych, dodatki gościa. Wyjaśnij, czym format
-OVF różni się od OVA i dlaczego istnieją oba.
-
 ---
 
 *Opisy interfejsu dotyczą **Oracle VirtualBox 7.2** (wrzesień 2026). Nazwy trybów

@@ -12,6 +12,7 @@ odsyłacze do gotowych materiałów trzyma opisy_dzialow.json.
 import json, pathlib, sys
 
 HERE = pathlib.Path(__file__).parent
+NL = chr(10)
 sys.path.insert(0, str(HERE))
 import wzo_md
 
@@ -193,30 +194,47 @@ POZIOMY = [
 
 
 # ─────────────────────────────────────────────── strony działów
-def zadania_celujace(plik_wzgledny):
-    """(oznaczenie, tytuł) z sekcji „Na ocenę celującą” gotowej strony tematu.
+try:
+    ZADANIA6 = json.load(open(HERE / "zadania6.json", encoding="utf-8"))
+except FileNotFoundError:
+    ZADANIA6 = {}
 
-    Dzięki temu spis zadań na szóstkę na stronie działu bierze się z samych
-    tematów — nie trzeba go utrzymywać w dwóch miejscach.
+
+def zadania_celujace_md(naglowek, link_wymagania):
+    """Sekcja „Zadania na ocenę celującą” dla działu.
+
+    Treść zadań trzyma narzedzia/zadania6.json — kluczem jest nagłówek działu
+    („Dział I. …”), wartością lista zadań. Dział bez wpisu nie dostaje sekcji.
     """
-    import re
-    p = ROOT / plik_wzgledny
-    if not p.exists():
-        return []
-    s = p.read_text(encoding="utf-8")
-    m = re.search(r"^## Na ocenę celującą\s*$", s, re.M)
-    if not m:
-        return []
-    reszta = s[m.end():]
-    kon = re.search(r"^(## |---\s*$)", reszta, re.M)
-    if kon:
-        reszta = reszta[:kon.start()]
-    lit = re.findall(r"^\*\*([A-Z])\.\s+(.+?)\*\*", reszta, re.M)
-    if lit:
-        return [(a, b.rstrip(".")) for a, b in lit]
-    return [(str(i), t.rstrip("."))
-            for i, t in enumerate(
-                re.findall(r"^\d+\.\s+\*\*(.+?)\*\*", reszta, re.M), start=1)]
+    zad = ZADANIA6.get(naglowek)
+    if not zad:
+        return ""
+    ile = len(zad)
+    slowo = "zadanie" if ile == 1 else ("zadania" if ile < 5 else "zadań")
+    czesci = [f'??? example "{naglowek} — {ile} {slowo} do wyboru"', ""]
+    for i, z in enumerate(zad):
+        linie = [f"**{z['ozn']}. {z['tytul']}**", ""]
+        if z.get("wymaga"):
+            linie += [f"*Do wykonania {z['wymaga']}.*", ""]
+        for akapit in z["opis"]:
+            linie += [akapit, ""]
+        linie += [f"**Oddajesz:** {z['oddajesz']}", ""]
+        czesci.append(NL.join("    " + l if l else "" for l in linie))
+        if i < ile - 1:
+            czesci.append("    ---" + NL)
+    return (
+        NL + "## Zadania na ocenę celującą" + NL + NL
+        + "Zadania na szóstkę są **działowe, nie tematyczne** — obejmują materiał całego" + NL
+        + "działu i wymagają czegoś więcej niż powtórzenia ćwiczenia z lekcji. Wybierasz" + NL
+        + "**jedno** z listy poniżej." + NL + NL
+        + "Pracę oddajesz w Dzienniku VULCAN, w zadaniu **„Zadanie na ocenę celującą:" + NL
+        + "Dział …”** założonym do tego działu, w ciągu **dwóch tygodni od zakończenia" + NL
+        + "działu**. Plik nazwij `nr<numer w dzienniku>-<litera zadania>`, a w treści" + NL
+        + "zadania dopisz 3–5 zdań o tym, co zrobiłeś i co z tego wyszło." + NL + NL
+        + "Cała lista jest widoczna **od początku działu**, żebyś miał czas wybrać" + NL
+        + "i popracować. Przy każdym zadaniu jest napisane, po którym temacie da się" + NL
+        + f"je wykonać. Pełne zasady opisuje strona [wymagań edukacyjnych]({link_wymagania})." + NL + NL
+        + NL.join(czesci) + NL)
 
 
 def strona_dzialu(d):
@@ -236,23 +254,9 @@ def strona_dzialu(d):
                if cel else "*w przygotowaniu*")
         wiersze.append(f"| {nazwa} | {ile} | `{pp}` | {mat} |")
 
-    # zadania na ocenę celującą — zbierane z gotowych stron tematów
-    zad6 = []
-    for tytul, wpis in gotowe.items():
-        cel = sciezka(wpis).split("/", 1)[1]
-        for ozn, zad in zadania_celujace(sciezka(wpis)):
-            zad6.append(f"    | **{ozn}.** {zad} | [{etykieta(wpis, tytul)}]({cel}) |")
-    sekcja6 = ""
-    if zad6:
-        sekcja6 = (
-            "\n## Zadania na ocenę celującą\n\n"
-            "Wybierasz **jedno** zadanie i odsyłasz je w Dzienniku VULCAN, w zadaniu\n"
-            f"**„Zadanie na ocenę celującą: Dział {d['nr']}”**, w ciągu **dwóch tygodni\n"
-            "od zakończenia działu**. Lista jest widoczna od początku działu — zadanie\n"
-            "da się wykonać po przerobieniu tematu, przy którym stoi.\n\n"
-            f"??? example \"Zadania do wyboru — dział {d['nr']}\"\n\n"
-            "    | Zadanie | Z tematu |\n"
-            "    | --- | --- |\n" + "\n".join(zad6) + "\n")
+    # zadania na ocenę celującą — treść z narzedzia/zadania6.json
+    sekcja6 = zadania_celujace_md(f"Dział {d['nr']}. {d['tytul']}",
+                                  "../dzial-1/wymagania-i-bhp.md")
 
     poziomy = []
     for klucz, naglowek, opis in POZIOMY:
@@ -404,13 +408,13 @@ def karta_dzialu(d):
                      "zgłoszenie i wnioski.",
         "pola": [
             {"typ": "tekst", "id": "cel_temat", "wiersze": 2,
-             "pytanie": "Którego tematu dotyczy zadanie i które zadanie wybrałeś"},
+             "pytanie": "Które zadanie z działu wybrałeś? Podaj literę i tytuł"},
             {"typ": "tekst", "id": "cel_opis", "wiersze": 6,
              "pytanie": "Co zrobiłeś i co z tego wyszło? Kilka zdań: na czym polegało "
                         "zadanie, jak je wykonałeś i jaki jest wynik albo wniosek.",
              "podpowiedz": "Zadanie polegało na … . Zrobiłem … . Wyszło mi, że …"},
             {"typ": "tabela", "wiersze": [
-                ["cel_plik", "Nazwa pliku oddanego w VULCAN-ie", "nr<numer w dzienniku>-<skrót tematu>"],
+                ["cel_plik", "Nazwa pliku oddanego w VULCAN-ie", "nr<numer w dzienniku>-<litera zadania>"],
                 ["cel_data", "Data wysłania", ""],
             ]},
         ],

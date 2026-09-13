@@ -169,24 +169,25 @@ to obowiązek wynikający ze statutu, a nie to samo co dobrowolna poprawa opisan
 
 ### Zadania na ocenę celującą
 
-Przy każdym temacie jest sekcja **„Na ocenę celującą”** z zadaniami wykraczającymi
-poza program. Są **dobrowolne** — ich brak niczego nie obniża, a wykonanie nie
-zwalnia z prac obowiązkowych.
+Zadania na szóstkę są **działowe, nie tematyczne**: obejmują materiał całego działu
+i wymagają czegoś więcej niż powtórzenia ćwiczenia z lekcji. Ich komplet znajdziesz
+przy spisie tematów działu — pełne treści, widoczne **od początku działu**, żebyś
+miał czas wybrać i popracować.
 
-**W karcie pracy zostaje samo zgłoszenie.** Zaznaczasz w niej, *które* zadanie
-wybrałeś, i opisujesz w kilku zdaniach, co z niego wyszło. To nie jest oddanie pracy.
-
-**Pracę oddajesz osobno — w Dzienniku VULCAN.** Do każdego działu założone jest tam
-jedno zadanie **„Zadanie na ocenę celującą: Dział …”**. Odsyłasz do niego:
+Są **dobrowolne**. Ich brak niczego nie obniża, a wykonanie nie zwalnia z prac
+obowiązkowych. **Karty pracy do tematów są od nich niezależne** — nie ma w nich
+żadnej rubryki na zadanie dodatkowe.
 
 | Co odsyłasz | Jak to ma wyglądać |
 | --- | --- |
-| plik z pracą | kod `.py`, archiwum `.zip` z witryną, plik konfiguracyjny albo zrzuty z pomiarami — zależnie od zadania |
-| nazwa pliku | `nr<numer w dzienniku>-<skrót tematu>`, np. `nr12-python.zip` |
-| opis w treści zadania | 3–5 zdań: którego tematu i zadania dotyczy, co zrobiłeś, jaki jest wynik albo wniosek |
+| gdzie | Dziennik VULCAN, zadanie **„Zadanie na ocenę celującą: Dział …”** założone do tego działu |
+| termin | **dwa tygodnie od zakończenia działu**; potem zadanie zostaje zamknięte i otwiera się kolejne |
+| plik z pracą | kod, archiwum z witryną, dokumentacja, arkusz albo zrzuty z pomiarami — zależnie od zadania |
+| nazwa pliku | `nr<numer w dzienniku>-<litera zadania>`, np. `nr12-B.zip` |
+| opis w treści zadania | 3–5 zdań: które zadanie wybrałeś, co zrobiłeś, jaki jest wynik albo wniosek |
 
-- **termin: dwa tygodnie od zakończenia działu.** Po tym czasie zadanie w dzienniku
-  zostaje zamknięte i otwiera się zadanie do kolejnego działu
+- wybierasz **jedno** zadanie z działu; przy każdym jest napisane, po którym temacie
+  da się je wykonać
 - pracę oceniam pod kątem **samodzielności i poprawności**, nie objętości; krótkie
   i działające jest lepsze od długiego i niedokończonego
 - wykonane i oddane w terminie zadanie liczy się jako „inne, porównywalne osiągnięcie”

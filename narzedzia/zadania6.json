@@ -1,0 +1,34 @@
+{
+  "Dział I. Organizacja pracy, sieciowe systemy operacyjne i wirtualizacja": [
+    {
+      "ozn": "A",
+      "tytul": "Pracownia z jednego polecenia",
+      "wymaga": "po temacie „Wirtualizacja”",
+      "opis": [
+        "Zbuduj skrypt (`VBoxManage` albo odpowiednik w wybranym hiperwizorze), który stawia komplet maszyn „serwer + dwa klienty”: tworzy je, przydziela zasoby, ustawia tryby sieci tak, żeby klienty widziały serwer, ale nie widziały internetu, robi migawkę stanu wyjściowego i uruchamia wszystko bezgłowo.",
+        "Dopisz drugi skrypt, który przywraca migawkę i kasuje maszyny. Oba mają działać na czystym systemie, bez ręcznego klikania."
+      ],
+      "oddajesz": "oba skrypty, dokumentację uruchomienia i zrzut z działającego zestawu"
+    },
+    {
+      "ozn": "B",
+      "tytul": "Licencje policzone dla konkretnej szkoły",
+      "wymaga": "po temacie „Sieciowe systemy operacyjne”",
+      "opis": [
+        "Przyjmij realny scenariusz: serwer plików i kontroler domeny dla 60 stanowisk i 8 nauczycieli. Policz koszt w trzech wariantach — Windows Server z licencjami dostępowymi, dystrybucja Linuksa z komercyjnym wsparciem, dystrybucja bez wsparcia.",
+        "Uwzględnij to, czego nie widać w cenniku: czas wdrożenia, wymagane kompetencje administratora i koszt przy dołożeniu 20 stanowisk za rok. Wskaż wariant i obroń go."
+      ],
+      "oddajesz": "zestawienie kosztów ze źródłami cen, analizę ryzyk i rekomendację"
+    },
+    {
+      "ozn": "C",
+      "tytul": "Zadanie praktyczne INF.07 w wirtualnej pracowni",
+      "wymaga": "po całym dziale",
+      "opis": [
+        "Znajdź w arkuszach egzaminu zawodowego INF.07 z lat poprzednich zadanie praktyczne dotyczące konfiguracji systemu sieciowego. Wykonaj je w całości na maszynach wirtualnych.",
+        "Dokumentuj każdy krok zrzutami tak, żeby **ktoś inny odtworzył konfigurację** z samej dokumentacji. Zmierz czas i oceń własną pracę według kryteriów z arkusza."
+      ],
+      "oddajesz": "dokumentację wykonania, wskazanie arkusza, zmierzony czas i samoocenę punktową"
+    }
+  ]
+}
