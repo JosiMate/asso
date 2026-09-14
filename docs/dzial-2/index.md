@@ -4,7 +4,7 @@
 
 Masz wdrożony serwer Linux: zainstalowany, zaktualizowany, z kontami, profilami, uprawnieniami i przygotowanymi dyskami.
 
-Materiały do tego działu powstają w miarę realizacji programu — na razie znajdziesz tu spis tematów i wymagania.
+Gotowe materiały: **1 z 6** tematów.
 
 ## Tematy działu
 
@@ -14,7 +14,7 @@ egzaminacyjnych.
 
 | Temat | Godz. | Efekt | Materiały |
 | --- | :---: | :---: | --- |
-| Instalacja serwera Linux na maszynie wirtualnej; zgodność sprzętowa | 1 | `INF.07.5.2, INF.07.5.6` | *w przygotowaniu* |
+| **[Instalacja serwera Linux na maszynie wirtualnej; zgodność sprzętowa](instalacja-serwera-linux.md)** | 1 | `INF.07.5.2, INF.07.5.6` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 | Konfiguracja poinstalacyjna, aktualizacje i sterowniki urządzeń | 1 | `INF.07.5.2` | *w przygotowaniu* |
 | Praca w powłoce: struktura katalogów i podstawowe polecenia | 2 | `INF.07.5.2` | *w przygotowaniu* |
 | Konta i grupy użytkowników | 1 | `INF.07.5.3` | *w przygotowaniu* |

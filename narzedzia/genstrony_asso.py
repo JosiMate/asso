@@ -31,6 +31,10 @@ GOTOWE = {
         "Wirtualizacja: maszyny wirtualne, migawki, sieć wirtualna pracowni":
             ("dzial-1/wirtualizacja.md", "Wirtualizacja"),
     },
+    "II": {
+        "Instalacja serwera Linux na maszynie wirtualnej; zgodność sprzętowa":
+            ("dzial-2/instalacja-serwera-linux.md", "Instalacja serwera Linux"),
+    },
 }
 
 

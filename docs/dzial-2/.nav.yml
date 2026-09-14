@@ -7,3 +7,4 @@ title: "Dział II. Wdrożenie serwera Linux i podstawy administracji"
 append_unmatched: true
 nav:
   - "Przegląd działu": index.md
+  - "Instalacja serwera Linux": instalacja-serwera-linux.md
