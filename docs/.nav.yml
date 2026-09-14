@@ -1,0 +1,19 @@
+# Plik generowany przez narzedzia/genstrony_asso.py — nie edytuj ręcznie.
+# Kolejność i nazwy w lewej kolumnie — wtyczka awesome-nav.
+# Katalog dopisany bez wpisu niżej trafi na koniec listy (append_unmatched),
+# więc nowa strona nigdy nie zniknie ze strony w sposób niezauważony.
+
+append_unmatched: true
+nav:
+  - "Start": index.md
+  - dzial-1
+  - dzial-2
+  - dzial-3
+  - dzial-4
+  - dzial-5
+  - dzial-6
+  - dzial-7
+  - dzial-8
+  - dzial-9
+  - dzial-10
+  - dzial-11

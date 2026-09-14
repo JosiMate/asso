@@ -612,47 +612,56 @@ i do dokumentacji.
 
 
 
-# ─────────────────────────────────────────────── nawigacja w mkdocs.yml
-# Nawigacja ma 11 działów i rośnie z każdym dopisanym tematem, więc trzymanie
-# jej ręcznie w mkdocs.yml kończyłoby się rozjazdem ze spisem na stronie.
-# Generator przepisuje blok między znacznikami — reszty pliku nie dotyka.
-POCZATEK = "# ↓↓↓ nawigacja generowana przez narzedzia/genstrony_asso.py"
-KONIEC = "# ↑↑↑ koniec bloku generowanego"
+# ─────────────────────────────────────────────── nawigacja (awesome-nav)
+# Nawigację składa wtyczka awesome-nav z plików .nav.yml leżących w katalogach
+# docs/. Generator pisze je wszystkie, więc mkdocs.yml zostaje nietknięty —
+# wcześniej trzeba było pilnować znaczników w cudzym pliku konfiguracyjnym.
+WSTEP_KORZEN = (
+    "# Plik generowany przez narzedzia/genstrony_asso.py — nie edytuj ręcznie.\n"
+    "# Kolejność i nazwy w lewej kolumnie — wtyczka awesome-nav.\n"
+    "# Katalog dopisany bez wpisu niżej trafi na koniec listy (append_unmatched),\n"
+    "# więc nowa strona nigdy nie zniknie ze strony w sposób niezauważony.\n"
+)
+WSTEP_KATALOG = (
+    "# Plik generowany przez narzedzia/genstrony_asso.py — nie edytuj ręcznie.\n"
+    "# Kolejność i nazwy tematów w tym dziale — wtyczka awesome-nav.\n"
+    "# Plik dopisany bez wpisu niżej trafi na koniec listy (append_unmatched)\n"
+    "# i dostanie tytuł z nagłówka pierwszego poziomu.\n"
+)
 
 
 def yaml_klucz(tekst):
-    """Klucz YAML w cudzysłowie. Tytuł działu IV brzmi „Wdrażanie ról i usług
-    sieciowych: DHCP i DNS" — dwukropek w środku rozbiłby wpis na klucz
-    i wartość, więc cytujemy zawsze, a wewnętrzne cudzysłowy podwajamy."""
-    return '"' + tekst.replace('"', '""') + '"'
+    """Klucz YAML w cudzysłowie — tytuł działu może zawierać dwukropek,
+    który bez cytowania rozbiłby wpis na klucz i wartość."""
+    return '"' + tekst.replace('"', '\\"') + '"'
 
 
-def blok_nawigacji():
-    linie = ["nav:", "  - Start: index.md"]
+def nawigacja_korzenia():
+    linie = [WSTEP_KORZEN, "append_unmatched: true", "nav:", '  - "Start": index.md']
     for d in DZIALY:
-        numer = RZYMSKIE[d["nr"]]
-        gotowe = GOTOWE.get(d["nr"], {})
-        naglowek = f"Dział {d['nr']}. {d['tytul']}"
-        linie.append(f"  - {yaml_klucz(naglowek)}:")
-        linie.append(f"      - Przegląd działu: dzial-{numer}/index.md")
-        for tytul, _ile, _pp in d["tematy"]:
-            if tytul in gotowe:
-                wpis = gotowe[tytul]
-                linie.append(f"      - {yaml_klucz(etykieta(wpis, tytul))}: {sciezka(wpis)}")
-    return "\n".join(linie)
+        linie.append(f"  - dzial-{RZYMSKIE[d['nr']]}")
+    return "\n".join(linie) + "\n"
+
+
+def nawigacja_dzialu(d):
+    gotowe = GOTOWE.get(d["nr"], {})
+    naglowek = "Dział " + d["nr"] + ". " + d["tytul"]
+    linie = [WSTEP_KATALOG, "title: " + yaml_klucz(naglowek),
+             "append_unmatched: true", "nav:", '  - "Przegląd działu": index.md']
+    for tytul, _ile, _pp in d["tematy"]:
+        if tytul in gotowe:
+            wpis = gotowe[tytul]
+            linie.append("  - " + yaml_klucz(etykieta(wpis, tytul))
+                         + ": " + sciezka(wpis).split("/", 1)[1])
+    return "\n".join(linie) + "\n"
 
 
 def zapisz_nawigacje():
-    plik = HERE.parent / "mkdocs.yml"
-    tresc = plik.read_text(encoding="utf-8")
-    if POCZATEK not in tresc or KONIEC not in tresc:
-        sys.exit(f"BŁĄD: w mkdocs.yml brakuje znaczników {POCZATEK!r} / {KONIEC!r}")
-    przed, reszta = tresc.split(POCZATEK, 1)
-    _stare, po = reszta.split(KONIEC, 1)
-    nowe = f"{przed}{POCZATEK}\n{blok_nawigacji()}\n{KONIEC}{po}"
-    plik.write_text(nowe, encoding="utf-8")
-    ile = blok_nawigacji().count("\n") + 1
-    print(f"  mkdocs.yml  (nawigacja: {ile} linii)")
+    """Pisze .nav.yml w docs/ i w każdym katalogu działu. mkdocs.yml zostaje
+    nietknięty — od wdrożenia awesome-nav nie ma w nim już klucza nav."""
+    zapisz(".nav.yml", nawigacja_korzenia())
+    for d in DZIALY:
+        zapisz(f"dzial-{RZYMSKIE[d['nr']]}/.nav.yml", nawigacja_dzialu(d))
 
 
 # ─────────────────────────────────────────────── zapis

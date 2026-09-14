@@ -1,0 +1,12 @@
+# Plik generowany przez narzedzia/genstrony_asso.py — nie edytuj ręcznie.
+# Kolejność i nazwy tematów w tym dziale — wtyczka awesome-nav.
+# Plik dopisany bez wpisu niżej trafi na koniec listy (append_unmatched)
+# i dostanie tytuł z nagłówka pierwszego poziomu.
+
+title: "Dział I. Organizacja pracy, sieciowe systemy operacyjne i wirtualizacja"
+append_unmatched: true
+nav:
+  - "Przegląd działu": index.md
+  - "Wymagania edukacyjne i bhp": wymagania-i-bhp.md
+  - "Sieciowe systemy operacyjne": systemy-sieciowe.md
+  - "Wirtualizacja": wirtualizacja.md
