@@ -131,6 +131,47 @@ W poleceniu zawsze jest napisane, że praca jest obowiązkowa i dokąd ją odsy�
 - zalecenia z opinii i orzeczeń poradni psychologiczno-pedagogicznej są uwzględniane
   przy ustalaniu terminu i formy pracy (§ 36 statutu)
 
+### Samodzielność pracy i weryfikacja
+
+Ocena z tego przedmiotu opisuje **Twoje** umiejętności. Praca, która ich nie
+pokazuje, nie jest dla mnie żadną informacją — niezależnie od tego, jak dobrze
+wygląda.
+
+**Co wolno, a czego nie.** Wolno korzystać z dokumentacji, przykładów z sieci,
+pomocy kolegi i narzędzi — także tych opartych na sztucznej inteligencji. To są
+narzędzia pracy i nikt Ci ich nie zabrania. Granica leży gdzie indziej: **masz
+rozumieć to, co oddajesz**. Umieć wyjaśnić każdy wiersz, powtórzyć to na innych
+danych i powiedzieć, dlaczego zrobiłeś tak, a nie inaczej. Jeżeli tego nie
+potrafisz, to nie jest Twoja praca — choćbyś sam wysłał plik.
+
+**Każda praca może zostać zweryfikowana.** Weryfikuję wyrywkowo, po kilka prac
+z każdej partii, także wtedy, gdy nie mam żadnych wątpliwości. Nikt nie jest
+wtedy „wybrany" ani o nic oskarżany — to normalny element sprawdzania osiągnięć.
+Weryfikacja trwa kilkanaście minut i wygląda tak:
+
+- odtwarzasz **fragment** pracy przy mnie, na zmienionych danych
+- odpowiadasz, dlaczego w jednym konkretnym miejscu wybrałeś takie rozwiązanie
+- mówisz, co się stanie, jeżeli zmienię jeden parametr — i sprawdzamy
+- przy pracach z pomiarami: powtarzamy jeden pomiar na miejscu
+
+**Co się dzieje, gdy weryfikacja wypadnie źle.** Praca **nie podlega ocenie** —
+nie jako kara, tylko dlatego, że nie potwierdza Twoich umiejętności. Ocenę
+dostajesz za to, co pokazałeś podczas weryfikacji, a umiejętność sprawdzamy
+jeszcze raz w terminie, który wyznaczę. Droga do oceny pozostaje otwarta
+na tych samych zasadach co przy pracy nieoddanej.
+
+**Dwa tory, które się nie mieszają.** Ocena z przedmiotu opisuje umiejętności —
+i tylko to. Nieuczciwość jest sprawą **zachowania** i tam trafia: do uwagi dla
+wychowawcy, jako element wywiązywania się z obowiązków ucznia (§ 43 ust. 1 pkt 1
+statutu). Jedno na drugie nie wpływa, bo § 43 ust. 3 statutu wprost tego zakazuje.
+Nie dostaniesz jedynki „za ściąganie" — dostaniesz ocenę odpowiadającą temu,
+co potrafisz, i uwagę za to, jak się zachowałeś.
+
+**Jak sobie to ułatwić.** Zapisuj źródła, z których korzystałeś, prosto w pracy.
+Zostawiaj ślad kolejnych wersji zamiast jednego gotowego pliku. I sprawdź sam
+siebie przed oddaniem: zasłoń kod albo konfigurację i spróbuj opowiedzieć,
+co tam jest. Jeżeli idzie gładko, weryfikacja też pójdzie gładko.
+
 ### Zaliczanie zaległości
 
 Jeżeli nie było Cię na zapowiedzianej pracy pisemnej, **musisz** ją zaliczyć —
