@@ -65,6 +65,8 @@ extra_javascript:
   # docx.umd.js celowo NIE jest tu wymieniony — karta.js doczyta go dopiero
   # przy generowaniu pliku, żeby nie obciążać czytelników materiału.
   - assets/js/karta.js
+  # karty.js korzysta z window.KartaPracy, więc musi iść PO karta.js
+  - assets/js/karty.js
   - assets/js/quiz.js
   - assets/js/postep.js
 
@@ -101,13 +103,50 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
 
+validation:
+  links:
+    # Strony tematów odsyłają do konkretnych zadań w karcie pracy
+    # (…#zadanie-3). Te kotwice powstają dopiero w przeglądarce, gdy karta.js
+    # zbuduje kartę z pliku JSON, więc MkDocs ich w źródle nie widzi i przy
+    # każdym temacie zgłaszałby INFO o „braku kotwicy". Wyłączamy sprawdzanie
+    # SAMYCH KOTWIC — sprawdzanie istnienia plików zostaje włączone.
+    anchors: ignore
+
 plugins:
   # Wyszukiwarka lunr nie ma polskiego stemmera (biblioteka lunr-languages
   # nie wspiera polskiego), więc świadomie zostawiamy tokenizer domyślny.
   - search
-  # Nawigacją rządzą pliki .nav.yml w katalogach docs/ — dzięki temu
-  # dopisanie tematu nie wymaga już zaglądania do tego pliku.
-  - awesome-nav
+
+# ↓↓↓ nawigacja generowana przez narzedzia/genstrony_asso.py
+nav:
+  - Start: index.md
+  - "Dział I. Organizacja pracy, sieciowe systemy operacyjne i wirtualizacja":
+      - Przegląd działu: dzial-1/index.md
+      - "Wymagania edukacyjne i bhp": dzial-1/wymagania-i-bhp.md
+      - "Sieciowe systemy operacyjne": dzial-1/systemy-sieciowe.md
+      - "Wirtualizacja": dzial-1/wirtualizacja.md
+  - "Dział II. Wdrożenie serwera Linux i podstawy administracji":
+      - Przegląd działu: dzial-2/index.md
+  - "Dział III. Konfiguracja sieciowa serwera":
+      - Przegląd działu: dzial-3/index.md
+  - "Dział IV. Wdrażanie ról i usług sieciowych: DHCP i DNS":
+      - Przegląd działu: dzial-4/index.md
+  - "Dział V. Udostępnianie zasobów w sieci komputerowej":
+      - Przegląd działu: dzial-5/index.md
+  - "Dział VI. Usługi internetowe i pocztowe":
+      - Przegląd działu: dzial-6/index.md
+  - "Dział VII. Zdalna administracja i monitorowanie":
+      - Przegląd działu: dzial-7/index.md
+  - "Dział VIII. Zabezpieczanie sieciowego systemu operacyjnego":
+      - Przegląd działu: dzial-8/index.md
+  - "Dział IX. Kopie bezpieczeństwa, diagnostyka i usuwanie awarii":
+      - Przegląd działu: dzial-9/index.md
+  - "Dział X. Współpraca systemów Linux i Windows w jednej sieci":
+      - Przegląd działu: dzial-10/index.md
+  - "Dział XI. Przygotowanie do egzaminu zawodowego INF.07":
+      - Przegląd działu: dzial-11/index.md
+  - Karty pracy: karty/index.md
+# ↑↑↑ koniec bloku generowanego
 
 extra:
   social:
@@ -115,3 +154,6 @@ extra:
       link: https://www.pceikz.pl
       name: PCEiKZ Szczucin
   generator: false
+
+not_in_nav: |
+  /assets/

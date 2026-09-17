@@ -4,7 +4,7 @@
 
 Masz wdrożony serwer Linux: zainstalowany, zaktualizowany, z kontami, profilami, uprawnieniami i przygotowanymi dyskami.
 
-Gotowe materiały: **1 z 6** tematów.
+Materiały do tego działu powstają w miarę realizacji programu — na razie znajdziesz tu spis tematów i wymagania.
 
 ## Tematy działu
 
@@ -14,7 +14,7 @@ egzaminacyjnych.
 
 | Temat | Godz. | Efekt | Materiały |
 | --- | :---: | :---: | --- |
-| **[Instalacja serwera Linux na maszynie wirtualnej; zgodność sprzętowa](instalacja-serwera-linux.md)** | 1 | `INF.07.5.2, INF.07.5.6` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| Instalacja serwera Linux na maszynie wirtualnej; zgodność sprzętowa | 1 | `INF.07.5.2, INF.07.5.6` | *w przygotowaniu* |
 | Konfiguracja poinstalacyjna, aktualizacje i sterowniki urządzeń | 1 | `INF.07.5.2` | *w przygotowaniu* |
 | Praca w powłoce: struktura katalogów i podstawowe polecenia | 2 | `INF.07.5.2` | *w przygotowaniu* |
 | Konta i grupy użytkowników | 1 | `INF.07.5.3` | *w przygotowaniu* |
@@ -67,33 +67,42 @@ niższe. Pełna lista dla całego przedmiotu jest na stronie
     - rozwiązuje zadania egzaminacyjne INF.07 dotyczące wdrożenia serwera i zarządzania kontami
 
 
-## Karta pracy działu
+## Karta pracy
 
 Dziennik wdrożenia prowadzisz **przez cały dział**, uzupełniając go po każdej
-lekcji. Odpowiedzi zostają w Twojej przeglądarce, więc możesz wracać do karty
-wielokrotnie. Na koniec działu pobierasz gotowy dokument Worda i oddajesz go
-przez **Zadania domowe w dzienniku VULCAN**.
+lekcji. Jest tu, pod spisem tematów — rozwiń go, kiedy masz co zapisać.
 
-!!! info "Po co prowadzić dziennik"
+<div class="kp-podsumowanie" data-karta="dzial-2"></div>
+
+<span id="karta" class="kp-kotwica"></span>
+
+??? karta "Rozwiń kartę pracy działu II"
+
+    Odpowiedzi zapisują się same w Twojej przeglądarce. Na koniec działu
+    pobierasz gotowy dokument Worda i oddajesz go przez **Zadania domowe
+    w dzienniku VULCAN**.
 
     Dokumentacja wykonanej konfiguracji jest jedną z form ocenianych na tym
     przedmiocie — i jedną z umiejętności sprawdzanych na egzaminie zawodowym.
     Kryterium jest proste: czy **ktoś inny** odtworzy Twoją pracę na podstawie
     tego, co zapisałeś.
 
-!!! warning "Chcesz dokończyć w domu — zapisz postęp do pliku"
+    !!! warning "Chcesz dokończyć w domu — zapisz postęp do pliku"
 
-    Odpowiedzi zostają w **tej przeglądarce, na tym komputerze**. Komputer
-    w pracowni o nich nie powie komputerowi w domu, a konto szkolne bywa
-    czyszczone przy wylogowaniu.
+        Odpowiedzi zostają w **tej przeglądarce, na tym komputerze**. Komputer
+        w pracowni o nich nie powie komputerowi w domu, a konto szkolne bywa
+        czyszczone przy wylogowaniu.
 
-    Zanim wyjdziesz z pracowni, kliknij pod kartą **Zapisz postęp do pliku**.
-    Dostaniesz jeden plik `postep_dzial-N.json` — przenieś go pendrive'em,
-    OneDrive'em albo mailem do siebie, a w domu otwórz tę samą stronę
-    i kliknij **Wczytaj postęp z pliku**. Ten sam plik działa w obie strony,
-    więc wracając do pracowni robisz to samo.
+        Zanim wyjdziesz z pracowni, kliknij pod kartą **Zapisz do pliku**.
+        Dostaniesz plik `postep_asso-dzial-2.json` — przenieś go
+        pendrive'em, OneDrive'em albo mailem do siebie, a w domu kliknij
+        **Wczytaj z pliku**. Ten sam plik działa w obie strony. Wszystkie
+        działy naraz zapiszesz jednym plikiem na stronie
+        [Karty pracy](../karty/index.md).
 
-    Plik zawiera także wklejone zrzuty ekranu, więc bywa spory. Nigdzie się
-    nie wysyła — zostaje u Ciebie.
+        Plik zawiera także wklejone zrzuty ekranu, więc bywa spory. Nigdzie
+        się nie wysyła — zostaje u Ciebie.
 
-<div class="karta-pracy" data-karta="dzial-2"></div>
+    <div class="karta-pracy" data-karta="dzial-2"></div>
+
+[:material-folder-multiple-outline: Wszystkie karty pracy](../karty/index.md){ .md-button }

@@ -53,7 +53,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Masz wdrożony serwer Linux: zainstalowany, zaktualizowany, z kontami, profilami, uprawnieniami i przygotowanymi dyskami.
 
-    *7 godzin · 6 tematów*
+    *7 godzin · 6 tematów · materiały w przygotowaniu*
 
     [Otwórz dział](dzial-2/index.md){ .md-button }
 
@@ -173,7 +173,7 @@ Masz wdrożony serwer Linux: zainstalowany, zaktualizowany, z kontami, profilami
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| **[Instalacja serwera Linux na maszynie wirtualnej; zgodność sprzętowa](dzial-2/instalacja-serwera-linux.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| Instalacja serwera Linux na maszynie wirtualnej; zgodność sprzętowa | 1 | *w przygotowaniu* |
 | Konfiguracja poinstalacyjna, aktualizacje i sterowniki urządzeń | 1 | *w przygotowaniu* |
 | Praca w powłoce: struktura katalogów i podstawowe polecenia | 2 | *w przygotowaniu* |
 | Konta i grupy użytkowników | 1 | *w przygotowaniu* |

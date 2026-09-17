@@ -39,12 +39,35 @@
     try { return JSON.parse(localStorage.getItem(KLUCZ(id))) || {}; }
     catch { return {}; }
   };
+
+  /* Wszystkie serwisy szkoły stoją pod jednym adresem (josimate.github.io),
+     więc dzielą jeden localStorage. Karty nazwane ogólnie — „labirynt",
+     „prawo-w-sieci" — prędzej czy później zderzyłyby się z kartą o tej samej
+     nazwie w innym przedmiocie. Nazwy dostają więc przedrostek serwisu,
+     ale uczeń nie może przez to stracić tego, co już wpisał: jeżeli pod nową
+     nazwą nic nie ma, a pod starą coś jest, przepisujemy odpowiedzi.
+     Starego wpisu NIE kasujemy — gdyby migracja poszła nie tak, dane wciąż
+     tam są. Definicja karty wskazuje starą nazwę polem „idPoprzedni". */
+  function przeniesStarePodNowaNazwe(def) {
+    if (!def.idPoprzedni || def.idPoprzedni === def.id) return;
+    try {
+      if (localStorage.getItem(KLUCZ(def.id))) return;
+      const stare = localStorage.getItem(KLUCZ(def.idPoprzedni));
+      if (!stare) return;
+      localStorage.setItem(KLUCZ(def.id), stare);
+    } catch { /* tryb prywatny albo brak miejsca — trudno, karta ruszy pusta */ }
+  }
   /* Zapis może się nie udać z dwóch zupełnie różnych powodów, a uczeń musi
      wiedzieć z którego: w trybie prywatnym nic nie pomoże poza pobraniem
      pliku, a przy zapełnionym magazynie wystarczy zwolnić miejsce.
      Zwracamy więc powód, a nie samo true/false. */
   const zapisz = (id, dane) => {
     try {
+      // Znacznik czasu potrzebny jest przeglądowi kart („ostatnia zmiana”).
+      // Zapisujemy go w danych, a nie osobno, żeby wędrował razem z plikiem
+      // przenoszonym na drugi komputer. Z liczenia wypełnionych pól jest
+      // wykluczony — patrz policzWypelnione.
+      dane._zapisano = new Date().toISOString();
       localStorage.setItem(KLUCZ(id), JSON.stringify(dane));
       return "ok";
     } catch (e) {
@@ -71,6 +94,34 @@
   const wKB = (b) => (b >= 1024 * 1024
     ? (b / 1024 / 1024).toFixed(1).replace(".", ",") + " MB"
     : Math.round(b / 1024) + " kB");
+
+  /* Ile pól uczeń naprawdę wypełnił. Dwa wyjątki są konieczne: klasa wjeżdża
+     do danych sama przy pierwszym otwarciu karty (wartość domyślna
+     z definicji), a „_zapisano" dokłada zapis — bez nich pusta karta
+     zgłaszałaby, że coś już w niej jest. */
+  function policzWypelnione(dane, def) {
+    return Object.entries(dane || {}).filter(([k, v]) =>
+      v !== "" && v != null && k !== "_zapisano"
+      && !(k === "_klasa" && def && v === def.klasa)).length;
+  }
+
+  /* Ile pól karta ma w ogóle — liczone z definicji, nie z DOM-u, żeby
+     przegląd kart mógł to policzyć bez renderowania karty. Trzy pola
+     nagłówka (numer, klasa, data) są wspólne dla każdej karty. */
+  function policzWszystkie(def) {
+    let n = 3;
+    for (const z of def.zadania || []) {
+      for (const p of z.pola || []) {
+        n += p.typ === "tabela" ? (p.wiersze || []).length : 1;
+      }
+    }
+    return n;
+  }
+
+  /* Wspólna koperta pliku z postępem. Na stronie przeglądu kart czyta ją
+     import zestawu, więc nazwa i wersja muszą być widoczne poza tym modułem. */
+  const NAZWA_FORMATU = "karta-pracy-pceikz";
+  const WERSJA_FORMATU = 1;
 
   // ---------------------------------------------------------------- render
   function poleTekst(p, wart) {
@@ -121,7 +172,8 @@
         if (p.typ === "wybor") return poleWybor(p, dane[p.id]);
         return poleTekst(p, dane[p.id]);
       }).join("");
-      return `<section class="kp-zadanie">
+      // Kotwica pozwala odesłać ze strony tematu prosto do jego zadania.
+      return `<section class="kp-zadanie" id="zadanie-${z.nr}">
         <h3>Zadanie ${z.nr}. ${esc(z.tytul)}</h3>
         ${z.poziom ? `<p class="kp-poziom">${esc(z.poziom)}</p>` : ""}
         ${z.polecenie ? `<p class="kp-polecenie">${z.polecenie}</p>` : ""}
@@ -263,6 +315,7 @@
   // ---------------------------------------------------------------- obsługa
   function podepnij(host, def) {
     const id = def.id;
+    przeniesStarePodNowaNazwe(def);
     let dane = wczytaj(id);
     // Wartości domyślne (klasa) są tylko w atrybucie value pola — bez tego
     // nigdy nie trafiłyby do zapisanych danych, bo nikt ich nie edytuje.
@@ -366,9 +419,6 @@
        jak przenieść odpowiedzi — stąd plik. Zawiera też nazwę karty, żeby
        import do niewłaściwego działu dało się wychwycić, i datę zapisu,
        żeby przy dwóch plikach było wiadomo, który jest nowszy. */
-    const NAZWA_FORMATU = "karta-pracy-pceikz";
-    const WERSJA_FORMATU = 1;
-
     host.querySelector(".kp-eksport").addEventListener("click", () => {
       const paczka = {
         format: NAZWA_FORMATU,
@@ -426,12 +476,7 @@
           status.className = "kp-status kp-blad";
           return;
         }
-        /* Liczymy tylko to, co uczeń naprawdę wpisał. Klasa wjeżdża do danych
-           sama przy pierwszym otwarciu karty (wartość domyślna z definicji),
-           więc bez tego wyjątku nawet pusta karta zgłaszała „masz już
-           wypełnione pola" i straszyła nadpisaniem. */
-        const wypelnione = Object.entries(dane).filter(([k, v]) =>
-          v !== "" && v != null && !(k === "_klasa" && v === def.klasa)).length;
+        const wypelnione = policzWypelnione(dane, def);
         const kiedy = paczka.zapisano
           ? new Date(paczka.zapisano).toLocaleString("pl-PL")
           : "nieznanej daty";
@@ -527,12 +572,28 @@
       try {
         const def = await (await fetch(url)).json();
         podepnij(host, def);
+        /* Karta powstaje asynchronicznie, więc w chwili wejścia na stronę
+           kotwic zadań jeszcze nie ma. Kto na nie poluje (karty.js, żeby
+           rozwinąć sekcję i doskoczyć do zadania), musi wiedzieć, kiedy
+           są już w dokumencie. */
+        host.dispatchEvent(new CustomEvent("karta-gotowa", { bubbles: true }));
       } catch (e) {
         host.innerHTML = `<p class="kp-blad">Nie udało się wczytać definicji karty
           (${esc(e.message)}). Pobierz kartę w Wordzie i wypełnij ją tam.</p>`;
       }
     });
   }
+
+  /* Przegląd kart (karty.js) potrzebuje dokładnie tych samych reguł co karta:
+     tego samego klucza w magazynie, tego samego sposobu liczenia wypełnionych
+     pól i tej samej koperty pliku. Wystawiamy je, zamiast przepisywać drugi
+     raz — rozjazd między tymi dwoma miejscami byłby niewidoczny do chwili,
+     w której licznik zacząłby kłamać. */
+  window.KartaPracy = {
+    KLUCZ, KATALOG, NAZWA_FORMATU, WERSJA_FORMATU,
+    wczytaj, zapisz, policzWypelnione, policzWszystkie, wKB,
+    przeniesStarePodNowaNazwe,
+  };
 
   // Material przeładowuje treść bez odświeżania strony — trzeba wpiąć się w document$
   if (typeof document$ !== "undefined") document$.subscribe(start);

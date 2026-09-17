@@ -58,85 +58,42 @@ niższe. Pełna lista dla całego przedmiotu jest na stronie
     - podejmuje zadania dodatkowe, w tym przygotowanie do części praktycznej egzaminu zawodowego INF.07
 
 
-## Zadania na ocenę celującą
-
-Zadania na szóstkę są **działowe, nie tematyczne** — obejmują materiał całego
-działu i wymagają czegoś więcej niż powtórzenia ćwiczenia z lekcji. Wybierasz
-**jedno** z listy poniżej.
-
-Pracę oddajesz w Dzienniku VULCAN, w zadaniu **„Zadanie na ocenę celującą:
-Dział …”** założonym do tego działu, w ciągu **dwóch tygodni od zakończenia
-działu**. Plik nazwij `nr<numer w dzienniku>-<litera zadania>`, a w treści
-zadania dopisz 3–5 zdań o tym, co zrobiłeś i co z tego wyszło.
-
-Cała lista jest widoczna **od początku działu**, żebyś miał czas wybrać
-i popracować. Przy każdym zadaniu jest napisane, po którym temacie da się
-je wykonać. Pełne zasady opisuje strona [wymagań edukacyjnych](../dzial-1/wymagania-i-bhp.md).
-
-??? example "Dział I. Organizacja pracy, sieciowe systemy operacyjne i wirtualizacja — 3 zadania do wyboru"
-
-    **A. Pracownia z jednego polecenia**
-
-    *Do wykonania po temacie „Wirtualizacja”.*
-
-    Zbuduj skrypt (`VBoxManage` albo odpowiednik w wybranym hiperwizorze), który stawia komplet maszyn „serwer + dwa klienty”: tworzy je, przydziela zasoby, ustawia tryby sieci tak, żeby klienty widziały serwer, ale nie widziały internetu, robi migawkę stanu wyjściowego i uruchamia wszystko bezgłowo.
-
-    Dopisz drugi skrypt, który przywraca migawkę i kasuje maszyny. Oba mają działać na czystym systemie, bez ręcznego klikania.
-
-    **Oddajesz:** oba skrypty, dokumentację uruchomienia i zrzut z działającego zestawu
-
-    ---
-
-    **B. Licencje policzone dla konkretnej szkoły**
-
-    *Do wykonania po temacie „Sieciowe systemy operacyjne”.*
-
-    Przyjmij realny scenariusz: serwer plików i kontroler domeny dla 60 stanowisk i 8 nauczycieli. Policz koszt w trzech wariantach — Windows Server z licencjami dostępowymi, dystrybucja Linuksa z komercyjnym wsparciem, dystrybucja bez wsparcia.
-
-    Uwzględnij to, czego nie widać w cenniku: czas wdrożenia, wymagane kompetencje administratora i koszt przy dołożeniu 20 stanowisk za rok. Wskaż wariant i obroń go.
-
-    **Oddajesz:** zestawienie kosztów ze źródłami cen, analizę ryzyk i rekomendację
-
-    ---
-
-    **C. Zadanie praktyczne INF.07 w wirtualnej pracowni**
-
-    *Do wykonania po całym dziale.*
-
-    Znajdź w arkuszach egzaminu zawodowego INF.07 z lat poprzednich zadanie praktyczne dotyczące konfiguracji systemu sieciowego. Wykonaj je w całości na maszynach wirtualnych.
-
-    Dokumentuj każdy krok zrzutami tak, żeby **ktoś inny odtworzył konfigurację** z samej dokumentacji. Zmierz czas i oceń własną pracę według kryteriów z arkusza.
-
-    **Oddajesz:** dokumentację wykonania, wskazanie arkusza, zmierzony czas i samoocenę punktową
-
-
-## Karta pracy działu
+## Karta pracy
 
 Dziennik wdrożenia prowadzisz **przez cały dział**, uzupełniając go po każdej
-lekcji. Odpowiedzi zostają w Twojej przeglądarce, więc możesz wracać do karty
-wielokrotnie. Na koniec działu pobierasz gotowy dokument Worda i oddajesz go
-przez **Zadania domowe w dzienniku VULCAN**.
+lekcji. Jest tu, pod spisem tematów — rozwiń go, kiedy masz co zapisać.
 
-!!! info "Po co prowadzić dziennik"
+<div class="kp-podsumowanie" data-karta="dzial-1"></div>
+
+<span id="karta" class="kp-kotwica"></span>
+
+??? karta "Rozwiń kartę pracy działu I"
+
+    Odpowiedzi zapisują się same w Twojej przeglądarce. Na koniec działu
+    pobierasz gotowy dokument Worda i oddajesz go przez **Zadania domowe
+    w dzienniku VULCAN**.
 
     Dokumentacja wykonanej konfiguracji jest jedną z form ocenianych na tym
     przedmiocie — i jedną z umiejętności sprawdzanych na egzaminie zawodowym.
     Kryterium jest proste: czy **ktoś inny** odtworzy Twoją pracę na podstawie
     tego, co zapisałeś.
 
-!!! warning "Chcesz dokończyć w domu — zapisz postęp do pliku"
+    !!! warning "Chcesz dokończyć w domu — zapisz postęp do pliku"
 
-    Odpowiedzi zostają w **tej przeglądarce, na tym komputerze**. Komputer
-    w pracowni o nich nie powie komputerowi w domu, a konto szkolne bywa
-    czyszczone przy wylogowaniu.
+        Odpowiedzi zostają w **tej przeglądarce, na tym komputerze**. Komputer
+        w pracowni o nich nie powie komputerowi w domu, a konto szkolne bywa
+        czyszczone przy wylogowaniu.
 
-    Zanim wyjdziesz z pracowni, kliknij pod kartą **Zapisz postęp do pliku**.
-    Dostaniesz jeden plik `postep_dzial-N.json` — przenieś go pendrive'em,
-    OneDrive'em albo mailem do siebie, a w domu otwórz tę samą stronę
-    i kliknij **Wczytaj postęp z pliku**. Ten sam plik działa w obie strony,
-    więc wracając do pracowni robisz to samo.
+        Zanim wyjdziesz z pracowni, kliknij pod kartą **Zapisz do pliku**.
+        Dostaniesz plik `postep_asso-dzial-1.json` — przenieś go
+        pendrive'em, OneDrive'em albo mailem do siebie, a w domu kliknij
+        **Wczytaj z pliku**. Ten sam plik działa w obie strony. Wszystkie
+        działy naraz zapiszesz jednym plikiem na stronie
+        [Karty pracy](../karty/index.md).
 
-    Plik zawiera także wklejone zrzuty ekranu, więc bywa spory. Nigdzie się
-    nie wysyła — zostaje u Ciebie.
+        Plik zawiera także wklejone zrzuty ekranu, więc bywa spory. Nigdzie
+        się nie wysyła — zostaje u Ciebie.
 
-<div class="karta-pracy" data-karta="dzial-1"></div>
+    <div class="karta-pracy" data-karta="dzial-1"></div>
+
+[:material-folder-multiple-outline: Wszystkie karty pracy](../karty/index.md){ .md-button }

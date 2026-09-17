@@ -209,7 +209,7 @@ Dwa tryby najłatwiej pomylić:
 
     Utwórz maszynę wirtualną dla serwera Linux:
 
-    - nazwa `serwer-<numer w dzienniku>` (np. `serwer-12`), typ Linux, wersja 64-bitowa
+    - nazwa `serwer-<twoje nazwisko>`, typ Linux, wersja 64-bitowa
     - **2 GB** RAM, **2** rdzenie, dysk **VDI dynamiczny 25 GB**
     - karta 1: **sieć NAT**
 
@@ -351,6 +351,25 @@ Dwa tryby najłatwiej pomylić:
 </script>
 </div>
 
+## Na ocenę celującą
+
+**A. Szablon zamiast instalacji.** Przygotuj jedną maszynę bazową (system,
+aktualizacje, SSH, Twoje konto), a potem zrób z niej **szablon**: sklonuj ją
+w trybie połączonym (*linked clone*) i porównaj z klonem pełnym. Zmierz czas
+utworzenia i zajęte miejsce dla obu wariantów, opisz, kiedy który się opłaca,
+i wyjaśnij, co się stanie z klonem połączonym po skasowaniu maszyny bazowej.
+
+**B. Wirtualizacja bez okna.** Naucz się sterować VirtualBoksem z wiersza poleceń
+przez `VBoxManage`: utwórz maszynę, przydziel jej zasoby, ustaw tryb sieci, zrób
+migawkę i uruchom maszynę bezgłowo (`--type headless`). Zapisz to jako skrypt,
+który stawia komplet „serwer + klient" jednym poleceniem, i wyjaśnij, dlaczego
+w serwerowni robi się to właśnie tak.
+
+**C. Przenoszenie między hiperwizorami.** Wyeksportuj maszynę do **OVA** i opisz,
+co zawiera ten plik. Sprawdź, co trzeba zmienić po imporcie na innym hiperwizorze:
+sterowniki, nazwy interfejsów sieciowych, dodatki gościa. Wyjaśnij, czym format
+OVF różni się od OVA i dlaczego istnieją oba.
+
 ---
 
 *Opisy interfejsu dotyczą **Oracle VirtualBox 7.2** (wrzesień 2026). Nazwy trybów
@@ -358,3 +377,9 @@ sieci w innych hiperwizorach brzmią inaczej — Hyper-V mówi o przełącznikac
 zewnętrznym, wewnętrznym i prywatnym, VMware o bridged, NAT i host-only — ale
 podział na „widzi sieć fizyczną", „widzi tylko gospodarza" i „widzi tylko inne
 maszyny" jest wszędzie ten sam.*
+
+!!! note "Co oddajesz z tej lekcji"
+
+    Wnioski i zrzuty z tych zajęć zapisujesz w **[zadaniu 4 karty pracy
+    działu I](index.md#zadanie-4)**. Kartę prowadzisz przez cały dział
+    i oddajesz na jego koniec.
