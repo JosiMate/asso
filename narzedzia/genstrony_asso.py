@@ -15,6 +15,7 @@ HERE = pathlib.Path(__file__).parent
 NL = chr(10)
 sys.path.insert(0, str(HERE))
 import wzo_md
+import zadania6
 
 ROOT = HERE.parent / "docs"
 DZIALY = json.load(open(HERE / "daneasso2.json", encoding="utf-8"))
@@ -34,6 +35,10 @@ GOTOWE = {
     "II": {
         "Instalacja serwera Linux na maszynie wirtualnej; zgodność sprzętowa":
             ("dzial-2/instalacja-serwera-linux.md", "Instalacja serwera Linux"),
+        "Konfiguracja poinstalacyjna, aktualizacje i sterowniki urządzeń":
+            ("dzial-2/konfiguracja-poinstalacyjna.md", "Konfiguracja poinstalacyjna"),
+        "Praca w powłoce: struktura katalogów i podstawowe polecenia":
+            ("dzial-2/powloka-podstawy.md", "Praca w powłoce"),
     },
 }
 
@@ -85,6 +90,16 @@ def godz(n):
 
 # ─────────────────────────────────────────────── strona startowa
 def strona_startowa():
+    # Zadania na ocenę celującą stoją tu, pod spisem tematów — jedna lista dla
+    # całego przedmiotu, tak jak na pozostałych przedmiotach. Treść i sam blok
+    # robi narzedzia/zadania6.py; ten sam moduł potrafi odświeżyć blok
+    # w gotowym pliku, bez uruchamiania całego generatora.
+    sekcja6 = zadania6.sekcja(
+        [f"Dział {d['nr']}. {d['tytul']}" for d in DZIALY],
+        "dzial-1/wymagania-i-bhp.md",
+        ZADANIA6,
+    ) or ""
+
     kafelki, tabele = [], []
     for d in DZIALY:
         o = OPISY[d["nr"]]
@@ -171,6 +186,8 @@ trzy działy kończą się praktycznym sprawdzianem.
 
 </div>
 
+{sekcja6}
+
 ## Egzamin zawodowy
 
 Przedmiot realizuje jednostkę **INF.07.5 — Administrowanie sieciowymi systemami
@@ -198,47 +215,9 @@ POZIOMY = [
 
 
 # ─────────────────────────────────────────────── strony działów
-try:
-    ZADANIA6 = json.load(open(HERE / "zadania6.json", encoding="utf-8"))
-except FileNotFoundError:
-    ZADANIA6 = {}
-
-
-def zadania_celujace_md(naglowek, link_wymagania):
-    """Sekcja „Zadania na ocenę celującą” dla działu.
-
-    Treść zadań trzyma narzedzia/zadania6.json — kluczem jest nagłówek działu
-    („Dział I. …”), wartością lista zadań. Dział bez wpisu nie dostaje sekcji.
-    """
-    zad = ZADANIA6.get(naglowek)
-    if not zad:
-        return ""
-    ile = len(zad)
-    slowo = "zadanie" if ile == 1 else ("zadania" if ile < 5 else "zadań")
-    czesci = [f'??? example "{naglowek} — {ile} {slowo} do wyboru"', ""]
-    for i, z in enumerate(zad):
-        linie = [f"**{z['ozn']}. {z['tytul']}**", ""]
-        if z.get("wymaga"):
-            linie += [f"*Do wykonania {z['wymaga']}.*", ""]
-        for akapit in z["opis"]:
-            linie += [akapit, ""]
-        linie += [f"**Oddajesz:** {z['oddajesz']}", ""]
-        czesci.append(NL.join("    " + l if l else "" for l in linie))
-        if i < ile - 1:
-            czesci.append("    ---" + NL)
-    return (
-        NL + "## Zadania na ocenę celującą" + NL + NL
-        + "Zadania na szóstkę są **działowe, nie tematyczne** — obejmują materiał całego" + NL
-        + "działu i wymagają czegoś więcej niż powtórzenia ćwiczenia z lekcji. Wybierasz" + NL
-        + "**jedno** z listy poniżej." + NL + NL
-        + "Pracę oddajesz w Dzienniku VULCAN, w zadaniu **„Zadanie na ocenę celującą:" + NL
-        + "Dział …”** założonym do tego działu, w ciągu **dwóch tygodni od zakończenia" + NL
-        + "działu**. Plik nazwij `nr<numer w dzienniku>-<litera zadania>`, a w treści" + NL
-        + "zadania dopisz 3–5 zdań o tym, co zrobiłeś i co z tego wyszło." + NL + NL
-        + "Cała lista jest widoczna **od początku działu**, żebyś miał czas wybrać" + NL
-        + "i popracować. Przy każdym zadaniu jest napisane, po którym temacie da się" + NL
-        + f"je wykonać. Pełne zasady opisuje strona [wymagań edukacyjnych]({link_wymagania})." + NL + NL
-        + NL.join(czesci) + NL)
+# Treść zadań na szóstkę trzyma narzedzia/zadania6.json; tutaj potrzebna jest
+# tylko do sprawdzenia, czy dział w ogóle jakieś ma.
+ZADANIA6 = zadania6.wczytaj(str(HERE.parent))
 
 
 def strona_dzialu(d):
@@ -258,9 +237,15 @@ def strona_dzialu(d):
                if cel else "*w przygotowaniu*")
         wiersze.append(f"| {nazwa} | {ile} | `{pp}` | {mat} |")
 
-    # zadania na ocenę celującą — treść z narzedzia/zadania6.json
-    sekcja6 = zadania_celujace_md(f"Dział {d['nr']}. {d['tytul']}",
-                                  "../dzial-1/wymagania-i-bhp.md")
+    # Zadania na szóstkę są wspólną listą na stronie spisu tematów — tutaj
+    # zostaje sam odsyłacz, i tylko w dziale, który jakieś zadanie ma.
+    ma6 = bool(ZADANIA6.get(f"Dział {d['nr']}. {d['tytul']}"))
+    zadanie6 = ("\n## Zadania na ocenę celującą\n\n"
+                "Zadania na szóstkę do tego działu są w spisie tematów, razem\n"
+                "z zadaniami do pozostałych działów.\n\n"
+                "[:material-star-outline: Zobacz zadania na ocenę celującą]"
+                "(../index.md#zadania-na-ocene-celujaca){ .md-button }\n"
+                if ma6 else "")
 
     poziomy = []
     for klucz, naglowek, opis in POZIOMY:
@@ -304,7 +289,7 @@ niższe. Pełna lista dla całego przedmiotu jest na stronie
 ??? abstract "Rozwiń wymagania — dział {d['nr']}"
 
 {chr(10).join(poziomy)}
-{sekcja6}
+{zadanie6}
 ## Karta pracy
 
 Dziennik wdrożenia prowadzisz **przez cały dział**, uzupełniając go po każdej

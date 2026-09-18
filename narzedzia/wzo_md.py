@@ -137,9 +137,10 @@ to obowiązek wynikający ze statutu, a nie to samo co dobrowolna poprawa opisan
 ### Zadania na ocenę celującą
 
 Zadania na szóstkę są **działowe, nie tematyczne**: obejmują materiał całego działu
-i wymagają czegoś więcej niż powtórzenia ćwiczenia z lekcji. Ich komplet znajdziesz
-przy spisie tematów działu — pełne treści, widoczne **od początku działu**, żebyś
-miał czas wybrać i popracować.
+i wymagają czegoś więcej niż powtórzenia ćwiczenia z lekcji. Ich komplet — pełne
+treści dla wszystkich działów — jest w jednym miejscu, pod
+[spisem tematów](../index.md#zadania-na-ocene-celujaca). Lista jest widoczna
+**od początku roku**, żebyś miał czas wybrać i popracować.
 
 Są **dobrowolne**. Ich brak niczego nie obniża, a wykonanie nie zwalnia z prac
 obowiązkowych. **Karty pracy do tematów są od nich niezależne** — nie ma w nich
