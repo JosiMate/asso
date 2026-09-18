@@ -18,6 +18,9 @@ klikania, tylko o działającą usługę, którą potrafisz sprawdzić od strony
     terminy i odsyłanie wykonanych prac — w **Dzienniku VULCAN**, który pozostaje
     kanałem obowiązującym.
 
+    Polecenia z całego roku zebrane w jednym miejscu masz w
+    [ściągawce](sciagawka.md) — trzymaj ją otwartą podczas ćwiczeń.
+
 ## Plan pracy
 
 Windows Server mieliście w drugiej klasie, więc **ten rok jest rokiem Linuksa** —
