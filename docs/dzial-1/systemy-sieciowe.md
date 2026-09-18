@@ -347,33 +347,9 @@ Wybór systemu to nie kwestia gustu, tylko trzech pytań:
 </script>
 </div>
 
-## Na ocenę celującą
-
-**A. Kalkulator licencji.** Zbuduj arkusz, który po podaniu liczby procesorów,
-rdzeni, maszyn wirtualnych, użytkowników i urządzeń wylicza liczbę licencji
-rdzeniowych, potrzebnych kompletów Standard oraz tańszy wariant CAL-i, a na końcu
-podpowiada próg opłacalności Datacenter. Ceny weź z aktualnego cennika partnera
-i podaj datę, z której pochodzą.
-
-**B. Porównanie gałęzi.** Postaw dwie maszyny wirtualne: jedną z gałęzi Debiana,
-drugą z gałęzi Red Hata (Rocky albo AlmaLinux). Zainstaluj na obu serwer WWW
-i opisz **różnice w drodze do celu**: nazwy pakietów, menedżer pakietów, położenie
-plików konfiguracyjnych, nazwa usługi, domyślne ustawienia zapory i SELinuksa.
-
-**C. Audyt licencyjny.** Napisz procedurę, według której administrator sprawdza
-w firmie zgodność licencyjną: co trzeba policzyć, jakie dokumenty zebrać, jak
-udokumentować wynik. Uwzględnij CAL-e, licencje OEM przypisane do sprzętu oraz
-oprogramowanie zainstalowane przez użytkowników.
-
 ---
 
 *Wersje podane w tekście są aktualne we wrześniu 2026: Windows Server 2025,
 Debian 13 „Trixie", Ubuntu Server 24.04 i 26.04 LTS. Warunki licencyjne zmieniają
 się między wydaniami — przed wdrożeniem sprawdza się je w aktualnych warunkach
 produktu Microsoftu, a nie w notatkach z lekcji.*
-
-!!! note "Co oddajesz z tej lekcji"
-
-    Wnioski i zrzuty z tych zajęć zapisujesz w **[zadaniu 3 karty pracy
-    działu I](index.md#zadanie-3)**. Kartę prowadzisz przez cały dział
-    i oddajesz na jego koniec.

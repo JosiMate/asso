@@ -12,6 +12,7 @@ odsyłacze do gotowych materiałów trzyma opisy_dzialow.json.
 import json, pathlib, sys
 
 HERE = pathlib.Path(__file__).parent
+NL = chr(10)
 sys.path.insert(0, str(HERE))
 import wzo_md
 
@@ -29,6 +30,10 @@ GOTOWE = {
             ("dzial-1/systemy-sieciowe.md", "Sieciowe systemy operacyjne"),
         "Wirtualizacja: maszyny wirtualne, migawki, sieć wirtualna pracowni":
             ("dzial-1/wirtualizacja.md", "Wirtualizacja"),
+    },
+    "II": {
+        "Instalacja serwera Linux na maszynie wirtualnej; zgodność sprzętowa":
+            ("dzial-2/instalacja-serwera-linux.md", "Instalacja serwera Linux"),
     },
 }
 
@@ -193,6 +198,49 @@ POZIOMY = [
 
 
 # ─────────────────────────────────────────────── strony działów
+try:
+    ZADANIA6 = json.load(open(HERE / "zadania6.json", encoding="utf-8"))
+except FileNotFoundError:
+    ZADANIA6 = {}
+
+
+def zadania_celujace_md(naglowek, link_wymagania):
+    """Sekcja „Zadania na ocenę celującą” dla działu.
+
+    Treść zadań trzyma narzedzia/zadania6.json — kluczem jest nagłówek działu
+    („Dział I. …”), wartością lista zadań. Dział bez wpisu nie dostaje sekcji.
+    """
+    zad = ZADANIA6.get(naglowek)
+    if not zad:
+        return ""
+    ile = len(zad)
+    slowo = "zadanie" if ile == 1 else ("zadania" if ile < 5 else "zadań")
+    czesci = [f'??? example "{naglowek} — {ile} {slowo} do wyboru"', ""]
+    for i, z in enumerate(zad):
+        linie = [f"**{z['ozn']}. {z['tytul']}**", ""]
+        if z.get("wymaga"):
+            linie += [f"*Do wykonania {z['wymaga']}.*", ""]
+        for akapit in z["opis"]:
+            linie += [akapit, ""]
+        linie += [f"**Oddajesz:** {z['oddajesz']}", ""]
+        czesci.append(NL.join("    " + l if l else "" for l in linie))
+        if i < ile - 1:
+            czesci.append("    ---" + NL)
+    return (
+        NL + "## Zadania na ocenę celującą" + NL + NL
+        + "Zadania na szóstkę są **działowe, nie tematyczne** — obejmują materiał całego" + NL
+        + "działu i wymagają czegoś więcej niż powtórzenia ćwiczenia z lekcji. Wybierasz" + NL
+        + "**jedno** z listy poniżej." + NL + NL
+        + "Pracę oddajesz w Dzienniku VULCAN, w zadaniu **„Zadanie na ocenę celującą:" + NL
+        + "Dział …”** założonym do tego działu, w ciągu **dwóch tygodni od zakończenia" + NL
+        + "działu**. Plik nazwij `nr<numer w dzienniku>-<litera zadania>`, a w treści" + NL
+        + "zadania dopisz 3–5 zdań o tym, co zrobiłeś i co z tego wyszło." + NL + NL
+        + "Cała lista jest widoczna **od początku działu**, żebyś miał czas wybrać" + NL
+        + "i popracować. Przy każdym zadaniu jest napisane, po którym temacie da się" + NL
+        + f"je wykonać. Pełne zasady opisuje strona [wymagań edukacyjnych]({link_wymagania})." + NL + NL
+        + NL.join(czesci) + NL)
+
+
 def strona_dzialu(d):
     """Strona działu: po co ten dział, spis tematów, wymagania, karta pracy."""
     o = OPISY[d["nr"]]
@@ -209,6 +257,10 @@ def strona_dzialu(d):
         mat = (':material-check-circle:{ title="Materiał gotowy" } gotowe'
                if cel else "*w przygotowaniu*")
         wiersze.append(f"| {nazwa} | {ile} | `{pp}` | {mat} |")
+
+    # zadania na ocenę celującą — treść z narzedzia/zadania6.json
+    sekcja6 = zadania_celujace_md(f"Dział {d['nr']}. {d['tytul']}",
+                                  "../dzial-1/wymagania-i-bhp.md")
 
     poziomy = []
     for klucz, naglowek, opis in POZIOMY:
@@ -252,7 +304,7 @@ niższe. Pełna lista dla całego przedmiotu jest na stronie
 ??? abstract "Rozwiń wymagania — dział {d['nr']}"
 
 {chr(10).join(poziomy)}
-
+{sekcja6}
 ## Karta pracy
 
 Dziennik wdrożenia prowadzisz **przez cały dział**, uzupełniając go po każdej
@@ -292,68 +344,6 @@ lekcji. Jest tu, pod spisem tematów — rozwiń go, kiedy masz co zapisać.
     <div class="karta-pracy" data-karta="dzial-{numer}"></div>
 
 [:material-folder-multiple-outline: Wszystkie karty pracy](../karty/index.md){{ .md-button }}
-"""
-
-
-# ─────────────────────────────────────────────── zbiorcza strona kart
-def strona_kart():
-    """Spis wszystkich kart ze stanem wypełnienia — „ćwiczeniówka" serwisu.
-
-    Przy jedenastu działach to jedyne miejsce, w którym uczeń widzi całość
-    swojej pracy naraz: gdzie stanął, czego jeszcze nie ruszył i kiedy
-    ostatnio przy tym siedział.
-    """
-    pozycje = [
-        {
-            "plik": f"dzial-{RZYMSKIE[d['nr']]}",
-            "tytul": f"Dział {d['nr']}. {d['tytul']}",
-            "url": f"../dzial-{RZYMSKIE[d['nr']]}/#karta",
-        }
-        for d in DZIALY
-    ]
-    dane = json.dumps(pozycje, ensure_ascii=False, indent=2)
-
-    return f"""---
-hide:
-  - navigation
----
-
-# Karty pracy
-
-**Administracja sieciowymi systemami operacyjnymi · klasa 3TT · INF.07**
-
-Tu w jednym miejscu widzisz **całą swoją pracę z tego przedmiotu**: ile masz
-wypełnione w każdym z {len(DZIALY)} działów i kiedy ostatnio przy tym siedziałeś.
-Kartę otwierasz, klikając nazwę działu.
-
-<div class="kp-przeglad">
-<script type="application/json">
-{dane}
-</script>
-</div>
-
-## Jak to działa
-
-Odpowiedzi zapisują się **w przeglądarce na tym komputerze** — nic nie jest
-wysyłane do szkoły ani nigdzie indziej. To wygodne, ale ma jeden skutek:
-w pracowni i w domu to są dwa osobne komplety.
-
-Dlatego jest przycisk **Zapisz wszystkie karty do pliku**. Dostajesz jeden plik
-`moje-karty-pracy.json` ze wszystkimi działami naraz — przenosisz go
-pendrive'em, OneDrive'em albo mailem do siebie i na drugim komputerze klikasz
-**Wczytaj karty z pliku**. Plik z pojedynczego działu też tu zadziała.
-
-!!! warning "Zrób to przed końcem lekcji"
-
-    Karty z tego przedmiotu zawierają zrzuty ekranu, więc zajmują sporo
-    miejsca w przeglądarce. Wyczyszczenie danych przeglądania kasuje je
-    bezpowrotnie — zapisuj plik **po każdych zajęciach**.
-
-!!! info "Oddawanie prac"
-
-    Gotowy dziennik wdrożenia pobierasz jako dokument Worda (przycisk pod
-    kartą) i oddajesz przez **Zadania domowe w dzienniku VULCAN**. Ta strona
-    nie jest kanałem oddawania prac — służy tylko Tobie do pracy.
 """
 
 
@@ -422,6 +412,29 @@ def karta_dzialu(d):
 
     zadania.append({
         "nr": nr_bledy + 1,
+        "tytul": "Zgłoszenie zadania na ocenę celującą",
+        "poziom": "wymagania wykraczające · ocena 6",
+        "polecenie": "Wypełnij, jeśli wykonujesz zadanie dodatkowe. <strong>Samą "
+                     "pracę oddajesz osobno</strong> — w Dzienniku VULCAN, w zadaniu "
+                     "„Zadanie na ocenę celującą” założonym do tego działu, w ciągu "
+                     "dwóch tygodni od zakończenia działu. W karcie zostaje "
+                     "zgłoszenie i wnioski.",
+        "pola": [
+            {"typ": "tekst", "id": "cel_temat", "wiersze": 2,
+             "pytanie": "Które zadanie z działu wybrałeś? Podaj literę i tytuł"},
+            {"typ": "tekst", "id": "cel_opis", "wiersze": 6,
+             "pytanie": "Co zrobiłeś i co z tego wyszło? Kilka zdań: na czym polegało "
+                        "zadanie, jak je wykonałeś i jaki jest wynik albo wniosek.",
+             "podpowiedz": "Zadanie polegało na … . Zrobiłem … . Wyszło mi, że …"},
+            {"typ": "tabela", "wiersze": [
+                ["cel_plik", "Nazwa pliku oddanego w VULCAN-ie", "nr<numer w dzienniku>-<litera zadania>"],
+                ["cel_data", "Data wysłania", ""],
+            ]},
+        ],
+    })
+
+    zadania.append({
+        "nr": nr_bledy + 2,
         "tytul": "Samoocena",
         "poziom": "podsumowanie działu",
         "polecenie": "Zajrzyj do wymagań na oceny na stronie tego działu i oceń się "
@@ -607,59 +620,124 @@ kumulatywne — na ocenę wyższą trzeba spełniać także wszystkie niższe.
 Dokument z wymaganiami zawiera to samo co ta strona, plus rozkład godzin na działy
 i przypisanie tematów do efektów kształcenia INF.07 — w formie do wydrukowania
 i do dokumentacji.
-
-!!! note "Co oddajesz z tej lekcji"
-
-    Notatkę z zajęć organizacyjnych wpisujesz do **[zadania 2 karty pracy
-    działu I](index.md#zadanie-2)**. Kartę prowadzisz przez cały dział
-    i oddajesz na jego koniec.
 """
 
 
 
 
-# ─────────────────────────────────────────────── nawigacja w mkdocs.yml
-# Nawigacja ma 11 działów i rośnie z każdym dopisanym tematem, więc trzymanie
-# jej ręcznie w mkdocs.yml kończyłoby się rozjazdem ze spisem na stronie.
-# Generator przepisuje blok między znacznikami — reszty pliku nie dotyka.
-POCZATEK = "# ↓↓↓ nawigacja generowana przez narzedzia/genstrony_asso.py"
-KONIEC = "# ↑↑↑ koniec bloku generowanego"
+# ─────────────────────────────────────────────── zbiorcza strona kart
+def strona_kart():
+    """Spis wszystkich kart ze stanem wypełnienia — „ćwiczeniówka" serwisu.
+
+    Przy jedenastu działach to jedyne miejsce, w którym uczeń widzi całość
+    swojej pracy naraz: gdzie stanął, czego jeszcze nie ruszył i kiedy
+    ostatnio przy tym siedział.
+    """
+    pozycje = [
+        {
+            "plik": f"dzial-{RZYMSKIE[d['nr']]}",
+            "tytul": f"Dział {d['nr']}. {d['tytul']}",
+            "url": f"../dzial-{RZYMSKIE[d['nr']]}/#karta",
+        }
+        for d in DZIALY
+    ]
+    dane = json.dumps(pozycje, ensure_ascii=False, indent=2)
+
+    return f"""---
+hide:
+  - navigation
+---
+
+# Karty pracy
+
+**Administracja sieciowymi systemami operacyjnymi · klasa 3TT · INF.07**
+
+Tu w jednym miejscu widzisz **całą swoją pracę z tego przedmiotu**: ile masz
+wypełnione w każdym z {len(DZIALY)} działów i kiedy ostatnio przy tym siedziałeś.
+Kartę otwierasz, klikając nazwę działu.
+
+<div class="kp-przeglad">
+<script type="application/json">
+{dane}
+</script>
+</div>
+
+## Jak to działa
+
+Odpowiedzi zapisują się **w przeglądarce na tym komputerze** — nic nie jest
+wysyłane do szkoły ani nigdzie indziej. To wygodne, ale ma jeden skutek:
+w pracowni i w domu to są dwa osobne komplety.
+
+Dlatego jest przycisk **Zapisz wszystkie karty do pliku**. Dostajesz jeden plik
+`moje-karty-pracy.json` ze wszystkimi działami naraz — przenosisz go
+pendrive'em, OneDrive'em albo mailem do siebie i na drugim komputerze klikasz
+**Wczytaj karty z pliku**. Plik z pojedynczego działu też tu zadziała.
+
+!!! warning "Zrób to przed końcem lekcji"
+
+    Karty z tego przedmiotu zawierają zrzuty ekranu, więc zajmują sporo
+    miejsca w przeglądarce. Wyczyszczenie danych przeglądania kasuje je
+    bezpowrotnie — zapisuj plik **po każdych zajęciach**.
+
+!!! info "Oddawanie prac"
+
+    Gotowy dziennik wdrożenia pobierasz jako dokument Worda (przycisk pod
+    kartą) i oddajesz przez **Zadania domowe w dzienniku VULCAN**. Ta strona
+    nie jest kanałem oddawania prac — służy tylko Tobie do pracy.
+"""
+
+
+# ─────────────────────────────────────────────── nawigacja (awesome-nav)
+# Nawigację składa wtyczka awesome-nav z plików .nav.yml leżących w katalogach
+# docs/. Generator pisze je wszystkie, więc mkdocs.yml zostaje nietknięty —
+# wcześniej trzeba było pilnować znaczników w cudzym pliku konfiguracyjnym.
+WSTEP_KORZEN = (
+    "# Plik generowany przez narzedzia/genstrony_asso.py — nie edytuj ręcznie.\n"
+    "# Kolejność i nazwy w lewej kolumnie — wtyczka awesome-nav.\n"
+    "# Katalog dopisany bez wpisu niżej trafi na koniec listy (append_unmatched),\n"
+    "# więc nowa strona nigdy nie zniknie ze strony w sposób niezauważony.\n"
+)
+WSTEP_KATALOG = (
+    "# Plik generowany przez narzedzia/genstrony_asso.py — nie edytuj ręcznie.\n"
+    "# Kolejność i nazwy tematów w tym dziale — wtyczka awesome-nav.\n"
+    "# Plik dopisany bez wpisu niżej trafi na koniec listy (append_unmatched)\n"
+    "# i dostanie tytuł z nagłówka pierwszego poziomu.\n"
+)
 
 
 def yaml_klucz(tekst):
-    """Klucz YAML w cudzysłowie. Tytuł działu IV brzmi „Wdrażanie ról i usług
-    sieciowych: DHCP i DNS" — dwukropek w środku rozbiłby wpis na klucz
-    i wartość, więc cytujemy zawsze, a wewnętrzne cudzysłowy podwajamy."""
-    return '"' + tekst.replace('"', '""') + '"'
+    """Klucz YAML w cudzysłowie — tytuł działu może zawierać dwukropek,
+    który bez cytowania rozbiłby wpis na klucz i wartość."""
+    return '"' + tekst.replace('"', '\\"') + '"'
 
 
-def blok_nawigacji():
-    linie = ["nav:", "  - Start: index.md"]
+def nawigacja_korzenia():
+    linie = [WSTEP_KORZEN, "append_unmatched: true", "nav:", '  - "Start": index.md']
     for d in DZIALY:
-        numer = RZYMSKIE[d["nr"]]
-        gotowe = GOTOWE.get(d["nr"], {})
-        naglowek = f"Dział {d['nr']}. {d['tytul']}"
-        linie.append(f"  - {yaml_klucz(naglowek)}:")
-        linie.append(f"      - Przegląd działu: dzial-{numer}/index.md")
-        for tytul, _ile, _pp in d["tematy"]:
-            if tytul in gotowe:
-                wpis = gotowe[tytul]
-                linie.append(f"      - {yaml_klucz(etykieta(wpis, tytul))}: {sciezka(wpis)}")
-    linie.append("  - Karty pracy: karty/index.md")
-    return "\n".join(linie)
+        linie.append(f"  - dzial-{RZYMSKIE[d['nr']]}")
+    linie.append('  - "Karty pracy": karty/index.md')
+    return "\n".join(linie) + "\n"
+
+
+def nawigacja_dzialu(d):
+    gotowe = GOTOWE.get(d["nr"], {})
+    naglowek = "Dział " + d["nr"] + ". " + d["tytul"]
+    linie = [WSTEP_KATALOG, "title: " + yaml_klucz(naglowek),
+             "append_unmatched: true", "nav:", '  - "Przegląd działu": index.md']
+    for tytul, _ile, _pp in d["tematy"]:
+        if tytul in gotowe:
+            wpis = gotowe[tytul]
+            linie.append("  - " + yaml_klucz(etykieta(wpis, tytul))
+                         + ": " + sciezka(wpis).split("/", 1)[1])
+    return "\n".join(linie) + "\n"
 
 
 def zapisz_nawigacje():
-    plik = HERE.parent / "mkdocs.yml"
-    tresc = plik.read_text(encoding="utf-8")
-    if POCZATEK not in tresc or KONIEC not in tresc:
-        sys.exit(f"BŁĄD: w mkdocs.yml brakuje znaczników {POCZATEK!r} / {KONIEC!r}")
-    przed, reszta = tresc.split(POCZATEK, 1)
-    _stare, po = reszta.split(KONIEC, 1)
-    nowe = f"{przed}{POCZATEK}\n{blok_nawigacji()}\n{KONIEC}{po}"
-    plik.write_text(nowe, encoding="utf-8")
-    ile = blok_nawigacji().count("\n") + 1
-    print(f"  mkdocs.yml  (nawigacja: {ile} linii)")
+    """Pisze .nav.yml w docs/ i w każdym katalogu działu. mkdocs.yml zostaje
+    nietknięty — od wdrożenia awesome-nav nie ma w nim już klucza nav."""
+    zapisz(".nav.yml", nawigacja_korzenia())
+    for d in DZIALY:
+        zapisz(f"dzial-{RZYMSKIE[d['nr']]}/.nav.yml", nawigacja_dzialu(d))
 
 
 # ─────────────────────────────────────────────── zapis

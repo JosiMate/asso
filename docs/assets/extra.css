@@ -333,6 +333,7 @@
 .wybor-modulu.grid.cards > ul > li:not(:has(.md-button)) .twemoji {
   filter: grayscale(1);
 }
+
 /* ─────────────────────────────────────────── przegląd kart pracy
    Karta pracy ma własną stronę, a jej stan pokazujemy w dwóch miejscach:
    paskiem na stronie działu i tabelą na zbiorczej stronie „Karty pracy".

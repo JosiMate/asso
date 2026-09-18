@@ -58,6 +58,58 @@ niższe. Pełna lista dla całego przedmiotu jest na stronie
     - podejmuje zadania dodatkowe, w tym przygotowanie do części praktycznej egzaminu zawodowego INF.07
 
 
+## Zadania na ocenę celującą
+
+Zadania na szóstkę są **działowe, nie tematyczne** — obejmują materiał całego
+działu i wymagają czegoś więcej niż powtórzenia ćwiczenia z lekcji. Wybierasz
+**jedno** z listy poniżej.
+
+Pracę oddajesz w Dzienniku VULCAN, w zadaniu **„Zadanie na ocenę celującą:
+Dział …”** założonym do tego działu, w ciągu **dwóch tygodni od zakończenia
+działu**. Plik nazwij `nr<numer w dzienniku>-<litera zadania>`, a w treści
+zadania dopisz 3–5 zdań o tym, co zrobiłeś i co z tego wyszło.
+
+Cała lista jest widoczna **od początku działu**, żebyś miał czas wybrać
+i popracować. Przy każdym zadaniu jest napisane, po którym temacie da się
+je wykonać. Pełne zasady opisuje strona [wymagań edukacyjnych](../dzial-1/wymagania-i-bhp.md).
+
+??? example "Dział I. Organizacja pracy, sieciowe systemy operacyjne i wirtualizacja — 3 zadania do wyboru"
+
+    **A. Pracownia z jednego polecenia**
+
+    *Do wykonania po temacie „Wirtualizacja”.*
+
+    Zbuduj skrypt (`VBoxManage` albo odpowiednik w wybranym hiperwizorze), który stawia komplet maszyn „serwer + dwa klienty”: tworzy je, przydziela zasoby, ustawia tryby sieci tak, żeby klienty widziały serwer, ale nie widziały internetu, robi migawkę stanu wyjściowego i uruchamia wszystko bezgłowo.
+
+    Dopisz drugi skrypt, który przywraca migawkę i kasuje maszyny. Oba mają działać na czystym systemie, bez ręcznego klikania.
+
+    **Oddajesz:** oba skrypty, dokumentację uruchomienia i zrzut z działającego zestawu
+
+    ---
+
+    **B. Licencje policzone dla konkretnej szkoły**
+
+    *Do wykonania po temacie „Sieciowe systemy operacyjne”.*
+
+    Przyjmij realny scenariusz: serwer plików i kontroler domeny dla 60 stanowisk i 8 nauczycieli. Policz koszt w trzech wariantach — Windows Server z licencjami dostępowymi, dystrybucja Linuksa z komercyjnym wsparciem, dystrybucja bez wsparcia.
+
+    Uwzględnij to, czego nie widać w cenniku: czas wdrożenia, wymagane kompetencje administratora i koszt przy dołożeniu 20 stanowisk za rok. Wskaż wariant i obroń go.
+
+    **Oddajesz:** zestawienie kosztów ze źródłami cen, analizę ryzyk i rekomendację
+
+    ---
+
+    **C. Zadanie praktyczne INF.07 w wirtualnej pracowni**
+
+    *Do wykonania po całym dziale.*
+
+    Znajdź w arkuszach egzaminu zawodowego INF.07 z lat poprzednich zadanie praktyczne dotyczące konfiguracji systemu sieciowego. Wykonaj je w całości na maszynach wirtualnych.
+
+    Dokumentuj każdy krok zrzutami tak, żeby **ktoś inny odtworzył konfigurację** z samej dokumentacji. Zmierz czas i oceń własną pracę według kryteriów z arkusza.
+
+    **Oddajesz:** dokumentację wykonania, wskazanie arkusza, zmierzony czas i samoocenę punktową
+
+
 ## Karta pracy
 
 Dziennik wdrożenia prowadzisz **przez cały dział**, uzupełniając go po każdej
