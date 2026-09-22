@@ -8,3 +8,8 @@ append_unmatched: true
 nav:
   - "Przegląd działu": index.md
   - "Instalacja serwera Linux": instalacja-serwera-linux.md
+  - "Konfiguracja poinstalacyjna": konfiguracja-poinstalacyjna.md
+  - "Praca w powłoce": powloka-podstawy.md
+  - "Konta i grupy użytkowników": konta-i-grupy.md
+  - "Profile i uprawnienia do plików": profile-i-uprawnienia.md
+  - "Zarządzanie dyskami i montowanie": dyski-i-montowanie.md

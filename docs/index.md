@@ -179,9 +179,9 @@ Masz wdrożony serwer Linux: zainstalowany, zaktualizowany, z kontami, profilami
 | **[Instalacja serwera Linux na maszynie wirtualnej; zgodność sprzętowa](dzial-2/instalacja-serwera-linux.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 | **[Konfiguracja poinstalacyjna, aktualizacje i sterowniki urządzeń](dzial-2/konfiguracja-poinstalacyjna.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 | **[Praca w powłoce: struktura katalogów i podstawowe polecenia](dzial-2/powloka-podstawy.md)** | 2 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
-| Konta i grupy użytkowników | 1 | *w przygotowaniu* |
-| Profile użytkowników i uprawnienia do plików | 1 | *w przygotowaniu* |
-| Zarządzanie dyskami i punktami montowania | 1 | *w przygotowaniu* |
+| **[Konta i grupy użytkowników](dzial-2/konta-i-grupy.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Profile użytkowników i uprawnienia do plików](dzial-2/profile-i-uprawnienia.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Zarządzanie dyskami i punktami montowania](dzial-2/dyski-i-montowanie.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ### Dział III. Konfiguracja sieciowa serwera
 

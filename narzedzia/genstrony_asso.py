@@ -39,6 +39,12 @@ GOTOWE = {
             ("dzial-2/konfiguracja-poinstalacyjna.md", "Konfiguracja poinstalacyjna"),
         "Praca w powłoce: struktura katalogów i podstawowe polecenia":
             ("dzial-2/powloka-podstawy.md", "Praca w powłoce"),
+        "Konta i grupy użytkowników":
+            ("dzial-2/konta-i-grupy.md", "Konta i grupy użytkowników"),
+        "Profile użytkowników i uprawnienia do plików":
+            ("dzial-2/profile-i-uprawnienia.md", "Profile i uprawnienia do plików"),
+        "Zarządzanie dyskami i punktami montowania":
+            ("dzial-2/dyski-i-montowanie.md", "Zarządzanie dyskami i montowanie"),
     },
 }
 
