@@ -7,3 +7,9 @@ title: "Dział IV. Wdrażanie ról i usług sieciowych: DHCP i DNS"
 append_unmatched: true
 nav:
   - "Przegląd działu": index.md
+  - "Dobór ról i usług sieciowych do zapotrzebowania": dobor-rol-i-uslug-sieciowych.md
+  - "Serwer DHCP — instalacja i zakres adresów": serwer-dhcp-instalacja-i-zakresy.md
+  - "Serwer DHCP — opcje, rezerwacje i dzierżawy": serwer-dhcp-opcje-rezerwacje-dzierzawy.md
+  - "Serwer DNS — instalacja i strefa wyszukiwania do przodu": serwer-dns-instalacja-i-strefa-przod.md
+  - "Serwer DNS — rekordy, strefa wsteczna i przekazywanie zapytań": serwer-dns-rekordy-strefa-wsteczna-przekazywanie.md
+  - "Ćwiczenia: DHCP i DNS w jednej sieci": cwiczenia-dhcp-dns-w-jednej-sieci.md
