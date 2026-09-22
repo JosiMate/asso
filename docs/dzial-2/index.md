@@ -4,7 +4,7 @@
 
 Masz wdrożony serwer Linux: zainstalowany, zaktualizowany, z kontami, profilami, uprawnieniami i przygotowanymi dyskami.
 
-Gotowe materiały: **3 z 6** tematów.
+Gotowe materiały: **6 z 6** tematów.
 
 ## Tematy działu
 
@@ -17,9 +17,9 @@ egzaminacyjnych.
 | **[Instalacja serwera Linux na maszynie wirtualnej; zgodność sprzętowa](instalacja-serwera-linux.md)** | 1 | `INF.07.5.2, INF.07.5.6` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 | **[Konfiguracja poinstalacyjna, aktualizacje i sterowniki urządzeń](konfiguracja-poinstalacyjna.md)** | 1 | `INF.07.5.2` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 | **[Praca w powłoce: struktura katalogów i podstawowe polecenia](powloka-podstawy.md)** | 2 | `INF.07.5.2` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
-| Konta i grupy użytkowników | 1 | `INF.07.5.3` | *w przygotowaniu* |
-| Profile użytkowników i uprawnienia do plików | 1 | `INF.07.5.3, INF.07.5.4` | *w przygotowaniu* |
-| Zarządzanie dyskami i punktami montowania | 1 | `INF.07.5.4` | *w przygotowaniu* |
+| **[Konta i grupy użytkowników](konta-i-grupy.md)** | 1 | `INF.07.5.3` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Profile użytkowników i uprawnienia do plików](profile-i-uprawnienia.md)** | 1 | `INF.07.5.3, INF.07.5.4` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Zarządzanie dyskami i punktami montowania](dyski-i-montowanie.md)** | 1 | `INF.07.5.4` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ## Wymagania na oceny w tym dziale
 
