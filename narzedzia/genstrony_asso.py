@@ -102,6 +102,30 @@ GOTOWE = {
         "Serwer pocztowy — instalacja i podstawowa konfiguracja":
             ("dzial-6/serwer-pocztowy-postfix-dovecot.md", "Serwer pocztowy — instalacja i podstawowa konfiguracja"),
     },
+    "VII": {
+        "Zdalny dostęp do serwera — konfiguracja usługi SSH":
+            ("dzial-7/ssh-konfiguracja-uslugi.md", "Zdalny dostęp do serwera — konfiguracja usługi SSH"),
+        "SSH — logowanie kluczem i przesyłanie plików":
+            ("dzial-7/ssh-klucze-i-przesylanie-plikow.md", "SSH — logowanie kluczem i przesyłanie plików"),
+        "Centralne zarządzanie stacjami roboczymi; zdalna instalacja oprogramowania":
+            ("dzial-7/centralne-zarzadzanie-i-instalacja.md", "Centralne zarządzanie stacjami roboczymi; zdalna instalacja oprogramowania"),
+        "Monitorowanie pracy i wydajności serwera":
+            ("dzial-7/monitorowanie-wydajnosci-serwera.md", "Monitorowanie pracy i wydajności serwera"),
+        "Dzienniki systemowe; monitorowanie działań użytkowników sieci":
+            ("dzial-7/dzienniki-systemowe-i-audyt.md", "Dzienniki systemowe; monitorowanie działań użytkowników sieci"),
+    },
+    "VIII": {
+        "Metody ataków sieciowych":
+            ("dzial-8/metody-atakow-sieciowych.md", "Metody ataków sieciowych"),
+        "Zapora sieciowa — reguły dla usług serwera":
+            ("dzial-8/zapora-sieciowa-reguly-uslug.md", "Zapora sieciowa — reguły dla usług serwera"),
+        "Ochrona przed szkodliwym oprogramowaniem — metody i dobór zabezpieczeń":
+            ("dzial-8/ochrona-przed-szkodliwym-oprogramowaniem.md", "Ochrona przed szkodliwym oprogramowaniem — metody i dobór zabezpieczeń"),
+        "Instalacja i konfiguracja oprogramowania zabezpieczającego serwer":
+            ("dzial-8/oprogramowanie-zabezpieczajace-serwer.md", "Instalacja i konfiguracja oprogramowania zabezpieczającego serwer"),
+        "Polityka haseł oraz fizyczne środki zabezpieczenia serwera (zasilacze awaryjne, macierze RAID)":
+            ("dzial-8/polityka-hasel-fizyczne-zabezpieczenia-raid.md", "Polityka haseł oraz fizyczne środki zabezpieczenia serwera (zasilacze awaryjne, macierze RAID)"),
+    },
 }
 
 

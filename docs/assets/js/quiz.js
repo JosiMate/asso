@@ -131,8 +131,17 @@
 
       host.dataset.gotowe = "1";
       let pytania;
-      try { pytania = JSON.parse(tekst); }
-      catch (e) {
+      try {
+        pytania = JSON.parse(tekst);
+        if (pytania && !Array.isArray(pytania) && Array.isArray(pytania.pytania)) {
+          pytania = pytania.pytania;
+        }
+        if (Array.isArray(pytania)) {
+          pytania.forEach((q) => {
+            if (!q.opcje && q.odpowiedzi) q.opcje = q.odpowiedzi;
+          });
+        }
+      } catch (e) {
         host.innerHTML = '<p class="kp-blad">Nie udało się wczytać pytań (błąd w danych quizu).</p>';
         console.warn("quiz: błąd w JSON-ie —", e.message);
         return;

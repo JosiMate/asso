@@ -4,7 +4,7 @@
 
 Administrujesz serwerem zdalnie przez SSH, zarządzasz stacjami centralnie i wiesz z dzienników oraz z pomiarów wydajności, co się na serwerze dzieje.
 
-Materiały do tego działu powstają w miarę realizacji programu — na razie znajdziesz tu spis tematów i wymagania.
+Gotowe materiały: **5 z 5** tematów.
 
 ## Tematy działu
 
@@ -14,11 +14,11 @@ egzaminacyjnych.
 
 | Temat | Godz. | Efekt | Materiały |
 | --- | :---: | :---: | --- |
-| Zdalny dostęp do serwera — konfiguracja usługi SSH | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| SSH — logowanie kluczem i przesyłanie plików | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| Centralne zarządzanie stacjami roboczymi; zdalna instalacja oprogramowania | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| Monitorowanie pracy i wydajności serwera | 1 | `INF.07.5.7` | *w przygotowaniu* |
-| Dzienniki systemowe; monitorowanie działań użytkowników sieci | 1 | `INF.07.5.3, INF.07.5.7` | *w przygotowaniu* |
+| **[Zdalny dostęp do serwera — konfiguracja usługi SSH](ssh-konfiguracja-uslugi.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[SSH — logowanie kluczem i przesyłanie plików](ssh-klucze-i-przesylanie-plikow.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Centralne zarządzanie stacjami roboczymi; zdalna instalacja oprogramowania](centralne-zarzadzanie-i-instalacja.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Monitorowanie pracy i wydajności serwera](monitorowanie-wydajnosci-serwera.md)** | 1 | `INF.07.5.7` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Dzienniki systemowe; monitorowanie działań użytkowników sieci](dzienniki-systemowe-i-audyt.md)** | 1 | `INF.07.5.3, INF.07.5.7` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ## Wymagania na oceny w tym dziale
 

@@ -7,3 +7,8 @@ title: "Dział VIII. Zabezpieczanie sieciowego systemu operacyjnego"
 append_unmatched: true
 nav:
   - "Przegląd działu": index.md
+  - "Metody ataków sieciowych": metody-atakow-sieciowych.md
+  - "Zapora sieciowa — reguły dla usług serwera": zapora-sieciowa-reguly-uslug.md
+  - "Ochrona przed szkodliwym oprogramowaniem — metody i dobór zabezpieczeń": ochrona-przed-szkodliwym-oprogramowaniem.md
+  - "Instalacja i konfiguracja oprogramowania zabezpieczającego serwer": oprogramowanie-zabezpieczajace-serwer.md
+  - "Polityka haseł oraz fizyczne środki zabezpieczenia serwera (zasilacze awaryjne, macierze RAID)": polityka-hasel-fizyczne-zabezpieczenia-raid.md
