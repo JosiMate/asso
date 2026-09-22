@@ -60,6 +60,20 @@ GOTOWE = {
         "Praktyczny sprawdzian: wdrożenie serwera, konta, uprawnienia i adresacja":
             ("dzial-3/sprawdzian-wdrozenie-serwera.md", "Praktyczny sprawdzian: wdrożenie serwera, konta, uprawnienia i adresacja"),
     },
+    "IV": {
+        "Dobór ról i usług sieciowych do zapotrzebowania":
+            ("dzial-4/dobor-rol-i-uslug-sieciowych.md", "Dobór ról i usług sieciowych do zapotrzebowania"),
+        "Serwer DHCP — instalacja i zakres adresów":
+            ("dzial-4/serwer-dhcp-instalacja-i-zakresy.md", "Serwer DHCP — instalacja i zakres adresów"),
+        "Serwer DHCP — opcje, rezerwacje i dzierżawy":
+            ("dzial-4/serwer-dhcp-opcje-rezerwacje-dzierzawy.md", "Serwer DHCP — opcje, rezerwacje i dzierżawy"),
+        "Serwer DNS — instalacja i strefa wyszukiwania do przodu":
+            ("dzial-4/serwer-dns-instalacja-i-strefa-przod.md", "Serwer DNS — instalacja i strefa wyszukiwania do przodu"),
+        "Serwer DNS — rekordy, strefa wsteczna i przekazywanie zapytań":
+            ("dzial-4/serwer-dns-rekordy-strefa-wsteczna-przekazywanie.md", "Serwer DNS — rekordy, strefa wsteczna i przekazywanie zapytań"),
+        "Ćwiczenia: DHCP i DNS w jednej sieci":
+            ("dzial-4/cwiczenia-dhcp-dns-w-jednej-sieci.md", "Ćwiczenia: DHCP i DNS w jednej sieci"),
+    },
 }
 
 

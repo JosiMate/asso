@@ -76,7 +76,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Dobierasz role i usługi do zapotrzebowania, a stacja kliencka sama pobiera adres z Twojego serwera DHCP i rozwiązuje nazwy na Twoim serwerze DNS.
 
-    *7 godzin · 6 tematów · materiały w przygotowaniu*
+    *7 godzin · 6 tematów*
 
     [Otwórz dział](dzial-4/index.md){ .md-button }
 
@@ -208,12 +208,12 @@ Dobierasz role i usługi do zapotrzebowania, a stacja kliencka sama pobiera adre
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Dobór ról i usług sieciowych do zapotrzebowania | 1 | *w przygotowaniu* |
-| Serwer DHCP — instalacja i zakres adresów | 1 | *w przygotowaniu* |
-| Serwer DHCP — opcje, rezerwacje i dzierżawy | 1 | *w przygotowaniu* |
-| Serwer DNS — instalacja i strefa wyszukiwania do przodu | 1 | *w przygotowaniu* |
-| Serwer DNS — rekordy, strefa wsteczna i przekazywanie zapytań | 1 | *w przygotowaniu* |
-| Ćwiczenia: DHCP i DNS w jednej sieci | 2 | *w przygotowaniu* |
+| **[Dobór ról i usług sieciowych do zapotrzebowania](dzial-4/dobor-rol-i-uslug-sieciowych.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer DHCP — instalacja i zakres adresów](dzial-4/serwer-dhcp-instalacja-i-zakresy.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer DHCP — opcje, rezerwacje i dzierżawy](dzial-4/serwer-dhcp-opcje-rezerwacje-dzierzawy.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer DNS — instalacja i strefa wyszukiwania do przodu](dzial-4/serwer-dns-instalacja-i-strefa-przod.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer DNS — rekordy, strefa wsteczna i przekazywanie zapytań](dzial-4/serwer-dns-rekordy-strefa-wsteczna-przekazywanie.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Ćwiczenia: DHCP i DNS w jednej sieci](dzial-4/cwiczenia-dhcp-dns-w-jednej-sieci.md)** | 2 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ### Dział V. Udostępnianie zasobów w sieci komputerowej
 

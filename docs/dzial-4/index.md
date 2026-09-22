@@ -4,7 +4,7 @@
 
 Dobierasz role i usługi do zapotrzebowania, a stacja kliencka sama pobiera adres z Twojego serwera DHCP i rozwiązuje nazwy na Twoim serwerze DNS.
 
-Materiały do tego działu powstają w miarę realizacji programu — na razie znajdziesz tu spis tematów i wymagania.
+Gotowe materiały: **6 z 6** tematów.
 
 ## Tematy działu
 
@@ -14,12 +14,12 @@ egzaminacyjnych.
 
 | Temat | Godz. | Efekt | Materiały |
 | --- | :---: | :---: | --- |
-| Dobór ról i usług sieciowych do zapotrzebowania | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| Serwer DHCP — instalacja i zakres adresów | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| Serwer DHCP — opcje, rezerwacje i dzierżawy | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| Serwer DNS — instalacja i strefa wyszukiwania do przodu | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| Serwer DNS — rekordy, strefa wsteczna i przekazywanie zapytań | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| Ćwiczenia: DHCP i DNS w jednej sieci | 2 | `INF.07.5.5` | *w przygotowaniu* |
+| **[Dobór ról i usług sieciowych do zapotrzebowania](dobor-rol-i-uslug-sieciowych.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer DHCP — instalacja i zakres adresów](serwer-dhcp-instalacja-i-zakresy.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer DHCP — opcje, rezerwacje i dzierżawy](serwer-dhcp-opcje-rezerwacje-dzierzawy.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer DNS — instalacja i strefa wyszukiwania do przodu](serwer-dns-instalacja-i-strefa-przod.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer DNS — rekordy, strefa wsteczna i przekazywanie zapytań](serwer-dns-rekordy-strefa-wsteczna-przekazywanie.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Ćwiczenia: DHCP i DNS w jednej sieci](cwiczenia-dhcp-dns-w-jednej-sieci.md)** | 2 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ## Wymagania na oceny w tym dziale
 
