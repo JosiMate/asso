@@ -66,7 +66,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Serwer pracuje w sieci lokalnej — adresację ustawiasz dwiema metodami i umiesz sprawdzić, na którym etapie komunikacja się urywa.
 
-    *6 godzin · 6 tematów · materiały w przygotowaniu*
+    *6 godzin · 6 tematów*
 
     [Otwórz dział](dzial-3/index.md){ .md-button }
 
@@ -191,12 +191,12 @@ Serwer pracuje w sieci lokalnej — adresację ustawiasz dwiema metodami i umies
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Interfejsy sieciowe i adresacja IP — przegląd metod konfiguracji | 1 | *w przygotowaniu* |
-| Adresacja IP w plikach konfiguracyjnych (/etc/network/interfaces) | 1 | *w przygotowaniu* |
-| Adresacja IP w Netplanie (/etc/netplan) | 1 | *w przygotowaniu* |
-| Rozwiązywanie nazw po stronie klienta; narzędzia diagnostyczne sieci | 1 | *w przygotowaniu* |
-| Ćwiczenia: konfiguracja sieciowa serwera i jej weryfikacja | 1 | *w przygotowaniu* |
-| Praktyczny sprawdzian: wdrożenie serwera, konta, uprawnienia i adresacja | 1 | *w przygotowaniu* |
+| **[Interfejsy sieciowe i adresacja IP — przegląd metod konfiguracji](dzial-3/interfejsy-i-adresacja-przeglad.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Adresacja IP w plikach konfiguracyjnych (/etc/network/interfaces)](dzial-3/adresacja-etc-network-interfaces.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Adresacja IP w Netplanie (/etc/netplan)](dzial-3/adresacja-netplan.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Rozwiązywanie nazw po stronie klienta; narzędzia diagnostyczne sieci](dzial-3/rozwiazywanie-nazw-i-diagnostyka.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Ćwiczenia: konfiguracja sieciowa serwera i jej weryfikacja](dzial-3/cwiczenia-konfiguracja-sieciowa.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Praktyczny sprawdzian: wdrożenie serwera, konta, uprawnienia i adresacja](dzial-3/sprawdzian-wdrozenie-serwera.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 !!! tip "Dział kończy praktyczny sprawdzian z wdrożenia serwera, kont, uprawnień i adresacji."
 
