@@ -7,3 +7,9 @@ title: "Dział VI. Usługi internetowe i pocztowe"
 append_unmatched: true
 nav:
   - "Przegląd działu": index.md
+  - "Serwer WWW Apache — instalacja i publikacja strony": apache-instalacja-i-publikacja.md
+  - "Apache — hosty wirtualne i dokument domyślny": apache-hosty-wirtualne.md
+  - "Publikacja witryny pod własną nazwą — Apache a usługa DNS": publikacja-witryny-dns-apache.md
+  - "Ćwiczenia w konfiguracji serwera WWW": cwiczenia-serwer-www.md
+  - "Serwer FTP — instalacja, konta i użytkownicy anonimowi": serwer-ftp-vsftpd.md
+  - "Serwer pocztowy — instalacja i podstawowa konfiguracja": serwer-pocztowy-postfix-dovecot.md

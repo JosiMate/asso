@@ -96,7 +96,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Witryna działa na Apache’u pod własną nazwą, obok niej serwer FTP i serwer pocztowy.
 
-    *6 godzin · 6 tematów · materiały w przygotowaniu*
+    *6 godzin · 6 tematów*
 
     [Otwórz dział](dzial-6/index.md){ .md-button }
 
@@ -240,12 +240,12 @@ Witryna działa na Apache’u pod własną nazwą, obok niej serwer FTP i serwer
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Serwer WWW Apache — instalacja i publikacja strony | 1 | *w przygotowaniu* |
-| Apache — hosty wirtualne i dokument domyślny | 1 | *w przygotowaniu* |
-| Publikacja witryny pod własną nazwą — Apache a usługa DNS | 1 | *w przygotowaniu* |
-| Ćwiczenia w konfiguracji serwera WWW | 1 | *w przygotowaniu* |
-| Serwer FTP — instalacja, konta i użytkownicy anonimowi | 1 | *w przygotowaniu* |
-| Serwer pocztowy — instalacja i podstawowa konfiguracja | 1 | *w przygotowaniu* |
+| **[Serwer WWW Apache — instalacja i publikacja strony](dzial-6/apache-instalacja-i-publikacja.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Apache — hosty wirtualne i dokument domyślny](dzial-6/apache-hosty-wirtualne.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Publikacja witryny pod własną nazwą — Apache a usługa DNS](dzial-6/publikacja-witryny-dns-apache.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Ćwiczenia w konfiguracji serwera WWW](dzial-6/cwiczenia-serwer-www.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer FTP — instalacja, konta i użytkownicy anonimowi](dzial-6/serwer-ftp-vsftpd.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer pocztowy — instalacja i podstawowa konfiguracja](dzial-6/serwer-pocztowy-postfix-dovecot.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ### Dział VII. Zdalna administracja i monitorowanie
 

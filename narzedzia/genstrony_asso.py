@@ -88,6 +88,20 @@ GOTOWE = {
         "Praktyczny sprawdzian: usługi sieciowe i udostępnianie zasobów":
             ("dzial-5/sprawdzian-uslugi-sieciowe-i-zasoby.md", "Praktyczny sprawdzian: usługi sieciowe i udostępnianie zasobów"),
     },
+    "VI": {
+        "Serwer WWW Apache — instalacja i publikacja strony":
+            ("dzial-6/apache-instalacja-i-publikacja.md", "Serwer WWW Apache — instalacja i publikacja strony"),
+        "Apache — hosty wirtualne i dokument domyślny":
+            ("dzial-6/apache-hosty-wirtualne.md", "Apache — hosty wirtualne i dokument domyślny"),
+        "Publikacja witryny pod własną nazwą — Apache a usługa DNS":
+            ("dzial-6/publikacja-witryny-dns-apache.md", "Publikacja witryny pod własną nazwą — Apache a usługa DNS"),
+        "Ćwiczenia w konfiguracji serwera WWW":
+            ("dzial-6/cwiczenia-serwer-www.md", "Ćwiczenia w konfiguracji serwera WWW"),
+        "Serwer FTP — instalacja, konta i użytkownicy anonimowi":
+            ("dzial-6/serwer-ftp-vsftpd.md", "Serwer FTP — instalacja, konta i użytkownicy anonimowi"),
+        "Serwer pocztowy — instalacja i podstawowa konfiguracja":
+            ("dzial-6/serwer-pocztowy-postfix-dovecot.md", "Serwer pocztowy — instalacja i podstawowa konfiguracja"),
+    },
 }
 
 
