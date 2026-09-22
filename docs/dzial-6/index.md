@@ -4,7 +4,7 @@
 
 Witryna działa na Apache’u pod własną nazwą, obok niej serwer FTP i serwer pocztowy.
 
-Materiały do tego działu powstają w miarę realizacji programu — na razie znajdziesz tu spis tematów i wymagania.
+Gotowe materiały: **6 z 6** tematów.
 
 ## Tematy działu
 
@@ -14,12 +14,12 @@ egzaminacyjnych.
 
 | Temat | Godz. | Efekt | Materiały |
 | --- | :---: | :---: | --- |
-| Serwer WWW Apache — instalacja i publikacja strony | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| Apache — hosty wirtualne i dokument domyślny | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| Publikacja witryny pod własną nazwą — Apache a usługa DNS | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| Ćwiczenia w konfiguracji serwera WWW | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| Serwer FTP — instalacja, konta i użytkownicy anonimowi | 1 | `INF.07.5.4, INF.07.5.5` | *w przygotowaniu* |
-| Serwer pocztowy — instalacja i podstawowa konfiguracja | 1 | `INF.07.5.5` | *w przygotowaniu* |
+| **[Serwer WWW Apache — instalacja i publikacja strony](apache-instalacja-i-publikacja.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Apache — hosty wirtualne i dokument domyślny](apache-hosty-wirtualne.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Publikacja witryny pod własną nazwą — Apache a usługa DNS](publikacja-witryny-dns-apache.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Ćwiczenia w konfiguracji serwera WWW](cwiczenia-serwer-www.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer FTP — instalacja, konta i użytkownicy anonimowi](serwer-ftp-vsftpd.md)** | 1 | `INF.07.5.4, INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer pocztowy — instalacja i podstawowa konfiguracja](serwer-pocztowy-postfix-dovecot.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ## Wymagania na oceny w tym dziale
 
