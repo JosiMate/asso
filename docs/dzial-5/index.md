@@ -4,7 +4,7 @@
 
 Udostępniasz katalogi i drukarkę — przez NFS dla Linuksa, przez SAMBĘ dla Windowsa — z uprawnieniami i zabezpieczeniami ustawionymi świadomie.
 
-Materiały do tego działu powstają w miarę realizacji programu — na razie znajdziesz tu spis tematów i wymagania.
+Gotowe materiały: **6 z 6** tematów.
 
 ## Tematy działu
 
@@ -14,12 +14,12 @@ egzaminacyjnych.
 
 | Temat | Godz. | Efekt | Materiały |
 | --- | :---: | :---: | --- |
-| Podział sieci ze względu na udostępnianie zasobów: klient–serwer i peer to peer | 1 | `INF.07.5.4` | *w przygotowaniu* |
-| Serwer plików NFS — udostępnianie katalogów | 1 | `INF.07.5.4, INF.07.5.5` | *w przygotowaniu* |
-| SAMBA — udostępnianie zasobów stacjom Windows | 2 | `INF.07.5.4, INF.07.5.5` | *w przygotowaniu* |
-| Uprawnienia i zabezpieczenia udostępnionych zasobów | 1 | `INF.07.5.4` | *w przygotowaniu* |
-| Serwer wydruku CUPS — udostępnienie drukarki w sieci | 1 | `INF.07.5.5` | *w przygotowaniu* |
-| Praktyczny sprawdzian: usługi sieciowe i udostępnianie zasobów | 1 | `INF.07.5.4, INF.07.5.5` | *w przygotowaniu* |
+| **[Podział sieci ze względu na udostępnianie zasobów: klient–serwer i peer to peer](podzial-sieci-klient-serwer-p2p.md)** | 1 | `INF.07.5.4` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer plików NFS — udostępnianie katalogów](serwer-plikow-nfs.md)** | 1 | `INF.07.5.4, INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[SAMBA — udostępnianie zasobów stacjom Windows](samba-udostepnianie-zasobow-windows.md)** | 2 | `INF.07.5.4, INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Uprawnienia i zabezpieczenia udostępnionych zasobów](uprawnienia-i-zabezpieczenia-zasobow.md)** | 1 | `INF.07.5.4` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer wydruku CUPS — udostępnienie drukarki w sieci](serwer-wydruku-cups.md)** | 1 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Praktyczny sprawdzian: usługi sieciowe i udostępnianie zasobów](sprawdzian-uslugi-sieciowe-i-zasoby.md)** | 1 | `INF.07.5.4, INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 !!! tip "Dział kończy praktyczny sprawdzian z usług sieciowych i udostępniania zasobów."
 

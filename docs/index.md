@@ -86,7 +86,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Udostępniasz katalogi i drukarkę — przez NFS dla Linuksa, przez SAMBĘ dla Windowsa — z uprawnieniami i zabezpieczeniami ustawionymi świadomie.
 
-    *7 godzin · 6 tematów · materiały w przygotowaniu*
+    *7 godzin · 6 tematów*
 
     [Otwórz dział](dzial-5/index.md){ .md-button }
 
@@ -223,12 +223,12 @@ Udostępniasz katalogi i drukarkę — przez NFS dla Linuksa, przez SAMBĘ dla W
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Podział sieci ze względu na udostępnianie zasobów: klient–serwer i peer to peer | 1 | *w przygotowaniu* |
-| Serwer plików NFS — udostępnianie katalogów | 1 | *w przygotowaniu* |
-| SAMBA — udostępnianie zasobów stacjom Windows | 2 | *w przygotowaniu* |
-| Uprawnienia i zabezpieczenia udostępnionych zasobów | 1 | *w przygotowaniu* |
-| Serwer wydruku CUPS — udostępnienie drukarki w sieci | 1 | *w przygotowaniu* |
-| Praktyczny sprawdzian: usługi sieciowe i udostępnianie zasobów | 1 | *w przygotowaniu* |
+| **[Podział sieci ze względu na udostępnianie zasobów: klient–serwer i peer to peer](dzial-5/podzial-sieci-klient-serwer-p2p.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer plików NFS — udostępnianie katalogów](dzial-5/serwer-plikow-nfs.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[SAMBA — udostępnianie zasobów stacjom Windows](dzial-5/samba-udostepnianie-zasobow-windows.md)** | 2 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Uprawnienia i zabezpieczenia udostępnionych zasobów](dzial-5/uprawnienia-i-zabezpieczenia-zasobow.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer wydruku CUPS — udostępnienie drukarki w sieci](dzial-5/serwer-wydruku-cups.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Praktyczny sprawdzian: usługi sieciowe i udostępnianie zasobów](dzial-5/sprawdzian-uslugi-sieciowe-i-zasoby.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 !!! tip "Dział kończy praktyczny sprawdzian z usług sieciowych i udostępniania zasobów."
 

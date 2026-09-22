@@ -74,6 +74,20 @@ GOTOWE = {
         "Ćwiczenia: DHCP i DNS w jednej sieci":
             ("dzial-4/cwiczenia-dhcp-dns-w-jednej-sieci.md", "Ćwiczenia: DHCP i DNS w jednej sieci"),
     },
+    "V": {
+        "Podział sieci ze względu na udostępnianie zasobów: klient–serwer i peer to peer":
+            ("dzial-5/podzial-sieci-klient-serwer-p2p.md", "Podział sieci ze względu na udostępnianie zasobów: klient–serwer i peer to peer"),
+        "Serwer plików NFS — udostępnianie katalogów":
+            ("dzial-5/serwer-plikow-nfs.md", "Serwer plików NFS — udostępnianie katalogów"),
+        "SAMBA — udostępnianie zasobów stacjom Windows":
+            ("dzial-5/samba-udostepnianie-zasobow-windows.md", "SAMBA — udostępnianie zasobów stacjom Windows"),
+        "Uprawnienia i zabezpieczenia udostępnionych zasobów":
+            ("dzial-5/uprawnienia-i-zabezpieczenia-zasobow.md", "Uprawnienia i zabezpieczenia udostępnionych zasobów"),
+        "Serwer wydruku CUPS — udostępnienie drukarki w sieci":
+            ("dzial-5/serwer-wydruku-cups.md", "Serwer wydruku CUPS — udostępnienie drukarki w sieci"),
+        "Praktyczny sprawdzian: usługi sieciowe i udostępnianie zasobów":
+            ("dzial-5/sprawdzian-uslugi-sieciowe-i-zasoby.md", "Praktyczny sprawdzian: usługi sieciowe i udostępnianie zasobów"),
+    },
 }
 
 
