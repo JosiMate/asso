@@ -46,6 +46,20 @@ GOTOWE = {
         "Zarządzanie dyskami i punktami montowania":
             ("dzial-2/dyski-i-montowanie.md", "Zarządzanie dyskami i montowanie"),
     },
+    "III": {
+        "Interfejsy sieciowe i adresacja IP — przegląd metod konfiguracji":
+            ("dzial-3/interfejsy-i-adresacja-przeglad.md", "Interfejsy sieciowe i adresacja IP — przegląd metod konfiguracji"),
+        "Adresacja IP w plikach konfiguracyjnych (/etc/network/interfaces)":
+            ("dzial-3/adresacja-etc-network-interfaces.md", "Adresacja IP w plikach konfiguracyjnych (/etc/network/interfaces)"),
+        "Adresacja IP w Netplanie (/etc/netplan)":
+            ("dzial-3/adresacja-netplan.md", "Adresacja IP w Netplanie (/etc/netplan)"),
+        "Rozwiązywanie nazw po stronie klienta; narzędzia diagnostyczne sieci":
+            ("dzial-3/rozwiazywanie-nazw-i-diagnostyka.md", "Rozwiązywanie nazw po stronie klienta; narzędzia diagnostyczne sieci"),
+        "Ćwiczenia: konfiguracja sieciowa serwera i jej weryfikacja":
+            ("dzial-3/cwiczenia-konfiguracja-sieciowa.md", "Ćwiczenia: konfiguracja sieciowa serwera i jej weryfikacja"),
+        "Praktyczny sprawdzian: wdrożenie serwera, konta, uprawnienia i adresacja":
+            ("dzial-3/sprawdzian-wdrozenie-serwera.md", "Praktyczny sprawdzian: wdrożenie serwera, konta, uprawnienia i adresacja"),
+    },
 }
 
 

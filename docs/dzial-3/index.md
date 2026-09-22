@@ -4,7 +4,7 @@
 
 Serwer pracuje w sieci lokalnej — adresację ustawiasz dwiema metodami i umiesz sprawdzić, na którym etapie komunikacja się urywa.
 
-Materiały do tego działu powstają w miarę realizacji programu — na razie znajdziesz tu spis tematów i wymagania.
+Gotowe materiały: **6 z 6** tematów.
 
 ## Tematy działu
 
@@ -14,12 +14,12 @@ egzaminacyjnych.
 
 | Temat | Godz. | Efekt | Materiały |
 | --- | :---: | :---: | --- |
-| Interfejsy sieciowe i adresacja IP — przegląd metod konfiguracji | 1 | `INF.07.5.6` | *w przygotowaniu* |
-| Adresacja IP w plikach konfiguracyjnych (/etc/network/interfaces) | 1 | `INF.07.5.6` | *w przygotowaniu* |
-| Adresacja IP w Netplanie (/etc/netplan) | 1 | `INF.07.5.6` | *w przygotowaniu* |
-| Rozwiązywanie nazw po stronie klienta; narzędzia diagnostyczne sieci | 1 | `INF.07.5.6, INF.07.5.7` | *w przygotowaniu* |
-| Ćwiczenia: konfiguracja sieciowa serwera i jej weryfikacja | 1 | `INF.07.5.6` | *w przygotowaniu* |
-| Praktyczny sprawdzian: wdrożenie serwera, konta, uprawnienia i adresacja | 1 | `INF.07.5.2, INF.07.5.3, INF.07.5.6` | *w przygotowaniu* |
+| **[Interfejsy sieciowe i adresacja IP — przegląd metod konfiguracji](interfejsy-i-adresacja-przeglad.md)** | 1 | `INF.07.5.6` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Adresacja IP w plikach konfiguracyjnych (/etc/network/interfaces)](adresacja-etc-network-interfaces.md)** | 1 | `INF.07.5.6` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Adresacja IP w Netplanie (/etc/netplan)](adresacja-netplan.md)** | 1 | `INF.07.5.6` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Rozwiązywanie nazw po stronie klienta; narzędzia diagnostyczne sieci](rozwiazywanie-nazw-i-diagnostyka.md)** | 1 | `INF.07.5.6, INF.07.5.7` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Ćwiczenia: konfiguracja sieciowa serwera i jej weryfikacja](cwiczenia-konfiguracja-sieciowa.md)** | 1 | `INF.07.5.6` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Praktyczny sprawdzian: wdrożenie serwera, konta, uprawnienia i adresacja](sprawdzian-wdrozenie-serwera.md)** | 1 | `INF.07.5.2, INF.07.5.3, INF.07.5.6` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 !!! tip "Dział kończy praktyczny sprawdzian z wdrożenia serwera, kont, uprawnień i adresacji."
 

@@ -7,3 +7,9 @@ title: "Dział III. Konfiguracja sieciowa serwera"
 append_unmatched: true
 nav:
   - "Przegląd działu": index.md
+  - "Interfejsy sieciowe i adresacja IP — przegląd metod konfiguracji": interfejsy-i-adresacja-przeglad.md
+  - "Adresacja IP w plikach konfiguracyjnych (/etc/network/interfaces)": adresacja-etc-network-interfaces.md
+  - "Adresacja IP w Netplanie (/etc/netplan)": adresacja-netplan.md
+  - "Rozwiązywanie nazw po stronie klienta; narzędzia diagnostyczne sieci": rozwiazywanie-nazw-i-diagnostyka.md
+  - "Ćwiczenia: konfiguracja sieciowa serwera i jej weryfikacja": cwiczenia-konfiguracja-sieciowa.md
+  - "Praktyczny sprawdzian: wdrożenie serwera, konta, uprawnienia i adresacja": sprawdzian-wdrozenie-serwera.md
