@@ -7,3 +7,9 @@ title: "Dział V. Udostępnianie zasobów w sieci komputerowej"
 append_unmatched: true
 nav:
   - "Przegląd działu": index.md
+  - "Podział sieci ze względu na udostępnianie zasobów: klient–serwer i peer to peer": podzial-sieci-klient-serwer-p2p.md
+  - "Serwer plików NFS — udostępnianie katalogów": serwer-plikow-nfs.md
+  - "SAMBA — udostępnianie zasobów stacjom Windows": samba-udostepnianie-zasobow-windows.md
+  - "Uprawnienia i zabezpieczenia udostępnionych zasobów": uprawnienia-i-zabezpieczenia-zasobow.md
+  - "Serwer wydruku CUPS — udostępnienie drukarki w sieci": serwer-wydruku-cups.md
+  - "Praktyczny sprawdzian: usługi sieciowe i udostępnianie zasobów": sprawdzian-uslugi-sieciowe-i-zasoby.md
