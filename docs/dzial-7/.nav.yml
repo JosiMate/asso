@@ -7,3 +7,8 @@ title: "Dział VII. Zdalna administracja i monitorowanie"
 append_unmatched: true
 nav:
   - "Przegląd działu": index.md
+  - "Zdalny dostęp do serwera — konfiguracja usługi SSH": ssh-konfiguracja-uslugi.md
+  - "SSH — logowanie kluczem i przesyłanie plików": ssh-klucze-i-przesylanie-plikow.md
+  - "Centralne zarządzanie stacjami roboczymi; zdalna instalacja oprogramowania": centralne-zarzadzanie-i-instalacja.md
+  - "Monitorowanie pracy i wydajności serwera": monitorowanie-wydajnosci-serwera.md
+  - "Dzienniki systemowe; monitorowanie działań użytkowników sieci": dzienniki-systemowe-i-audyt.md

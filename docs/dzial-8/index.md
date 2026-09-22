@@ -4,7 +4,7 @@
 
 Znasz metody ataków, zapora przepuszcza tylko to, co ma przepuszczać, a serwer jest chroniony przed szkodliwym oprogramowaniem — także fizycznie, zasilaczem awaryjnym i macierzą.
 
-Materiały do tego działu powstają w miarę realizacji programu — na razie znajdziesz tu spis tematów i wymagania.
+Gotowe materiały: **5 z 5** tematów.
 
 ## Tematy działu
 
@@ -14,11 +14,11 @@ egzaminacyjnych.
 
 | Temat | Godz. | Efekt | Materiały |
 | --- | :---: | :---: | --- |
-| Metody ataków sieciowych | 1 | `INF.07.5.8` | *w przygotowaniu* |
-| Zapora sieciowa — reguły dla usług serwera | 2 | `INF.07.5.8` | *w przygotowaniu* |
-| Ochrona przed szkodliwym oprogramowaniem — metody i dobór zabezpieczeń | 1 | `INF.07.5.8` | *w przygotowaniu* |
-| Instalacja i konfiguracja oprogramowania zabezpieczającego serwer | 1 | `INF.07.5.8` | *w przygotowaniu* |
-| Polityka haseł oraz fizyczne środki zabezpieczenia serwera (zasilacze awaryjne, macierze RAID) | 1 | `INF.07.5.8` | *w przygotowaniu* |
+| **[Metody ataków sieciowych](metody-atakow-sieciowych.md)** | 1 | `INF.07.5.8` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Zapora sieciowa — reguły dla usług serwera](zapora-sieciowa-reguly-uslug.md)** | 2 | `INF.07.5.8` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Ochrona przed szkodliwym oprogramowaniem — metody i dobór zabezpieczeń](ochrona-przed-szkodliwym-oprogramowaniem.md)** | 1 | `INF.07.5.8` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Instalacja i konfiguracja oprogramowania zabezpieczającego serwer](oprogramowanie-zabezpieczajace-serwer.md)** | 1 | `INF.07.5.8` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Polityka haseł oraz fizyczne środki zabezpieczenia serwera (zasilacze awaryjne, macierze RAID)](polityka-hasel-fizyczne-zabezpieczenia-raid.md)** | 1 | `INF.07.5.8` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ## Wymagania na oceny w tym dziale
 

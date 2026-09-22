@@ -106,7 +106,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Administrujesz serwerem zdalnie przez SSH, zarządzasz stacjami centralnie i wiesz z dzienników oraz z pomiarów wydajności, co się na serwerze dzieje.
 
-    *5 godzin · 5 tematów · materiały w przygotowaniu*
+    *5 godzin · 5 tematów*
 
     [Otwórz dział](dzial-7/index.md){ .md-button }
 
@@ -116,7 +116,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Znasz metody ataków, zapora przepuszcza tylko to, co ma przepuszczać, a serwer jest chroniony przed szkodliwym oprogramowaniem — także fizycznie, zasilaczem awaryjnym i macierzą.
 
-    *6 godzin · 5 tematów · materiały w przygotowaniu*
+    *6 godzin · 5 tematów*
 
     [Otwórz dział](dzial-8/index.md){ .md-button }
 
@@ -255,11 +255,11 @@ Administrujesz serwerem zdalnie przez SSH, zarządzasz stacjami centralnie i wie
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Zdalny dostęp do serwera — konfiguracja usługi SSH | 1 | *w przygotowaniu* |
-| SSH — logowanie kluczem i przesyłanie plików | 1 | *w przygotowaniu* |
-| Centralne zarządzanie stacjami roboczymi; zdalna instalacja oprogramowania | 1 | *w przygotowaniu* |
-| Monitorowanie pracy i wydajności serwera | 1 | *w przygotowaniu* |
-| Dzienniki systemowe; monitorowanie działań użytkowników sieci | 1 | *w przygotowaniu* |
+| **[Zdalny dostęp do serwera — konfiguracja usługi SSH](dzial-7/ssh-konfiguracja-uslugi.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[SSH — logowanie kluczem i przesyłanie plików](dzial-7/ssh-klucze-i-przesylanie-plikow.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Centralne zarządzanie stacjami roboczymi; zdalna instalacja oprogramowania](dzial-7/centralne-zarzadzanie-i-instalacja.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Monitorowanie pracy i wydajności serwera](dzial-7/monitorowanie-wydajnosci-serwera.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Dzienniki systemowe; monitorowanie działań użytkowników sieci](dzial-7/dzienniki-systemowe-i-audyt.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ### Dział VIII. Zabezpieczanie sieciowego systemu operacyjnego
 
@@ -269,11 +269,11 @@ Znasz metody ataków, zapora przepuszcza tylko to, co ma przepuszczać, a serwer
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Metody ataków sieciowych | 1 | *w przygotowaniu* |
-| Zapora sieciowa — reguły dla usług serwera | 2 | *w przygotowaniu* |
-| Ochrona przed szkodliwym oprogramowaniem — metody i dobór zabezpieczeń | 1 | *w przygotowaniu* |
-| Instalacja i konfiguracja oprogramowania zabezpieczającego serwer | 1 | *w przygotowaniu* |
-| Polityka haseł oraz fizyczne środki zabezpieczenia serwera (zasilacze awaryjne, macierze RAID) | 1 | *w przygotowaniu* |
+| **[Metody ataków sieciowych](dzial-8/metody-atakow-sieciowych.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Zapora sieciowa — reguły dla usług serwera](dzial-8/zapora-sieciowa-reguly-uslug.md)** | 2 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Ochrona przed szkodliwym oprogramowaniem — metody i dobór zabezpieczeń](dzial-8/ochrona-przed-szkodliwym-oprogramowaniem.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Instalacja i konfiguracja oprogramowania zabezpieczającego serwer](dzial-8/oprogramowanie-zabezpieczajace-serwer.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Polityka haseł oraz fizyczne środki zabezpieczenia serwera (zasilacze awaryjne, macierze RAID)](dzial-8/polityka-hasel-fizyczne-zabezpieczenia-raid.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ### Dział IX. Kopie bezpieczeństwa, diagnostyka i usuwanie awarii
 
