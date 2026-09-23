@@ -4,7 +4,7 @@
 
 Serwer obsługuje stacje Windows, a Ty umiesz wskazać, która usługa czemu odpowiada w drugiej rodzinie systemów — tego wymaga wprost efekt INF.07.5.1.
 
-Materiały do tego działu powstają w miarę realizacji programu — na razie znajdziesz tu spis tematów i wymagania.
+Gotowe materiały: **3 z 3** tematów.
 
 ## Tematy działu
 
@@ -14,9 +14,9 @@ egzaminacyjnych.
 
 | Temat | Godz. | Efekt | Materiały |
 | --- | :---: | :---: | --- |
-| Odpowiedniki usług w obu rodzinach systemów — zestawienie i porównanie | 1 | `INF.07.5.1` | *w przygotowaniu* |
-| Serwer w sieci ze stacjami Windows; przyłączanie stacji roboczej do domeny | 2 | `INF.07.5.5` | *w przygotowaniu* |
-| Publikowanie udostępnionych zasobów z użyciem usług katalogowych | 1 | `INF.07.5.4` | *w przygotowaniu* |
+| **[Odpowiedniki usług w obu rodzinach systemów — zestawienie i porównanie](odpowiedniki-uslug-linux-windows-porownanie.md)** | 1 | `INF.07.5.1` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer w sieci ze stacjami Windows; przyłączanie stacji roboczej do domeny](serwer-sieci-windows-przylaczanie-stacji-do-domeny.md)** | 2 | `INF.07.5.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Publikowanie udostępnionych zasobów z użyciem usług katalogowych](publikowanie-zasobow-uslugi-katalogowe.md)** | 1 | `INF.07.5.4` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ## Wymagania na oceny w tym dziale
 

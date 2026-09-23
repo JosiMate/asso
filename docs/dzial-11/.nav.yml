@@ -7,3 +7,4 @@ title: "Dział XI. Przygotowanie do egzaminu zawodowego INF.07"
 append_unmatched: true
 nav:
   - "Przegląd działu": index.md
+  - "Rozwiązywanie zadań egzaminacyjnych INF.07": rozwiazywanie-zadan-egzaminacyjnych-inf07.md

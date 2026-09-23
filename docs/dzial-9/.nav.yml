@@ -7,3 +7,9 @@ title: "Dział IX. Kopie bezpieczeństwa, diagnostyka i usuwanie awarii"
 append_unmatched: true
 nav:
   - "Przegląd działu": index.md
+  - "Typy kopii bezpieczeństwa i strategie ich tworzenia": typy-kopii-bezpieczenstwa-i-strategie.md
+  - "Wykonywanie i odtwarzanie kopii danych": wykonywanie-i-odtwarzanie-kopii-danych.md
+  - "Dobór narzędzi diagnostycznych; lokalizowanie awarii": dobor-narzedzi-diagnostycznych-lokalizowanie-awarii.md
+  - "Usuwanie awarii i weryfikacja poprawności działania systemu": usuwanie-awarii-i-weryfikacja-dzialania.md
+  - "Dokumentowanie spostrzeżeń, działań i wyników": dokumentowanie-spostrzezen-dzialan-i-wynikow.md
+  - "Praktyczny sprawdzian: zabezpieczenia, kopie bezpieczeństwa i diagnostyka": sprawdzian-zabezpieczenia-kopie-diagnostyka.md

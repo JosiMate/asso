@@ -4,7 +4,7 @@
 
 Rozwiązujesz zadania w formacie części praktycznej egzaminu zawodowego, w czasie egzaminacyjnym.
 
-Materiały do tego działu powstają w miarę realizacji programu — na razie znajdziesz tu spis tematów i wymagania.
+Gotowe materiały: **1 z 1** tematów.
 
 ## Tematy działu
 
@@ -14,7 +14,7 @@ egzaminacyjnych.
 
 | Temat | Godz. | Efekt | Materiały |
 | --- | :---: | :---: | --- |
-| Rozwiązywanie zadań egzaminacyjnych | 3 | `INF.07.5` | *w przygotowaniu* |
+| **[Rozwiązywanie zadań egzaminacyjnych](rozwiazywanie-zadan-egzaminacyjnych-inf07.md)** | 3 | `INF.07.5` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ## Wymagania na oceny w tym dziale
 

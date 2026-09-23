@@ -7,3 +7,6 @@ title: "Dział X. Współpraca systemów Linux i Windows w jednej sieci"
 append_unmatched: true
 nav:
   - "Przegląd działu": index.md
+  - "Odpowiedniki usług w obu rodzinach systemów — zestawienie i porównanie": odpowiedniki-uslug-linux-windows-porownanie.md
+  - "Serwer w sieci ze stacjami Windows; przyłączanie stacji roboczej do domeny": serwer-sieci-windows-przylaczanie-stacji-do-domeny.md
+  - "Publikowanie udostępnionych zasobów z użyciem usług katalogowych": publikowanie-zasobow-uslugi-katalogowe.md
