@@ -64,7 +64,7 @@
       id: def.id,
       dane,
       wypelnione: KP.policzWypelnione(dane, def),
-      wszystkie: KP.policzWszystkie(def),
+      wszystkie: KP.policzWszystkie(def, dane),
       zapisano: dane._zapisano || null,
     };
   }

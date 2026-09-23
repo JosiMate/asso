@@ -117,12 +117,20 @@
   /* Ile pól karta ma w ogóle — liczone z definicji, nie z DOM-u, żeby
      przegląd kart mógł to policzyć bez renderowania karty. Trzy pola
      nagłówka (numer, klasa, data) są wspólne dla każdej karty. */
-  function policzWszystkie(def) {
+  function policzWszystkie(def, dane) {
     let n = 3;
     for (const z of def.zadania || []) {
       for (const p of z.pola || []) {
         n += p.typ === "tabela" ? (p.wiersze || []).length : 1;
       }
+    }
+    /* Klasa i data przyjeżdżają do karty już wypełnione i dopóki uczeń ich nie
+       poprawi, nie liczą się jako wypełnione. Nie mogą więc powiększać sumy —
+       inaczej karta zrobiona w całości pokazywałaby 51 z 53 i pasek postępu
+       nigdy nie dobiłby do końca. Gdy uczeń którąś poprawi, wraca do sumy. */
+    if (dane) {
+      if (def && dane._klasa === def.klasa) n -= 1;
+      if (dane._data && dane._data === dane._data_domyslna) n -= 1;
     }
     return n;
   }
