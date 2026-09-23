@@ -42,6 +42,23 @@
     return `${rok}-${miesiac}-${dzien}`;
   }
 
+  /* Data na karcie ma być dniem, w którym uczeń przy niej siedzi. Dopóki jej
+     nie poprawi, podstawiamy dzisiejszą: przy otwarciu strony i jeszcze raz
+     w chwili generowania pliku Worda — żeby w dokumencie nie wylądowała data
+     sprzed tygodnia, gdy karta wisiała otwarta w tle. Własną datę ucznia
+     poznajemy po tym, że różni się od zapisanej domyślnej; tej nie ruszamy. */
+  function odswiezDateDomyslna(id, dane, host) {
+    if (dane._data && dane._data !== dane._data_domyslna) return false;
+    const dzis = dzisiejszaDataLocal();
+    if (dane._data === dzis && dane._data_domyslna === dzis) return false;
+    dane._data = dzis;
+    dane._data_domyslna = dzis;
+    zapisz(id, dane);
+    const pole = host && host.querySelector('[data-pole="_data"]');
+    if (pole) pole.value = dzis;
+    return true;
+  }
+
   // ---------------------------------------------------------------- magazyn
   const wczytaj = (id) => {
     try { return JSON.parse(localStorage.getItem(KLUCZ(id))) || {}; }
@@ -334,17 +351,10 @@
     const id = def.id;
     przeniesStarePodNowaNazwe(def);
     let dane = wczytaj(id);
-    // Wartości domyślne (klasa i data) są zapisywane przy pierwszym otwarciu,
-    // żeby trafiły do danych i nie zmieniały się przy kolejnych wizytach.
-    let zmieniono = false;
-    if (!dane._klasa && def.klasa) { dane._klasa = def.klasa; zmieniono = true; }
-    if (!dane._data) {
-      const dzis = dzisiejszaDataLocal();
-      dane._data = dzis;
-      dane._data_domyslna = dzis;
-      zmieniono = true;
-    }
-    if (zmieniono) { zapisz(id, dane); }
+    // Klasa jest w atrybucie value pola — bez tego nigdy nie trafiłaby do
+    // zapisanych danych, bo nikt jej nie edytuje. Datę odświeża pomocnik wyżej.
+    if (!dane._klasa && def.klasa) { dane._klasa = def.klasa; zapisz(id, dane); }
+    odswiezDateDomyslna(id, dane);
     render(host, def, dane);
     const status = host.querySelector(".kp-status");
 
@@ -426,6 +436,7 @@
           ? "Pobieram moduł tworzący dokumenty (raz na sesję)…" : "Składam dokument…";
       status.className = "kp-status";
       try {
+        odswiezDateDomyslna(id, dane, host);
         const nazwa = await generuj(def, dane, status);
         if (nazwa) {
           status.textContent = `Pobrano plik ${nazwa}. Teraz dołącz go w Dzienniku VULCAN.`;
