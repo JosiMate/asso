@@ -4,7 +4,7 @@
 
 Dobierasz typ kopii bezpieczeństwa do sytuacji, odtwarzasz dane, lokalizujesz i usuwasz awarię, a potem dokumentujesz, co się stało i co zrobiłeś.
 
-Materiały do tego działu powstają w miarę realizacji programu — na razie znajdziesz tu spis tematów i wymagania.
+Gotowe materiały: **6 z 6** tematów.
 
 ## Tematy działu
 
@@ -14,12 +14,12 @@ egzaminacyjnych.
 
 | Temat | Godz. | Efekt | Materiały |
 | --- | :---: | :---: | --- |
-| Typy kopii bezpieczeństwa i strategie ich tworzenia | 1 | `INF.07.5.8` | *w przygotowaniu* |
-| Wykonywanie i odtwarzanie kopii danych | 1 | `INF.07.5.8` | *w przygotowaniu* |
-| Dobór narzędzi diagnostycznych; lokalizowanie awarii | 1 | `INF.07.5.7` | *w przygotowaniu* |
-| Usuwanie awarii i weryfikacja poprawności działania systemu | 1 | `INF.07.5.7` | *w przygotowaniu* |
-| Dokumentowanie spostrzeżeń, działań i wyników | 1 | `INF.07.5.7` | *w przygotowaniu* |
-| Praktyczny sprawdzian: zabezpieczenia, kopie bezpieczeństwa i diagnostyka | 1 | `INF.07.5.7, INF.07.5.8` | *w przygotowaniu* |
+| **[Typy kopii bezpieczeństwa i strategie ich tworzenia](typy-kopii-bezpieczenstwa-i-strategie.md)** | 1 | `INF.07.5.8` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Wykonywanie i odtwarzanie kopii danych](wykonywanie-i-odtwarzanie-kopii-danych.md)** | 1 | `INF.07.5.8` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Dobór narzędzi diagnostycznych; lokalizowanie awarii](dobor-narzedzi-diagnostycznych-lokalizowanie-awarii.md)** | 1 | `INF.07.5.7` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Usuwanie awarii i weryfikacja poprawności działania systemu](usuwanie-awarii-i-weryfikacja-dzialania.md)** | 1 | `INF.07.5.7` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Dokumentowanie spostrzeżeń, działań i wyników](dokumentowanie-spostrzezen-dzialan-i-wynikow.md)** | 1 | `INF.07.5.7` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Praktyczny sprawdzian: zabezpieczenia, kopie bezpieczeństwa i diagnostyka](sprawdzian-zabezpieczenia-kopie-diagnostyka.md)** | 1 | `INF.07.5.7, INF.07.5.8` | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 !!! tip "Dział kończy praktyczny sprawdzian z zabezpieczeń, kopii bezpieczeństwa i diagnostyki."
 

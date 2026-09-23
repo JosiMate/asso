@@ -126,7 +126,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Dobierasz typ kopii bezpieczeństwa do sytuacji, odtwarzasz dane, lokalizujesz i usuwasz awarię, a potem dokumentujesz, co się stało i co zrobiłeś.
 
-    *6 godzin · 6 tematów · materiały w przygotowaniu*
+    *6 godzin · 6 tematów*
 
     [Otwórz dział](dzial-9/index.md){ .md-button }
 
@@ -136,7 +136,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Serwer obsługuje stacje Windows, a Ty umiesz wskazać, która usługa czemu odpowiada w drugiej rodzinie systemów — tego wymaga wprost efekt INF.07.5.1.
 
-    *4 godziny · 3 tematy · materiały w przygotowaniu*
+    *4 godziny · 3 tematy*
 
     [Otwórz dział](dzial-10/index.md){ .md-button }
 
@@ -146,7 +146,7 @@ trzy działy kończą się praktycznym sprawdzianem.
 
     Rozwiązujesz zadania w formacie części praktycznej egzaminu zawodowego, w czasie egzaminacyjnym.
 
-    *3 godziny · 1 temat · materiały w przygotowaniu*
+    *3 godziny · 1 temat*
 
     [Otwórz dział](dzial-11/index.md){ .md-button }
 
@@ -283,12 +283,12 @@ Dobierasz typ kopii bezpieczeństwa do sytuacji, odtwarzasz dane, lokalizujesz i
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Typy kopii bezpieczeństwa i strategie ich tworzenia | 1 | *w przygotowaniu* |
-| Wykonywanie i odtwarzanie kopii danych | 1 | *w przygotowaniu* |
-| Dobór narzędzi diagnostycznych; lokalizowanie awarii | 1 | *w przygotowaniu* |
-| Usuwanie awarii i weryfikacja poprawności działania systemu | 1 | *w przygotowaniu* |
-| Dokumentowanie spostrzeżeń, działań i wyników | 1 | *w przygotowaniu* |
-| Praktyczny sprawdzian: zabezpieczenia, kopie bezpieczeństwa i diagnostyka | 1 | *w przygotowaniu* |
+| **[Typy kopii bezpieczeństwa i strategie ich tworzenia](dzial-9/typy-kopii-bezpieczenstwa-i-strategie.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Wykonywanie i odtwarzanie kopii danych](dzial-9/wykonywanie-i-odtwarzanie-kopii-danych.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Dobór narzędzi diagnostycznych; lokalizowanie awarii](dzial-9/dobor-narzedzi-diagnostycznych-lokalizowanie-awarii.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Usuwanie awarii i weryfikacja poprawności działania systemu](dzial-9/usuwanie-awarii-i-weryfikacja-dzialania.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Dokumentowanie spostrzeżeń, działań i wyników](dzial-9/dokumentowanie-spostrzezen-dzialan-i-wynikow.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Praktyczny sprawdzian: zabezpieczenia, kopie bezpieczeństwa i diagnostyka](dzial-9/sprawdzian-zabezpieczenia-kopie-diagnostyka.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 !!! tip "Dział kończy praktyczny sprawdzian z zabezpieczeń, kopii bezpieczeństwa i diagnostyki."
 
@@ -300,9 +300,9 @@ Serwer obsługuje stacje Windows, a Ty umiesz wskazać, która usługa czemu odp
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Odpowiedniki usług w obu rodzinach systemów — zestawienie i porównanie | 1 | *w przygotowaniu* |
-| Serwer w sieci ze stacjami Windows; przyłączanie stacji roboczej do domeny | 2 | *w przygotowaniu* |
-| Publikowanie udostępnionych zasobów z użyciem usług katalogowych | 1 | *w przygotowaniu* |
+| **[Odpowiedniki usług w obu rodzinach systemów — zestawienie i porównanie](dzial-10/odpowiedniki-uslug-linux-windows-porownanie.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Serwer w sieci ze stacjami Windows; przyłączanie stacji roboczej do domeny](dzial-10/serwer-sieci-windows-przylaczanie-stacji-do-domeny.md)** | 2 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
+| **[Publikowanie udostępnionych zasobów z użyciem usług katalogowych](dzial-10/publikowanie-zasobow-uslugi-katalogowe.md)** | 1 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 ### Dział XI. Przygotowanie do egzaminu zawodowego INF.07
 
@@ -312,7 +312,7 @@ Rozwiązujesz zadania w formacie części praktycznej egzaminu zawodowego, w cza
 
 | Temat | Godz. | Materiały |
 | --- | :---: | --- |
-| Rozwiązywanie zadań egzaminacyjnych | 3 | *w przygotowaniu* |
+| **[Rozwiązywanie zadań egzaminacyjnych](dzial-11/rozwiazywanie-zadan-egzaminacyjnych-inf07.md)** | 3 | :material-check-circle:{ title="Materiał gotowy" } gotowe |
 
 
 </div>

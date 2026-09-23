@@ -126,6 +126,52 @@ GOTOWE = {
         "Polityka haseł oraz fizyczne środki zabezpieczenia serwera (zasilacze awaryjne, macierze RAID)":
             ("dzial-8/polityka-hasel-fizyczne-zabezpieczenia-raid.md", "Polityka haseł oraz fizyczne środki zabezpieczenia serwera (zasilacze awaryjne, macierze RAID)"),
     },
+    "IX": {
+        "Typy kopii bezpieczeństwa i strategie ich tworzenia": (
+            "dzial-9/typy-kopii-bezpieczenstwa-i-strategie.md",
+            "Typy kopii bezpieczeństwa i strategie ich tworzenia"
+        ),
+        "Wykonywanie i odtwarzanie kopii danych": (
+            "dzial-9/wykonywanie-i-odtwarzanie-kopii-danych.md",
+            "Wykonywanie i odtwarzanie kopii danych"
+        ),
+        "Dobór narzędzi diagnostycznych; lokalizowanie awarii": (
+            "dzial-9/dobor-narzedzi-diagnostycznych-lokalizowanie-awarii.md",
+            "Dobór narzędzi diagnostycznych; lokalizowanie awarii"
+        ),
+        "Usuwanie awarii i weryfikacja poprawności działania systemu": (
+            "dzial-9/usuwanie-awarii-i-weryfikacja-dzialania.md",
+            "Usuwanie awarii i weryfikacja poprawności działania systemu"
+        ),
+        "Dokumentowanie spostrzeżeń, działań i wyników": (
+            "dzial-9/dokumentowanie-spostrzezen-dzialan-i-wynikow.md",
+            "Dokumentowanie spostrzeżeń, działań i wyników"
+        ),
+        "Praktyczny sprawdzian: zabezpieczenia, kopie bezpieczeństwa i diagnostyka": (
+            "dzial-9/sprawdzian-zabezpieczenia-kopie-diagnostyka.md",
+            "Praktyczny sprawdzian: zabezpieczenia, kopie bezpieczeństwa i diagnostyka"
+        ),
+    },
+    "X": {
+        "Odpowiedniki usług w obu rodzinach systemów — zestawienie i porównanie": (
+            "dzial-10/odpowiedniki-uslug-linux-windows-porownanie.md",
+            "Odpowiedniki usług w obu rodzinach systemów — zestawienie i porównanie"
+        ),
+        "Serwer w sieci ze stacjami Windows; przyłączanie stacji roboczej do domeny": (
+            "dzial-10/serwer-sieci-windows-przylaczanie-stacji-do-domeny.md",
+            "Serwer w sieci ze stacjami Windows; przyłączanie stacji roboczej do domeny"
+        ),
+        "Publikowanie udostępnionych zasobów z użyciem usług katalogowych": (
+            "dzial-10/publikowanie-zasobow-uslugi-katalogowe.md",
+            "Publikowanie udostępnionych zasobów z użyciem usług katalogowych"
+        ),
+    },
+    "XI": {
+        "Rozwiązywanie zadań egzaminacyjnych": (
+            "dzial-11/rozwiazywanie-zadan-egzaminacyjnych-inf07.md",
+            "Rozwiązywanie zadań egzaminacyjnych INF.07"
+        ),
+    },
 }
 
 
