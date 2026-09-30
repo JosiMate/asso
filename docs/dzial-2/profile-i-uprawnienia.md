@@ -273,6 +273,56 @@ umask
 
     Sprawdź poprawność konfiguracji katalogu z bitami SGID i dedykowanymi wpisami ACL za pomocą `getfacl` i utwórz migawkę maszyny wirtualnej o nazwie **`uprawnienia_i_acl_gotowe`**.
 
+## Trening w symulatorze
+
+!!! info "To symulator, nie prawdziwy Linux"
+    Poniższy terminal jest symulacją powłoki Bash działającą w Twojej przeglądarce. Służy do treningu nawyków i sprawdzania poleceń bez ryzyka uszkodzenia systemu. Nie wymaga dostępu do sieci, nie posiada instalacji pakietów ani edytorów tekstu (np. `nano`). Ćwiczenia docelowe wykonaj na maszynie wirtualnej w pracowni.
+
+### Swobodny trening
+
+Wypróbuj znane polecenia w bezpiecznym środowisku:
+
+<div class="linux-trener" data-scenariusz="firma"></div>
+
+### Zadania treningowe
+
+!!! note "Trening 1. Chmod w zapisie ósemkowym"
+    Zmień uprawnienia pliku `/srv/dane/notatki.txt` na `600` (właściciel: odczyt/zapis, pozostali i grupa: brak dostępu).
+
+    <div class="linux-trener" data-scenariusz="firma"
+         data-cele='[{"typ": "prawa", "sciezka": "/srv/dane/notatki.txt", "tryb": "600", "opis": "Uprawnienia pliku notatki.txt zmieniono na 600"}]'
+         data-wzorzec="chmod 600 /srv/dane/notatki.txt"></div>
+
+!!! note "Trening 2. Zmiana właściciela i grupy rekurencyjnie"
+    Zmień właściciela i grupę katalogu `/srv/dane/ksiegowosc` wraz z całą zawartością na `jkowalski:ksiegowosc`.
+
+    <div class="linux-trener" data-scenariusz="firma"
+         data-cele='[{"typ": "wlasciciel", "sciezka": "/srv/dane/ksiegowosc", "user": "jkowalski", "grupa": "ksiegowosc", "opis": "Właściciel /srv/dane/ksiegowosc to jkowalski:ksiegowosc"}]'
+         data-wzorzec="sudo chown -R jkowalski:ksiegowosc /srv/dane/ksiegowosc"></div>
+
+!!! note "Trening 3. Konfiguracja katalogu wspólnego z bitami specjalnymi"
+    Ustaw uprawnienia dla katalogu `/srv/dane/wymiana` tak, aby posiadał bit Sticky (`1777`), a katalog `/srv/dane/ksiegowosc` posiadał bit SGID oraz prawa `2770`.
+
+    <div class="linux-trener" data-scenariusz="firma"
+         data-cele='[{"typ": "prawa", "sciezka": "/srv/dane/wymiana", "tryb": "1777", "opis": "Katalog wymiana ma bit sticky (1777)"}, {"typ": "prawa", "sciezka": "/srv/dane/ksiegowosc", "tryb": "2770", "opis": "Katalog ksiegowosc ma bit SGID (2770)"}]'
+         data-wzorzec="sudo chmod 1777 /srv/dane/wymiana&#10;sudo chmod 2770 /srv/dane/ksiegowosc"></div>
+
+!!! note "Trening 4. Zmiana maski umask i sprawdzenie domyślnych uprawnień"
+    Ustaw maskę `umask` na `0027` i utwórz plik `test.txt` w katalogu domowym.
+
+    <div class="linux-trener" data-scenariusz="firma"
+         data-cele='[{"typ": "prawa", "sciezka": "/home/uczen/test.txt", "tryb": "640", "opis": "Plik test.txt został utworzony z uprawnieniami 640 (z umask 0027)"}]'
+         data-wzorzec="umask 0027&#10;touch ~/test.txt"></div>
+
+    ??? tip "Podpowiedź 1"
+        Wpisanie `umask 0027` zmienia domyślną maskę w bieżącej sesji powłoki.
+
+    ??? tip "Podpowiedź 2"
+        Dla pliku nowo tworzonego domyślne prawa `666` odjąć maskę `0027` daje prawa `640` (`rw-r-----`).
+
+    ??? tip "Podpowiedź 3"
+        Wykonaj: `umask 0027` a następnie `touch ~/test.txt`.
+
 ## Ćwiczenia
 
 !!! note "Ćwiczenie 1. Konfiguracja profilu Bash i maski `umask`"
