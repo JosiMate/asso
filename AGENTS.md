@@ -308,6 +308,23 @@ pracy działu.
 `poprawna` liczy się od 0. Klucz `"typ": "jedna"`, który jest w starszych
 quizach, nic nie robi — w nowych go nie dodawaj.
 
+### Widżet `linux-trener`
+
+Osadzany na stronach tematów jako symulator powłoki Linux:
+
+```html
+<div class="linux-trener" data-scenariusz="firma"
+     data-start="cd /srv/dane"
+     data-cele='[{"typ": "katalog", "sciezka": "projekt", "opis": "Katalog projekt istnieje"}]'
+     data-wzorzec="mkdir projekt"></div>
+```
+
+- `data-scenariusz` — nazwa scenariusza z `docs/assets/linux-trener/scenariusze.json` (`czysty`, `firma`, `konta`).
+- `data-start` — polecenia wykonywane startowo przed oddaniem kontroli uczniowi.
+- `data-cele` — JSON z tablicą warunków zaliczenia (typy: `katalog`, `plik`, `brak`, `prawa`, `wlasciciel`, `uzytkownik`, `grupa`, `wynik`, `polecenie`).
+- `data-wzorzec` — polecenia rozwiązania rozdzielone `&#10;` (używane przez skrypt sprawdzający `narzedzia/sprawdz_trener.mjs`).
+Każde dodane zadanie musi przechodzić weryfikację `node narzedzia/sprawdz_trener.mjs`.
+
 ## 7. Czego nie ruszać
 
 - Wszystkie pliki generowane (lista w sekcji 4) — zmieniasz je tylko przez

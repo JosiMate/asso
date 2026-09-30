@@ -370,6 +370,64 @@ history | tail -n 15
     To jest Twoja dokumentacja z tej lekcji — dołączasz ją do karty pracy
     działu razem ze zrzutem ekranu.
 
+## Trening w symulatorze
+
+!!! info "To symulator, nie prawdziwy Linux"
+    Poniższy terminal jest symulacją powłoki Bash działającą w Twojej przeglądarce. Służy do treningu nawyków i sprawdzania poleceń bez ryzyka uszkodzenia systemu. Nie wymaga dostępu do sieci, nie posiada instalacji pakietów ani edytorów tekstu (np. `nano`). Ćwiczenia docelowe wykonaj na maszynie wirtualnej w pracowni.
+
+### Swobodny trening
+
+Wypróbuj znane polecenia w bezpiecznym środowisku:
+
+<div class="linux-trener" data-scenariusz="czysty"></div>
+
+### Zadania treningowe
+
+!!! note "Trening 1. Poruszanie się po systemie i nawigacja"
+    Przejdź do katalogu `/var/log` i sprawdź nazwę bieżącego katalogu.
+
+    <div class="linux-trener" data-scenariusz="czysty"
+         data-cele='[{"typ": "wynik", "zawiera": "/var/log", "opis": "Wyświetlono /var/log za pomocą pwd"}]'
+         data-wzorzec="cd /var/log&#10;pwd"></div>
+
+!!! note "Trening 2. Tworzenie struktury katalogów na raporty"
+    Szef prosi o utworzenie katalogu na raporty w Twoim katalogu domowym: `projekt/raporty`. Utwórz całą strukturę jednym poleceniem.
+
+    <div class="linux-trener" data-scenariusz="czysty"
+         data-cele='[{"typ": "katalog", "sciezka": "/home/uczen/projekt/raporty", "opis": "Katalog /home/uczen/projekt/raporty istnieje"}]'
+         data-wzorzec="mkdir -p projekt/raporty"></div>
+
+!!! note "Trening 3. Kopiowanie i porządkowanie plików"
+    Skopiuj plik `/etc/hosts` do katalogu domowego pod nazwą `hosts.bak`.
+
+    <div class="linux-trener" data-scenariusz="czysty"
+         data-cele='[{"typ": "plik", "sciezka": "/home/uczen/hosts.bak", "opis": "Plik hosts.bak istnieje w katalogu domowym"}]'
+         data-wzorzec="cp /etc/hosts ~/hosts.bak"></div>
+
+!!! note "Trening 4. Szukanie plików w strukturze"
+    Znajdź w katalogu `/srv/dane` wszystkie pliki z rozszerzeniem `.conf`.
+
+    <div class="linux-trener" data-scenariusz="firma"
+         data-start="cd /srv/dane"
+         data-cele='[{"typ": "wynik", "zawiera": "serwery.conf", "opis": "Znaleziono plik serwery.conf"}, {"typ": "polecenie", "wzorzec": "find", "opis": "Użyto polecenia find"}]'
+         data-wzorzec="find /srv/dane -name &quot;*.conf&quot;"></div>
+
+!!! note "Trening 5. Analiza logów systemowych z filtrowaniem"
+    Policz, ile wierszy w pliku `/var/log/syslog` zawiera błąd `ERROR`. Wpisz wynik lub wyświetl go na ekranie.
+
+    <div class="linux-trener" data-scenariusz="czysty"
+         data-cele='[{"typ": "wynik", "zawiera": "2", "opis": "Wyświetlono poprawną liczbę błędów (2)"}]'
+         data-wzorzec="sudo cat /var/log/syslog | grep ERROR | wc -l"></div>
+
+    ??? tip "Podpowiedź 1"
+        Użyj polecenia `grep` do wyszukania słowa `ERROR` oraz `wc -l` do zliczenia wierszy.
+
+    ??? tip "Podpowiedź 2"
+        Połącz polecenia za pomocą potoku `|`, pamiętając o prawach odczytu logu (`sudo`).
+
+    ??? tip "Podpowiedź 3"
+        Wykonaj: `sudo cat /var/log/syslog | grep ERROR | wc -l` (lub `sudo grep ERROR /var/log/syslog | wc -l`).
+
 ## Ćwiczenia
 
 !!! note "Ćwiczenie 1. Wycieczka po drzewie katalogów"

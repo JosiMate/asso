@@ -69,6 +69,8 @@ extra_javascript:
   - assets/js/karty.js
   - assets/js/quiz.js
   - assets/js/postep.js
+  # Trener poleceń Linuksa
+  - assets/js/linux-trener.js
 
 markdown_extensions:
   - abbr

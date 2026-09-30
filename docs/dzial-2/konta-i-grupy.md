@@ -334,6 +334,56 @@ sudo visudo -c
 
     Sprawdź poprawność stworzonej konfiguracji użytkowników i uprawnień `sudo` poleceniem `sudo visudo -c` i utwórz migawkę maszyny wirtualnej o nazwie **`konta_i_grupy_gotowe`**.
 
+## Trening w symulatorze
+
+!!! info "To symulator, nie prawdziwy Linux"
+    Poniższy terminal jest symulacją powłoki Bash działającą w Twojej przeglądarce. Służy do treningu nawyków i sprawdzania poleceń bez ryzyka uszkodzenia systemu. Nie wymaga dostępu do sieci, nie posiada instalacji pakietów ani edytorów tekstu (np. `nano`). Ćwiczenia docelowe wykonaj na maszynie wirtualnej w pracowni.
+
+### Swobodny trening
+
+Wypróbuj znane polecenia w bezpiecznym środowisku:
+
+<div class="linux-trener" data-scenariusz="konta"></div>
+
+### Zadania treningowe
+
+!!! note "Trening 1. Utworzenie nowego użytkownika z katalogiem domowym"
+    Utwórz nowe konto użytkownika `tslowik` z domyślną powłoką `/bin/bash` oraz wygenerowanym katalogiem domowym `/home/tslowik`.
+
+    <div class="linux-trener" data-scenariusz="konta"
+         data-cele='[{"typ": "uzytkownik", "nazwa": "tslowik", "powloka": "/bin/bash", "dom": "/home/tslowik", "opis": "Użytkownik tslowik istnieje z powłoką /bin/bash"}, {"typ": "katalog", "sciezka": "/home/tslowik", "opis": "Katalog /home/tslowik istnieje"}]'
+         data-wzorzec="sudo useradd -m -s /bin/bash tslowik"></div>
+
+!!! note "Trening 2. Utworzenie grupy systemowej"
+    Utwórz grupę o nazwie `magazyn`.
+
+    <div class="linux-trener" data-scenariusz="konta"
+         data-cele='[{"typ": "grupa", "nazwa": "magazyn", "opis": "Grupa magazyn istnieje"}]'
+         data-wzorzec="sudo groupadd magazyn"></div>
+
+!!! note "Trening 3. Przypisanie do grupy dodatkowej"
+    Dopisz użytkownika `jkowalski` do grupy `it` bez usuwania go z dotychczasowych grup.
+
+    <div class="linux-trener" data-scenariusz="konta"
+         data-cele='[{"typ": "uzytkownik", "nazwa": "jkowalski", "grupy": ["ksiegowosc", "it"], "opis": "Użytkownik jkowalski należy do grup ksiegowosc i it"}]'
+         data-wzorzec="sudo usermod -aG it jkowalski"></div>
+
+!!! note "Trening 4. Blokada konta i usunięcie z plikami"
+    Zablokuj konto użytkownika `mzielinski`, a następnie usuń konto `anowak` wraz z jego katalogiem domowym.
+
+    <div class="linux-trener" data-scenariusz="konta"
+         data-cele='[{"typ": "uzytkownik", "nazwa": "mzielinski", "zablokowany": true, "opis": "Konto mzielinski jest zablokowane"}, {"typ": "brak", "sciezka": "/home/anowak", "opis": "Katalog /home/anowak nie istnieje"}]'
+         data-wzorzec="sudo usermod -L mzielinski&#10;sudo userdel -r anowak"></div>
+
+    ??? tip "Podpowiedź 1"
+        Do blokowania konta służy przełącznik `-L` polecenia `usermod`. Do usunięcia konta wraz z katalogiem domowym użyj `userdel -r`.
+
+    ??? tip "Podpowiedź 2"
+        Pamiętaj o użyciu `sudo` przy obu operacjach zarządzania kontami.
+
+    ??? tip "Podpowiedź 3"
+        Wykonaj: `sudo usermod -L mzielinski` oraz `sudo userdel -r anowak`.
+
 ## Ćwiczenia
 
 !!! note "Ćwiczenie 1. Tworzenie i modyfikacja struktury użytkowników i grup"
