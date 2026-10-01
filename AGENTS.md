@@ -45,10 +45,10 @@ odwołują się do efektów INF.07.5.x (część też do INF.02).
 5. **Każdy wynik na stronie musi być prawdziwy.** Kod z przykładów
    i ćwiczeń uruchom, a wyniki w ramkach „Przewiduj” przepisz z uruchomienia,
    nie z pamięci.
-6. **Końce linii.** W edytowanym pliku zachowaj jego dotychczasowe końce linii
-   (część plików ma CRLF, część LF — sprawdź przed zapisem, np.
-   `grep -c $'\r' plik`). Nowe pliki: UTF-8, LF, z pustym wierszem na końcu.
-   W diffie ma być widać tylko twoje zmiany, nie przepisany cały plik.
+6. **Końce linii pilnuje `.gitattributes`** (`* text=auto`): w repozytorium
+   każdy plik tekstowy ma LF. Zapisuj pliki w UTF-8, z LF i pustym wierszem
+   na końcu. Nie przepisuj całych plików — w diffie ma być widać tylko twoje
+   zmiany.
 7. **Stabilne identyfikatory.** Nie zmieniaj istniejących `id` pól w kartach
    pracy, nazw plików kart (`data-karta`) ani tekstu wierszy w spisach
    tematów — przeglądarki uczniów trzymają pod nimi zapisane odpowiedzi
