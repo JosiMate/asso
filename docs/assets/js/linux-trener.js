@@ -1732,16 +1732,19 @@ Flagi uprawnień (chmod) wspierają zapis ósemkowy (np. 750) oraz symboliczny (
   }
 
   // --- Browser Widget ---
+  // Adres scenariuszy liczony RAZ, w chwili wczytania skryptu, i od razu
+  // bezwzględny. Po nawigacji navigation.instant Material podmienia stronę,
+  // a adres względny liczony później wskazywałby na podkatalog bieżącej
+  // strony (404 na …/dzial-2/powloka-podstawy/assets/…).
   let scriptTag = typeof document !== 'undefined' ? (document.currentScript || document.querySelector('script[src*="linux-trener.js"]')) : null;
+  const SCENARIUSZE_URL = scriptTag
+    ? new URL('../linux-trener/scenariusze.json', scriptTag.src).href
+    : 'assets/linux-trener/scenariusze.json';
 
   function initWidget() {
     if (typeof document === 'undefined') return;
 
-    if (!scriptTag) {
-      scriptTag = document.querySelector('script[src*="linux-trener.js"]');
-    }
-    let baseUrl = scriptTag ? scriptTag.src.substring(0, scriptTag.src.lastIndexOf('/') + 1) : '';
-    let scenariosUrl = baseUrl + '../linux-trener/scenariusze.json';
+    let scenariosUrl = SCENARIUSZE_URL;
 
     let scenariosData = null;
 
@@ -1758,6 +1761,8 @@ Flagi uprawnień (chmod) wspierają zapis ósemkowy (np. 750) oraz symboliczny (
 
     let containers = document.querySelectorAll('.linux-trener');
     containers.forEach(container => {
+      if (container.dataset.ltGotowy) return;  // już zbudowany
+      container.dataset.ltGotowy = '1';
       let scenarioName = container.getAttribute('data-scenariusz') || 'czysty';
       let startCmd = container.getAttribute('data-start') || '';
       let celeAttr = container.getAttribute('data-cele') || '[]';
@@ -2106,15 +2111,17 @@ Flagi uprawnień (chmod) wspierają zapis ósemkowy (np. 750) oraz symboliczny (
 
   if (typeof window !== 'undefined') {
     window.LinuxTrener = { LinuxEngine };
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        injectStyles();
-        initWidget();
-      });
-    } else {
+    // Serwis ma włączone navigation.instant: po kliknięciu w menu Material
+    // podmienia treść strony bez przeładowania, więc skrypty nie uruchamiają
+    // się ponownie. document$ (RxJS z Materiala) emituje po każdej podmianie
+    // — tak samo startują quiz.js i postep.js.
+    const start = () => {
       injectStyles();
       initWidget();
-    }
+    };
+    if (typeof document$ !== 'undefined') document$.subscribe(start);
+    else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+    else start();
   }
 
 })();
