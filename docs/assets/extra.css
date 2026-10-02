@@ -146,7 +146,7 @@
   margin: 1.8em 0;
   padding: 1.1em 1.3em;
   border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: .35rem;
+  border-radius: var(--ui-promien, .35rem);
   background: var(--md-code-bg-color);
 }
 .kp-zadanie h3 { margin: 0 0 .2em; font-size: 1.05rem; }
@@ -239,6 +239,9 @@
 .qz-opcja { display: flex; align-items: flex-start; gap: .5em; padding: .35em .55em;
             border-radius: .25rem; border: 1px solid transparent; cursor: pointer; }
 .qz-opcja:hover { background: var(--md-code-bg-color); }
+/* Długie formuły w odpowiedziach (np. =JEŻELI(…)) łamią się, zamiast
+   rozpychać stronę na telefonie. */
+.qz-opcja > span { min-width: 0; overflow-wrap: anywhere; }
 .qz-opcja.qz-dobra { border-color: #2e7d32; background: rgba(46, 125, 50, .1); }
 .qz-opcja.qz-zla   { border-color: #c62828; background: rgba(198, 40, 40, .1); }
 .qz-tekst { width: min(100%, 22rem); padding: .45em .6em; font: inherit; font-size: .8rem;
@@ -272,7 +275,7 @@
 .spis-tematow tr.pg-zrobiony td:first-child { opacity: .55; }
 
 /* ---------------------------------------------------------- narzędzia */
-.nz { margin: 1.2em 0; padding: 1.1em 1.3em; border-radius: .35rem;
+.nz { margin: 1.2em 0; padding: 1.1em 1.3em; border-radius: var(--ui-promien, .35rem);
       border: 1px solid var(--md-default-fg-color--lightest);
       background: var(--md-code-bg-color); }
 .nz input[type="text"] { width: 100%; padding: .5em .65em; font: inherit; font-size: .82rem;
@@ -476,4 +479,24 @@
 }
 .md-typeset details.rozgrzewka > summary::after {
   background-color: var(--rz-akcent);
+}
+
+/* Ramki zagnieżdżone dostają akcent ramki, w której stoją, zamiast własnego
+   koloru typu — pasek, tło, belka, ikona i strzałka. „Odpowiedzi” w rozgrzewce
+   są pomarańczowe, „Przewiduj, potem sprawdź wynik” w „Przewiduj” — fioletowe,
+   podpowiedzi pod ćwiczeniem — w kolorze ćwiczenia. Każda ramka zostaje
+   w jednej palecie.
+   1) Ramka najwyższego poziomu (niezagnieżdżona) zapamiętuje swój akcent.
+   2) Ramki w jej środku go przejmują. Selektory z :is(...) muszą przebić
+      reguły Materiala dla typów (np. .success), które mają (0,3,1). */
+.md-typeset :is(.admonition, details):not(:is(.admonition, details) *) {
+  --ui-akcent-ramki: var(--ui-akcent);
+}
+.md-typeset :is(.admonition, details) :is(.admonition, details) {
+  --ui-akcent: var(--ui-akcent-ramki);
+  border-left-color: var(--ui-akcent-ramki);
+}
+.md-typeset :is(.admonition, details) :is(.admonition, details) > :is(.admonition-title, summary)::before,
+.md-typeset :is(.admonition, details) :is(.admonition, details) > :is(.admonition-title, summary)::after {
+  background-color: var(--ui-akcent-ramki);
 }
