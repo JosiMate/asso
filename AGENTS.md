@@ -151,6 +151,9 @@ wersji piszesz polecenia, nazwy pakietów i przykładowe wyniki. Część stron
 podaje „Debian 12 / Ubuntu Server 24.04 LTS” i tak zostaje. Ubuntu 26.04 LTS
 pojawia się tylko w przeglądzie wydań w dziale I (`systemy-sieciowe.md`).
 
+Serwer DHCP na lekcjach i w ściągawce to **`isc-dhcp-server`** (tak jak na
+egzaminie). Kea wspominasz najwyżej jako następcę — nie uczysz jego konfiguracji.
+
 ## 5. Standard tematu — obowiązuje każdy nowy temat
 
 Elementy w tej kolejności, od góry strony:

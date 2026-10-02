@@ -460,55 +460,46 @@ nadpisywać ustawienia.
 
 ---
 
-## 7. Serwer DHCP
+## 7. Serwer DHCP (isc-dhcp-server)
 
-Ubuntu poleca dziś **Kea**. Pakiet `isc-dhcp-server` jest od Ubuntu 24.04
-**przestarzały i bez wsparcia** — spotkasz go w starszych materiałach, ale na
-nowym serwerze go nie stawiaj.
-
-### Kea (zalecany)
+Na lekcjach i na egzaminie stawiamy serwer **`isc-dhcp-server`**. Jego twórca,
+ISC, już go nie rozwija — następcą jest **Kea** (konfiguracja w JSON-ie).
+Kea warto rozpoznać z nazwy, ale ćwiczymy `isc-dhcp-server`.
 
 | Polecenie / plik | Znaczenie |
 | --- | --- |
-| `sudo apt install kea` | instalacja |
-| `/etc/kea/kea-dhcp4.conf` | konfiguracja serwera DHCPv4 (format JSON) |
-| `sudo systemctl status kea-dhcp4-server` | stan usługi |
-| `sudo systemctl restart kea-dhcp4-server` | po każdej zmianie konfiguracji |
-| `/var/lib/kea/kea-leases4.csv` | wydane dzierżawy |
+| `sudo apt install isc-dhcp-server` | instalacja (pierwszy start zgłosi błąd — to normalne, bo nie ma jeszcze konfiguracji) |
+| `/etc/default/isc-dhcp-server` | na których interfejsach serwer nasłuchuje: `INTERFACESv4="enp0s8"` |
+| `/etc/dhcp/dhcpd.conf` | podsieci, zakresy, opcje, rezerwacje |
+| `sudo dhcpd -t -cf /etc/dhcp/dhcpd.conf` | sprawdzenie składni przed restartem |
+| `sudo systemctl restart isc-dhcp-server` | po każdej zmianie konfiguracji |
+| `sudo systemctl status isc-dhcp-server` | stan usługi |
+| `journalctl -u isc-dhcp-server -f` | komunikaty DHCP na bieżąco (DISCOVER, OFFER, REQUEST, ACK) |
+| `/var/lib/dhcp/dhcpd.leases` | wydane dzierżawy |
+| `dhcp-lease-list` | dzierżawy w czytelnej tabeli |
 
-Szkielet konfiguracji — zakres adresów, brama, DNS i rezerwacja:
+Szkielet `/etc/dhcp/dhcpd.conf` — zakres, brama, DNS i rezerwacja:
 
-```json
-{ "Dhcp4": {
-  "interfaces-config": { "interfaces": ["enp0s3"] },
-  "valid-lifetime": 3600,
-  "subnet4": [{
-    "id": 1,
-    "subnet": "192.168.10.0/24",
-    "pools": [
-      { "pool": "192.168.10.100 - 192.168.10.200" }
-    ],
-    "option-data": [
-      { "name": "routers",
-        "data": "192.168.10.1" },
-      { "name": "domain-name-servers",
-        "data": "192.168.10.10" }
-    ],
-    "reservations": [
-      { "hw-address": "08:00:27:aa:bb:cc",
-        "ip-address": "192.168.10.50" }
-    ]
-  }]
-} }
+```text
+authoritative;
+default-lease-time 3600;
+max-lease-time 7200;
+
+subnet 192.168.10.0 netmask 255.255.255.0 {
+    range 192.168.10.100 192.168.10.200;
+    option routers 192.168.10.1;
+    option domain-name-servers 192.168.10.10;
+    option domain-name "pracownia.local";
+}
+
+host drukarka {
+    hardware ethernet 08:00:27:aa:bb:cc;
+    fixed-address 192.168.10.50;
+}
 ```
 
-### isc-dhcp-server (starszy, do rozpoznania)
-
-| Plik | Znaczenie |
-| --- | --- |
-| `/etc/dhcp/dhcpd.conf` | zakresy, opcje, rezerwacje |
-| `/etc/default/isc-dhcp-server` | na których interfejsach ma nasłuchiwać |
-| `/var/lib/dhcp/dhcpd.leases` | dzierżawy |
+Podsieć w `subnet` musi pasować do adresu karty z `INTERFACESv4`, a adres
+z rezerwacji leży **poza** pulą `range`. Każda dyrektywa kończy się średnikiem.
 
 ### Sprawdzenie od strony klienta
 
@@ -893,7 +884,7 @@ tym samym dysku co maszyna i ginie razem z nią.
 | --- | --- | --- |
 | Udostępnianie plików | Samba, NFS | Udostępnianie SMB |
 | Serwer WWW | Apache, nginx | IIS |
-| DHCP | Kea, isc-dhcp-server | Rola DHCP Server |
+| DHCP | isc-dhcp-server (następca: Kea) | Rola DHCP Server |
 | DNS | BIND 9 | Rola DNS Server |
 | Usługi katalogowe | OpenLDAP, Samba AD DC | Active Directory |
 | Zdalna administracja | SSH | Pulpit zdalny, PowerShell Remoting |
