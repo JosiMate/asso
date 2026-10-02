@@ -71,6 +71,8 @@ extra_javascript:
   - assets/js/postep.js
   # Trener poleceń Linuksa
   - assets/js/linux-trener.js
+  # Podpowiedzi pod ćwiczeniami odsłaniane po kolei (jedna belka „Podpowiedzi”).
+  - assets/js/podpowiedzi.js
 
 markdown_extensions:
   - abbr

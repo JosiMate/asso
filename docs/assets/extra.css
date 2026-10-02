@@ -500,3 +500,82 @@
 .md-typeset :is(.admonition, details) :is(.admonition, details) > :is(.admonition-title, summary)::after {
   background-color: var(--ui-akcent-ramki);
 }
+
+/* ------------------------------------------------------------ podpowiedzi po kolei
+   Jedna belka „Podpowiedzi” budowana przez podpowiedzi.js z ramek
+   „Podpowiedź 1, 2…”. Przycisk i karty w stylu widżetu losowej rozgrzewki;
+   kolor bierze z ramki ćwiczenia (--ui-akcent). */
+.md-typeset details.pdp .pdp-ile {
+  font-weight: 400;
+  opacity: .75;
+}
+.pdp-lista {
+  display: flex;
+  flex-direction: column;
+  gap: .7em;
+  margin: .4em 0 .2em;
+}
+.pdp-lista:not(:has(.pdp-karta:not([hidden]))) { display: none; }
+.pdp-karta {
+  padding: .7em 1em;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: var(--ui-promien-maly, .3rem);
+  background: var(--md-default-bg-color);
+}
+.pdp-karta[hidden] { display: none; }
+.pdp-karta.pdp-nowa { animation: pdp-wejscie .3s ease-out; }
+@keyframes pdp-wejscie {
+  from { opacity: 0; transform: translateY(-.3rem); }
+  to   { opacity: 1; transform: none; }
+}
+.md-typeset .pdp-karta > p:last-child { margin-bottom: 0; }
+.md-typeset .pdp-karta > p:first-of-type { margin-top: .2em; }
+.pdp-etykieta {
+  font-size: .64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--ui-akcent, var(--rz-akcent));
+}
+.pdp-pasek {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6em .9em;
+  margin: .8em 0 .3em;
+}
+.md-typeset .pdp-przycisk {
+  display: inline-flex;
+  align-items: center;
+  padding: .4em .95em;
+  font: inherit;
+  font-size: .72rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: .25rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  transition: background-color 120ms, border-color 120ms, color 120ms;
+}
+.md-typeset .pdp-przycisk.pdp-dalej {
+  background: var(--ui-akcent, var(--rz-akcent));
+  border-color: var(--ui-akcent, var(--rz-akcent));
+  color: #fff;
+}
+.md-typeset .pdp-przycisk.pdp-dalej:hover {
+  background: color-mix(in srgb, var(--ui-akcent, var(--rz-akcent)) 85%, #000);
+}
+.md-typeset .pdp-przycisk.pdp-od-nowa:hover {
+  border-color: var(--ui-akcent, var(--rz-akcent));
+  color: var(--ui-akcent, var(--rz-akcent));
+}
+.md-typeset .pdp-przycisk:focus-visible {
+  outline: 2px solid var(--ui-akcent, var(--rz-akcent));
+  outline-offset: 2px;
+}
+.md-typeset .pdp-przycisk[hidden] { display: none; }
+
+@media print {
+  .pdp-pasek { display: none; }
+}
