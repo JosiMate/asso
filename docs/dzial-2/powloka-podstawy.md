@@ -578,7 +578,7 @@ Wypróbuj znane polecenia w bezpiecznym środowisku:
 
 ---
 
-*Nazwy poleceń i przełączników sprawdzono we wrześniu 2026 r. dla Ubuntu Server
-26.04 LTS. Układ katalogów opisuje standard FHS i jest zgodny w większości
+*Nazwy poleceń i przełączników opisano dla Ubuntu Server 24.04 LTS — wersji
+używanej w pracowni. Układ katalogów opisuje standard FHS i jest zgodny w większości
 dystrybucji; położenie pojedynczych plików konfiguracyjnych bywa różne —
 w razie wątpliwości sprawdzaj `man` w używanym systemie.*

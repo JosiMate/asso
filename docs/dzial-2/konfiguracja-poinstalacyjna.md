@@ -137,15 +137,15 @@ Zobaczysz w nim dwa bloki i cztery komponenty:
 
 | Element wpisu | Znaczenie |
 | --- | --- |
-| `Suites: resolute resolute-updates resolute-backports` | wydanie podstawowe, poprawki bieżące i pakiety dostarczone później |
-| `Suites: resolute-security` | **poprawki bezpieczeństwa** — osobny blok, bo pochodzą z innego serwera |
+| `Suites: noble noble-updates noble-backports` | wydanie podstawowe, poprawki bieżące i pakiety dostarczone później |
+| `Suites: noble-security` | **poprawki bezpieczeństwa** — osobny blok, bo pochodzą z innego serwera |
 | `main` | oprogramowanie wolne, wspierane przez Canonical |
 | `restricted` | wspierane przez Canonical, ale o zamkniętym kodzie — głównie sterowniki |
 | `universe` | wolne, utrzymywane przez społeczność |
 | `multiverse` | ograniczone prawami autorskimi lub patentami |
 
-`resolute` to nazwa kodowa wydania 26.04 LTS („Resolute Raccoon”, wydane
-23 kwietnia 2026 r.). W innym wydaniu w tym miejscu będzie inne słowo — sprawdzisz
+`noble` to nazwa kodowa wydania 24.04 LTS („Noble Numbat”, wydane
+25 kwietnia 2024 r.). W innym wydaniu w tym miejscu będzie inne słowo — sprawdzisz
 je poleceniem `lsb_release -cs`.
 
 !!! info "Dlaczego bezpieczeństwo ma osobny blok"
@@ -433,7 +433,7 @@ ls /var/run/reboot-required 2>/dev/null && echo "wymagany restart"
 
 ---
 
-*Nazwy pakietów, ścieżki plików konfiguracyjnych i zachowanie narzędzi sprawdzono
-we wrześniu 2026 r. dla Ubuntu Server 26.04 LTS. W innej dystrybucji odpowiedniki
+*Nazwy pakietów, ścieżki plików konfiguracyjnych i zachowanie narzędzi opisano
+dla Ubuntu Server 24.04 LTS — wersji używanej w pracowni. W innej dystrybucji odpowiedniki
 noszą inne nazwy (np. `dnf` i `/etc/yum.repos.d/` w rodzinie Red Hat) — przed
 wdrożeniem porównaj z dokumentacją używanego systemu.*

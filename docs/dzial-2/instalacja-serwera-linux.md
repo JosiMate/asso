@@ -53,7 +53,7 @@ wirtualnych. Nadal jednak trzeba prawidłowo dobrać ich typ i zasoby.
 
 ## 2. Wymagania Ubuntu Server: minimum nie jest konfiguracją roboczą
 
-Na lekcji instalujemy **Ubuntu Server 26.04 LTS w architekturze amd64**.
+Na lekcji instalujemy **Ubuntu Server 24.04 LTS w architekturze amd64**.
 Wydanie LTS ma pięć lat standardowych aktualizacji bezpieczeństwa; na serwerze
 nie wybiera się wersji pośredniej tylko dlatego, że jest nowsza.
 
@@ -112,7 +112,7 @@ albo z odsyłacza prowadzącego do `releases.ubuntu.com`. Dla naszej maszyny
 wybierasz wydanie **LTS** i plik z `amd64` w nazwie, na przykład:
 
 ```text
-ubuntu-26.04.1-live-server-amd64.iso
+ubuntu-24.04.3-live-server-amd64.iso
 ```
 
 Nazwy punktowych wydań oraz wielkość pliku zmieniają się. Zawsze czytaj nazwę
@@ -128,7 +128,7 @@ instaluj z niego**; usuń go i pobierz ponownie z zaufanego źródła.
 W Windows PowerShell, w katalogu z ISO, użyj:
 
 ```powershell
-Get-FileHash .\ubuntu-26.04.1-live-server-amd64.iso -Algorithm SHA256
+Get-FileHash .\ubuntu-24.04.3-live-server-amd64.iso -Algorithm SHA256
 ```
 
 Porównaj wynik znak po znaku z wpisem `SHA256SUMS` opublikowanym obok obrazu.
@@ -307,7 +307,7 @@ wynik albo dołączasz zrzut ekranu.
 !!! note "Ćwiczenie 3. Diagnoza cudzej konfiguracji"
 
     Uczeń przygotował VM: 1024 MB RAM, dysk dynamiczny 6 GB, jeden procesor,
-    włączony adapter NAT i obraz `ubuntu-26.04.1-live-server-amd64.iso`.
+    włączony adapter NAT i obraz `ubuntu-24.04.3-live-server-amd64.iso`.
 
     Oceń każdy parametr jako: **niespełniony**, **spełnia minimum** albo
     **zalecany do naszych ćwiczeń**. Wskaż dwie zmiany, które wykonałbyś przed

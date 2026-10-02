@@ -5,7 +5,7 @@ hide:
 
 # Ściągawka: polecenia serwera Linux
 
-**Administracja sieciowymi systemami operacyjnymi · klasa 3TT · Ubuntu Server 26.04 LTS**
+**Administracja sieciowymi systemami operacyjnymi · klasa 3TT · Ubuntu Server 24.04 LTS**
 
 Wszystko, co będzie Ci potrzebne przez cały rok, w jednym miejscu. Układ idzie
 za działami przedmiotu, więc polecenie znajdziesz tam, gdzie była lekcja.
@@ -949,7 +949,7 @@ co napisałeś.
 
 ---
 
-*Polecenia i nazwy pakietów sprawdzono we wrześniu 2026 r. dla Ubuntu Server
-26.04 LTS. W innych dystrybucjach część nazw jest inna (np. `dnf` zamiast `apt`,
+*Polecenia i nazwy pakietów opisano dla Ubuntu Server 24.04 LTS — wersji
+używanej w pracowni. W innych dystrybucjach część nazw jest inna (np. `dnf` zamiast `apt`,
 `firewalld` zamiast `ufw`) — zasada działania zostaje ta sama. W razie
 wątpliwości pierwszym źródłem jest `man` w Twoim systemie.*

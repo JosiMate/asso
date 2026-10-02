@@ -146,10 +146,10 @@ trafia do PDF.
 
 ### Wersje systemów
 
-Strony podają „Debian 12 / Ubuntu Server 24.04 LTS”, a część (dział I–II
-i ściągawka) — Ubuntu Server 26.04 LTS. Nie ujednolicaj tego samodzielnie;
-w nowych treściach trzymaj się wersji podanej w zadaniu, a rozbieżność
-zgłoś w części „Do sprawdzenia”.
+W pracowni jest **Ubuntu Server 24.04 LTS** (nazwa kodowa `noble`) — dla tej
+wersji piszesz polecenia, nazwy pakietów i przykładowe wyniki. Część stron
+podaje „Debian 12 / Ubuntu Server 24.04 LTS” i tak zostaje. Ubuntu 26.04 LTS
+pojawia się tylko w przeglądzie wydań w dziale I (`systemy-sieciowe.md`).
 
 ## 5. Standard tematu — obowiązuje każdy nowy temat
 
