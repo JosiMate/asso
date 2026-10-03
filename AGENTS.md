@@ -319,6 +319,55 @@ pracy działu.
 `poprawna` liczy się od 0. Klucz `"typ": "jedna"`, który jest w starszych
 quizach, nic nie robi — w nowych go nie dodawaj.
 
+### Tryb »Prowadź lekcję« (`slajdy.js`)
+
+Skrypt `slajdy.js` dodaje przycisk „Prowadź lekcję” pod głównym nagłówkiem `h1` na stronach tematów (rozpoznawanych po ramce „O tym temacie” razem z kryteriami sukcesu, rozgrzewką albo quizem — dlatego strony „Wymagania i bhp” przycisku nie mają). Uruchamia pełnoekranową prezentację ze strony bez konieczności tworzenia osobnych slajdów.
+
+- **Podział automatyczny:** slajdy powstają z elementów najwyższego poziomu w `.md-content__inner`:
+  1. **Slajd tytułowy:** nagłówek `h1` oraz ramka „O tym temacie”;
+  2. **Rozgrzewka:** ramka `.rozgrzewka`;
+  3. **Kryteria sukcesu:** ramka `!!! success`;
+  4. **Sekcje `##`:** osobne slajdy dla ramek „Przewiduj…”, grupy przykładu z konsolą, bloku `.kroki` oraz ćwiczeń; pozostała treść sekcji tworzy slajdy w kolejności na stronie;
+  5. **Quiz „Sprawdź się”:** każde pytanie na osobnym slajdzie;
+  6. **Karta pracy:** slajd „Pracujemy na komputerach” z adresem strony i instrukcją;
+  7. **Ostatni slajd:** ponowne „Kryteria sukcesu” z tytułem „Kciuki: co już umiem?”.
+  Temat zgodny ze standardem nie wymaga żadnych zmian w Markdownie.
+
+- **Wymuszony podział `<!-- slajd -->`:**
+  - `<!-- slajd -->` na najwyższym poziomie (niewcięty) rozpoczyna nowy slajd w danym miejscu.
+  - `<!-- slajd: Tytuł slajdu -->` ustala własną etykietę nagłówkową dla tego slajdu.
+  - **Ważne:** komentarz wewnątrz ramki (wcięty) jest ignorowany przez podział i nie tworzy nowego slajdu.
+
+- **Obsługa klawiaturą (i pilotem):**
+  - `→`, `PageDown`, `Spacja`: najpierw odsłania po kolei ukryte elementy na slajdzie (wyniki „Przewiduj”, kroki, rozwinięte podpowiedzi, odpowiedź quizu); po odsłonięciu wszystkich przechodzi do następnego slajdu;
+  - `←`, `PageUp`: poprzedni slajd;
+  - `Shift + →`: następny slajd bez odsłaniania;
+  - `Home` / `End`: pierwszy / ostatni slajd;
+  - `M`: otwiera/zamyka spis slajdów (nawigacja strzałkami `↑`/`↓` i `Enter` lub kliknięcie myszą);
+  - `Escape`: zamyka spis slajdów, a jeśli jest zamknięty — wychodzi z trybu prezentacji.
+
+### Tryb »Na tablicę« (`tablica.js`)
+
+Skrypt `tablica.js` automatycznie dodaje przycisk „Na tablicę” w prawym górnym rogu tytułu dla wybranych ramek najwyższego poziomu (niezagnieżdżonych w innych ramkach):
+
+- **Rozgrzewka**: `.admonition.rozgrzewka` lub `details.rozgrzewka`;
+- **Kryteria sukcesu**: typ `success`, tytuł zaczyna się od „Kryteria sukcesu”;
+- **Ćwiczenie**: typ `note`, tytuł zaczyna się od „Ćwiczenie”;
+- **Przewiduj**: blok kodu z ramką `??? success` po nim (na tablicę trafia blok kodu razem z ramką, konsola `.py-konsola` zostaje ukryta, a wynik zwinięty) lub samodzielna ramka `!!! example "Przewiduj…"`;
+- **Krok po kroku**: `.kroki`.
+
+Autor tematu **niczego nie dopisuje** w Markdownie — ikonka pojawia się sama, jeśli temat trzyma się standardowych tytułów i typów ramek.
+
+Nad quizem „Sprawdź się” dodawany jest również przycisk „Na tablicę”, który otwiera dedykowany widok pełnoekranowy po jednym pytaniu naraz:
+
+- **Pytynie zamknięte**: odpowiedzi wyświetlane jako duże kafelki z literami A, B, C, D;
+- **Pytanie otwarte**: treść bez pola do wpisywania;
+- **Pokaż odpowiedź**: wyróżnia poprawny kafelek lub pokazuje wzorzec oraz wyjaśnienie;
+- **Obsługa klawiaturą (i pilotem do prezentacji)**:
+  - Strzałki `←` / `→` oraz `PageUp` / `PageDown`: zmiana pytania;
+  - `Spacja` lub `Enter`: „Pokaż odpowiedź”;
+  - `Escape`: zamknięcie widoku tablicy.
+
 ### Widżet `linux-trener`
 
 Osadzany na stronach tematów jako symulator powłoki Linux:

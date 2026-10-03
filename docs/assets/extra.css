@@ -579,3 +579,455 @@
 @media print {
   .pdp-pasek { display: none; }
 }
+
+/* ------------------------------------------------------------
+   tryb Na tablicę (tablica.js, quiz.js, rozgrzewka-losowa.js)
+   Nakładka ma klasę md-typeset, więc ramki, kod i przyciski wyglądają jak
+   na stronie. Powiększenie robi `zoom` ustawiany w tablica.js (zależny od
+   rozmiaru ekranu), dlatego rozmiary poniżej są zwykłe, „stronowe”.
+   ------------------------------------------------------------ */
+
+/* Przycisk „Na tablicę” w tytule ramki */
+.md-typeset .tb-btn-ramka {
+  float: right;
+  display: inline-flex;
+  align-items: center;
+  gap: .35em;
+  margin: -.1rem 0 -.1rem .6rem;
+  padding: .15em .6em;
+  font: inherit;
+  font-size: .62rem;
+  font-weight: 600;
+  line-height: 1.5;
+  border-radius: var(--ui-promien-maly, .25rem);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color--light);
+  cursor: pointer;
+  transition: background-color 120ms, border-color 120ms, color 120ms;
+}
+.md-typeset .tb-btn-ramka:hover,
+.md-typeset .tb-btn-ramka:focus-visible {
+  border-color: var(--ui-akcent, var(--rz-akcent));
+  color: var(--ui-akcent, var(--rz-akcent));
+}
+@media screen and (max-width: 600px) {
+  .md-typeset .tb-btn-ramka { font-size: 0; gap: 0; padding: .3em .45em; }
+  .md-typeset .tb-btn-ramka .tb-ikona-ekran { font-size: .7rem; }
+}
+
+.tb-ikona-ekran {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  background-color: currentColor;
+  -webkit-mask-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath d="M21 16H3V4h18m0-2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/%3E%3C/svg%3E');
+          mask-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath d="M21 16H3V4h18m0-2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/%3E%3C/svg%3E');
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  vertical-align: middle;
+}
+
+.qz-pasek-tablica {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: .8em;
+}
+
+/* Nakładka */
+.md-typeset.tb-nakladka {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: var(--md-default-bg-color);
+  color: var(--md-typeset-color, var(--md-default-fg-color));
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.tb-naglowek {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .6rem 1.5rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--md-code-bg-color);
+}
+.tb-tytul {
+  font-size: 1rem;
+  font-weight: 700;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.md-typeset .tb-btn-zamknij { flex: none; font-size: .8rem; }
+.tb-tresc {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.2rem 1.5rem 2rem;
+}
+.tb-kontener {
+  max-width: 44rem;
+  margin: 0 auto;
+}
+.tb-kontener > :first-child { margin-top: 0; }
+.tb-kontener .tb-btn-ramka,
+.tb-kontener .rz-btn-tablica { display: none !important; }
+/* Konsola Pythona jest na tablicy ukryta (tablica.js), więc pokazujemy
+   zwykły blok z kodem, który konsola na stronie zastępuje edytorem. */
+.tb-kontener .pyk-zrodlo { display: block; }
+
+/* Quiz na tablicy */
+.tb-quiz-widok {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+}
+.tb-qz-naglowek {
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--md-default-fg-color--light);
+}
+.tb-qz-tresc {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.tb-qz-kafelki {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+}
+.tb-kafelek {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .45rem .8rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: var(--ui-promien, .4rem);
+  background: var(--md-default-bg-color);
+  transition: background-color 150ms, border-color 150ms, opacity 150ms;
+}
+.tb-kafelek-litera {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--ui-akcent, var(--rz-akcent));
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 700;
+}
+.tb-kafelek-tresc {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: .9rem;
+  font-weight: 600;
+}
+.tb-kafelek-poprawny {
+  border-color: #2e7d32;
+  background: color-mix(in srgb, #2e7d32 14%, var(--md-default-bg-color));
+}
+.tb-kafelek-poprawny .tb-kafelek-litera { background: #2e7d32; }
+[data-md-color-scheme="slate"] .tb-kafelek-poprawny { border-color: #66bb6a; }
+[data-md-color-scheme="slate"] .tb-kafelek-poprawny .tb-kafelek-litera { background: #43a047; }
+.tb-kafelek-przygaszony { opacity: .4; }
+
+.tb-qz-odpowiedz-otwarta {
+  padding: .7rem 1rem;
+  border-left: .25rem solid #2e7d32;
+  border-radius: var(--ui-promien-maly, .3rem);
+  background: color-mix(in srgb, #2e7d32 12%, var(--md-default-bg-color));
+  font-size: .9rem;
+}
+.tb-qz-pusta-przestrzen { min-height: 3rem; }
+.tb-qz-wyjasnienie {
+  padding: .6rem .9rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: var(--ui-promien-maly, .3rem);
+  background: var(--md-code-bg-color);
+  font-size: .75rem;
+}
+/* Pasek przycisków zawsze widoczny u dołu ekranu, nawet przy długim pytaniu */
+.tb-qz-pasek {
+  position: sticky;
+  bottom: -2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem;
+  padding: .5rem 0 2rem;
+  background: var(--md-default-bg-color);
+}
+.md-typeset .tb-qz-pasek .pdp-przycisk:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+@media print {
+  .md-typeset .tb-btn-ramka,
+  .qz-pasek-tablica,
+  .tb-nakladka {
+    display: none !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   tryb Prowadź lekcję (slajdy.js)
+   ------------------------------------------------------------ */
+
+.md-typeset .sl-przycisk {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  margin: .5em 0 1.2em;
+}
+
+@media print {
+  .sl-przycisk,
+  .sl-nakladka {
+    display: none !important;
+  }
+}
+
+.md-typeset.sl-nakladka {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: var(--md-default-bg-color);
+  color: var(--md-typeset-color, var(--md-default-fg-color));
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.sl-scena {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 1.5rem 2rem 0.5rem;
+}
+
+.sl-etykieta {
+  flex: none;
+  max-width: 44rem;
+  width: 100%;
+  margin: 0 auto .6rem;
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--md-default-fg-color--light);
+}
+
+.sl-tresc {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 1.5rem;
+}
+
+.sl-kontener {
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.sl-kontener > :first-child {
+  margin-top: 0;
+}
+
+.sl-kontener .tb-btn-ramka,
+.sl-kontener .qz-btn-tablica,
+.sl-kontener .sl-przycisk {
+  display: none !important;
+}
+
+.sl-tytul-slajdu {
+  font-size: 2.1rem;
+  line-height: 1.25;
+  margin: 1rem 0 1.5rem;
+  border-bottom: none !important;
+}
+
+.sl-tytul-kciuki {
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+  border-top: none !important;
+}
+
+.sl-karta-pracujemy {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: var(--ui-promien, .4rem);
+}
+
+.sl-karta-pracujemy h2 {
+  font-size: 1.8rem;
+  margin: 0 0 1rem;
+  border-top: none !important;
+}
+
+.sl-kp-instrukcja {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+.sl-kp-url {
+  font-size: 1.2rem;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+
+.sl-kp-url code {
+  padding: .5rem .8rem;
+  font-size: 1.1rem;
+}
+
+/* Pasek nawigacyjny na dole */
+.sl-pasek {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  background: var(--md-code-bg-color);
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.sl-postep-tor {
+  width: 100%;
+  height: 3px;
+  background: var(--md-default-fg-color--lightest);
+}
+
+.sl-postep-wypelnienie {
+  height: 100%;
+  width: 0;
+  background: var(--ui-akcent, var(--md-accent-fg-color, #5c6bc0));
+  transition: width 150ms ease-out;
+}
+
+.sl-pasek-dostepowe {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .5rem 1.5rem;
+}
+
+.sl-numer {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--md-default-fg-color--light);
+}
+
+.sl-przyciski {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+/* Menu / Spis slajdów */
+.sl-menu-modal {
+  position: absolute;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, .5);
+  backdrop-filter: blur(2px);
+}
+
+.sl-menu-modal[hidden] {
+  display: none !important;
+}
+
+.sl-menu-panel {
+  width: min(90vw, 36rem);
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: var(--ui-promien, .4rem);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+  overflow: hidden;
+}
+
+.sl-menu-naglowek {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .8rem 1.2rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--md-code-bg-color);
+}
+
+.sl-menu-lista {
+  flex: 1;
+  overflow-y: auto;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.md-typeset .sl-menu-item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
+  padding: .55rem .8rem;
+  text-align: left;
+  font: inherit;
+  font-size: .85rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  background: transparent;
+  color: var(--md-default-fg-color);
+  cursor: pointer;
+  transition: background-color 100ms;
+}
+
+.md-typeset .sl-menu-item:hover,
+.md-typeset .sl-menu-item.sl-menu-selected {
+  background: var(--md-code-bg-color);
+  border-color: var(--md-default-fg-color--lightest);
+}
+
+.md-typeset .sl-menu-item-active {
+  font-weight: 700;
+  color: var(--ui-akcent, var(--md-accent-fg-color, #5c6bc0));
+  background: color-mix(in srgb, var(--ui-akcent, var(--md-accent-fg-color, #5c6bc0)) 10%, transparent);
+}
+
+.sl-menu-nr {
+  font-size: .75rem;
+  opacity: .7;
+  flex: none;
+  min-width: 2rem;
+}
+
+.sl-menu-nazwa {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -67,12 +67,15 @@ extra_javascript:
   - assets/js/karta.js
   # karty.js korzysta z window.KartaPracy, więc musi iść PO karta.js
   - assets/js/karty.js
+  - assets/js/tablica.js
   - assets/js/quiz.js
   - assets/js/postep.js
   # Trener poleceń Linuksa
   - assets/js/linux-trener.js
   # Podpowiedzi pod ćwiczeniami odsłaniane po kolei (jedna belka „Podpowiedzi”).
   - assets/js/podpowiedzi.js
+  # Tryb »Prowadź lekcję« (prezentacja slajd po slajdzie ze strony tematu).
+  - assets/js/slajdy.js
 
 markdown_extensions:
   - abbr
