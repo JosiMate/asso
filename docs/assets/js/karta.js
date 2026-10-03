@@ -312,7 +312,38 @@
       }
     }
 
+    /* Ukryte pola dla panelu kontroli prac (właściwości niestandardowe
+       dokumentu Word, w Wordzie: Plik → Informacje → Właściwości). Uczeń ich
+       nie widzi. Panel czyta je zamiast zgadywać z nazwy pliku. Tylko klasa,
+       numer i temat — bez nazwisk. „odpowiedzi_skrot” to krótki odcisk
+       odpowiedzi (bez numeru, klasy i daty): dwie identyczne karty mają ten
+       sam skrót, a z samego skrótu odpowiedzi nie da się odczytać. */
+    const pomin = new Set(["_nr", "_klasa", "_data", "_data_domyslna", "_zapisano"]);
+    const tekstOdp = Object.keys(dane || {}).filter((k) => !pomin.has(k)).sort()
+      .map((k) => `${k}=${String(dane[k] ?? "").trim().toLowerCase().replace(/\s+/g, " ")}`)
+      .filter((w) => !w.endsWith("=")).join("\n");
+    let skrot = 0x811c9dc5;
+    for (let i = 0; i < tekstOdp.length; i++) {
+      skrot ^= tekstOdp.charCodeAt(i);
+      skrot = Math.imul(skrot, 0x01000193) >>> 0;
+    }
+    const wyp = typeof policzWypelnione === "function" ? policzWypelnione(dane, def) : "";
+    const wsz = typeof policzWszystkie === "function" ? policzWszystkie(def, dane) : "";
+    const ukrytePola = [
+      ["pceikz_format", "karta-pracy-1"],
+      ["karta_id", def.id || ""],
+      ["karta_sufiks", def.sufiks || ""],
+      ["klasa", dane._klasa || def.klasa || ""],
+      ["numer", dane._nr || ""],
+      ["data_karty", dane._data || ""],
+      ["wygenerowano", new Date().toISOString()],
+      ["wypelnione", String(wyp)],
+      ["wszystkie", String(wsz)],
+      ["odpowiedzi_skrot", tekstOdp ? skrot.toString(16) : ""],
+    ].map(([name, value]) => ({ name, value: String(value) || "-" }));
+
     const doc = new Document({
+      customProperties: ukrytePola,
       creator: def.przedmiot || "Karta pracy", title: `Karta pracy — ${def.tytul}`,
       styles: { default: { document: { run: { font: "Calibri", size: 21 } } } },
       sections: [{ properties: { page: { margin: { top: 1134, right: 1134, bottom: 1134, left: 1134 } } },
