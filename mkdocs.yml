@@ -74,7 +74,7 @@ extra_javascript:
   - assets/js/linux-trener.js
   # Podpowiedzi pod ćwiczeniami odsłaniane po kolei (jedna belka „Podpowiedzi”).
   - assets/js/podpowiedzi.js
-  # Tryb »Prowadź lekcję« (prezentacja slajd po slajdzie ze strony tematu).
+  # Tryb prezentacji (slajd po slajdzie ze strony tematu).
   - assets/js/slajdy.js
 
 markdown_extensions:

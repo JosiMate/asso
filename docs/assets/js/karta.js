@@ -333,6 +333,8 @@
       ["pceikz_format", "karta-pracy-1"],
       ["karta_id", def.id || ""],
       ["karta_sufiks", def.sufiks || ""],
+      ["karta_tytul", def.tytul || ""],
+      ["serwis", (location.pathname.split("/").filter(Boolean)[0]) || location.hostname],
       ["klasa", dane._klasa || def.klasa || ""],
       ["numer", dane._nr || ""],
       ["data_karty", dane._data || ""],

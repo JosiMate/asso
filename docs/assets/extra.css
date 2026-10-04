@@ -785,7 +785,7 @@
 }
 
 /* ------------------------------------------------------------
-   tryb Prowadź lekcję (slajdy.js)
+   tryb prezentacji (slajdy.js)
    ------------------------------------------------------------ */
 
 .md-typeset .sl-przycisk {
@@ -1030,4 +1030,58 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Tryb prezentacji na telefonie i tablecie.
+   Na wąskim ekranie przyciski zostają same ikonami (‹ ☰ › ✕), a licznik
+   skraca się do „5/31”. Przy telefonie trzymanym poziomo (niski ekran)
+   znika etykieta sekcji nad slajdem i pasek robi się cieńszy, żeby na
+   treść zostało jak najwięcej miejsca. Slajdy przewija się też palcem
+   (slajdy.js). */
+.sl-ikona { display: none; }
+
+.md-typeset .sl-przyciski .pdp-przycisk {
+  touch-action: manipulation;
+}
+
+.sl-pasek {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+@media screen and (max-width: 600px) {
+  .sl-scena { padding: 1rem 1rem .25rem; }
+  .sl-tresc { padding-bottom: 1rem; }
+  .sl-pasek-dostepowe { gap: .5rem; padding: .45rem .75rem; }
+  .sl-numer { white-space: nowrap; }
+  .sl-numer-slowo { display: none; }
+  .sl-numer-z { font-size: 0; }
+  .sl-numer-z::after { content: "/"; font-size: .8rem; }
+  .sl-przyciski { gap: .4rem; }
+  .sl-przyciski .sl-napis { display: none; }
+  .sl-przyciski .sl-ikona {
+    display: inline-block;
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+  .md-typeset .sl-przyciski .pdp-przycisk {
+    min-width: 2.75rem;
+    min-height: 2.5rem;
+    justify-content: center;
+    padding: .3em .7em;
+  }
+  .sl-tytul-slajdu { font-size: 1.6rem; margin: .5rem 0 1rem; }
+  .sl-tytul-kciuki { font-size: 1.35rem; }
+  .sl-karta-pracujemy { padding: 1.25rem 1rem; }
+  .sl-karta-pracujemy h2 { font-size: 1.4rem; }
+  .sl-kp-url code { font-size: .9rem; }
+  .sl-kontener .md-typeset__scrollwrap,
+  .sl-kontener .md-typeset__table { max-width: 100%; }
+}
+
+@media screen and (max-height: 500px) {
+  .sl-scena { padding-top: .6rem; }
+  .sl-etykieta { display: none; }
+  .sl-pasek-dostepowe { padding-top: .25rem; padding-bottom: .25rem; }
+  .md-typeset .sl-przyciski .pdp-przycisk { min-height: 2.25rem; padding-top: .15em; padding-bottom: .15em; }
+  .sl-tytul-slajdu { font-size: 1.5rem; margin: .25rem 0 .75rem; }
 }

@@ -319,9 +319,9 @@ pracy działu.
 `poprawna` liczy się od 0. Klucz `"typ": "jedna"`, który jest w starszych
 quizach, nic nie robi — w nowych go nie dodawaj.
 
-### Tryb »Prowadź lekcję« (`slajdy.js`)
+### Tryb prezentacji (`slajdy.js`)
 
-Skrypt `slajdy.js` dodaje przycisk „Prowadź lekcję” pod głównym nagłówkiem `h1` na stronach tematów (rozpoznawanych po ramce „O tym temacie” razem z kryteriami sukcesu, rozgrzewką albo quizem — dlatego strony „Wymagania i bhp” przycisku nie mają). Uruchamia pełnoekranową prezentację ze strony bez konieczności tworzenia osobnych slajdów.
+Skrypt `slajdy.js` dodaje przycisk „Tryb prezentacji” pod głównym nagłówkiem `h1` na stronach tematów (rozpoznawanych po ramce „O tym temacie” razem z kryteriami sukcesu, rozgrzewką albo quizem — dlatego strony „Wymagania i bhp” przycisku nie mają). Uruchamia pełnoekranową prezentację ze strony bez konieczności tworzenia osobnych slajdów.
 
 - **Podział automatyczny:** slajdy powstają z elementów najwyższego poziomu w `.md-content__inner`:
   1. **Slajd tytułowy:** nagłówek `h1` oraz ramka „O tym temacie”;
@@ -339,12 +339,14 @@ Skrypt `slajdy.js` dodaje przycisk „Prowadź lekcję” pod głównym nagłów
   - **Ważne:** komentarz wewnątrz ramki (wcięty) jest ignorowany przez podział i nie tworzy nowego slajdu.
 
 - **Obsługa klawiaturą (i pilotem):**
-  - `→`, `PageDown`, `Spacja`: najpierw odsłania po kolei ukryte elementy na slajdzie (wyniki „Przewiduj”, kroki, rozwinięte podpowiedzi, odpowiedź quizu); po odsłonięciu wszystkich przechodzi do następnego slajdu;
+  - `→`, `PageDown`, `Spacja`: najpierw odsłania po kolei ukryte elementy na slajdzie (zwiniętą rozgrzewkę i jej odpowiedzi, wyniki „Przewiduj”, kroki, rozwinięte podpowiedzi, odpowiedź quizu); po odsłonięciu wszystkich przechodzi do następnego slajdu;
   - `←`, `PageUp`: poprzedni slajd;
   - `Shift + →`: następny slajd bez odsłaniania;
   - `Home` / `End`: pierwszy / ostatni slajd;
   - `M`: otwiera/zamyka spis slajdów (nawigacja strzałkami `↑`/`↓` i `Enter` lub kliknięcie myszą);
   - `Escape`: zamyka spis slajdów, a jeśli jest zamknięty — wychodzi z trybu prezentacji.
+
+- **Telefon i tablet:** przesunięcie palcem w lewo działa jak `→` (najpierw odsłania), w prawo — jak `←`. Gest nie działa na kodzie, tabelach i konsoli, które przewijają się w poziomie. Na wąskim ekranie przyciski paska są samymi ikonami (‹ ☰ › ✕), licznik skraca się do „5/31”, a przy telefonie obróconym poziomo znika etykieta sekcji nad slajdem. Style są na końcu `docs/assets/extra.css`.
 
 ### Tryb »Na tablicę« (`tablica.js`)
 

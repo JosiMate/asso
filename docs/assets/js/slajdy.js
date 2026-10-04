@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------
-   Tryb »Prowadź lekcję« (slajdy.js)
+   Tryb prezentacji (slajdy.js)
    ------------------------------------------------------------ */
 (function () {
   "use strict";
@@ -95,6 +95,7 @@
     nakladka.className = "sl-nakladka md-typeset";
     nakladka.setAttribute("role", "dialog");
     nakladka.setAttribute("aria-modal", "true");
+    nakladka.setAttribute("aria-label", "Tryb prezentacji");
     nakladka.setAttribute("tabindex", "-1");
 
     nakladka.innerHTML = `
@@ -109,10 +110,10 @@
         <div class="sl-pasek-dostepowe">
           <span class="sl-numer"></span>
           <div class="sl-przyciski">
-            <button type="button" class="pdp-przycisk sl-btn-prev">Poprzedni</button>
-            <button type="button" class="pdp-przycisk sl-btn-spis">Spis</button>
-            <button type="button" class="pdp-przycisk pdp-dalej sl-btn-next">Następny</button>
-            <button type="button" class="pdp-przycisk sl-btn-exit">Zakończ</button>
+            <button type="button" class="pdp-przycisk sl-btn-prev" aria-label="Poprzedni slajd"><span class="sl-ikona" aria-hidden="true">‹</span><span class="sl-napis">Poprzedni</span></button>
+            <button type="button" class="pdp-przycisk sl-btn-spis" aria-label="Spis slajdów"><span class="sl-ikona" aria-hidden="true">☰</span><span class="sl-napis">Spis</span></button>
+            <button type="button" class="pdp-przycisk pdp-dalej sl-btn-next" aria-label="Następny"><span class="sl-napis">Następny</span><span class="sl-ikona" aria-hidden="true">›</span></button>
+            <button type="button" class="pdp-przycisk sl-btn-exit" aria-label="Zakończ prezentację"><span class="sl-ikona" aria-hidden="true">✕</span><span class="sl-napis">Zakończ</span></button>
           </div>
         </div>
       </div>
@@ -179,7 +180,7 @@
       const slajd = slajdy[index];
 
       etykietaEl.textContent = slajd.etykieta || "";
-      numerEl.textContent = `Slajd ${index + 1} z ${slajdy.length}`;
+      numerEl.innerHTML = `<span class="sl-numer-slowo">Slajd </span>${index + 1}<span class="sl-numer-z"> z </span>${slajdy.length}`;
       const proc = ((index + 1) / slajdy.length) * 100;
       postepWyp.style.width = `${proc}%`;
 
@@ -236,6 +237,7 @@
         const sum = d.querySelector(":scope > summary");
         const sumText = sum ? sum.textContent.trim().toLowerCase() : "";
         return (
+          sumText.startsWith("na rozgrzewk") ||
           sumText.startsWith("odpowied") ||
           sumText.startsWith("przewiduj") ||
           sumText.startsWith("wynik") ||
@@ -502,6 +504,33 @@
     const onResize = () => {
       dopasujZoom();
     };
+
+    // Telefon i tablet: przesunięcie palcem w lewo = dalej (najpierw odsłania
+    // ukryte elementy, jak strzałka →), w prawo = poprzedni slajd. Gest nie
+    // działa na tym, co samo przewija się w poziomie (kod, tabele, konsola).
+    let dotykStart = null;
+    const PRZESUN_MIN = 60;
+    const onTouchStart = (e) => {
+      if (menuOtwarty || e.touches.length !== 1) { dotykStart = null; return; }
+      const t = e.target;
+      if (czyWPoluTekstowym(t) || (t.closest && t.closest("pre, .highlight, .md-typeset__scrollwrap, table, .py-konsola, .sl-pasek"))) {
+        dotykStart = null;
+        return;
+      }
+      dotykStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, czas: Date.now() };
+    };
+    const onTouchEnd = (e) => {
+      if (!dotykStart || !e.changedTouches.length) return;
+      const dx = e.changedTouches[0].clientX - dotykStart.x;
+      const dy = e.changedTouches[0].clientY - dotykStart.y;
+      const czas = Date.now() - dotykStart.czas;
+      dotykStart = null;
+      if (czas > 800 || Math.abs(dx) < PRZESUN_MIN || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      if (dx < 0) nastepnyAkcja(false);
+      else poprzedniSlajd();
+    };
+    escena.addEventListener("touchstart", onTouchStart, { passive: true });
+    escena.addEventListener("touchend", onTouchEnd, { passive: true });
 
     btnPrev.addEventListener("click", () => poprzedniSlajd());
     btnNext.addEventListener("click", () => nastepnyAkcja(false));
@@ -825,7 +854,7 @@
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "pdp-przycisk sl-przycisk";
-    btn.innerHTML = `<span class="tb-ikona-ekran"></span>Prowadź lekcję`;
+    btn.innerHTML = `<span class="tb-ikona-ekran"></span>Tryb prezentacji`;
 
     btn.addEventListener("click", (e) => {
       e.preventDefault();
