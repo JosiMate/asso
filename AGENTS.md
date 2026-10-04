@@ -370,6 +370,8 @@ Nad quizem „Sprawdź się” dodawany jest również przycisk „Na tablicę�
   - `Spacja` lub `Enter`: „Pokaż odpowiedź”;
   - `Escape`: zamknięcie widoku tablicy.
 
+Na telefonie widoki „Na tablicę” mają „Zamknij” jako ✕, pasek quizu to jeden wiersz ‹ [Pokaż odpowiedź] ›, a pytania quizu zmienia się też przesunięciem palcem. Style są na końcu `docs/assets/extra.css`, zaraz po stylach trybu prezentacji na telefon.
+
 ### Widżet `linux-trener`
 
 Osadzany na stronach tematów jako symulator powłoki Linux:

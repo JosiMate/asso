@@ -1085,3 +1085,54 @@
   .md-typeset .sl-przyciski .pdp-przycisk { min-height: 2.25rem; padding-top: .15em; padding-bottom: .15em; }
   .sl-tytul-slajdu { font-size: 1.5rem; margin: .25rem 0 .75rem; }
 }
+
+/* Widoki „Na tablicę” (ramka, quiz, losowa rozgrzewka) na telefonie.
+   Ten sam układ co w trybie prezentacji: „Zamknij” i strzałki quizu
+   zostają ikonami, pasek quizu to jeden wiersz ‹ [Pokaż odpowiedź] ›,
+   a pytania quizu zmienia się też przesunięciem palcem (quiz.js). */
+.md-typeset .tb-btn-zamknij,
+.md-typeset .tb-qz-pasek .pdp-przycisk {
+  touch-action: manipulation;
+}
+
+@media screen and (max-width: 600px) {
+  .tb-naglowek { gap: .6rem; padding: .45rem .75rem; }
+  .tb-tytul { font-size: .85rem; }
+  .tb-btn-zamknij .sl-napis,
+  .tb-qz-pasek .sl-napis { display: none; }
+  .tb-btn-zamknij .sl-ikona,
+  .tb-qz-pasek .sl-ikona {
+    display: inline-block;
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+  .md-typeset .tb-btn-zamknij,
+  .md-typeset .tb-qz-pasek .tb-qz-prev,
+  .md-typeset .tb-qz-pasek .tb-qz-next {
+    min-width: 2.75rem;
+    min-height: 2.5rem;
+    justify-content: center;
+    padding: .3em .7em;
+  }
+  .tb-tresc { padding: 1rem .9rem 1.5rem; }
+  .tb-qz-pasek {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: .5rem;
+    bottom: -1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .md-typeset .tb-qz-pasek .tb-qz-pokaz {
+    justify-content: center;
+    min-height: 2.5rem;
+  }
+  .tb-qz-tresc { font-size: 1rem; }
+  .tb-kafelek-tresc { font-size: .85rem; }
+}
+
+@media screen and (max-height: 500px) {
+  .tb-naglowek { padding-top: .3rem; padding-bottom: .3rem; }
+  .tb-tytul { font-size: .85rem; }
+  .tb-tresc { padding-top: .6rem; }
+  .tb-qz-pasek { padding-top: .3rem; }
+}

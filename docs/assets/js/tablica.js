@@ -118,7 +118,7 @@
     nakladka.innerHTML = `
       <div class="tb-naglowek">
         <span class="tb-tytul">${esc(tytul)}</span>
-        <button type="button" class="tb-btn-zamknij pdp-przycisk">Zamknij</button>
+        <button type="button" class="tb-btn-zamknij pdp-przycisk" aria-label="Zamknij"><span class="sl-ikona" aria-hidden="true">✕</span><span class="sl-napis">Zamknij</span></button>
       </div>
       <div class="tb-tresc">
         <div class="tb-kontener"></div>

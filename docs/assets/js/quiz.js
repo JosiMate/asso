@@ -124,9 +124,9 @@
       container.innerHTML = `
         <div class="tb-qz-host"></div>
         <div class="tb-qz-pasek">
-          <button type="button" class="pdp-przycisk tb-qz-prev" ${idx === 0 ? "disabled" : ""}>Poprzednie</button>
+          <button type="button" class="pdp-przycisk tb-qz-prev" aria-label="Poprzednie pytanie" ${idx === 0 ? "disabled" : ""}><span class="sl-ikona" aria-hidden="true">‹</span><span class="sl-napis">Poprzednie</span></button>
           <button type="button" class="pdp-przycisk pdp-dalej tb-qz-pokaz">Pokaż odpowiedź</button>
-          <button type="button" class="pdp-przycisk tb-qz-next" ${idx === pytania.length - 1 ? "disabled" : ""}>Następne</button>
+          <button type="button" class="pdp-przycisk tb-qz-next" aria-label="Następne pytanie" ${idx === pytania.length - 1 ? "disabled" : ""}><span class="sl-napis">Następne</span><span class="sl-ikona" aria-hidden="true">›</span></button>
         </div>
       `;
 
@@ -174,6 +174,24 @@
     };
 
     document.addEventListener("keydown", onKey, true);
+
+    // Telefon: przesunięcie palcem w lewo = następne pytanie, w prawo = poprzednie.
+    let dotyk = null;
+    container.addEventListener("touchstart", (e) => {
+      const t = e.target;
+      if (e.touches.length !== 1 || (t.closest && t.closest(".tb-qz-pasek, pre, table"))) { dotyk = null; return; }
+      dotyk = { x: e.touches[0].clientX, y: e.touches[0].clientY, czas: Date.now() };
+    }, { passive: true });
+    container.addEventListener("touchend", (e) => {
+      if (!dotyk || !e.changedTouches.length) return;
+      const dx = e.changedTouches[0].clientX - dotyk.x;
+      const dy = e.changedTouches[0].clientY - dotyk.y;
+      const czas = Date.now() - dotyk.czas;
+      dotyk = null;
+      if (czas > 800 || Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      if (dx < 0 && idx < pytania.length - 1) { idx++; renderView(); }
+      else if (dx > 0 && idx > 0) { idx--; renderView(); }
+    }, { passive: true });
 
     renderView();
 
