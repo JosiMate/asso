@@ -342,6 +342,12 @@
       ["wypelnione", String(wyp)],
       ["wszystkie", String(wsz)],
       ["odpowiedzi_skrot", tekstOdp ? skrot.toString(16) : ""],
+      /* Kopia odpowiedzi do automatycznego sprawdzania kluczem (skrypt
+         sprawdz_karty.py nauczyciela). Te same treści, które są widoczne
+         w dokumencie; zrzuty ekranu zastępuje znacznik „[zrzut]”. */
+      ["odpowiedzi_json", JSON.stringify(Object.fromEntries(Object.entries(dane || {})
+        .filter(([k, v]) => !pomin.has(k) && v !== "" && v != null)
+        .map(([k, v]) => [k, /^data:/.test(String(v)) ? "[zrzut]" : String(v)])))],
     ].map(([name, value]) => ({ name, value: String(value) || "-" }));
 
     const doc = new Document({
