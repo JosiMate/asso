@@ -65,6 +65,8 @@ extra_javascript:
   # docx.umd.js celowo NIE jest tu wymieniony — karta.js doczyta go dopiero
   # przy generowaniu pliku, żeby nie obciążać czytelników materiału.
   - assets/js/karta.js
+  # „Moje informacje zwrotne” (strona informacje-zwrotne.md) — komentarze nauczyciela po kodzie z karteczki
+  - assets/js/informacje.js
   # karty.js korzysta z window.KartaPracy, więc musi iść PO karta.js
   - assets/js/karty.js
   - assets/js/tablica.js
