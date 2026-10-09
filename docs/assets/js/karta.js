@@ -566,6 +566,8 @@
           serwis: (location.pathname.split("/").filter(Boolean)[0]) || location.hostname,
           wypelnione: policzWypelnione(dane, def), wszystkie: policzWszystkie(def, dane),
           wygenerowano: new Date().toISOString(), odpowiedzi,
+          // samoocena z ramki „Kryteria sukcesu” na tej stronie (samoocena.js); skrypt Google v6 ją zapisuje
+          samoocena: (window.Samoocena && window.Samoocena.naStronie()) || [],
           docx: word ? word.b64 : "", docx_nazwa: word ? word.nazwa : "" });
         let w;
         try {
