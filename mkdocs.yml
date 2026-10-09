@@ -67,6 +67,8 @@ extra_javascript:
   - assets/js/karta.js
   # „Moje informacje zwrotne” (strona informacje-zwrotne.md) — komentarze nauczyciela po kodzie z karteczki
   - assets/js/informacje.js
+  # samoocena przy „Kryteriach sukcesu” + strona „Mój postęp” (tylko localStorage ucznia)
+  - assets/js/samoocena.js
   # karty.js korzysta z window.KartaPracy, więc musi iść PO karta.js
   - assets/js/karty.js
   - assets/js/tablica.js
