@@ -113,7 +113,7 @@
     if (!KP) return;
 
     if (!listy.has(host)) {
-      const zrodlo = host.querySelector('script[type="application/json"]');
+      const zrodlo = host.querySelector('script[type="application/json"], script:not([src])');
       if (!zrodlo) return;
       try { listy.set(host, JSON.parse(zrodlo.textContent)); }
       catch { return; }

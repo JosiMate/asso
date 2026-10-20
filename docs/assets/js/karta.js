@@ -322,7 +322,7 @@
             const bin = atob(b64);
             const bajty = new Uint8Array(bin.length);
             for (let i = 0; i < bin.length; i++) bajty[i] = bin.charCodeAt(i);
-            const typ = /png/.test(nag) ? "png" : "jpg";
+            const typ = /png/i.test(nag) ? "png" : "jpg";
             const wym = await rozmiar(d);
             dzieci.push(new Paragraph({ spacing: { after: 160 }, children: [
               new ImageRun({ type: typ, data: bajty, transformation: wym })] }));
@@ -453,8 +453,10 @@
       if (p) zapiszPole(p, e.target.value);
     });
     host.addEventListener("change", (e) => {
-      if (e.target.type === "radio" && e.target.dataset.pole)
-        zapiszPole(e.target.dataset.pole, e.target.value);
+      const p = e.target.dataset.pole;
+      if (p && e.target.type !== "file") {
+        zapiszPole(p, e.target.value);
+      }
       // Pole na plik obsługujemy tylko wtedy, gdy należy do strefy na zrzut.
       // W stopce jest jeszcze jedno — do wczytywania postępu — i bez tego
       // sprawdzenia trafiało tutaj z pustym „closest", wywracając skrypt.

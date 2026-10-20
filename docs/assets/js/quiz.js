@@ -26,7 +26,7 @@
 
   // „Świętego Mikołaja” i „swietego mikolaja” mają być tym samym
   const uprosc = (s) => String(s ?? "").toLowerCase()
-    .normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/ł/g, "l").replace(/[^a-z0-9]+/g, "");
 
   function widokPytania(host, pytanie, nr, ile) {
