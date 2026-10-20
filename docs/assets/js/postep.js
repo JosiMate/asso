@@ -34,6 +34,21 @@
     KLUCZ = "postep:" + (spis.dataset.postep || location.pathname);
     const stan = wczytaj();
 
+    /* Zmieniony tytuł tematu: data-zmienione='{"stary tytuł": "nowy tytuł"}'
+     * na .spis-tematow przenosi zaznaczenie ze starego klucza na nowy. */
+    try {
+      const zmiany = JSON.parse(spis.dataset.zmienione || "{}");
+      let przeniesione = false;
+      for (const [stary, nowy] of Object.entries(zmiany)) {
+        const s = stary.slice(0, 60), n = nowy.slice(0, 60);
+        if (s === n || !(s in stan)) continue;
+        if (!(n in stan)) stan[n] = stan[s];
+        delete stan[s];
+        przeniesione = true;
+      }
+      if (przeniesione) zapisz(stan);
+    } catch { /* błędny JSON w data-zmienione — pomijamy */ }
+
     spis.querySelectorAll("table").forEach((tab) => {
       // nagłówek nowej kolumny
       const trGlowa = tab.querySelector("thead tr");
