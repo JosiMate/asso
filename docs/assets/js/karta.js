@@ -5,7 +5,7 @@
  * Nic nie wychodzi poza komputer ucznia, dopóki sam nie kliknie „Wyślij do
  * nauczyciela” — wtedy klasa, numer, kod z karteczki i odpowiedzi idą do
  * skryptu Google nauczyciela (adres w ODBIOR), który zapisuje je na jego Dysku.
- * „Zapisz → Na Dysku nauczyciela” / „Wczytaj → Z Dysku nauczyciela” (skrypt w wersji 7) przenoszą pracę w toku
+ * „Zapisz → Na Dysk” / „Wczytaj → Z Dysku” (skrypt w wersji 7) przenoszą pracę w toku
  * między komputerami po klasie, numerze i kodzie z karteczki — to nie jest oddanie karty.
  *
  * Użycie w Markdownie:   <div class="karta-pracy" data-karta="systemy-operacyjne"></div>
@@ -29,7 +29,7 @@
 
   /* Biblioteka składająca .docx waży ponad megabajt. Nie ma powodu, by pobierał
      ją każdy, kto tylko czyta materiał — doczytujemy ją dopiero przy pierwszym
-     kliknięciu „Zapisz → Dokument Word”. */
+     kliknięciu „Zapisz → Pobierz Word”. */
   let ladowanie = null;
   function zaladujDocx() {
     if (typeof docx !== "undefined") return Promise.resolve();
@@ -212,6 +212,15 @@
       </figure></div>`;
   }
 
+  /* Ikony pozycji menu (kolorowe, w obu motywach czytelne). */
+  const ikona = (sciezki) => `<svg class="kp-ikona" viewBox="0 0 24 24" aria-hidden="true">${sciezki}</svg>`;
+  const IKONY = {
+    dyskietka: ikona('<rect x="3" y="3" width="18" height="18" rx="2.5" fill="#7c4dff"/><rect x="7" y="3" width="10" height="6" rx="1" fill="#ede7f6"/><rect x="13.5" y="4.2" width="2" height="3.6" fill="#7c4dff"/><rect x="6" y="13" width="12" height="8" rx="1" fill="#ff6f91"/>'),
+    chmura: ikona('<path d="M7 19h10.5a4.5 4.5 0 0 0 .6-8.96A6 6 0 0 0 6.6 9.2 5 5 0 0 0 7 19z" fill="#b0bec5"/>'),
+    dokument: ikona('<path d="M6 2h8l5 5v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" fill="#90a4ae"/><path d="M14 2v5h5" fill="#cfd8dc"/><rect x="8" y="11" width="8" height="1.6" fill="#eceff1"/><rect x="8" y="14.5" width="8" height="1.6" fill="#eceff1"/><rect x="8" y="18" width="5" height="1.6" fill="#eceff1"/>'),
+    folder: ikona('<path d="M2 6a2 2 0 0 1 2-2h5l2 2h9a2 2 0 0 1 2 2v1H2z" fill="#c99a2e"/><path d="M2 9h20l-1.6 10.3a2 2 0 0 1-2 1.7H5.6a2 2 0 0 1-2-1.7z" fill="#e0b445"/>'),
+  };
+
   function render(host, def, dane) {
     const zadania = def.zadania.map((z) => {
       const pola = z.pola.map((p) => {
@@ -252,16 +261,16 @@
           <div class="kp-menu">
             <button type="button" class="kp-menu-przycisk md-button${ODBIOR ? "" : " md-button--primary"}" aria-expanded="false" aria-haspopup="true">Zapisz</button>
             <div class="kp-menu-lista" hidden>
-              <button type="button" class="kp-generuj">Dokument Word<small>do oddania w dzienniku</small></button>
-              ${ODBIOR ? `<button type="button" class="kp-dysk-zapisz">Na Dysku nauczyciela<small>dokończysz na innym komputerze — to nie jest oddanie</small></button>` : ""}
-              <button type="button" class="kp-eksport">Plik z postępem (.json)<small>na pendrive albo mailem do siebie</small></button>
+              <button type="button" class="kp-eksport" title="Plik z postępem — przenieś go na pendrive albo mailem do siebie">${IKONY.dyskietka}Zapisz (JSON)</button>
+              ${ODBIOR ? `<button type="button" class="kp-dysk-zapisz" title="Na Dysk nauczyciela — dokończysz na innym komputerze (numer, klasa i kod z karteczki). To nie jest oddanie karty.">${IKONY.chmura}Na Dysk</button>` : ""}
+              <button type="button" class="kp-generuj" title="Dokument Word do oddania w dzienniku">${IKONY.dokument}Pobierz Word (.docx)</button>
             </div>
           </div>
           <div class="kp-menu">
             <button type="button" class="kp-menu-przycisk md-button" aria-expanded="false" aria-haspopup="true">Wczytaj</button>
             <div class="kp-menu-lista" hidden>
-              ${ODBIOR ? `<button type="button" class="kp-dysk-wczytaj">Z Dysku nauczyciela<small>numer, klasa i kod z karteczki</small></button>` : ""}
-              <button type="button" class="kp-import">Z pliku na komputerze (.json)<small>zapisanego przez „Zapisz → Plik z postępem”</small></button>
+              <button type="button" class="kp-import" title="Plik .json zapisany przez „Zapisz (JSON)”">${IKONY.folder}Wczytaj plik</button>
+              ${ODBIOR ? `<button type="button" class="kp-dysk-wczytaj" title="Praca zapisana na Dysku nauczyciela — numer, klasa i kod z karteczki">${IKONY.chmura}Z Dysku</button>` : ""}
             </div>
           </div>
           <input type="file" class="kp-import-plik" accept=".json,application/json" hidden>
@@ -475,7 +484,7 @@
         if (poprzednia === undefined) delete dane[klucz]; else dane[klucz] = poprzednia;
         status.innerHTML = "<strong>Brak miejsca w przeglądarce.</strong> Karty zajmują już " +
           esc(wKB(zajetosc() || 0)) + " z około 5 MB — a to miejsce jest wspólne dla " +
-          "wszystkich kart. <strong>Zapisz → Plik z postępem</strong>, potem usuń kilka zrzutów " +
+          "wszystkich kart. <strong>Zapisz → Zapisz (JSON)</strong>, potem usuń kilka zrzutów " +
           "ekranu albo wyczyść zakończoną kartę innego działu.";
         status.className = "kp-status kp-blad";
         return false;
@@ -671,10 +680,10 @@
         (w && w.pozostalo != null ? ` Zostało prób: ${esc(w.pozostalo)}.` : ""),
       zablokowane: "Za dużo złych kodów dla tego numeru — zablokowane na godzinę.",
       za_czesto: "Za dużo prób w krótkim czasie. Odczekaj kilka minut.",
-      za_duze: "Praca jest za duża (zrzuty ekranu). Użyj „Zapisz → Plik z postępem”.",
-      brak_danych: "Skrypt nauczyciela nie obsługuje jeszcze zapisu na Dysku. Użyj „Zapisz → Plik z postępem”.",
-      nieskonfigurowane: "Zapis na Dysku nie jest jeszcze włączony. Użyj „Zapisz → Plik z postępem”.",
-    }[w && w.blad] || "Serwer nauczyciela nie odpowiedział poprawnie. Użyj „Zapisz → Plik z postępem”.");
+      za_duze: "Praca jest za duża (zrzuty ekranu). Użyj „Zapisz → Zapisz (JSON)”.",
+      brak_danych: "Skrypt nauczyciela nie obsługuje jeszcze zapisu na Dysku. Użyj „Zapisz → Zapisz (JSON)”.",
+      nieskonfigurowane: "Zapis na Dysku nie jest jeszcze włączony. Użyj „Zapisz → Zapisz (JSON)”.",
+    }[w && w.blad] || "Serwer nauczyciela nie odpowiedział poprawnie. Użyj „Zapisz → Zapisz (JSON)”.");
     if (dyskZapisz) dyskZapisz.addEventListener("click", async () => {
       const u = daneUcznia(); if (!u) return;
       dyskZapisz.disabled = true;
@@ -685,11 +694,11 @@
           arkusz_id: id, tytul: def.tytul || "", serwis: (location.pathname.split("/").filter(Boolean)[0]) || location.hostname,
           wypelnione: policzWypelnione(dane, def), wszystkie: policzWszystkie(def, dane),
           rekord: { karta: id, odpowiedzi: dane } });
-        if (!w) { bladD("Nie udało się połączyć z serwerem nauczyciela. Sprawdź internet — albo użyj „Zapisz → Plik z postępem”."); return; }
+        if (!w) { bladD("Nie udało się połączyć z serwerem nauczyciela. Sprawdź internet — albo użyj „Zapisz → Zapisz (JSON)”."); return; }
         if (w.ok && w.zapisano) {
           status.innerHTML = `<strong>Zapisano na Dysku nauczyciela</strong> ${esc(w.zapisano)}. ` +
             "Na innym komputerze otwórz tę stronę, wpisz numer, klasę i kod z karteczki i kliknij " +
-            "<strong>Wczytaj → Z Dysku nauczyciela</strong>. To nie jest oddanie karty — gdy skończysz, kliknij <strong>Wyślij do nauczyciela</strong>.";
+            "<strong>Wczytaj → Z Dysku</strong>. To nie jest oddanie karty — gdy skończysz, kliknij <strong>Wyślij do nauczyciela</strong>.";
           status.className = "kp-status kp-ok";
           return;
         }
@@ -754,7 +763,7 @@
       setTimeout(() => URL.revokeObjectURL(url), 4000);
       status.innerHTML = "Zapisano <strong>postep_" + esc(id) + ".json</strong> (" +
         esc(wKB(blob.size)) + "). Przenieś ten plik na drugi komputer — pendrive'em, " +
-        "OneDrive'em albo mailem do siebie — i tam kliknij <strong>Wczytaj → Z pliku na komputerze</strong>.";
+        "OneDrive'em albo mailem do siebie — i tam kliknij <strong>Wczytaj → Wczytaj plik</strong>.";
       status.className = "kp-status kp-ok";
     });
 
@@ -821,7 +830,7 @@
 
     host.querySelector(".kp-wyczysc").addEventListener("click", () => {
       if (!confirm("Usunąć wszystkie odpowiedzi z tej karty? Tej operacji nie da się cofnąć.\n\n" +
-                   "Jeżeli chcesz je zachować, najpierw kliknij „Zapisz → Plik z postępem”.")) return;
+                   "Jeżeli chcesz je zachować, najpierw kliknij „Zapisz → Zapisz (JSON)”.")) return;
       localStorage.removeItem(KLUCZ(id));
       dane = {};
       podepnij(host, def);
