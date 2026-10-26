@@ -5,6 +5,8 @@
  * Nic nie wychodzi poza komputer ucznia, dopóki sam nie kliknie „Wyślij do
  * nauczyciela” — wtedy klasa, numer, kod z karteczki i odpowiedzi idą do
  * skryptu Google nauczyciela (adres w ODBIOR), który zapisuje je na jego Dysku.
+ * „Zapisz na Dysku” / „Wczytaj z Dysku” (skrypt w wersji 7) przenoszą pracę w toku
+ * między komputerami po klasie, numerze i kodzie z karteczki — to nie jest oddanie karty.
  *
  * Użycie w Markdownie:   <div class="karta-pracy" data-karta="systemy-operacyjne"></div>
  */
@@ -239,7 +241,7 @@
             <td><input type="date" data-pole="_data" value="${esc(dane._data || "")}"></td></tr>
           ${ODBIOR ? `<tr><th scope="row">Kod z karteczki</th>
             <td><input type="text" class="kp-kod" autocomplete="off" spellcheck="false" maxlength="7"
-                value="${esc(kodSesji())}" placeholder="tylko do wysyłania, np. K7MPQ"
+                value="${esc(kodSesji())}" placeholder="do wysyłania i Dysku, np. K7MPQ"
                 style="text-transform:uppercase;letter-spacing:.12em"></td></tr>` : ""}
         </tbody></table>
       </div>
@@ -249,6 +251,12 @@
           Wyślij do nauczyciela</button>` : ""}
         <button type="button" class="kp-generuj md-button${ODBIOR ? "" : " md-button--primary"}">
           Pobierz jako dokument Word</button>
+        ${ODBIOR ? `<button type="button" class="kp-dysk-zapisz md-button"
+          title="Zapisz pracę w toku na Dysku nauczyciela, żeby dokończyć ją na innym komputerze (numer, klasa i kod z karteczki). To nie jest oddanie karty.">
+          Zapisz na Dysku</button>
+        <button type="button" class="kp-dysk-wczytaj md-button"
+          title="Wczytaj pracę zapisaną wcześniej na Dysku nauczyciela (numer, klasa i kod z karteczki)">
+          Wczytaj z Dysku</button>` : ""}
         <button type="button" class="kp-eksport md-button"
           title="Zapisz odpowiedzi do pliku, żeby wrócić do nich na innym komputerze">
           Zapisz do pliku</button>
@@ -601,6 +609,92 @@
         };
         blad(komunikaty[w && w.blad] || "Serwer nauczyciela nie przyjął karty. Pobierz dokument Word i oddaj go w Dzienniku VULCAN.");
       } finally { wyslij.disabled = false; }
+    });
+
+    /* ─────────────────────── Dysk nauczyciela (skrypt v7) ───────────────────
+       Praca w toku jedzie na Dysk nauczyciela razem ze zrzutami; kod z karteczki
+       nie (zostaje w tej karcie przeglądarki). Na innym komputerze uczeń wpisuje
+       numer, klasę i kod i wczytuje pracę z powrotem. Skrypt sprzed wersji 7
+       bierze zapis za wysyłkę bez karty i odrzuca go jako „brak danych”. */
+    const dyskZapisz = host.querySelector(".kp-dysk-zapisz");
+    const dyskWczytaj = host.querySelector(".kp-dysk-wczytaj");
+    const bladD = (t) => { status.innerHTML = t; status.className = "kp-status kp-blad"; };
+    const daneUcznia = () => {
+      const kod = String(kodPole ? kodPole.value : "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+      const klasa = String(dane._klasa || def.klasa || "").toUpperCase().replace(/\s+/g, "");
+      if (!String(dane._nr || "").trim() || !klasa) { bladD("Wpisz najpierw numer w dzienniku i klasę."); host.querySelector('[data-pole="_nr"]').focus(); return null; }
+      if (kod.length !== 5) { bladD("Wpisz kod z karteczki — 5 znaków. Bez niego nie da się zapisać ani wczytać pracy z Dysku."); if (kodPole) kodPole.focus(); return null; }
+      return { kod, klasa, numer: String(dane._nr).trim() };
+    };
+    const doSkryptu = async (tresc) => {
+      try {
+        const resp = await fetch(ODBIOR, { method: "POST", body: JSON.stringify(tresc),
+          headers: { "Content-Type": "text/plain;charset=utf-8" }, redirect: "follow" });
+        return await resp.json();
+      } catch { return null; }
+    };
+    const komunikatDysku = (w, u) => ({
+      zly_kod: `Ten kod nie pasuje do numeru ${esc(u.numer)} w klasie ${esc(u.klasa)}. Sprawdź numer, klasę i kod.` +
+        (w && w.pozostalo != null ? ` Zostało prób: ${esc(w.pozostalo)}.` : ""),
+      zablokowane: "Za dużo złych kodów dla tego numeru — zablokowane na godzinę.",
+      za_czesto: "Za dużo prób w krótkim czasie. Odczekaj kilka minut.",
+      za_duze: "Praca jest za duża (zrzuty ekranu). Użyj „Zapisz do pliku”.",
+      brak_danych: "Skrypt nauczyciela nie obsługuje jeszcze zapisu na Dysku. Użyj „Zapisz do pliku”.",
+      nieskonfigurowane: "Zapis na Dysku nie jest jeszcze włączony. Użyj „Zapisz do pliku”.",
+    }[w && w.blad] || "Serwer nauczyciela nie odpowiedział poprawnie. Użyj „Zapisz do pliku”.");
+    if (dyskZapisz) dyskZapisz.addEventListener("click", async () => {
+      const u = daneUcznia(); if (!u) return;
+      dyskZapisz.disabled = true;
+      status.textContent = "Zapisuję pracę na Dysku nauczyciela…"; status.className = "kp-status";
+      try {
+        odswiezDateDomyslna(id, dane, host);
+        const w = await doSkryptu({ akcja: "postep_zapisz", klasa: u.klasa, numer: u.numer, kod: u.kod,
+          arkusz_id: id, tytul: def.tytul || "", serwis: (location.pathname.split("/").filter(Boolean)[0]) || location.hostname,
+          wypelnione: policzWypelnione(dane, def), wszystkie: policzWszystkie(def, dane),
+          rekord: { karta: id, odpowiedzi: dane } });
+        if (!w) { bladD("Nie udało się połączyć z serwerem nauczyciela. Sprawdź internet — albo użyj „Zapisz do pliku”."); return; }
+        if (w.ok && w.zapisano) {
+          status.innerHTML = `<strong>Zapisano na Dysku nauczyciela</strong> ${esc(w.zapisano)}. ` +
+            "Na innym komputerze otwórz tę stronę, wpisz numer, klasę i kod z karteczki i kliknij " +
+            "<strong>Wczytaj z Dysku</strong>. To nie jest oddanie karty — gdy skończysz, kliknij <strong>Wyślij do nauczyciela</strong>.";
+          status.className = "kp-status kp-ok";
+          return;
+        }
+        bladD(komunikatDysku(w, u));
+      } finally { dyskZapisz.disabled = false; }
+    });
+    if (dyskWczytaj) dyskWczytaj.addEventListener("click", async () => {
+      const u = daneUcznia(); if (!u) return;
+      dyskWczytaj.disabled = true;
+      status.textContent = "Szukam Twojej karty na Dysku nauczyciela…"; status.className = "kp-status";
+      try {
+        const w = await doSkryptu({ akcja: "postep_wczytaj", typ: "karta", klasa: u.klasa, numer: u.numer, kod: u.kod, id });
+        if (!w) { bladD("Nie udało się połączyć z serwerem nauczyciela. Sprawdź internet i spróbuj jeszcze raz."); return; }
+        if (!w.ok) { bladD(komunikatDysku(w, u)); return; }
+        if (!Array.isArray(w.prace)) { bladD(komunikatDysku({ blad: "brak_danych" }, u)); return; }
+        if (!w.praca || w.praca.karta !== id) {
+          const inne = w.prace.filter((x) => x.id !== id).map((x) => x.tytul).filter(Boolean);
+          bladD(`Na Dysku nauczyciela nie ma zapisu tej karty dla numeru ${esc(u.numer)} w klasie ${esc(u.klasa)}.` +
+            (inne.length ? ` Masz zapisane inne karty: ${esc(inne.slice(0, 5).join(", "))} — otwórz stronę tamtego tematu.` : ""));
+          return;
+        }
+        const odp = w.praca.odpowiedzi || {};
+        const wypelnione = policzWypelnione(dane, def);
+        if (wypelnione && !confirm(`Ta karta ma już ${wypelnione} wypełnionych pól. Wczytanie zapisu z Dysku ` +
+              `(${w.praca.zapisano}) zastąpi je w całości. Kontynuować?`)) { status.textContent = ""; return; }
+        const wynik = zapisz(id, odp);
+        if (wynik !== "ok") {
+          bladD(wynik === "brak-miejsca"
+            ? "Brak miejsca w przeglądarce — wyczyść zakończoną kartę innego działu i spróbuj ponownie."
+            : "Przeglądarka nie pozwala zapisać danych (tryb prywatny?).");
+          return;
+        }
+        dane = odp;
+        podepnij(host, def);
+        const nowyStatus = host.querySelector(".kp-status");
+        nowyStatus.innerHTML = `Wczytano kartę zapisaną na Dysku <strong>${esc(w.praca.zapisano)}</strong>. Możesz pracować dalej.`;
+        nowyStatus.className = "kp-status kp-ok";
+      } finally { dyskWczytaj.disabled = false; }
     });
 
     /* ─────────────────────── przeniesienie na inny komputer ───────────────
