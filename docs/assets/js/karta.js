@@ -5,7 +5,7 @@
  * Nic nie wychodzi poza komputer ucznia, dopóki sam nie kliknie „Wyślij do
  * nauczyciela” — wtedy klasa, numer, kod z karteczki i odpowiedzi idą do
  * skryptu Google nauczyciela (adres w ODBIOR), który zapisuje je na jego Dysku.
- * „Zapisz na Dysku” / „Wczytaj z Dysku” (skrypt w wersji 7) przenoszą pracę w toku
+ * „Zapisz → Na Dysku nauczyciela” / „Wczytaj → Z Dysku nauczyciela” (skrypt w wersji 7) przenoszą pracę w toku
  * między komputerami po klasie, numerze i kodzie z karteczki — to nie jest oddanie karty.
  *
  * Użycie w Markdownie:   <div class="karta-pracy" data-karta="systemy-operacyjne"></div>
@@ -17,7 +17,7 @@
      narzedzia/apps-script). Pusty napis = bez przycisku „Wyślij”. */
   const ODBIOR = "https://script.google.com/macros/s/AKfycbwhTDRRQxYs5eECosEyMZ-r0B-jSORYTbSuxw5_c2pepxbGe1MFf_IJgrShjLCM8utm/exec";
   /* Kod z karteczki nie trafia do danych karty (liczyłby się jako wypełnione
-     pole i jechał z „Zapisz do pliku”). Pamięta go tylko ta karta przeglądarki
+     pole i jechał w pliku z postępem). Pamięta go tylko ta karta przeglądarki
      — na wspólnym komputerze w pracowni znika po jej zamknięciu. */
   const KLUCZ_KODU = "kp-kod-ucznia";
   const KLUCZ_WYSLANIA = (id) => "kp-wyslano-" + id;
@@ -29,7 +29,7 @@
 
   /* Biblioteka składająca .docx waży ponad megabajt. Nie ma powodu, by pobierał
      ją każdy, kto tylko czyta materiał — doczytujemy ją dopiero przy pierwszym
-     kliknięciu „Pobierz jako dokument Word”. */
+     kliknięciu „Zapisz → Dokument Word”. */
   let ladowanie = null;
   function zaladujDocx() {
     if (typeof docx !== "undefined") return Promise.resolve();
@@ -247,25 +247,26 @@
       </div>
       ${zadania}
       <div class="kp-stopka">
-        ${ODBIOR ? `<button type="button" class="kp-wyslij md-button md-button--primary">
-          Wyślij do nauczyciela</button>` : ""}
-        <button type="button" class="kp-generuj md-button${ODBIOR ? "" : " md-button--primary"}">
-          Pobierz jako dokument Word</button>
-        ${ODBIOR ? `<button type="button" class="kp-dysk-zapisz md-button"
-          title="Zapisz pracę w toku na Dysku nauczyciela, żeby dokończyć ją na innym komputerze (numer, klasa i kod z karteczki). To nie jest oddanie karty.">
-          Zapisz na Dysku</button>
-        <button type="button" class="kp-dysk-wczytaj md-button"
-          title="Wczytaj pracę zapisaną wcześniej na Dysku nauczyciela (numer, klasa i kod z karteczki)">
-          Wczytaj z Dysku</button>` : ""}
-        <button type="button" class="kp-eksport md-button"
-          title="Zapisz odpowiedzi do pliku, żeby wrócić do nich na innym komputerze">
-          Zapisz do pliku</button>
-        <button type="button" class="kp-import md-button"
-          title="Wczytaj postęp zapisany wcześniej na innym komputerze">
-          Wczytaj z pliku</button>
-        <input type="file" class="kp-import-plik" accept=".json,application/json" hidden>
-        <span class="kp-luka" aria-hidden="true"></span>
-        <button type="button" class="kp-wyczysc md-button">Wyczyść kartę</button>
+        <div class="kp-akcje">
+          ${ODBIOR ? `<button type="button" class="kp-wyslij md-button md-button--primary">Wyślij do nauczyciela</button>` : ""}
+          <div class="kp-menu">
+            <button type="button" class="kp-menu-przycisk md-button${ODBIOR ? "" : " md-button--primary"}" aria-expanded="false" aria-haspopup="true">Zapisz</button>
+            <div class="kp-menu-lista" hidden>
+              <button type="button" class="kp-generuj">Dokument Word<small>do oddania w dzienniku</small></button>
+              ${ODBIOR ? `<button type="button" class="kp-dysk-zapisz">Na Dysku nauczyciela<small>dokończysz na innym komputerze — to nie jest oddanie</small></button>` : ""}
+              <button type="button" class="kp-eksport">Plik z postępem (.json)<small>na pendrive albo mailem do siebie</small></button>
+            </div>
+          </div>
+          <div class="kp-menu">
+            <button type="button" class="kp-menu-przycisk md-button" aria-expanded="false" aria-haspopup="true">Wczytaj</button>
+            <div class="kp-menu-lista" hidden>
+              ${ODBIOR ? `<button type="button" class="kp-dysk-wczytaj">Z Dysku nauczyciela<small>numer, klasa i kod z karteczki</small></button>` : ""}
+              <button type="button" class="kp-import">Z pliku na komputerze (.json)<small>zapisanego przez „Zapisz → Plik z postępem”</small></button>
+            </div>
+          </div>
+          <input type="file" class="kp-import-plik" accept=".json,application/json" hidden>
+          <button type="button" class="kp-wyczysc">Wyczyść kartę</button>
+        </div>
         <p class="kp-status" role="status" aria-live="polite"></p>
       </div></div>`;
   }
@@ -422,6 +423,37 @@
   });
 
   // ---------------------------------------------------------------- obsługa
+  /* Menu „Zapisz” i „Wczytaj”: przycisk + lista. Naraz otwarte tylko jedno; zamykają się
+     po wyborze pozycji, kliknięciu obok i klawiszem Esc. (Nie <details> — Material
+     stylizuje je jak rozwijane ramki.) Nasłuchy na dokumencie — raz na stronę. */
+  function zamknijMenu(oprocz) {
+    document.querySelectorAll(".kp-menu-przycisk[aria-expanded='true']").forEach((b) => {
+      if (b === oprocz) return;
+      b.setAttribute("aria-expanded", "false");
+      b.nextElementSibling.hidden = true;
+    });
+  }
+  function podepnijMenu(host) {
+    host.querySelectorAll(".kp-menu-przycisk").forEach((b) => {
+      b.addEventListener("click", () => {
+        const otworz = b.getAttribute("aria-expanded") !== "true";
+        zamknijMenu(b);
+        b.setAttribute("aria-expanded", String(otworz));
+        b.nextElementSibling.hidden = !otworz;
+        if (otworz) b.nextElementSibling.querySelector("button")?.focus();
+      });
+      b.nextElementSibling.addEventListener("click", (e) => { if (e.target.closest("button")) zamknijMenu(); });
+    });
+    if (document.body.dataset.kpMenu) return;
+    document.body.dataset.kpMenu = "1";
+    document.addEventListener("click", (e) => { if (!e.target.closest(".kp-menu")) zamknijMenu(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      const otwarty = document.querySelector(".kp-menu-przycisk[aria-expanded='true']");
+      if (otwarty) { zamknijMenu(); otwarty.focus(); }
+    });
+  }
+
   function podepnij(host, def) {
     const id = def.id;
     przeniesStarePodNowaNazwe(def);
@@ -431,6 +463,7 @@
     if (!dane._klasa && def.klasa) { dane._klasa = def.klasa; zapisz(id, dane); }
     odswiezDateDomyslna(id, dane);
     render(host, def, dane);
+    podepnijMenu(host);
     const status = host.querySelector(".kp-status");
 
     const zapiszPole = (klucz, wart) => {
@@ -442,7 +475,7 @@
         if (poprzednia === undefined) delete dane[klucz]; else dane[klucz] = poprzednia;
         status.innerHTML = "<strong>Brak miejsca w przeglądarce.</strong> Karty zajmują już " +
           esc(wKB(zajetosc() || 0)) + " z około 5 MB — a to miejsce jest wspólne dla " +
-          "wszystkich kart. <strong>Zapisz postęp do pliku</strong>, potem usuń kilka zrzutów " +
+          "wszystkich kart. <strong>Zapisz → Plik z postępem</strong>, potem usuń kilka zrzutów " +
           "ekranu albo wyczyść zakończoną kartę innego działu.";
         status.className = "kp-status kp-blad";
         return false;
@@ -638,10 +671,10 @@
         (w && w.pozostalo != null ? ` Zostało prób: ${esc(w.pozostalo)}.` : ""),
       zablokowane: "Za dużo złych kodów dla tego numeru — zablokowane na godzinę.",
       za_czesto: "Za dużo prób w krótkim czasie. Odczekaj kilka minut.",
-      za_duze: "Praca jest za duża (zrzuty ekranu). Użyj „Zapisz do pliku”.",
-      brak_danych: "Skrypt nauczyciela nie obsługuje jeszcze zapisu na Dysku. Użyj „Zapisz do pliku”.",
-      nieskonfigurowane: "Zapis na Dysku nie jest jeszcze włączony. Użyj „Zapisz do pliku”.",
-    }[w && w.blad] || "Serwer nauczyciela nie odpowiedział poprawnie. Użyj „Zapisz do pliku”.");
+      za_duze: "Praca jest za duża (zrzuty ekranu). Użyj „Zapisz → Plik z postępem”.",
+      brak_danych: "Skrypt nauczyciela nie obsługuje jeszcze zapisu na Dysku. Użyj „Zapisz → Plik z postępem”.",
+      nieskonfigurowane: "Zapis na Dysku nie jest jeszcze włączony. Użyj „Zapisz → Plik z postępem”.",
+    }[w && w.blad] || "Serwer nauczyciela nie odpowiedział poprawnie. Użyj „Zapisz → Plik z postępem”.");
     if (dyskZapisz) dyskZapisz.addEventListener("click", async () => {
       const u = daneUcznia(); if (!u) return;
       dyskZapisz.disabled = true;
@@ -652,11 +685,11 @@
           arkusz_id: id, tytul: def.tytul || "", serwis: (location.pathname.split("/").filter(Boolean)[0]) || location.hostname,
           wypelnione: policzWypelnione(dane, def), wszystkie: policzWszystkie(def, dane),
           rekord: { karta: id, odpowiedzi: dane } });
-        if (!w) { bladD("Nie udało się połączyć z serwerem nauczyciela. Sprawdź internet — albo użyj „Zapisz do pliku”."); return; }
+        if (!w) { bladD("Nie udało się połączyć z serwerem nauczyciela. Sprawdź internet — albo użyj „Zapisz → Plik z postępem”."); return; }
         if (w.ok && w.zapisano) {
           status.innerHTML = `<strong>Zapisano na Dysku nauczyciela</strong> ${esc(w.zapisano)}. ` +
             "Na innym komputerze otwórz tę stronę, wpisz numer, klasę i kod z karteczki i kliknij " +
-            "<strong>Wczytaj z Dysku</strong>. To nie jest oddanie karty — gdy skończysz, kliknij <strong>Wyślij do nauczyciela</strong>.";
+            "<strong>Wczytaj → Z Dysku nauczyciela</strong>. To nie jest oddanie karty — gdy skończysz, kliknij <strong>Wyślij do nauczyciela</strong>.";
           status.className = "kp-status kp-ok";
           return;
         }
@@ -721,7 +754,7 @@
       setTimeout(() => URL.revokeObjectURL(url), 4000);
       status.innerHTML = "Zapisano <strong>postep_" + esc(id) + ".json</strong> (" +
         esc(wKB(blob.size)) + "). Przenieś ten plik na drugi komputer — pendrive'em, " +
-        "OneDrive'em albo mailem do siebie — i tam kliknij <strong>Wczytaj postęp z pliku</strong>.";
+        "OneDrive'em albo mailem do siebie — i tam kliknij <strong>Wczytaj → Z pliku na komputerze</strong>.";
       status.className = "kp-status kp-ok";
     });
 
@@ -788,7 +821,7 @@
 
     host.querySelector(".kp-wyczysc").addEventListener("click", () => {
       if (!confirm("Usunąć wszystkie odpowiedzi z tej karty? Tej operacji nie da się cofnąć.\n\n" +
-                   "Jeżeli chcesz je zachować, najpierw kliknij „Zapisz postęp do pliku”.")) return;
+                   "Jeżeli chcesz je zachować, najpierw kliknij „Zapisz → Plik z postępem”.")) return;
       localStorage.removeItem(KLUCZ(id));
       dane = {};
       podepnij(host, def);
