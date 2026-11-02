@@ -44,6 +44,28 @@
     return ladowanie;
   }
 
+  /* Załączniki (zalaczniki.js) — też doczytywane dopiero na stronie z kartą.
+     Pliki leżą w IndexedDB pod kluczem „serwis|karta”, bo wszystkie serwisy
+     dzielą jeden adres. */
+  let ladowanieZal = null;
+  function zaladujZalaczniki() {
+    if (window.Zalaczniki) return Promise.resolve(window.Zalaczniki);
+    if (ladowanieZal) return ladowanieZal;
+    ladowanieZal = new Promise((ok, blad) => {
+      const s = document.createElement("script");
+      s.src = KATALOG + "zalaczniki.js";
+      s.onload = () => (window.Zalaczniki ? ok(window.Zalaczniki) : blad(new Error("moduł wczytany, ale pusty")));
+      s.onerror = () => { ladowanieZal = null; blad(new Error("nie udało się pobrać modułu")); };
+      document.head.appendChild(s);
+    });
+    return ladowanieZal;
+  }
+  const SERWIS = () => (location.pathname.split("/").filter(Boolean)[0]) || location.hostname;
+  const KLUCZ_ZAL = (id) => `${SERWIS()}|${id}`;
+  /* Lista albo paczka załączników — pusta, gdy modułu nie udało się wczytać. */
+  const zalLista = async (id) => (window.Zalaczniki ? window.Zalaczniki.lista(KLUCZ_ZAL(id)) : []);
+  const zalPaczka = async (id) => (window.Zalaczniki ? window.Zalaczniki.doWysylki(KLUCZ_ZAL(id)) : []);
+
   const KLUCZ = (id) => `karta:${id}`;
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -255,6 +277,7 @@
         </tbody></table>
       </div>
       ${zadania}
+      <div class="kp-zal-host"></div>
       <div class="kp-stopka">
         <div class="kp-akcje">
           ${ODBIOR ? `<button type="button" class="kp-wyslij md-button md-button--primary">Wyślij do nauczyciela</button>` : ""}
@@ -357,6 +380,18 @@
       }
     }
 
+    /* Załączniki: w dokumencie tylko ich lista — same pliki jadą osobno
+       (z „Wyślij do nauczyciela” albo dołączone w dzienniku). */
+    const zal = await zalLista(def.id);
+    if (zal.length) {
+      dzieci.push(new Paragraph({ heading: HeadingLevel.HEADING_2, spacing: { before: 340, after: 60 },
+        children: [T("Załączniki", { bold: true, size: 25, color: ACCENT })] }));
+      zal.forEach((z) => dzieci.push(P(`• ${z.nazwa} (${wKB(z.rozmiar)})`, { size: 20, after: 40 })));
+      dzieci.push(P(ODBIOR ? "Pliki wysyła się przyciskiem „Wyślij do nauczyciela” na stronie karty."
+                           : "Pliki dołącz w dzienniku VULCAN razem z tym dokumentem.",
+                    { italics: true, size: 18, color: "808080", before: 60 }));
+    }
+
     /* Ukryte pola dla panelu kontroli prac (właściwości niestandardowe
        dokumentu Word, w Wordzie: Plik → Informacje → Właściwości). Uczeń ich
        nie widzi. Panel czyta je zamiast zgadywać z nazwy pliku. Tylko klasa,
@@ -387,6 +422,7 @@
       ["wypelnione", String(wyp)],
       ["wszystkie", String(wsz)],
       ["odpowiedzi_skrot", tekstOdp ? skrot.toString(16) : ""],
+      ["zalaczniki", zal.map((z) => z.nazwa).join(" | ")],
       /* Kopia odpowiedzi do automatycznego sprawdzania kluczem (skrypt
          sprawdz_karty.py nauczyciela). Te same treści, które są widoczne
          w dokumencie; zrzuty ekranu zastępuje znacznik „[zrzut]”. */
@@ -474,6 +510,11 @@
     render(host, def, dane);
     podepnijMenu(host);
     const status = host.querySelector(".kp-status");
+    const zalHost = host.querySelector(".kp-zal-host");
+    zaladujZalaczniki()
+      .then((Z) => Z.sekcja(zalHost, KLUCZ_ZAL(id), { wysylka: !!ODBIOR }))
+      .catch(() => { zalHost.innerHTML = '<p class="kp-blad">Nie udało się wczytać ramki na załączniki — ' +
+        "pliki dołącz w dzienniku VULCAN.</p>"; });
 
     const zapiszPole = (klucz, wart) => {
       const poprzednia = dane[klucz];
@@ -608,7 +649,9 @@
           const g = await generuj(def, dane, status, { tylkoPlik: true });
           word = { nazwa: g.nazwa, b64: await naBase64(g.blob) };
         } catch { word = null; }
-        status.textContent = "Wysyłam kartę…";
+        let zalaczniki = [];
+        try { zalaczniki = await zalPaczka(id); } catch { zalaczniki = []; }
+        status.textContent = zalaczniki.length ? `Wysyłam kartę i załączniki (${zalaczniki.length})…` : "Wysyłam kartę…";
         const odpowiedzi = Object.fromEntries(Object.entries(dane)
           .filter(([k, v]) => !pomin.has(k) && v !== "" && v != null)
           .map(([k, v]) => [k, word && String(v).startsWith("data:image") ? "[zrzut]" : String(v)]));
@@ -620,7 +663,9 @@
           wygenerowano: new Date().toISOString(), odpowiedzi,
           // samoocena z ramki „Kryteria sukcesu” na tej stronie (samoocena.js); skrypt Google v6 ją zapisuje
           samoocena: (window.Samoocena && window.Samoocena.naStronie()) || [],
-          docx: word ? word.b64 : "", docx_nazwa: word ? word.nazwa : "" });
+          docx: word ? word.b64 : "", docx_nazwa: word ? word.nazwa : "",
+          // skrypt Google v8 zapisuje je w podfolderze „Załączniki”; starszy je pomija
+          zalaczniki });
         let w;
         try {
           const resp = await fetch(ODBIOR, { method: "POST", body: tresc,
@@ -633,10 +678,19 @@
         }
         if (w && w.ok) {
           try { localStorage.setItem(KLUCZ_WYSLANIA(id), JSON.stringify({ odebrano: w.odebrano || "", potwierdzenie: w.potwierdzenie || "" })); } catch { /* bez pamięci */ }
+          /* Skrypt sprzed wersji 8 nie zna załączników i nie odsyła ich liczby —
+             wtedy uczeń musi wiedzieć, że pliki nie dotarły. */
+          const zalOdebrane = w.zalaczniki;
+          const zalUwaga = !zalaczniki.length ? ""
+            : zalOdebrane == null
+              ? ` <br><strong>Załączniki nie dotarły</strong> — skrypt nauczyciela ich jeszcze nie przyjmuje. Dołącz pliki w Dzienniku VULCAN.`
+              : zalOdebrane < zalaczniki.length
+                ? ` <br><strong>Dotarło ${esc(zalOdebrane)} z ${zalaczniki.length} załączników</strong> — pozostałe dołącz w Dzienniku VULCAN.`
+                : ` Załączniki (${esc(zalOdebrane)}) dotarły razem z kartą.`;
           status.innerHTML = `<strong>Karta dotarła do nauczyciela</strong>${w.word ? " razem z dokumentem Word" : ""} ${esc(w.odebrano || "")}. ` +
             `Numer potwierdzenia: <strong>${esc(w.potwierdzenie || "")}</strong>. ` +
-            "Karty nie musisz już oddawać w dzienniku — dołącz tam tylko inne pliki, o które prosi polecenie (np. raport). " +
-            "Po poprawkach możesz wysłać jeszcze raz.";
+            "Karty nie musisz już oddawać w dzienniku. " +
+            "Po poprawkach możesz wysłać jeszcze raz." + zalUwaga;
           status.className = "kp-status kp-ok";
           return;
         }
@@ -645,7 +699,7 @@
             (w && w.pozostalo != null ? ` Zostało prób: ${esc(w.pozostalo)}.` : ""),
           zablokowane: "Za dużo złych kodów dla tego numeru — wysyłanie jest zablokowane na godzinę.",
           za_czesto: "Za dużo wysyłek w krótkim czasie. Odczekaj kilka minut.",
-          za_duze: "Karta jest za duża do wysłania (zrzuty ekranu). Pobierz dokument Word i oddaj go w Dzienniku VULCAN.",
+          za_duze: "Karta jest za duża do wysłania (zrzuty ekranu albo załączniki). Usuń największy załącznik i wyślij jeszcze raz — albo pobierz dokument Word i oddaj wszystko w Dzienniku VULCAN.",
           brak_danych: "Brakuje numeru, klasy albo kodu.",
           nieskonfigurowane: "Odbiór kart nie jest jeszcze włączony. Pobierz dokument Word i oddaj go w Dzienniku VULCAN.",
         };
@@ -696,9 +750,11 @@
           rekord: { karta: id, odpowiedzi: dane } });
         if (!w) { bladD("Nie udało się połączyć z serwerem nauczyciela. Sprawdź internet — albo użyj „Zapisz → Zapisz (JSON)”."); return; }
         if (w.ok && w.zapisano) {
+          const maZal = (await zalLista(id)).length;
           status.innerHTML = `<strong>Zapisano na Dysku nauczyciela</strong> ${esc(w.zapisano)}. ` +
             "Na innym komputerze otwórz tę stronę, wpisz numer, klasę i kod z karteczki i kliknij " +
-            "<strong>Wczytaj → Z Dysku</strong>. To nie jest oddanie karty — gdy skończysz, kliknij <strong>Wyślij do nauczyciela</strong>.";
+            "<strong>Wczytaj → Z Dysku</strong>. To nie jest oddanie karty — gdy skończysz, kliknij <strong>Wyślij do nauczyciela</strong>." +
+            (maZal ? " Załączniki zostają w tej przeglądarce — na innym komputerze dodaj je jeszcze raz albo przenieś je plikiem „Zapisz (JSON)”." : "");
           status.className = "kp-status kp-ok";
           return;
         }
@@ -745,7 +801,9 @@
        jak przenieść odpowiedzi — stąd plik. Zawiera też nazwę karty, żeby
        import do niewłaściwego działu dało się wychwycić, i datę zapisu,
        żeby przy dwóch plikach było wiadomo, który jest nowszy. */
-    host.querySelector(".kp-eksport").addEventListener("click", () => {
+    host.querySelector(".kp-eksport").addEventListener("click", async () => {
+      let zalaczniki = [];
+      try { zalaczniki = await zalPaczka(id); } catch { zalaczniki = []; }
       const paczka = {
         format: NAZWA_FORMATU,
         wersja: WERSJA_FORMATU,
@@ -754,6 +812,8 @@
         zapisano: new Date().toISOString(),
         odpowiedzi: dane,
       };
+      // Załączniki w pliku tylko wtedy, gdy są — stare pliki postępu wyglądają jak dawniej.
+      if (zalaczniki.length) paczka.zalaczniki = zalaczniki;
       const blob = new Blob([JSON.stringify(paczka)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -782,7 +842,7 @@
         status.textContent = "Nie udało się odczytać pliku. Spróbuj wskazać go jeszcze raz.";
         status.className = "kp-status kp-blad";
       };
-      r.onload = () => {
+      r.onload = async () => {
         posprzataj();
         let paczka;
         try { paczka = JSON.parse(r.result); }
@@ -819,19 +879,31 @@
           return;
         }
         dane = paczka.odpowiedzi;
+        let zalWczytane = 0;
+        if (Array.isArray(paczka.zalaczniki) && paczka.zalaczniki.length) {
+          try {
+            const Z = await zaladujZalaczniki();
+            await Z.zPaczki(KLUCZ_ZAL(id), paczka.zalaczniki);
+            zalWczytane = paczka.zalaczniki.length;
+          } catch { zalWczytane = -1; }
+        }
         podepnij(host, def);
         const nowyStatus = host.querySelector(".kp-status");
         nowyStatus.innerHTML = "Wczytano postęp zapisany <strong>" + esc(kiedy) +
-          "</strong>. Możesz pracować dalej.";
+          "</strong>. Możesz pracować dalej." +
+          (zalWczytane > 0 ? ` Wczytano też załączniki (${zalWczytane}).` : "") +
+          (zalWczytane < 0 ? " Załączników z pliku nie udało się wczytać — dodaj je jeszcze raz." : "");
         nowyStatus.className = "kp-status kp-ok";
       };
       r.readAsText(plik);
     });
 
-    host.querySelector(".kp-wyczysc").addEventListener("click", () => {
-      if (!confirm("Usunąć wszystkie odpowiedzi z tej karty? Tej operacji nie da się cofnąć.\n\n" +
+    host.querySelector(".kp-wyczysc").addEventListener("click", async () => {
+      if (!confirm("Usunąć wszystkie odpowiedzi i załączniki z tej karty? Tej operacji nie da się cofnąć.\n\n" +
                    "Jeżeli chcesz je zachować, najpierw kliknij „Zapisz → Zapisz (JSON)”.")) return;
       localStorage.removeItem(KLUCZ(id));
+      // najpierw usunąć pliki, dopiero potem odświeżyć kartę — inaczej ramka pokazałaby stare
+      if (window.Zalaczniki) { try { await window.Zalaczniki.wyczysc(KLUCZ_ZAL(id)); } catch { /* nie było */ } }
       dane = {};
       podepnij(host, def);
     });
