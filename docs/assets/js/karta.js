@@ -285,7 +285,7 @@
             <button type="button" class="kp-menu-przycisk md-button${ODBIOR ? "" : " md-button--primary"}" aria-expanded="false" aria-haspopup="true">Zapisz</button>
             <div class="kp-menu-lista" hidden>
               <button type="button" class="kp-eksport" title="Plik z postępem — przenieś go na pendrive albo mailem do siebie">${IKONY.dyskietka}Zapisz (JSON)</button>
-              ${ODBIOR ? `<button type="button" class="kp-dysk-zapisz" title="Na Dysk nauczyciela — dokończysz na innym komputerze (numer, klasa i kod z karteczki). To nie jest oddanie karty.">${IKONY.chmura}Na Dysk</button>` : ""}
+              ${ODBIOR ? `<button type="button" class="kp-dysk-zapisz" title="Na Dysk nauczyciela — dokończysz na innym komputerze (numer, klasa i kod z karteczki). To nie jest oddanie karty. Wysłanie do nauczyciela zapisuje kopię na Dysku samo.">${IKONY.chmura}Na Dysk</button>` : ""}
               <button type="button" class="kp-generuj" title="Dokument Word do oddania w dzienniku">${IKONY.dokument}Pobierz Word (.docx)</button>
             </div>
           </div>
@@ -678,6 +678,17 @@
         }
         if (w && w.ok) {
           try { localStorage.setItem(KLUCZ_WYSLANIA(id), JSON.stringify({ odebrano: w.odebrano || "", potwierdzenie: w.potwierdzenie || "" })); } catch { /* bez pamięci */ }
+          /* Ta sama praca zostaje też zapisana jako postęp na Dysku nauczyciela:
+             uczeń może ją potem wczytać na dowolnym komputerze („Wczytaj → Z Dysku”),
+             poprawić i wysłać jeszcze raz. Błąd zapisu nie psuje oddania. */
+          status.textContent = "Karta dotarła — zapisuję kopię do poprawy…";
+          const kopia = await zapiszPostep({ kod, klasa: String(dane._klasa || def.klasa || "").toUpperCase().replace(/\s+/g, ""),
+            numer: String(dane._nr).trim() });
+          const kopiaUwaga = kopia && kopia.ok && kopia.zapisano
+            ? " <br>Kopia jest też zapisana na Dysku nauczyciela. Żeby poprawić pracę na innym komputerze: otwórz tę stronę, " +
+              "wpisz numer, klasę i kod z karteczki, kliknij <strong>Wczytaj → Z Dysku</strong>, popraw i wyślij jeszcze raz."
+            : " <br>Kopii do poprawy nie udało się zapisać na Dysku — jeśli będziesz poprawiać na innym komputerze, " +
+              "użyj <strong>Zapisz → Zapisz (JSON)</strong>.";
           /* Skrypt sprzed wersji 8 nie zna załączników i nie odsyła ich liczby —
              wtedy uczeń musi wiedzieć, że pliki nie dotarły. */
           const zalOdebrane = w.zalaczniki;
@@ -690,7 +701,7 @@
           status.innerHTML = `<strong>Karta dotarła do nauczyciela</strong>${w.word ? " razem z dokumentem Word" : ""} ${esc(w.odebrano || "")}. ` +
             `Numer potwierdzenia: <strong>${esc(w.potwierdzenie || "")}</strong>. ` +
             "Karty nie musisz już oddawać w dzienniku. " +
-            "Po poprawkach możesz wysłać jeszcze raz." + zalUwaga;
+            "Po poprawkach możesz wysłać jeszcze raz." + kopiaUwaga + zalUwaga;
           status.className = "kp-status kp-ok";
           return;
         }
@@ -738,16 +749,18 @@
       brak_danych: "Skrypt nauczyciela nie obsługuje jeszcze zapisu na Dysku. Użyj „Zapisz → Zapisz (JSON)”.",
       nieskonfigurowane: "Zapis na Dysku nie jest jeszcze włączony. Użyj „Zapisz → Zapisz (JSON)”.",
     }[w && w.blad] || "Serwer nauczyciela nie odpowiedział poprawnie. Użyj „Zapisz → Zapisz (JSON)”.");
+    // Zapis postępu na Dysku — przycisk „Na Dysk” i automatycznie po „Wyślij do nauczyciela”.
+    const zapiszPostep = (u) => doSkryptu({ akcja: "postep_zapisz", klasa: u.klasa, numer: u.numer, kod: u.kod,
+      arkusz_id: id, tytul: def.tytul || "", serwis: (location.pathname.split("/").filter(Boolean)[0]) || location.hostname,
+      wypelnione: policzWypelnione(dane, def), wszystkie: policzWszystkie(def, dane),
+      rekord: { karta: id, odpowiedzi: dane } });
     if (dyskZapisz) dyskZapisz.addEventListener("click", async () => {
       const u = daneUcznia(); if (!u) return;
       dyskZapisz.disabled = true;
       status.textContent = "Zapisuję pracę na Dysku nauczyciela…"; status.className = "kp-status";
       try {
         odswiezDateDomyslna(id, dane, host);
-        const w = await doSkryptu({ akcja: "postep_zapisz", klasa: u.klasa, numer: u.numer, kod: u.kod,
-          arkusz_id: id, tytul: def.tytul || "", serwis: (location.pathname.split("/").filter(Boolean)[0]) || location.hostname,
-          wypelnione: policzWypelnione(dane, def), wszystkie: policzWszystkie(def, dane),
-          rekord: { karta: id, odpowiedzi: dane } });
+        const w = await zapiszPostep(u);
         if (!w) { bladD("Nie udało się połączyć z serwerem nauczyciela. Sprawdź internet — albo użyj „Zapisz → Zapisz (JSON)”."); return; }
         if (w.ok && w.zapisano) {
           const maZal = (await zalLista(id)).length;
